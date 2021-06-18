@@ -2,12 +2,13 @@ import { useCallback, useEffect, useState } from "react";
 import { Web3Provider } from "@ethersproject/providers";
 import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
+import detectEthereumProvider from '@metamask/detect-provider';
 
 // Enter a valid infura key here to avoid being rate limited
 // You can get a key for free at https://infura.io/register
-const INFURA_ID = "INVALID_INFURA_KEY";
+const INFURA_ID = "";
 
-const NETWORK_NAME = "mainnet";
+const NETWORK_NAME = "rinkeby";//"mainnet";
 
 function useWeb3Modal(config = {}) {
   const [provider, setProvider] = useState();
@@ -15,7 +16,6 @@ function useWeb3Modal(config = {}) {
   const { autoLoad = true, infuraId = INFURA_ID, NETWORK = NETWORK_NAME } = config;
 
   // Web3Modal also supports many other wallets.
-  // You can see other options at https://github.com/Web3Modal/web3modal
   const web3Modal = new Web3Modal({
     network: NETWORK,
     cacheProvider: true,
@@ -25,9 +25,18 @@ function useWeb3Modal(config = {}) {
         options: {
           infuraId,
         },
-      },
+      }
     },
   });
+
+  //installMetamask();
+
+  /*function installMetamask() {
+    if (!(window.web3 || window.ethereum)) {
+      if ($('#installMetaMask').length < 1)
+        $('.web3modal-modal-card').prepend('<div id="installMetaMask" class="cjAFRf web3modal-provider-wrapper"><a href="https://metamask.io/" target="_blank" class="cjAFRf web3modal-provider-container"><div class="jMhaxE web3modal-provider-icon"><img src="./assets/img/metamask.svg" alt="MetaMask"></div><div class="bktcUM sc-web3modal-provider-name mt-0">Install MetaMask</div><div class="eFHlqH web3modal-provider-description">Connect using browser wallet</div></a></div>')
+    }
+  }*/
 
   // Open wallet selection modal.
   const loadWeb3Modal = useCallback(async () => {
