@@ -41,6 +41,14 @@ async function handleInput(e){
 
   PKTAddr = e.value.PKTAddr.trim().toString();
   console.log('WPKT Amount to Convert:', WPKTAmount, '1PKT Recipient Address:', PKTAddr);
+  if (PKTAddr.charAt(0) == '0'){
+    console.log("Bad Address");
+    dv.style.display= 'block';
+    dv2.style.display= 'block';
+    dv1.style.display= 'none'; 
+    dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Bad 1PKT Recipient Address.</h4>";  
+    return;
+  }
   
   // Check that bridge has pkt.
   var chkCmd = "https://explorer.pkt.cash/api/v1/PKT/pkt/address/pkt1qex9d4fjwc0nqr3x0hex6ds5vpu67efjdlm6ckz";
@@ -51,9 +59,11 @@ async function handleInput(e){
       bal = Number(result.balance);
       console.log('Data:', result.balance,(bal > 0));
       if (bal <= 0){
-        dv.style.display= 'block';
         dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Your Transaction Cannot be Processed.</h4>";  
         dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>The bridge hot wallet is paused until refilled.</h6>";  
+        dv.style.display= 'block';
+        dv1.style.display= 'none'; 
+        dv2.style.display= 'block';
         return;
       }
       else{
@@ -78,6 +88,8 @@ async function handleInput(e){
           if (Number(network)!= Number(net)){
               dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Connect Metamask to Ethereum Mainnet.</h4>";
               dv1.style.display= 'none'; 
+              dv.style.display= 'block';
+              dv2.style.display= 'block';
               return;
           }
 
@@ -95,7 +107,9 @@ async function handleInput(e){
           
           dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Transaction Pending...</h4>";
           dv.style.display= 'block';
+          dv1.style.display= 'block';
           dv2.style.display= 'block';
+          
 
           var WPKTAmtWei = WPKTAmount * (10 ** 18); 
           console.log('Wei Amount:', WPKTAmtWei);
@@ -109,7 +123,7 @@ async function handleInput(e){
             var receipt = await tx.wait();
             console.log('Receipt:', receipt, (receipt.status === 1));
             //dv1.style.display= 'none';
-            
+
             await WPKT.on("Sold", (amount) => {
                 ethTxHash = tx.hash;
                 amount = Web3.utils.fromWei(amount.toString());

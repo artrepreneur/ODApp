@@ -43,20 +43,28 @@ async function handleInput(e){
   dv2.style.display= 'block';
 
   try {
+    var WPKTAmount = 0;
+    var feeAdjAmtNoWei = 0;
+    var feesNoWei = 0;
+    var hash = 0;
     var cmd = "https://obeah.odapp.io/api/v1/userPayout/txHash/"+ethTxHash+"/address/"+PKTAddr+"/";
     console.log(cmd);
     fetch(cmd)
     .then((response) => response.json())
     .then((result) => {
       console.log('Data:', result.data, result.amt, result.hash);
-      var WPKTAmount = Web3.utils.fromWei(result.amt);
-      var feeAdjAmtNoWei = Number(WPKTAmount) /.965;
-      var feesNoWei = feeAdjAmtNoWei - WPKTAmount;
-      round(feesNoWei, 6);
+
+      if (result.amt !== undefined) {
+        WPKTAmount = Web3.utils.fromWei(result.amt);
+        feeAdjAmtNoWei = Number(WPKTAmount) /.965;
+        feesNoWei = feeAdjAmtNoWei - WPKTAmount;
+        round(feesNoWei, 6);
+        hash = result.hash;
+      }
       
       if (result.data.toString().includes('Payout Transaction Hash')){ //Currently this fails -- possibly result.hash
         dv3.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Pending Transaction Complete.</h4>";
-        dv3.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Your transction hash is: "+result.hash+"</h6>";
+        dv3.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Your transction hash is: "+hash+"</h6>";
         dv3.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>You were sent "+feeAdjAmtNoWei+" 1PKT cash.</h6>";
         dv3.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Your fees were "+feesNoWei+" WPKT.</h6>";
         dv3.style.display = 'block';
@@ -65,12 +73,13 @@ async function handleInput(e){
       }
       else if (result.data.toString().includes('TransactionAlreadyProcessedError')){    
         dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>This transaction has already been paid out.</h4>";
-        if (!result.err2) {
+        if (!result.err2 && result.TID !== undefined) {
           console.log("POT:",result.POT.toString(),"TID", result.TID.toString());
           dv.innerHTML = "<h6 style={{backgroundColor: '#2B2F36'}}>The transaction hash is:"+result.TID.toString()+"</h6>";
-          dv1.style.display = 'none';
-          dv.style.display = 'none';
+
         } 
+        dv1.style.display = 'none';
+        dv.style.display = 'block';
       }
       else if (result.data.toString().includes('WrongPktRecipientAddressError')){ 
         dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Wrong 1PKT Recipient Address Entered.</h4>";
@@ -78,15 +87,15 @@ async function handleInput(e){
         dv.style.display = 'block';
       }  
       else {
-        dv.innerHTML = "<h6 style={{backgroundColor: '#2B2F36'}}>Vault failed to pay out. Check transaction id's, and amount and try resubmission.</h6>";            
+        dv.innerHTML = "<h6 style={{backgroundColor: '#2B2F36'}}>Vault failed to pay out. Check transaction id's, 1PKT recipient address, and amount and try resubmission.</h6>";            
         dv1.style.display = 'none';
-        dv.style.display = 'none';
+        dv.style.display = 'block';
       }
     }).catch(function() {
       console.log('Server Down.');
       dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Server isn't communicating.</h4>";
       dv1.style.display = 'none';
-      dv.style.display = 'none';
+      dv.style.display = 'block';
     });
     
   } //try
@@ -95,7 +104,7 @@ async function handleInput(e){
       dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Your transaction failed</h4>";
       dv1.style.display= 'none';
       //dv2.style.display= 'block';
-      dv.style.display= 'none';
+      dv.style.display= 'block';
   }
 
 }
@@ -116,12 +125,12 @@ function GetPKT() {
             </CardHeader>   
             <CardBody pad="large" style={{whiteSpace: 'pre-wrap', overflowWrap: 'break-word'}}> 
 
-            <Text align="center">Use this screen if you used ODApp to send your WPKT to the bridge contract, but didn't receive 1PKT yet then use this screen to claim your 1PKT. 
-              To claim you will need the transaction hash you received when you sent your WPKT to the bridge. Also enter  
+            <Text align="center">Use this screen if you used ODApp to send your WPKT to the bridge contract, but failed to receive 1PKT.  
+              To claim your 1PKT you will need the transaction hash you received when you sent your WPKT to the bridge and the 1PKT recipient address. 
             </Text>
             <div style={{padding: '5%'}} align="center">
               <Card pad="medium" style={{backgroundColor: '#2B2F36'}}>
-                <CardHeader justify="center"><h4 style={{color: '#F0B90C'}}>Enter WPKT Amount and 1PKT Recipient Address:</h4></CardHeader>
+                <CardHeader justify="center"><h4 style={{color: '#F0B90C'}}>Enter WPKT Transaction Hash and 1PKT Recipient Address:</h4></CardHeader>
                 <CardBody>  
                   <Form name="ReceivePKT" id="ReceivePKT" onSubmit={handleInput}>
                     <Box width="80%">
