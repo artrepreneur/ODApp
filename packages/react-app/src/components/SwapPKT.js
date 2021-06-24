@@ -96,8 +96,8 @@ async function handleInput(e){
         
                 // Submit to smart contract - 
                 var options = {
-                    gasLimit: 10000000,
-                    gasPrice: 61000000000
+                    gasLimit: 10000000,//5000000
+                    gasPrice: 61000000000//25000000000
                 };  
                 
             
@@ -116,7 +116,7 @@ async function handleInput(e){
                  
                 try{
         
-                    var tx = await WPKT.convertToWPkt(ethAddr, ethAddr, pktSenderAddr, pktTID, options);
+                    var tx = await WPKT.convertToWPkt(ethAddr, ethAddr, pktSenderAddr, pktTID); //, options);
                     console.log('TX:',tx);
                     dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Pending Transaction ID:</h4><Text margin='small' >" + tx.hash + "</Text><h4 style={{backgroundColor: '#2B2F36'}}>Please wait for on-chain confirmation...</h4>";
                     

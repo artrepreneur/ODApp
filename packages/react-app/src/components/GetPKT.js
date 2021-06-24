@@ -55,7 +55,7 @@ async function handleInput(e){
       console.log('Data:', result.data, result.amt, result.hash);
 
       if (result.amt !== undefined) {
-        WPKTAmount = Web3.utils.fromWei(result.amt);
+        WPKTAmount = Number(result.amt); //Web3.utils.fromWei(result.amt);
         feeAdjAmtNoWei = Number(WPKTAmount) /.965;
         feesNoWei = feeAdjAmtNoWei - WPKTAmount;
         round(feesNoWei, 6);
