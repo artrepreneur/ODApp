@@ -36,9 +36,9 @@ function FAQ() {
                 <Box pad="small">
                 <Card pad="medium" style={{backgroundColor: '#2B2F36'}}>
                     <CardBody>  
-                    <h5 style={{color: '#F0B90C', paddingBottom: '0%'}}>What is 1PKT?</h5>
+                    <h5 style={{color: '#F0B90C', paddingBottom: '0%'}}>What is PKTC?</h5>
                         <Text align="left" color="white">
-                           1PKT is the currency of the decentralized bandwidth marketplace. The 1PKT project strives to bring a free and decentralized internet to the world, 
+                           PKTC is the currency of the decentralized bandwidth marketplace. The PKTC project strives to bring a free and decentralized internet to the world, 
                            and is powered by blockchain. The currency is scarce and mined using a bandwidth hard Proof of Work (PoW). Since it is mined,
                            it is a digitally hard asset and therefore cannot be created out of thin air. 
                            For more details on the project check <a href="https://pkt.cash/" style={{color:"#f0b90c"}}>here</a>. 
@@ -52,9 +52,9 @@ function FAQ() {
                     <CardBody>  
                     <h5 style={{color: '#F0B90C', paddingBottom: '0%'}}>What is WPKT?</h5>
                         <Text align="left" color="white">
-                            WPKT is 1PKT on the ethereum blockchain. It is a wrapped version of 1PKT, hence the "W" in WPKT. 
-                            WPKT can only come into existence when 1PKT is sent to the vault address, thus WPKT can't be inflated, 
-                            and has a 1-to-1 peg to 1PKT. As there can only be 6 billion 1PKT in existence, there can never be more
+                            WPKT is PKTC on the ethereum blockchain. It is a wrapped version of PKTC, hence the "W" in WPKT. 
+                            WPKT can only come into existence when PKTC is sent to the vault address, thus WPKT can't be inflated, 
+                            and has a 1-to-1 peg to PKTC. As there can only be 6 billion PKTC in existence, there can never be more
                             than 6 billion WPKT. WPKT is an ERC20 token and is compatible with all ERC20 platforms. 
                         </Text>
                     </CardBody>
@@ -66,10 +66,10 @@ function FAQ() {
                     <CardBody>  
                     <h5 style={{color: '#F0B90C', paddingBottom: '0%'}}>What is the Vault?</h5>
                         <Text align="left" color="white">
-                            The vault is a 1PKT address which stores the 1PKT that WPKT tokens are issued against. 
-                            When 1PKT coins are sent to the vault, the equivalent amount of WPKT can be claimed with the 1PKT transaction hash. The 
-                            transaction hash is an identifier you receive after a transaction. So if you send 1PKT to the vault address,
-                            your wallet will return a 1PKT transaction hash as proof of your transaction. This transaction proof, or 
+                            The vault is a PKTC address which stores the PKTC that WPKT tokens are issued against. 
+                            When PKTC coins are sent to the vault, the equivalent amount of WPKT can be claimed with the PKTC transaction hash. The 
+                            transaction hash is an identifier you receive after a transaction. So if you send PKTC to the vault address,
+                            your wallet will return a PKTC transaction hash as proof of your transaction. This transaction proof, or 
                             transaction hash, allows the equivalent amount of WPKT, less fees, to be claimed. 
                         </Text>
                     </CardBody>
@@ -107,7 +107,7 @@ function FAQ() {
                     <h5 style={{color: '#F0B90C', paddingBottom: '0%'}}>What is a Transaction Hash?</h5>
                         <Text align="left" color="white">
                             A transaction hash is a unique identifier for your transaction. It is proof that your transaction has been performed, 
-                            and it is verifiable on a blockchain. ODApp uses 1PKT transaction hashes to verify that coins were sent to the vault address, 
+                            and it is verifiable on a blockchain. ODApp uses PKTC transaction hashes to verify that coins were sent to the vault address, 
                             and Ethereum transaction hashes to prove that tokens were sent to the WPKT smart contract. Transaction hashes are a cryptographically sound way to prove that value 
                             has been transferred, and thus it is utilized for cross-chain interactions. ODApp uses a proof of transaction (PoTx) system
                             to value transfer between chains.
@@ -124,8 +124,8 @@ function FAQ() {
                             If you lost your transaction hash, or didn't save it, you can recover it on-chain. Your etherume transactions,
                             are saved in your metamask wallet, but you can also find them on <a href="https://etherscan.io" style={{color:"#f0b90c"}}>etherscan</a>. Just 
                             search for your ethereum address and find the last transaction you performed off the address with the WPKT contract. Similarly, 
-                            you can search for your 1PKT transaction hashes on the <a href="https://explorer.pkt.cash" style={{color:"#f0b90c"}}>1PKT explorer</a>. 
-                            To find your transaction hash, lookup the last transaction your 1PKT address executed against the address:<a href="https://explorer.pkt.cash/address/pkt1qex9d4fjwc0nqr3x0hex6ds5vpu67efjdlm6ckz" style={{color:"#f0b90c"}}>pkt1qex9d4fjwc0nqr3x0hex6ds5vpu67efjdlm6ckz.</a>
+                            you can search for your PKTC transaction hashes on the <a href="https://explorer.pkt.cash" style={{color:"#f0b90c"}}>PKTC explorer</a>. 
+                            To find your transaction hash, lookup the last transaction your PKTC address executed against the address:<a href="https://explorer.pkt.cash/address/pkt1qex9d4fjwc0nqr3x0hex6ds5vpu67efjdlm6ckz" style={{color:"#f0b90c"}}>pkt1qex9d4fjwc0nqr3x0hex6ds5vpu67efjdlm6ckz.</a>
                             Once you have your transaction hashes, you can complete bridging in any case.
                         </Text>
                     </CardBody>
@@ -153,7 +153,7 @@ function FAQ() {
                     <CardBody>  
                     <h5 style={{color: '#F0B90C', paddingBottom: '0%'}}>Why Must I Pre-Commit When Bridging WPKT?</h5>
                         <Text align="left" color="white">
-                            When bridging from 1PKT to WPKT it is important to pre-commit the 1PKT sender address as well as the WPKT recipient address (which is an ethereum address). Sending funds to the vault address without
+                            When bridging from PKTC to WPKT it is important to pre-commit the PKTC sender address as well as the WPKT recipient address (which is an ethereum address). Sending funds to the vault address without
                             performing this step first can result in your transaction being front-run by a malicious attacker. Specifically, an attacker may get your transaction id and submit it as their own. This can be prevented
                             by pre-committing your sender / recipient pair before sending money to the vault. You must be sure to send money to the vault from the sender address you have declared. And your WPKT can only be received 
                             by the recipient address committed. It is important to note that all sender / recipient address pairs are unique. You cannot reuse the sender address with a different recipient or vice versa. You can reuse
@@ -170,8 +170,8 @@ function FAQ() {
                     <CardBody>  
                     <h5 style={{color: '#F0B90C', paddingBottom: '0%'}}>Why Didn't I Receive PKT?</h5>
                         <Text align="left" color="white">
-                            If you were attempting to transfer from WPKT to 1PKT and didn't receive your 1PKT, you can use this <a href="/GetPKT" style={{color:"#f0b90c"}}>link</a> or click
-                            "Claim 1PKT" below, to get your allocation. You will need your transaction hash to complete this transaction. The transaction
+                            If you were attempting to transfer from WPKT to PKTC and didn't receive your PKTC, you can use this <a href="/GetPKT" style={{color:"#f0b90c"}}>link</a> or click
+                            "Claim PKTC" below, to get your allocation. You will need your transaction hash to complete this transaction. The transaction
                             hash was provided to you on the "Wpkt-2-Pkt" screen. You can also find it inside of your metamask wallet in the
                             transaction history. You can use this <a href="https://community.metamask.io/t/where-are-my-tokens/41" style={{color:"#f0b90c"}}>guide</a> to find token transactions in metamask.  
                         </Text>
@@ -185,7 +185,7 @@ function FAQ() {
                     <h5 style={{color: '#F0B90C', paddingBottom: '0%'}}>Why Didn't I Receive WPKT?</h5>
                         <Text align="left" color="white">
                             If you didn't receive WPKT your transaction failed. This can happen for many reasons, but the solution in any case is inevitably the same. 
-                            You simply need to perform the transaction again using your 1PKT transaction hash as proof of transaction (PoTx). 
+                            You simply need to perform the transaction again using your PKTC transaction hash as proof of transaction (PoTx). 
                         </Text>
                     </CardBody>
                 </Card>
@@ -197,7 +197,7 @@ function FAQ() {
                     <h5 style={{color: '#F0B90C', paddingBottom: '0%'}}>Why Didn't I Receive the Balance I Expected?</h5>
                         <Text align="left" color="white">
                             The ODApp bridge network charges a 3.5% fee for all transactions. Therefore, your received amount 
-                            WPKT or 1PKT is reduced by this fee expense. We use fees to subsidise transaction costs over chainlink,
+                            WPKT or PKTC is reduced by this fee expense. We use fees to subsidise transaction costs over chainlink,
                             operate infrastructure and expand this service.  
                         </Text>
                     </CardBody>

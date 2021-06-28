@@ -221,11 +221,11 @@ function SwapPKT() {//{wpkt}
         <BodyCenteredAlt>
             <Card width="xlarge" background="light-1" pad="none" >
                 <CardHeader background="#F0B90C" pad="none" responsive="true" justify="center" height="xsmall">
-                        <h2 align="center">Swap 1PKT to WPKT</h2> 
+                        <h2 align="center">Swap PKTC to WPKT</h2> 
                 </CardHeader>          
                 <CardBody pad="large" style={{whiteSpace: 'pre-wrap', overflowWrap: 'break-word'}}> 
                 <Text align="center" size="large" style={{paddingLeft: '5%', paddingRight: '4%'}}> 
-                    Enter your 1PKT transaction ID, the address you sent your 1PKT from, and the ETH address you would like your WPKT sent to.
+                    Enter your PKTC transaction ID, the address you sent your PKTC from, and the ETH address you would like your WPKT sent to.
                 </Text>
                 
                 <div id="stdiv" align="center" style={{padding: '5%'}}>
@@ -236,12 +236,12 @@ function SwapPKT() {//{wpkt}
                             <Form name="inputPktTID" id="inputPktTID" onSubmit={handleInput}>
                                 
                                 <Box width="80%">
-                                    <h4 style={{color: '#F0B90C'}}>Enter 1PKT Transaction ID and ETH Address: </h4>
+                                    <h4 style={{color: '#F0B90C'}}>Enter PKTC Transaction ID and ETH Address: </h4>
                                     <FormField name="PktTID" required>
-                                        <TextInput style={{background: 'white', color: '#2B2F36'}} name="PktTID" placeholder={<Text size="small">Enter 1PKT Transaction ID</Text>} />
+                                        <TextInput style={{background: 'white', color: '#2B2F36'}} name="PktTID" placeholder={<Text size="small">Enter PKTC Transaction ID</Text>} />
                                     </FormField>
                                     <FormField name="PktSenderAddr" required>
-                                        <TextInput style={{background: 'white', color: '#2B2F36'}} name="PktSenderAddr" placeholder={<Text size="small">Enter 1PKT Sender Address</Text>} />
+                                        <TextInput style={{background: 'white', color: '#2B2F36'}} name="PktSenderAddr" placeholder={<Text size="small">Enter PKTC Sender Address</Text>} />
                                     </FormField>
                                     <FormField name="EthAddr" required>
                                         <TextInput style={{background: 'white', color: '#2B2F36'}} name="EthAddr" placeholder={<Text size="small">Enter ETH Recipient Address</Text>} />

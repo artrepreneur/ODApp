@@ -23,7 +23,7 @@ async function handleInput(e){
     e.preventDefault();
     wpktAddr= e.value.WPKTAddr.trim();
     pktAddr= e.value.PKTAddr.trim();
-    console.log("1PKT Sender:", pktAddr, "WPKT Recipient:", wpktAddr);
+    console.log("PKTC Sender:", pktAddr, "WPKT Recipient:", wpktAddr);
 
      // Check that bridge has pkt.
     var chkCmd = "https://obeah.odapp.io/api/v1/commitAddresses/pktSenderAddress/"+pktAddr+"/ethRecipientAddress/"+wpktAddr+"/";
@@ -81,17 +81,17 @@ function PreCommit() {
             </CardHeader>   
             <CardBody pad="large" style={{whiteSpace: 'pre-wrap', overflowWrap: 'break-word'}}> 
 
-            <Text size="large" textAlign="left" margin="small" style={{paddingLeft: '5%', paddingRight: '5%'}}>To convert your 1PKT to WPKT you will first need to pre-commit your 1PKT sender address and your intended WPKT recipient address. This 
+            <Text size="large" textAlign="left" margin="small" style={{paddingLeft: '5%', paddingRight: '5%'}}>To convert your PKTC to WPKT you will first need to pre-commit your PKTC sender address and your intended WPKT recipient address. This 
             pair of addresses is unique. Once commited, you can either re-use this pair as many times as you like, or create a totally unique pair.
             </Text>
             <div style={{padding: '5%'}} align="center">
                 <Card pad="medium" style={{backgroundColor: '#2B2F36'}}>
-                <CardHeader justify="center"><h4 style={{color: '#F0B90C'}}>Enter 1PKT Sender Address and WPKT Recipient Address:</h4></CardHeader>
+                <CardHeader justify="center"><h4 style={{color: '#F0B90C'}}>Enter PKTC Sender Address and WPKT Recipient Address:</h4></CardHeader>
                 <CardBody>  
                     <Form name="Commitment" id="Commitment" onSubmit={handleInput}>
                     <Box width="80%">
                         <FormField name="PKTAddr" required>
-                            <TextInput style={{background: 'white', color: '#2B2F36'}} name="PKTAddr" placeholder={<Text size="small">Enter Your 1PKT Sender Address</Text>} />
+                            <TextInput style={{background: 'white', color: '#2B2F36'}} name="PKTAddr" placeholder={<Text size="small">Enter Your PKTC Sender Address</Text>} />
                         </FormField>
                         <FormField name="WPKTAddr" required>
                             <TextInput style={{background: 'white', color: '#2B2F36'}} name="WPKTAddr" placeholder={<Text size="small">Enter WPKT Recipient Address</Text>} />

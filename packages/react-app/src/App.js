@@ -140,8 +140,8 @@ function App() {
         </Text>
         <Box direction="row" pad="none" justifyContent='right'>
           <Nav direction="row">
-            <Anchor label="Claim 1PKT" style={{color: '#F0B90C'}} href="/GetPKT" />
-            <Anchor label="About 1PKT" style={{color: '#F0B90C'}} href="https://pkt.cash" />
+            <Anchor label="Claim PKTC" style={{color: '#F0B90C'}} href="/GetPKT" />
+            <Anchor label="About PKTC" style={{color: '#F0B90C'}} href="https://pkt.cash" />
           </Nav>            
         </Box>
       </Footer>
