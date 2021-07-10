@@ -57,11 +57,11 @@ function PKTToWPKT() {
                 <h2 align="center">Get WPKT</h2> 
               </CardHeader>          
               <CardBody pad="large" style={{whiteSpace: 'pre-wrap', overflowWrap: 'break-word'}}>  
-             <Text size="large" textAlign="left" margin="small">To convert your PKTC to WPKT you will first need to send your PKTC to ODApp's "VAULT" address, seen below, using the PKTC wallet of your choice. 
-              Be sure to save your transaction ID, which is provided by your wallet, as proof of your transaction. You will need this <Text style={{fontWeight: "bold"}}>transaction ID</Text> to get your PKTC onto ethereum's chain. </Text>
+             <Text size="large" textAlign="left" margin="small">To convert your PKT to WPKT you will first need to send your PKT to ODApp's "VAULT" address, seen below, using the PKT wallet of your choice. 
+              Be sure to save your transaction ID, which is provided by your wallet, as proof of your transaction. You will need this <Text style={{fontWeight: "bold"}}>transaction ID</Text> to get your PKT onto BSC's chain. </Text>
                 <Card pad="medium" style={{backgroundColor: '#2B2F36'}}>
                     <CardBody>
-                    <h4 align="center" style={{color: '#F0B90C'}}>Send Your PKTC Here: </h4>
+                    <h4 align="center" style={{color: '#F0B90C'}}>Send Your PKT Here: </h4>
                     <div style={{color:'#DEE0E2', paddingBottom:'5%'}} align="center"> pkt1qex9d4fjwc0nqr3x0hex6ds5vpu67efjdlm6ckz</div>
                     <StyledButton primary size='large' color='#F0B90C' label="Next" onClick={navigateTo}/>
                     </CardBody>

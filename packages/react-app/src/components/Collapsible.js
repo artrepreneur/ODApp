@@ -14,7 +14,7 @@ function  Collapsible({btn}){
   const items = [
     { label: 'Home', href: '/' },
     { label: 'Get WPKT', href: 'PreCommit' },
-    { label: 'Get PKTC', href: 'WPKTToPKT' },
+    { label: 'Get PKT', href: 'WPKTToPKT' },
     { label: 'FAQs', href: 'FAQ' },
   ];
  

@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import Web3 from "web3";
 
 
-var feeAdjAmtNoWei;
+//var noFeeAdjAmtNoWei;
 
 function round(value, decimals) {
   return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
@@ -18,12 +18,6 @@ async function handleInput(e){
   var PKTAddr = e.value.PKTAddr.trim().toString();
   var ethTxHash = e.value.EthTxHash.trim().toString();
 
-  //feeAdjAmtNoWei = .965 * Number(WPKTAmount);
-  //var feesNoWei = WPKTAmount - feeAdjAmtNoWei;
-  //round(feesNoWei, 6);
-
-  //console.log('WPKT Amount to Convert:', WPKTAmount, 'Amount to Convert After Fees:', feeAdjAmtNoWei,'PKTC Recipient Address:', PKTAddr, 'ETH Transaction Hash:', ethTxHash);
-  
   var dv = document.getElementById("output2");
   var dv1 = document.getElementById("spin");
   var dv2 = document.getElementById("outputCard2");
@@ -44,10 +38,11 @@ async function handleInput(e){
 
   try {
     var WPKTAmount = 0;
-    var feeAdjAmtNoWei = 0;
+    var noFeeAdjAmtNoWei = 0;
     var feesNoWei = 0;
     var hash = 0;
     var cmd = "https://obeah.odapp.io/api/v1/userPayout/txHash/"+ethTxHash+"/address/"+PKTAddr+"/";
+    //var cmd = "http://localhost:5000/api/v1/userPayout/txHash/"+ethTxHash+"/address/"+PKTAddr+"/";
     console.log(cmd);
     fetch(cmd)
     .then((response) => response.json())
@@ -56,8 +51,8 @@ async function handleInput(e){
 
       if (result.amt !== undefined) {
         WPKTAmount = Number(result.amt); //Web3.utils.fromWei(result.amt);
-        feeAdjAmtNoWei = Number(WPKTAmount) /.965;
-        feesNoWei = feeAdjAmtNoWei - WPKTAmount;
+        noFeeAdjAmtNoWei = Number(WPKTAmount) /.965;
+        feesNoWei = noFeeAdjAmtNoWei - WPKTAmount;
         round(feesNoWei, 6);
         hash = result.hash;
       }
@@ -65,7 +60,7 @@ async function handleInput(e){
       if (result.data.toString().includes('Payout Transaction Hash')){ //Currently this fails -- possibly result.hash
         dv3.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Pending Transaction Complete.</h4>";
         dv3.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Your transction hash is: "+hash+"</h6>";
-        dv3.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>You were sent "+feeAdjAmtNoWei+" PKTC cash.</h6>";
+        dv3.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>You were sent "+WPKTAmount+" PKT cash.</h6>";
         dv3.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Your fees were "+feesNoWei+" WPKT.</h6>";
         dv3.style.display = 'block';
         dv1.style.display = 'none';
@@ -82,12 +77,12 @@ async function handleInput(e){
         dv.style.display = 'block';
       }
       else if (result.data.toString().includes('WrongPktRecipientAddressError')){ 
-        dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Wrong PKTC Recipient Address Entered.</h4>";
+        dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Wrong PKT Recipient Address Entered.</h4>";
         dv1.style.display = 'none';
         dv.style.display = 'block';
       }  
       else {
-        dv.innerHTML = "<h6 style={{backgroundColor: '#2B2F36'}}>Vault failed to pay out. Check transaction id's, PKTC recipient address, and amount and try resubmission.</h6>";            
+        dv.innerHTML = "<h6 style={{backgroundColor: '#2B2F36'}}>Vault failed to pay out. Check transaction id's, PKT recipient address, and amount and try resubmission.</h6>";            
         dv1.style.display = 'none';
         dv.style.display = 'block';
       }
@@ -112,7 +107,7 @@ async function handleInput(e){
 function GetPKT() {
   const history = useHistory();
   const navigateTo = () => {
-    console.log('OK to receive PKTC.', history);
+    console.log('OK to receive PKT.', history);
     history.push('/GetPKT')
   }
 
@@ -125,12 +120,12 @@ function GetPKT() {
             </CardHeader>   
             <CardBody pad="large" style={{whiteSpace: 'pre-wrap', overflowWrap: 'break-word'}}> 
 
-            <Text align="center">Use this screen if you used ODApp to send your WPKT to the bridge contract, but failed to receive PKTC.  
-              To claim your PKTC you will need the transaction hash you received when you sent your WPKT to the bridge and the PKTC recipient address. 
+            <Text align="center">Use this screen if you used ODApp to send your WPKT to the bridge contract, but failed to receive PKT.  
+              To claim your PKT you will need the transaction hash you received when you sent your WPKT to the bridge and the PKT recipient address. 
             </Text>
             <div style={{padding: '5%'}} align="center">
               <Card pad="medium" style={{backgroundColor: '#2B2F36'}}>
-                <CardHeader justify="center"><h4 style={{color: '#F0B90C'}}>Enter WPKT Transaction Hash and PKTC Recipient Address:</h4></CardHeader>
+                <CardHeader justify="center"><h4 style={{color: '#F0B90C'}}>Enter WPKT Transaction Hash and PKT Recipient Address:</h4></CardHeader>
                 <CardBody>  
                   <Form name="ReceivePKT" id="ReceivePKT" onSubmit={handleInput}>
                     <Box width="80%">
@@ -142,14 +137,14 @@ function GetPKT() {
                             console.log("It's a number");
                           }
                           else {
-                            console.log("You must enter the amount of PKTC you are claiming.");
-                            return 'You must enter the amount of PKTC you are claiming.';
+                            console.log("You must enter the amount of PKT you are claiming.");
+                            return 'You must enter the amount of PKT you are claiming.';
                           } 
                           }}>
                             <TextInput style={{background: 'white', color: '#2B2F36'}} name="WPKTAmount" placeholder={<Text size="small">Enter Amount of WPKT Converted</Text>} />
                         </FormField>*/}
                         <FormField name="PKTAddr" required>
-                            <TextInput style={{background: 'white', color: '#2B2F36'}} name="PKTAddr" placeholder={<Text size="small">Enter Your PKTC Recipient Address</Text>} />
+                            <TextInput style={{background: 'white', color: '#2B2F36'}} name="PKTAddr" placeholder={<Text size="small">Enter Your PKT Recipient Address</Text>} />
                         </FormField>
                         <StyledButton primary size='large' color='#F0B90C' type="submit" label="Submit" />
                     </Box>
@@ -162,7 +157,7 @@ function GetPKT() {
                     </div>  
                     <div id="spin" pad="medium" style={{padding:'2%'}}><Spinner size="medium" /></div>
                     <div hidden align="center" id="recPKT" style={{padding:'2%'}}>
-                        <StyledButton size='large' color='#F0B90C' label='Receive PKTC' id='recPKT' onClick={navigateTo()}/> 
+                        <StyledButton size='large' color='#F0B90C' label='Receive PKT' id='recPKT' onClick={navigateTo()}/> 
                     </div> 
                 </Box>
               </div> 

@@ -15,11 +15,20 @@ var pktTID;
 var provider;
 var signer;
 var WPKT; 
-var net = 4; //1
+var net = 97; //56;
+var networkType;
+var chainType = "BSC";
+
+if (net===97){
+    networkType = "testnet";
+}
+else if (net===56){
+    networkType = "mainnet";
+}
 
 async function addWPKT(){
 
-    const tokenAddress = '0xe5106874A2e5726b24b9ca63C08ee465998fDCd5';
+    const tokenAddress = '0x577D11F9ccfC337F32f385Afd1a007222C0388AF';
     const tokenSymbol = 'WPKT';
     const tokenDecimals = 18;
     const tokenImage = 'https://odapp.io/3C.png'; 
@@ -47,8 +56,22 @@ async function addWPKT(){
 
 async function handleInput(e){
     var payoutPromiseDone = false;
-    var waitDone = false;
-    var counter = 0;
+
+    const mm_provider = await detectEthereumProvider()  ;
+
+    if (mm_provider !== window.ethereum){
+        console.log('Multiple wallets installed');
+        return;
+    }
+    else {
+        console.log('window.ethereum is current wallet.');
+    }   
+   
+    // Get the provider.
+    provider = new ethers.providers.Web3Provider(window.ethereum);
+    signer = provider.getSigner();
+    WPKT = new Contract(addresses.WPKT, abis.WPKT, signer); 
+    console.log('WPKT:', WPKT);
 
     // Prevent default behavior
     e.preventDefault();
@@ -66,20 +89,45 @@ async function handleInput(e){
     dv1.style.display= 'none';
     dv3.style.display= 'none';
     
-    var cmd = "https://obeah.odapp.io/api/v1/getTransactionBalanceNoLog/txid/"+pktTID+"/fromAddress/"+pktSenderAddr+"/ethRecipientAddress/"+ethAddr;
+    var cmd = "https://obeah.odapp.io/api/v1/getTransactionBalance/txid/"+pktTID+"/fromAddress/"+pktSenderAddr+"/ethToAddress/"+ethAddr+"/chainType/"+chainType;
+    //var cmd = "http://localhost:5000/api/v1/getTransactionBalance/txid/"+pktTID+"/fromAddress/"+pktSenderAddr+"/ethToAddress/"+ethAddr+"/chainType/"+chainType;
     console.log('cmd', cmd);
     dv1.style.display= 'block';
+    dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Transaction Pending...</h4>";
+    dv.style.display= 'block';
 
     fetch(cmd)
     .then((response) => response.json())
     .then( async (result) => {
         console.log('Data:', result.output);
 
-        if (Number(result.output) > 0){ 
-            const mm_provider = await detectEthereumProvider()  
+        var complete = false; 
+        var keyExists = false;
+
+        try { 
+            if ((Number(result.output) === -1)){
+                // Check if tx is complete in contract 
+                keyExists = await WPKT.keyExists(pktTID);
+                complete = await WPKT.complete(pktTID);
+            }
+        }
+        catch (err){
+            console.log('Transaction Failure.', err);
+            dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Your transaction failed</h4>";
+            if (err.toString().includes('unknown account')){ 
+                dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Please connect your metamask wallet.</h6>";
+            }
+            dv1.style.display= 'none';
+            return;
+        }    
+        
+
+        // Possible for result.output == -1 and !complete implying dupe transaction, but payout never occurred.
+        if ((Number(result.output) > 0) || ((Number(result.output) === -1) && !complete)){ 
             
             if (mm_provider) {
-                if (mm_provider !== window.ethereum){
+                
+                /*if (mm_provider !== window.ethereum){
                     console.log('Multiple wallets installed');
                     return;
                 }
@@ -87,12 +135,11 @@ async function handleInput(e){
                     console.log('window.ethereum is current wallet.');
                 }   
         
-               
                 // Get the provider.
                 provider = new ethers.providers.Web3Provider(window.ethereum);
                 signer = provider.getSigner();
                 WPKT = new Contract(addresses.WPKT, abis.WPKT, signer); 
-                console.log('WPKT:', WPKT);
+                console.log('WPKT:', WPKT);*/
         
                 // Submit to smart contract - 
                 var options = {
@@ -106,17 +153,18 @@ async function handleInput(e){
 
                 
                 var network = await window.ethereum.request({ method: 'net_version' })
-                console.log(network, net, (Number(network) === Number(net)));
+                //console.log(network, net, (Number(network) === Number(net)));
 
                 if (Number(network)!== Number(net)){
-                    dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Connect Metamask to Ethereum Mainnet.</h4>";
+                    dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Connect Metamask to Binance smart chain "+networkType+" and resubmit.</h4>";
                     dv1.style.display= 'none'; 
                     return;
                 }
                  
                 try{
-        
-                    var tx = await WPKT.convertToWPkt(ethAddr, ethAddr, pktSenderAddr, pktTID); //, options);
+    
+                    var tx = await WPKT.retrieveWpktPayout(pktTID);
+                
                     console.log('TX:',tx);
                     dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Pending Transaction ID:</h4><Text margin='small' >" + tx.hash + "</Text><h4 style={{backgroundColor: '#2B2F36'}}>Please wait for on-chain confirmation...</h4>";
                     
@@ -126,12 +174,12 @@ async function handleInput(e){
                     if (receipt.status !== 1) {
                         console.log('Transaction Failure.');
                         dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Your transaction failed</h4>"; 
+                        dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>It's possible you have already claimed this transaction.</h6>";
                         dv1.style.display= 'none'; 
                         return;  
                     }
                     else {
                         console.log('Receipt received');
-
                     }
 
                     await WPKT.on("PayoutComplete", (recip, amount) => {
@@ -139,6 +187,7 @@ async function handleInput(e){
                         console.log('Recipient:',recip);
                         console.log('Amount:', amount.toString());
                         var fees = ((amount / .965) - amount);
+                        fees = Math.round(fees);
                         var amtNoWei = Web3.utils.fromWei(amount.toString());
                         var feesNoWei = Web3.utils.fromWei(fees.toString());
                         console.log("Amount:", amtNoWei, 'Fees:', feesNoWei);
@@ -150,27 +199,29 @@ async function handleInput(e){
                             dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>If the WPKT token hasn't already been added to your wallet yet, use the button below to add it. </h6>";
                             dv3.style.display= 'block';
                             dv1.style.display= 'none';
+                            return;
                         }
                         else {
                             dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Transaction Failed.</h4>";
                             dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Bad transaction. Check your sender / recipient address pair or transaction id. </h6>";
                             dv1.style.display= 'none';
+                            return;
                         }
                     });
 
+                     
+
+                    
                  
                 }
                 catch (err) {
-                    console.log('Transaction Failure.', err);
-                    dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Your transaction failed</h4>";
-                    if (err.toString().includes('unknown account')){ 
-                        dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Please connect your metamask wallet.</h6>";
-                    }
+                     dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Your transaction failed</h4>";
                     if (err.toString().includes('unknown account')){ 
                         dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Please connect your metamask wallet.</h6>";
                     }
                     //dv2.style.display= 'block';
                     dv1.style.display= 'none';
+                    return;
                 }
             } 
             else {
@@ -178,7 +229,8 @@ async function handleInput(e){
                 dv.style.display='block';
                 //dv2.style.display= 'block';
                 //dv1.style.display='none';
-                dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Please Install <a href='https://metamask.io/download.html' style='color:#F0B90C;' />Metamask</a></h4>";     
+                dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Please Install <a href='https://metamask.io/download.html' style='color:#F0B90C;' />Metamask</a></h4>";  
+                return;   
             }
         }    
         else if (Number(result.output) == -1)  {
@@ -187,6 +239,8 @@ async function handleInput(e){
             dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>You can't claim the same transaction more than once.</h6>";
             dv.style.display= 'block';
             dv1.style.display= 'none';
+            return;
+           
         }
         else if (Number(result.output) == -2)  {
             console.log('Bad address.');
@@ -194,13 +248,16 @@ async function handleInput(e){
             dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Your sender / recipient address pair was not pre-commited. Click <a href='./PreCommit' style='color:#F0B90C;' />here</a> to pre-commit an address pair. </h6>";
             dv.style.display= 'block';
             dv1.style.display= 'none';
+            return;
         }
         else {
             console.log('Bad transaction.');
             dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Transaction Failure</h4>";
             dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}> Either transaction doesn't exist or it was for a zero amount.</h6>";
+            dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}> It is possible you used a different pkt address for this transaction.</h6>";
             dv.style.display= 'block';
             dv1.style.display= 'none';
+            return;
         }
     }).catch(function(err) {
         console.log("error", err);
@@ -221,11 +278,11 @@ function SwapPKT() {//{wpkt}
         <BodyCenteredAlt>
             <Card width="xlarge" background="light-1" pad="none" >
                 <CardHeader background="#F0B90C" pad="none" responsive="true" justify="center" height="xsmall">
-                        <h2 align="center">Swap PKTC to WPKT</h2> 
+                        <h2 align="center">Swap PKT to WPKT</h2> 
                 </CardHeader>          
                 <CardBody pad="large" style={{whiteSpace: 'pre-wrap', overflowWrap: 'break-word'}}> 
                 <Text align="center" size="large" style={{paddingLeft: '5%', paddingRight: '4%'}}> 
-                    Enter your PKTC transaction ID, the address you sent your PKTC from, and the ETH address you would like your WPKT sent to.
+                    Enter your PKT transaction ID, the address you sent your PKT from, and the ETH address you would like your WPKT sent to.
                 </Text>
                 
                 <div id="stdiv" align="center" style={{padding: '5%'}}>
@@ -236,12 +293,12 @@ function SwapPKT() {//{wpkt}
                             <Form name="inputPktTID" id="inputPktTID" onSubmit={handleInput}>
                                 
                                 <Box width="80%">
-                                    <h4 style={{color: '#F0B90C'}}>Enter PKTC Transaction ID and ETH Address: </h4>
+                                    <h4 style={{color: '#F0B90C'}}>Enter PKT Transaction ID and ETH Address: </h4>
                                     <FormField name="PktTID" required>
-                                        <TextInput style={{background: 'white', color: '#2B2F36'}} name="PktTID" placeholder={<Text size="small">Enter PKTC Transaction ID</Text>} />
+                                        <TextInput style={{background: 'white', color: '#2B2F36'}} name="PktTID" placeholder={<Text size="small">Enter PKT Transaction ID</Text>} />
                                     </FormField>
                                     <FormField name="PktSenderAddr" required>
-                                        <TextInput style={{background: 'white', color: '#2B2F36'}} name="PktSenderAddr" placeholder={<Text size="small">Enter PKTC Sender Address</Text>} />
+                                        <TextInput style={{background: 'white', color: '#2B2F36'}} name="PktSenderAddr" placeholder={<Text size="small">Enter PKT Sender Address</Text>} />
                                     </FormField>
                                     <FormField name="EthAddr" required>
                                         <TextInput style={{background: 'white', color: '#2B2F36'}} name="EthAddr" placeholder={<Text size="small">Enter ETH Recipient Address</Text>} />

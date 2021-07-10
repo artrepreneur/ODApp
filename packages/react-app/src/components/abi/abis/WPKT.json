@@ -1,12 +1,6 @@
 [
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_link",
-        "type": "address"
-      }
-    ],
+    "inputs": [],
     "stateMutability": "nonpayable",
     "type": "constructor"
   },
@@ -199,7 +193,45 @@
         "type": "uint256"
       }
     ],
+    "name": "PayoutAlreadyEnabled",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "eAddr",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "payAmt",
+        "type": "uint256"
+      }
+    ],
     "name": "PayoutComplete",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "eAddr",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "payAmt",
+        "type": "uint256"
+      }
+    ],
+    "name": "PayoutEnabled",
     "type": "event"
   },
   {
@@ -470,20 +502,6 @@
   },
   {
     "inputs": [],
-    "name": "baseCmd",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [],
     "name": "cap",
     "outputs": [
       {
@@ -682,34 +700,6 @@
   },
   {
     "inputs": [],
-    "name": "jobId",
-    "outputs": [
-      {
-        "internalType": "bytes32",
-        "name": "",
-        "type": "bytes32"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [],
-    "name": "linkFee",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [],
     "name": "marketCap",
     "outputs": [
       {
@@ -730,20 +720,6 @@
         "internalType": "string",
         "name": "",
         "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function",
-    "constant": true
-  },
-  {
-    "inputs": [],
-    "name": "oracle",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
       }
     ],
     "stateMutability": "view",
@@ -1014,6 +990,26 @@
         "type": "string"
       }
     ],
+    "name": "getEthAddr",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_key",
+        "type": "string"
+      }
+    ],
     "name": "getAmt",
     "outputs": [
       {
@@ -1049,25 +1045,22 @@
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "orc",
-        "type": "address"
-      },
-      {
-        "internalType": "bytes32",
-        "name": "jid",
-        "type": "bytes32"
-      },
-      {
-        "internalType": "uint256",
-        "name": "lf",
-        "type": "uint256"
+        "internalType": "string",
+        "name": "_key",
+        "type": "string"
       }
     ],
-    "name": "setChainLinkData",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "name": "complete",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
   },
   {
     "inputs": [
@@ -1109,11 +1102,6 @@
       },
       {
         "internalType": "string",
-        "name": "ethAddress2",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
         "name": "pktSenderAddress",
         "type": "string"
       },
@@ -1121,19 +1109,6 @@
         "internalType": "string",
         "name": "_pktTID",
         "type": "string"
-      }
-    ],
-    "name": "convertToWPkt",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes32",
-        "name": "_requestId",
-        "type": "bytes32"
       },
       {
         "internalType": "uint256",
@@ -1141,7 +1116,20 @@
         "type": "uint256"
       }
     ],
-    "name": "processRes",
+    "name": "approveWpktPayout",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_pktTID",
+        "type": "string"
+      }
+    ],
+    "name": "retrieveWpktPayout",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

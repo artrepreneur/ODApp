@@ -1,5 +1,5 @@
 const addresses = {
-  WPKT: "0xe5106874A2e5726b24b9ca63C08ee465998fDCd5",
+  WPKT: "0x577D11F9ccfC337F32f385Afd1a007222C0388AF",
 };
 
 export default addresses;

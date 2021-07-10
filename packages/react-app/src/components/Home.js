@@ -49,7 +49,7 @@ function Home( {btn} ) {
   //getSupply();
 
   const size = useContext(ResponsiveContext);
-  const cards = ['Bridge PKTC Cash onto Ethereum','Trade PKTC Cash on Uniswap. Yield Farm, stake and more.'];
+  const cards = ['Bridge PKT Cash onto Binance smart chain','Trade PKT Cash on Pancake Swap. Yield Farm, stake and more.'];
 
   const Identifier = ({ children, title, subTitle, size, ...rest }) => (
     <Box gap="medium" align="center" {...rest}>
@@ -68,15 +68,15 @@ function Home( {btn} ) {
       color: '#7d4cdb',
       icon: <Compare size="large" />,
       title: 'Bridging',
-      subTitle: 'Get PKTC Cash on Ethereum',
-      message: 'Convert PKTC to WPKT and access the world of Ethereum.'
+      subTitle: 'Get PKT Cash on Binance smart chain',
+      message: 'Convert PKT to WPKT and access the world of Binance smart chain.'
     },
     {
       color: '#56cde0',
       icon: <System size="large" />,
       title: 'Trading',
-      subTitle: 'Trade PKTC Cash on Uniswap with WPKT',
-      message: 'With WPKT you can swap PKTC to ETH or any other pair on Uniswap.'
+      subTitle: 'Trade PKT Cash on Pancake Swap with WPKT',
+      message: 'With WPKT you can swap PKT to ETH or any other pair on Pancake Swap.'
     },
     {
       color: '#F0B90C',
@@ -89,7 +89,7 @@ function Home( {btn} ) {
       color: '#ffffff',
       icon: <Cycle size="large" />,
       title: 'Arbitrage',
-      subTitle: 'Arbitrage WPKT against PKTC',
+      subTitle: 'Arbitrage WPKT against PKT',
       message: 'Take advantage of price inefficiencies between decentralized and centralized exchanges.'
     }
   ];
@@ -129,7 +129,7 @@ function Home( {btn} ) {
             'url(https://odapp.io/prple.jpg) ', repeat: "no-repeat",
           opacity: '.80'}} round="none">
         <Box pad="medium" justify="center">
-          <Box pad="medium" direction="row" justify="center"><Text color="#7d4cdb" size="5xl" weight="bold" style={{color:"#F8F8FF", opacity: 1}}>The PKT To Ethereum Bridge</Text></Box>
+          <Box pad="medium" direction="row" justify="center"><Text color="#7d4cdb" size="5xl" weight="bold" style={{color:"#F8F8FF", opacity: 1}}>The PKT To Binance smart chain Bridge</Text></Box>
           <Box justify="center">
           <Grid columns={size !== 'small' ? 'medium' : '100%'} gap="small">
                {data.map(value => (
@@ -168,8 +168,8 @@ function Home( {btn} ) {
                           <Text align="left" size={size} color="#2B2F36">
                           ODApp is a decentralized application that allows you to connect, or "bridge", between two different
                           blockchains. Specifically, ODApp bridges the world's of 
-                          <Anchor label=" PKT Cash" style={{color: '#F0B90C'}} href="https://pkt.cash" /> (symbol: PKTC) and Ethereum.
-                          Though entirely different blockchains, PKT cash and Ethereum can be connected through ODApp to 
+                          <Anchor label=" PKT Cash" style={{color: '#F0B90C'}} href="https://pkt.cash" /> (symbol: PKT) and Binance smart chain (BSC).
+                          Though entirely different blockchains, PKT cash and Binance smart chain can be connected through ODApp to 
                           allow seamless value transfer between the two chains. 
                           </Text>
                       </CardBody>
@@ -196,8 +196,8 @@ function Home( {btn} ) {
              <Text align="left" size="large" color="#2B2F36">
                   ODApp is a decentralized application that allows you to connect, or "bridge", between two different
                   blockchains. Specifically, ODApp bridges the world's of 
-                  <Anchor label=" PKT Cash" style={{color:"#7d4cdb"}} href="https://pkt.cash" /> (symbol: PKTC) and Ethereum.
-                  Though entirely different blockchains, PKT cash and Ethereum can be connected through ODApp to 
+                  <Anchor label=" PKT Cash" style={{color:"#7d4cdb"}} href="https://pkt.cash" /> (symbol: PKT) and Binance smart chain.
+                  Though entirely different blockchains, PKT cash and Binance smart chain can be connected through ODApp to 
                   allow seamless value transfer between the two chains. 
               </Text>
             </Box>                    
@@ -222,11 +222,11 @@ function Home( {btn} ) {
                 <CardBody pad="medium">
                     <Box height="xxsmall" justify="center" pad="xxsmall"><Image src={logo} fit="contain" /></Box>  
                     <Text align="left" size={size} color="white">
-                    ODApp accomplishes bridging by wrapping your PKTC into a ERC20 token called (WPKT), which has a 1-to-1 peg to PKTC.
-            With WPKT you can access the multi-billion dollar world of Ethereum, swap WPKT for ETH 
+                    ODApp accomplishes bridging by wrapping your PKT into a ERC20 token called (WPKT), which has a 1-to-1 peg to PKT.
+            With WPKT you can access the multi-billion dollar world of Binance smart chain, swap WPKT for ETH 
             (or any ERC20 token), and hold WPKT in any wallet that supports ERC20 tokens.
-            <p>Since PKTC and WPKT exist on different chains, PKTC cannot be sent to the Ethereum chain and WPKT cannot be 
-            sent to the PKTC chain without the ODApp bridge. Using different names allows for easy discernment between the assets.</p>
+            <p>Since PKT and WPKT exist on different chains, PKT cannot be sent to the Binance smart chain chain and WPKT cannot be 
+            sent to the PKT chain without the ODApp bridge. Using different names allows for easy discernment between the assets.</p>
                     </Text>
                 </CardBody>
             </Card> 
@@ -250,11 +250,11 @@ function Home( {btn} ) {
               >
               <Box gridArea="left" background="#2B2F36" height="medium" justify="center" pad="large">                     
                 <Text align="left" size={size} color="#ffffff">
-                ODApp accomplishes bridging by wrapping your PKTC into a ERC20 token called (WPKT), which has a 1-to-1 peg to PKTC.
-        With WPKT you can access the multi-billion dollar world of Ethereum, swap WPKT for ETH 
+                ODApp accomplishes bridging by wrapping your PKT into a ERC20 token called (WPKT), which has a 1-to-1 peg to PKT.
+        With WPKT you can access the multi-billion dollar world of Binance smart chain, swap WPKT for ETH 
         (or any ERC20 token), and hold WPKT in any wallet that supports ERC20 tokens.
-        <p>Since PKTC and WPKT exist on different chains, PKTC cannot be sent to the Ethereum chain and WPKT cannot be 
-        sent to the PKTC chain without the ODApp bridge. Using different names allows for easy discernment between the assets.</p>
+        <p>Since PKT and WPKT exist on different chains, PKT cannot be sent to the Binance smart chain chain and WPKT cannot be 
+        sent to the PKT chain without the ODApp bridge. Using different names allows for easy discernment between the assets.</p>
                 </Text>
               {/*<Card width="full" round="xsmall" background="#F0B90C" pad="none" >
               <CardHeader background="#F0B90C" pad="large" responsive="true" justify="center" height="30%">
@@ -281,8 +281,8 @@ function Home( {btn} ) {
                 <CardBody pad="medium">  
                     <Text align="left" size={size} color="#2B2F36">
                     Additionally, WPKT allows for participation in the highly profitable world decentralized finance (DeFi). 
-            WPKT allows you to trade on decentralized exchanges (DEX's) like Uniswap, and earn yields by staking into
-            the WPKT / ETH liquidity pool. And if you decide to convert your DeFi gains back into PKTC, ODApp makes it 
+            WPKT allows you to trade on decentralized exchanges (DEX's) like Pancake Swap, and earn yields by staking into
+            the WPKT / ETH liquidity pool. And if you decide to convert your DeFi gains back into PKT, ODApp makes it 
             easy to convert back.
                     </Text>
                 </CardBody>
@@ -313,8 +313,8 @@ function Home( {btn} ) {
                 <Box gridArea="right" background="#ffffff"  height="medium" justify="center" pad="large">
                   <Text align="left" size="large" color="#2B2F36">
                     Additionally, WPKT allows for participation in the highly profitable world decentralized finance (DeFi). 
-                        WPKT allows you to trade on decentralized exchanges (DEX's) like Uniswap, and earn yields by staking into
-                        the WPKT / ETH liquidity pool. And if you decide to convert your DeFi gains back into PKTC, ODApp makes it 
+                        WPKT allows you to trade on decentralized exchanges (DEX's) like Pancake Swap, and earn yields by staking into
+                        the WPKT / ETH liquidity pool. And if you decide to convert your DeFi gains back into PKT, ODApp makes it 
                         easy to convert back.
                   </Text>
                 </Box>
@@ -333,12 +333,12 @@ function Home( {btn} ) {
 
             <Box pad="medium" size="large">
             <Card pad="none" style={{backgroundColor: '#2B2F36'}}>
-            <CardHeader background="#56cde0" pad="none" justify="center" height="30%"><h5 style={{color: '#ffffff', paddingBottom: '0%'}} align="center">Discover PKTC</h5></CardHeader>
+            <CardHeader background="#56cde0" pad="none" justify="center" height="30%"><h5 style={{color: '#ffffff', paddingBottom: '0%'}} align="center">Discover PKT</h5></CardHeader>
                 <CardBody pad="medium">  
                     <Text align="left" size={size} color="white">
                     Additionally, WPKT allows for participation in the highly profitable world decentralized finance (DeFi). 
-            WPKT allows you to trade on decentralized exchanges (DEX's) like Uniswap, and earn yields by staking into
-            the WPKT / ETH liquidity pool. And if you decide to convert your DeFi gains back into PKTC, ODApp makes it 
+            WPKT allows you to trade on decentralized exchanges (DEX's) like Pancake Swap, and earn yields by staking into
+            the WPKT / ETH liquidity pool. And if you decide to convert your DeFi gains back into PKT, ODApp makes it 
             easy to convert back.
                     </Text>
                 </CardBody>
@@ -350,7 +350,7 @@ function Home( {btn} ) {
             <Box>
             <Card width="full" round="none" background="light-1" pad="none" >
             <CardHeader background="#56cde0" pad="large" responsive="true" justify="center" height="small">
-              <Text textAlign="end" margin="medium" size="3xl" weight="bold" color="#282c34">Discover PKTC</Text>
+              <Text textAlign="end" margin="medium" size="3xl" weight="bold" color="#282c34">Discover PKT</Text>
             </CardHeader>
             <CardBody> 
             <Grid
@@ -365,10 +365,10 @@ function Home( {btn} ) {
             >
             <Box gridArea="left" background="#2B2F36" height="medium" justify="center" pad="large"> 
             <Text align="left" size="large" color="#ffffff">
-              PKTC is the world's first bandwidth hard mining algorithm which allows you to turn your internet
+              PKT is the world's first bandwidth hard mining algorithm which allows you to turn your internet
               bandwidth into cash. The project is creating a bandwidth marketplace which will lower the cost 
               of internet access globally, and promote the decentralized expansion of the web 
-              If you don't know what PKTC is then click <Anchor label="here" style={{color: '#F0B90C'}} href="https://pkt.cash" /> to find out how PKTC is changing the internet as we know it.
+              If you don't know what PKT is then click <Anchor label="here" style={{color: '#F0B90C'}} href="https://pkt.cash" /> to find out how PKT is changing the internet as we know it.
               </Text>
             </Box>                    
             <Box gridArea="right" background="#2B2F36"  height="medium" justify="center" pad="none">
@@ -394,8 +394,8 @@ function Home( {btn} ) {
               <CardBody background="#ffffff" pad="medium">
               <Text align="left" size={size}> 
               To get started, use the "Connect Wallet" button to connect your metamask wallet to the bridge. 
-              Then select from the nav menu to choose whether you are swapping from PKTC to WPKT or 
-              WPKT to PKTC. If you don't have metamask install it <a href="https://metamask.io/" style={{color:"#7d4cdb"}}>here</a>
+              Then select from the nav menu to choose whether you are swapping from PKT to WPKT or 
+              WPKT to PKT. If you don't have metamask install it <a href="https://metamask.io/" style={{color:"#7d4cdb"}}>here</a>
               </Text>
               <p align="center">{btn}</p>
               </CardBody>
@@ -423,8 +423,8 @@ function Home( {btn} ) {
             <Box gridArea="right" background="#7d4cdb" height="medium" justify="center" pad="large"> 
             <Text align="left" size="large"> 
               To get started, use the "Connect Wallet" button to connect your metamask wallet to the bridge. 
-              Then select from the nav menu to choose whether you are swapping from PKTC to WPKT or 
-              WPKT to PKTC. If you don't have metamask install it <a href="https://metamask.io/" style={{color:"#F0B90C"}}>here</a>
+              Then select from the nav menu to choose whether you are swapping from PKT to WPKT or 
+              WPKT to PKT. If you don't have metamask install it <a href="https://metamask.io/" style={{color:"#F0B90C"}}>here</a>
               </Text>
               <Box pad="medium"><p align="center">{btn}</p></Box>
             </Box>                    
