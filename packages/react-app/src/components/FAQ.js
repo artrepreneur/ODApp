@@ -122,7 +122,7 @@ function FAQ() {
                     <h5 style={{color: '#F0B90C', paddingBottom: '0%'}}>I Didn't Save My Transaction Hash?</h5>
                         <Text align="left" color="white">
                             If you lost your transaction hash, or didn't save it, you can recover it on-chain. Your etherume transactions,
-                            are saved in your metamask wallet, but you can also find them on <a href="https://bscan.io" style={{color:"#f0b90c"}}>etherscan</a>. Just 
+                            are saved in your metamask wallet, but you can also find them on <a href="https://bscan.io" style={{color:"#f0b90c"}}>bscan</a>. Just 
                             search for your Binance smart chain address and find the last transaction you performed off the address with the WPKT contract. Similarly, 
                             you can search for your PKT transaction hashes on the <a href="https://explorer.pkt.cash" style={{color:"#f0b90c"}}>PKT explorer</a>. 
                             To find your transaction hash, lookup the last transaction your PKT address executed against the address:<a href="https://explorer.pkt.cash/address/pkt1qex9d4fjwc0nqr3x0hex6ds5vpu67efjdlm6ckz" style={{color:"#f0b90c"}}>pkt1qex9d4fjwc0nqr3x0hex6ds5vpu67efjdlm6ckz.</a>
@@ -138,9 +138,8 @@ function FAQ() {
                     <h5 style={{color: '#F0B90C', paddingBottom: '0%'}}>Why Does Bridging Take So Long?</h5>
                         <Text align="left" color="white">
                             Cross-chain bridging, as it is commonly known, is a process which involves settlement over two different chains. Normally, blockchain settlement over a single chain is limited to the speed of the chain.
-                            Every chain's speed is limited to its transactions per second (TPS) which is dependent on its block time. On average, Binance smart chain's block time is around 12 seconds while PKT cash's block time is 1 minute. In practice, 
-                            we wait for several blocks of confirmation for a transaction to be approved, so we are waiting multiples of block time to settle. Additionally, chainlink is used to create cross-chain communication. Chainlink
-                            adds additional latency to the process, via. oracle requests. So, all of this together accounts for a slow settlement time. Bridging isn't exchanging or swapping, it is an entirely different process, and thus
+                            Every chain's speed is limited to its transactions per second (TPS) which is dependent on its block time. On average, Binance smart chain's block time is around 5 seconds while PKT cash's block time is 1 minute. In practice, 
+                            we wait for several blocks of confirmation for a transaction to be approved, so we are waiting multiples of block time to settle. Bridging isn't exchanging or swapping, it is an entirely different process, and thus
                             speed expectations should be adjusted to meet the realities of bridging.  
                         </Text>
                     </CardBody>
@@ -197,7 +196,7 @@ function FAQ() {
                     <h5 style={{color: '#F0B90C', paddingBottom: '0%'}}>Why Didn't I Receive the Balance I Expected?</h5>
                         <Text align="left" color="white">
                             The ODApp bridge network charges a 3.5% fee for all transactions. Therefore, your received amount 
-                            WPKT or PKT is reduced by this fee expense. We use fees to subsidise transaction costs over chainlink,
+                            WPKT or PKT is reduced by this fee expense. We use fees to subsidise transaction costs,
                             operate infrastructure and expand this service.  
                         </Text>
                     </CardBody>
