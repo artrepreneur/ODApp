@@ -28,7 +28,7 @@ else if (net===56){
 
 async function addWPKT(){
 
-    const tokenAddress = '0x577D11F9ccfC337F32f385Afd1a007222C0388AF';
+    const tokenAddress = '0x577D11F9ccfC337F32f385Afd1a007222C0388AF'; //'0x1C25222994531C4AC35E4d94bbf7552c9aa92E32'; //
     const tokenSymbol = 'WPKT';
     const tokenDecimals = 18;
     const tokenImage = 'https://odapp.io/3C.png'; 
@@ -84,11 +84,18 @@ async function handleInput(e){
     //var dv2 = document.getElementById("outputCard");
     var dv3 = document.getElementById("addToken");
 
-    // Reset
+    // Reset Interface
     dv.style.display= 'none';
     dv1.style.display= 'none';
     dv3.style.display= 'none';
     
+    // For Gas estimates
+    /*await WPKT.estimateGas.mint(ethAddr, Web3.utils.toWei('100000'))
+    .then(async function(gasAmount){
+        console.log('Gas:', gasAmount.toString()); // in gwei
+    });*/
+
+
     var cmd = "https://obeah.odapp.io/api/v1/getTransactionBalance/txid/"+pktTID+"/fromAddress/"+pktSenderAddr+"/ethToAddress/"+ethAddr+"/chainType/"+chainType;
     //var cmd = "http://localhost:5000/api/v1/getTransactionBalance/txid/"+pktTID+"/fromAddress/"+pktSenderAddr+"/ethToAddress/"+ethAddr+"/chainType/"+chainType;
     console.log('cmd', cmd);
@@ -233,7 +240,7 @@ async function handleInput(e){
                 return;   
             }
         }    
-        else if (Number(result.output) == -1)  {
+        else if (Number(result.output) === -1)  {
             console.log('Duplicate transaction.');
             dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Transaction Failure</h4>";
             dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>You can't claim the same transaction more than once.</h6>";
@@ -242,7 +249,7 @@ async function handleInput(e){
             return;
            
         }
-        else if (Number(result.output) == -2)  {
+        else if (Number(result.output) === -2)  {
             console.log('Bad address.');
             dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Transaction Failure</h4>";
             dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Your sender / recipient address pair was not pre-commited. Click <a href='./PreCommit' style='color:#F0B90C;' />here</a> to pre-commit an address pair. </h6>";

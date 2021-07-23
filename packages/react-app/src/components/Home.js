@@ -129,7 +129,7 @@ function Home( {btn} ) {
             'url(https://odapp.io/prple.jpg) ', repeat: "no-repeat",
           opacity: '.80'}} round="none">
         <Box pad="medium" justify="center">
-          <Box pad="medium" direction="row" justify="center"><Text color="#7d4cdb" size="5xl" weight="bold" style={{color:"#F8F8FF", opacity: 1}}>The PKT To Binance smart chain Bridge</Text></Box>
+          <Box pad="medium" direction="row" justify="center"><Text color="#7d4cdb" size="4xl" weight="bold" style={{color:"#F8F8FF", opacity: 1}}>The PKT To Binance Smart Chain Bridge</Text></Box>
           <Box justify="center">
           <Grid columns={size !== 'small' ? 'medium' : '100%'} gap="small">
                {data.map(value => (
