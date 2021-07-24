@@ -15,7 +15,7 @@ var pktTID;
 var provider;
 var signer;
 var WPKT; 
-var net = 97; //56;
+var net = 97; //56;//
 var networkType;
 var chainType = "BSC";
 
@@ -88,7 +88,19 @@ async function handleInput(e){
     dv.style.display= 'none';
     dv1.style.display= 'none';
     dv3.style.display= 'none';
-    
+
+
+    var network = await window.ethereum.request({ method: 'net_version' })
+    console.log(network, net, (Number(network) === Number(net)));
+
+    if (Number(network)!== Number(net)){
+        dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Connect Metamask to Binance Smart Chain "+networkType+" and resubmit.</h4>";
+        dv.style.display= 'block';
+        dv1.style.display= 'none'; 
+        return;
+    }
+
+
     // For Gas estimates
     /*await WPKT.estimateGas.mint(ethAddr, Web3.utils.toWei('100000'))
     .then(async function(gasAmount){
@@ -115,7 +127,18 @@ async function handleInput(e){
             if ((Number(result.output) === -1)){
                 // Check if tx is complete in contract 
                 keyExists = await WPKT.keyExists(pktTID);
-                complete = await WPKT.complete(pktTID);
+                if (!keyExists){
+                    console.log('Transaction Failure.');
+                    dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Your transaction failed</h4>";
+                    dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Not approved for payout. Try again later.</h6>";
+                    dv1.style.display= 'none';
+                    return;
+                }
+                else {
+                    complete = await WPKT.complete(pktTID);
+                    console.log("Payout complete?:",complete);
+                }
+                
             }
         }
         catch (err){
@@ -134,19 +157,6 @@ async function handleInput(e){
             
             if (mm_provider) {
                 
-                /*if (mm_provider !== window.ethereum){
-                    console.log('Multiple wallets installed');
-                    return;
-                }
-                else {
-                    console.log('window.ethereum is current wallet.');
-                }   
-        
-                // Get the provider.
-                provider = new ethers.providers.Web3Provider(window.ethereum);
-                signer = provider.getSigner();
-                WPKT = new Contract(addresses.WPKT, abis.WPKT, signer); 
-                console.log('WPKT:', WPKT);*/
         
                 // Submit to smart contract - 
                 var options = {
@@ -158,15 +168,15 @@ async function handleInput(e){
                 dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Transaction Pending...</h4>";
                 dv.style.display= 'block';
 
-                
+                /*
                 var network = await window.ethereum.request({ method: 'net_version' })
-                //console.log(network, net, (Number(network) === Number(net)));
+                console.log(network, net, (Number(network) === Number(net)));
 
                 if (Number(network)!== Number(net)){
                     dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Connect Metamask to Binance smart chain "+networkType+" and resubmit.</h4>";
                     dv1.style.display= 'none'; 
                     return;
-                }
+                }*/
                  
                 try{
     
@@ -175,20 +185,6 @@ async function handleInput(e){
                     console.log('TX:',tx);
                     dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Pending Transaction ID:</h4><Text margin='small' >" + tx.hash + "</Text><h4 style={{backgroundColor: '#2B2F36'}}>Please wait for on-chain confirmation...</h4>";
                     
-                    var receipt = await tx.wait();
-                    console.log('Receipt:', receipt, (receipt.status === 1));
-
-                    if (receipt.status !== 1) {
-                        console.log('Transaction Failure.');
-                        dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Your transaction failed</h4>"; 
-                        dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>It's possible you have already claimed this transaction.</h6>";
-                        dv1.style.display= 'none'; 
-                        return;  
-                    }
-                    else {
-                        console.log('Receipt received');
-                    }
-
                     await WPKT.on("PayoutComplete", (recip, amount) => {
                         payoutPromiseDone = true;
                         console.log('Recipient:',recip);
@@ -215,6 +211,22 @@ async function handleInput(e){
                             return;
                         }
                     });
+
+                    var receipt = await tx.wait();
+                    console.log('Receipt:', receipt, (receipt.status === 1));
+
+                    if (receipt.status !== 1) {
+                        console.log('Transaction Failure.');
+                        dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Your transaction failed</h4>"; 
+                        dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>It's possible you have already claimed this transaction.</h6>";
+                        dv1.style.display= 'none'; 
+                        return;  
+                    }
+                    else {
+                        console.log('Receipt received');
+                    }
+
+                    
 
                      
 
@@ -253,6 +265,22 @@ async function handleInput(e){
             console.log('Bad address.');
             dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Transaction Failure</h4>";
             dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Your sender / recipient address pair was not pre-commited. Click <a href='./PreCommit' style='color:#F0B90C;' />here</a> to pre-commit an address pair. </h6>";
+            dv.style.display= 'block';
+            dv1.style.display= 'none';
+            return;
+        }
+        else if (Number(result.output) === -3)  {
+            console.log('Gas price error.');
+            dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Transaction Failure</h4>";
+            dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Non-specific gas price error.</h6>";
+            dv.style.display= 'block';
+            dv1.style.display= 'none';
+            return;
+        }
+        else if (Number(result.output) === -4)  {
+            console.log('Unknown Error.');
+            dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Transaction Failure</h4>";
+            dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Unknown error.</h6>";
             dv.style.display= 'block';
             dv1.style.display= 'none';
             return;

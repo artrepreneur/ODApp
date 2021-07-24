@@ -19,7 +19,7 @@ var feesNoWei;
 var PKTAddr;
 var ethTxHash;
 var dv, dv1, dv2, dv3, dv4, dv5;
-var net = 97; //56;
+var net = 56;//97; 
 
 
 
