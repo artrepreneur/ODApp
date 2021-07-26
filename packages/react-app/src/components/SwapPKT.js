@@ -15,7 +15,7 @@ var pktTID;
 var provider;
 var signer;
 var WPKT; 
-var net = 97; //56;//
+var net = 56;//97;
 var networkType;
 var chainType = "BSC";
 
@@ -185,7 +185,7 @@ async function handleInput(e){
                     console.log('TX:',tx);
                     dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Pending Transaction ID:</h4><Text margin='small' >" + tx.hash + "</Text><h4 style={{backgroundColor: '#2B2F36'}}>Please wait for on-chain confirmation...</h4>";
                     
-                    await WPKT.on("PayoutComplete", (recip, amount) => {
+                    WPKT.on("PayoutComplete", (recip, amount) => {
                         payoutPromiseDone = true;
                         console.log('Recipient:',recip);
                         console.log('Amount:', amount.toString());
@@ -212,8 +212,11 @@ async function handleInput(e){
                         }
                     });
 
+
                     var receipt = await tx.wait();
                     console.log('Receipt:', receipt, (receipt.status === 1));
+
+                    
 
                     if (receipt.status !== 1) {
                         console.log('Transaction Failure.');
