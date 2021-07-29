@@ -196,7 +196,9 @@ async function handleInput(e){
                         console.log("Amount:", amtNoWei, 'Fees:', feesNoWei);
 
                         if (Number(amtNoWei) > 0) {
-                            dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Pending Transaction Complete.</h4><h6 style={{backgroundColor: '#2B2F36'}}><b>Your transaction hash is " + receipt.transactionHash + "</h6>";
+                            if (receipt !== undefined) {
+                                dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Pending Transaction Complete.</h4><h6 style={{backgroundColor: '#2B2F36'}}><b>Your transaction hash is " + receipt.transactionHash + "</h6>";
+                            }
                             dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>You received "+amtNoWei+" WPKT tokens.</h6>";
                             dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Your fees were "+feesNoWei+" WPKT.</h6>";
                             dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>If the WPKT token hasn't already been added to your wallet yet, use the button below to add it. </h6>";
