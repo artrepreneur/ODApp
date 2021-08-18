@@ -1,17 +1,42 @@
 import styled from "styled-components";
-import { Button, Anchor, Header } from "grommet";
+import { Button, Anchor, Header, Heading, Text } from "grommet";
 //import bkgnd from "../cool-background.png";
+import defiBefore from "../img/home-discover-before.svg";
 
+export const themefont = {
+  global: {
+    font: {
+      family: "Tahoma",
+    }
+  }
+};
+
+export const themefontNav = {
+  global: {
+    font: {
+      family: "Poppins",
+    }
+  }
+};
 
 export const StyledButton = styled(Button)`
-  font-weight: bold;
-  background-color: #F0B90C;
+  font-size: 29px;
+  line-height: 35px;
+  background-color: #FBA300;
+  font-weight:300;
+  font-family: "Tahoma";
+  border:0;
+  color:#fff;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  border-radius: 50px;
   `;
 
 export const StyledButton2 = styled(Button)`
-  font-weight: bold;
   border: none;
   padding: 2vh;
+  font-size: 24px;
+  line-height: 36px;
   `;  
 
 export const StyledAnchor = styled(Anchor)`
@@ -94,9 +119,14 @@ export const Image = styled.img`
 `;
 
 export const Image2 = styled.img`
-  height: 6vmin;
+  height: 5vmin;
   margin-bottom: 0px;
   pointer-events: none;
+`;
+
+export const ImageLogoMobile = styled.img`
+  height: 30px;
+  margin-bottom: 0px;
 `;
 
 export const Link = styled.a.attrs({
@@ -129,6 +159,160 @@ export const CardWrapper = styled.div`
   }
 `;
 
+export const DiscoverBefore = styled.div`
+  background-color: #222323;
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    background-image: url(${defiBefore});
+    width: 100%;
+    height: 30vw;
+    top: -30vw;
+    z-index: 1;
+  }
+`;
 
+export const HeadingDark = styled(Heading)`
+  color: #222323;
+  max-width: 100%;
+  font-weight: bold;
+  font-size: 64px;
+  line-height: 77px;
+`;  
 
+export const HeadingLight = styled(Heading)`
+  color: #fff;
+  max-width: 100%;
+  font-weight: bold;
+  font-size: 64px;
+  line-height: 77px;
+`;  
 
+export const IdentifierTitle = styled(Text)`
+font-weight: 900;
+font-size: 36px;
+line-height: 52px;
+color: #707070;
+font-family: "Poppins";
+`;
+
+export const StyledTextDark = styled(Text)`
+font-size: 28px;
+line-height: 34px;
+color: #707070;
+font-family: "Tahoma";
+`;
+
+export const IdentifierSubTitle = styled(Text)`
+font-weight: bold;
+font-size: 28px;
+line-height: 34px;
+color: #707070;
+font-family: "Tahoma";
+text-align: center;
+`;
+
+export const IdentifierText = styled(Text)`
+font-size: 28px;
+line-height: 34px;
+font-family: "Tahoma";
+text-align: center;
+padding: 10px 0;
+`;
+
+export const ButtonCTA = styled(Button)`
+font-size: 24px;
+line-height: 36px;
+border-radius: 50px;
+font-family: "Tahoma";
+color: #fff;
+border: 0;
+background: #FBA300;
+font-weight: 500;
+padding: 12px 50px;
+margin-right: 20px;
+  `;
+
+export const ButtonFooter = styled(Button)`
+  font-size: 24px;
+  line-height: 36px;
+  border-radius: 50px;
+  font-family: "Tahoma";
+  color: #fff;
+  border: 0;
+  background: #FBA300;
+  font-weight: 500;
+  padding: 12px 50px;
+  width: 25rem;
+  text-align:center;
+  `;
+
+export const ButtonRegular = styled(Button)`
+  color: #fff;
+  font-size: 29px;
+  line-height: 40px;
+  font-weight: 400;
+  border-radius: 50px;
+  border:1px solid #FBA300;
+  padding: 20px;
+  width: 25vw;
+  font-family: 'Tahoma';
+  -webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+    -ms-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+  background: #FBA300;
+  text-align:center;
+`;
+
+export const ButtonRegularAlt = styled(Button)`
+  color: #FBA300;
+  font-size: 29px;
+  line-height: 40px;
+  font-weight: 400;
+  border-radius: 50px;
+  border:1px solid #FBA300;
+  padding: 20px;
+  width: 25vw;
+  font-family: 'Tahoma';
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+    -ms-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+  background: #fff;
+  text-align:center;
+`;
+
+export const HeadingDarkSmaller = styled(Heading)`
+  color: #222323;
+  max-width: 100%;
+  font-weight: bold;
+  font-size: 54px;
+  line-height: 66px;
+`;
+
+export const ScrollableText = styled(Text)`
+font-size: 26px;
+line-height: 32px;
+color: #fff;
+font-family: "Tahoma";
+display: block;
+height: 255px;
+overflow: auto;
+&::-webkit-scrollbar {
+  width: 4px;
+  background: #fff;
+  border-radius: 90px;
+}
+&::-webkit-scrollbar-track {
+  box-shadow: none;
+}
+&::-webkit-scrollbar-thumb {
+  background-color: #FBA300;
+  outline: none;
+  border-radius: 90px;
+}
+`;

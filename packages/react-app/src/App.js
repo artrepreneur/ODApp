@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-
-
 import { useQuery } from "@apollo/react-hooks";
 import { ethers } from "ethers";
 import detectEthereumProvider from '@metamask/detect-provider'
-import { Footer, Text, Nav, Anchor, Box, ResponsiveContext, Button } from "grommet";
+import { Button, Footer, Text, Box, Nav, Anchor, Image } from "grommet";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import SwapPKT from "./components/SwapPKT";
@@ -17,12 +15,14 @@ import FAQ from "./components/FAQ";
 import NotFound from "./components/NotFound";
 import useWeb3Modal from "./hooks/useWeb3Modal";
 import GET_TRANSFERS from "./graphql/subgraph";
+import logoFooter from "./img/odapp-logo-footer.svg";
+import { ButtonFooter } from "./components/";
 
 import {
   Connect
 } from 'grommet-icons';
 
-var clr = '#F0B90C';
+var clr = '#FBA300';
 var provider;
 
 async function checkMetamask(){
@@ -47,7 +47,7 @@ function WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal, clr}) {
   const [label, setLabel] = useState(initialLabel);
   return (
     
-    <Button id="cnct" primary size="small" align="center" color="#F0B90C" icon={<Connect/>}  label={!provider ? "Connect Wallet" : "Disconnect Wallet"} onClick={async () => {
+    <Button id="cnct" primary size="large" align="center" color="#FBA300" class="mainConnect" label={!provider ? "Connect Wallet" : "Disconnect Wallet"} onClick={async () => {
       if (typeof window.ethereum === 'undefined') {
         alert('Please install metamask to use this site');
         return;
@@ -65,6 +65,7 @@ function WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal, clr}) {
 
   );
 }
+
 
 async function connectMetamask(){
   try {
@@ -102,10 +103,8 @@ function App() {
     }
   }, [loading, error, data]);
 
-
   return (
     <div>
-
     <Collapsible btn={ WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal, clr}) }/>
         <Router>
           <Switch>
@@ -134,21 +133,14 @@ function App() {
           </Switch>
         </Router>
         
-      <Footer background="#282c34" pad="large">
-        <Text textAlign="center" size="small">
-        Copyright © ODapp.io
-        </Text>
-        <Box direction="row" pad="none" justifyContent='right'>
-          <Nav direction="row">
-            <Anchor label="Claim PKT" style={{color: '#F0B90C'}} href="/GetPKT" />
-            <Anchor label="About PKT" style={{color: '#F0B90C'}} href="https://pkt.cash" />
-          </Nav>            
-        </Box>
+      <Footer background="#222323" pad="large" align="center" justify="center">
+          <Box size="small"><Image src={logoFooter} fit="contain" alt="react-logo" /></Box>
+          <ButtonFooter href="/GetPKT" label="Claim PKT" color="#FFFFFF" margin={{ horizontal: "4vw" }} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+          <ButtonFooter href="https://pkt.cash/" target="_blank" align="center" label="Learn About PKT Cash" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
       </Footer>
+      <Box background={{ color: "#FBA300" }} pad="small" size="xxsmall" align="center" alignSelf="center"><Text textAlign="center" size="15px" color="#fff">Copyright © ODapp.io</Text></Box>
     </div>
   );
 }
 
 export default App;
-
-

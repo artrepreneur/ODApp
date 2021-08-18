@@ -1,7 +1,7 @@
 import React from "react";
 import { Contract } from "@ethersproject/contracts";
-import { Form, Box, Card, Text, CardBody, TextInput, Spinner, FormField, CardHeader } from "grommet";
-import { BodyCenteredAlt, StyledButton } from ".";
+import { Grid, Form, Box, Card, Text, CardBody, TextInput, Spinner, FormField, Heading } from "grommet";
+import { HeadingDark, StyledButton, StyledTextDark } from ".";
 import { useHistory } from "react-router-dom";
 import { ethers } from "ethers";
 import detectEthereumProvider from '@metamask/detect-provider';
@@ -20,6 +20,11 @@ var PKTAddr;
 var ethTxHash;
 var dv, dv1, dv2, dv3, dv4, dv5;
 var net = 56;//97; 
+
+var formWrapStyle = {
+  boxShadow: "0px 3px 6px rgba(0, 0, 0, 0.161)",
+  width: "85%"
+}
 
 
 
@@ -264,58 +269,59 @@ function WPKTToPKT() {
 
   
   return (
-    <Box> 
-      
-      <BodyCenteredAlt>
-        <Card width="xlarge" background="light-1" pad="none" >     
-            <CardHeader background="#F0B90C" pad="none" justify="center" height="xsmall">
-                  <h2 align="center">Get PKT</h2>
-            </CardHeader>   
-            <CardBody pad="large" style={{whiteSpace: 'pre-wrap', overflowWrap: 'break-word'}}> 
-
-            <Text size="large" textAlign="left" margin="small" style={{paddingLeft: '5%', paddingRight: '5%'}}>To convert your WPKT to PKT just use the DApp below. Enter the amount
-            of WPKT you wish to convert, and the PKT address which will recieve the PKT.
-            Be sure to enter a PKT address and not an Binance smart chain address. 
-            </Text>
-            <div style={{padding: '5%'}} align="center">
-              <Card pad="medium" style={{backgroundColor: '#2B2F36'}}>
-                <CardHeader justify="center"><h4 style={{color: '#F0B90C'}}>Enter WPKT Amount and PKT Recipient Address:</h4></CardHeader>
-                <CardBody>  
-                  <Form name="ConvertWPKTtoPKT" id="ConvertWPKTtoPKT" onSubmit={handleInput}>
-                    <Box width="80%">
-                        <FormField name="WPKTAmount" required>
-                            <TextInput style={{background: 'white', color: '#2B2F36'}} name="WPKTAmount" placeholder={<Text size="small">Enter Amount of WPKT to Convert</Text>} />
-                        </FormField>
-                        <FormField name="PKTAddr" required>
-                            <TextInput style={{background: 'white', color: '#2B2F36'}} name="PKTAddr" placeholder={<Text size="small">Enter PKT Recipient Address</Text>} />
-                        </FormField>
-                        <StyledButton primary size='large' color='#F0B90C' type="submit" label="Submit"/>
-                    </Box>
-                  </Form>
-  
-                </CardBody>
-              </Card>  
-              <div hidden id="div1" style={{paddingTop: '2%'}}>
-              
-                <Box id="box1" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white',  padding:'0%'}}>
-                    <div hidden align="center" id="output1" style={{padding:'2%'}}></div>  
-                    <div hidden align="center" id="recPKT" style={{padding:'2%'}}>
-                        <StyledButton size='large' color='#F0B90C' label='Claim PKT' onClick={() => getPKT()}/>
-                    </div> 
-                    <div id="spin" pad="medium" style={{padding:'2%'}}><Spinner size="medium" /></div>
+    <Box background="#fff">
+        <Card width="full" round="none" background="#fff" pad="0 8rem" size="large">
+              <CardBody> 
+                <Grid
+                fill
+                areas={[
+                  { name: 'left', start: [0, 0], end: [0, 0] },
+                  { name: 'right', start: [1, 0], end: [1, 0] },
+                ]}
+                columns={['1/2', 'flex']}
+                alignContent={['center']}
+                justifyContent={['center']}
+                rows={['flex']}
+                gap="none"
+                background="#fff"
+                >
+                <Box gridArea="left" background="#fff" height={{ min: "85vh" }} justify="center" alignSelf="center">
+                    <HeadingDark textAlign="left" margin={{ bottom: "50px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Swap WPKT to PKT</HeadingDark>
+                    <StyledTextDark textAlign="left" style={{ paddingRight: "6vw" }}>To convert your WPKT to PKT enter the amount of WPKT you wish to convert, and the PKT address that will receive the PKT. Be sure to enter a valid PKT address and not Binance Smart Chain address.</StyledTextDark>
                 </Box>
-              </div>
-              
-              <div hidden id="div2" style={{paddingTop: '2%'}}>
-                <Box id="box2" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white',  padding:'0%'}}>
-                  <div hidden align="center" id="output2" style={{padding:'2%'}}></div> 
-                </Box>  
-              </div>  
-            </div>  
-            </CardBody>
+                <Box gridArea="right" background="#fff" height="large" justify="center" alignSelf="center" pad="0">
+                    <Box background="#f9f9f9" pad={{ vertical: "large", horizontal: "xlarge" }} round="25px" justify="center" alignSelf="center" style={formWrapStyle}>
+                    <Form name="ConvertWPKTtoPKT" id="ConvertWPKTtoPKT" onSubmit={handleInput}>
+                    <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="24px" margin={{ bottom: "50px", top: "0" }}  textAlign="center">Enter Sender and Recipient Address</Heading>
+                    <Box justify="center" alignSelf="center">
+                        <FormField name="WPKTAmount" required contentProps={{ border: false }}>
+                            <TextInput style={{background: 'white', color: '#222323', fontSize: "24px", fontWeight: "normal", borderRadius: "6px" }} name="WPKTAmount" placeholder={<Text weight="normal" size="24px" color="#707070">WPKT Sender Address</Text>} />
+                        </FormField>
+                        <FormField name="PKTAddr" required contentProps={{ border: false }}>
+                            <TextInput style={{background: 'white', color: '#222323', fontSize: "24px", fontWeight: "normal", borderRadius: "6px", padding: "12px 20px" }} name="PKTAddr" placeholder={<Text weight="normal" size="24px" color="#707070">PKT Recipient Address</Text>} />
+                        </FormField>
+                        <StyledButton hoverIndicator={{background: "#222323", boxShadow: "0"}} size='large' color="#fff" type="submit" label="Submit"/>
+                    </Box>
+                    </Form>
+                    <div hidden id="div1" style={{paddingTop: '2%'}}>
+                      <Box id="box1" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white',  padding:'0%'}}>
+                          <div hidden align="center" id="output1" style={{padding:'2%'}}></div>  
+                          <div hidden align="center" id="recPKT" style={{padding:'2%'}}>
+                              <StyledButton size='large' color='#F0B90C' label='Claim PKT' onClick={() => getPKT()}/>
+                          </div> 
+                          <div id="spin" pad="medium" style={{padding:'2%'}}><Spinner size="medium" /></div>
+                      </Box>
+                    </div>
+                    <div hidden id="div2" style={{paddingTop: '2%'}}>
+                      <Box id="box2" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white',  padding:'0%'}}>
+                        <div hidden align="center" id="output2" style={{padding:'2%'}}></div> 
+                      </Box>  
+                    </div> 
+                    </Box>
+                </Box>                    
+                </Grid>
+              </CardBody>
         </Card>
-   
-    </BodyCenteredAlt>
     </Box>
     
   );

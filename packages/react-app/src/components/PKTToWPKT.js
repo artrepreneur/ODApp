@@ -3,7 +3,7 @@ import { Contract } from "@ethersproject/contracts";
 import { ethers } from "ethers";
 //import detectEthereumProvider from '@metamask/detect-provider';
 import { Card, CardBody, CardHeader, Box, Text } from "grommet";
-import { Image, BodyCenteredAlt, StyledButton } from ".";
+import { Image, BodyCenteredAlt, StyledButton, HeadingDark, StyledTextDark } from ".";
 import { useHistory } from "react-router-dom";
 //import styled from 'styled-components';
 import addresses from "./abi/addresses";
