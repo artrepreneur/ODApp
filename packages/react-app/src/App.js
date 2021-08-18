@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-
-
 import { useQuery } from "@apollo/react-hooks";
 import { ethers } from "ethers";
 import detectEthereumProvider from '@metamask/detect-provider'
@@ -27,19 +25,6 @@ import {
 var clr = '#FBA300';
 var provider;
 
-var buttonStyle = {
-  color: '#fff',
-  fontSize: '29px',
-  lineHeight: '35px',
-  fontWeight: '400',
-  borderRadius: '50px',
-  padding: '20px',
-  width: '25vw',
-  font: {
-    family: 'Tahoma',
-  },
-};
-
 async function checkMetamask(){
 
   provider = await detectEthereumProvider(); 
@@ -62,7 +47,7 @@ function WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal, clr}) {
   const [label, setLabel] = useState(initialLabel);
   return (
     
-    <Button id="cnct" primary size="large" align="center" color="#FBA300" style={buttonStyle} label={!provider ? "Connect Wallet" : "Disconnect Wallet"} onClick={async () => {
+    <Button id="cnct" primary size="large" align="center" color="#FBA300" class="mainConnect" label={!provider ? "Connect Wallet" : "Disconnect Wallet"} onClick={async () => {
       if (typeof window.ethereum === 'undefined') {
         alert('Please install metamask to use this site');
         return;
@@ -118,7 +103,6 @@ function App() {
     }
   }, [loading, error, data]);
 
-
   return (
     <div>
     <Collapsible btn={ WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal, clr}) }/>
@@ -148,6 +132,7 @@ function App() {
             <Route component={NotFound} />
           </Switch>
         </Router>
+        
       <Footer background="#222323" pad="large" align="center" justify="center">
           <Box size="small"><Image src={logoFooter} fit="contain" alt="react-logo" /></Box>
           <ButtonFooter href="/GetPKT" label="Claim PKT" color="#FFFFFF" margin={{ horizontal: "4vw" }} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />

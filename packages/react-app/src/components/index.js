@@ -124,6 +124,11 @@ export const Image2 = styled.img`
   pointer-events: none;
 `;
 
+export const ImageLogoMobile = styled.img`
+  height: 30px;
+  margin-bottom: 0px;
+`;
+
 export const Link = styled.a.attrs({
   target: "_blank",
   rel: "noopener noreferrer",
@@ -163,7 +168,7 @@ export const DiscoverBefore = styled.div`
     background-image: url(${defiBefore});
     width: 100%;
     height: 30vw;
-    top: -29vw;
+    top: -30vw;
     z-index: 1;
   }
 `;
@@ -242,6 +247,44 @@ export const ButtonFooter = styled(Button)`
   width: 25rem;
   text-align:center;
   `;
+
+export const ButtonRegular = styled(Button)`
+  color: #fff;
+  font-size: 29px;
+  line-height: 40px;
+  font-weight: 400;
+  border-radius: 50px;
+  border:1px solid #FBA300;
+  padding: 20px;
+  width: 25vw;
+  font-family: 'Tahoma';
+  -webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+    -ms-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+  background: #FBA300;
+  text-align:center;
+`;
+
+export const ButtonRegularAlt = styled(Button)`
+  color: #FBA300;
+  font-size: 29px;
+  line-height: 40px;
+  font-weight: 400;
+  border-radius: 50px;
+  border:1px solid #FBA300;
+  padding: 20px;
+  width: 25vw;
+  font-family: 'Tahoma';
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+    -ms-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+  background: #fff;
+  text-align:center;
+`;
 
 export const HeadingDarkSmaller = styled(Heading)`
   color: #222323;
