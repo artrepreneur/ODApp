@@ -15,7 +15,7 @@ var pktTID;
 var provider;
 var signer;
 var WPKT; 
-var net = 56;//97;
+var net = 56;//97;//
 var networkType;
 var chainType = "BSC";
 
@@ -28,7 +28,7 @@ else if (net===56){
 
 async function addWPKT(){
 
-    const tokenAddress = '0x577D11F9ccfC337F32f385Afd1a007222C0388AF'; //'0x1C25222994531C4AC35E4d94bbf7552c9aa92E32'; //
+    const tokenAddress = '0x1C25222994531C4AC35E4d94bbf7552c9aa92E32'; //'0x577D11F9ccfC337F32f385Afd1a007222C0388AF'; //
     const tokenSymbol = 'WPKT';
     const tokenDecimals = 18;
     const tokenImage = 'https://odapp.io/3C.png'; 
@@ -322,7 +322,7 @@ function SwapPKT() {//{wpkt}
                 </CardHeader>          
                 <CardBody pad="large" style={{whiteSpace: 'pre-wrap', overflowWrap: 'break-word'}}> 
                 <Text align="center" size="large" style={{paddingLeft: '5%', paddingRight: '4%'}}> 
-                    Enter your PKT transaction ID, the address you sent your PKT from, and the ETH address you would like your WPKT sent to.
+                    Enter your PKT transaction ID, the address you sent your PKT from, and the BSC address you would like your WPKT sent to.
                 </Text>
                 
                 <div id="stdiv" align="center" style={{padding: '5%'}}>
@@ -333,7 +333,7 @@ function SwapPKT() {//{wpkt}
                             <Form name="inputPktTID" id="inputPktTID" onSubmit={handleInput}>
                                 
                                 <Box width="80%">
-                                    <h4 style={{color: '#F0B90C'}}>Enter PKT Transaction ID and ETH Address: </h4>
+                                    <h4 style={{color: '#F0B90C'}}>Enter PKT Transaction ID and BSC Address: </h4>
                                     <FormField name="PktTID" required>
                                         <TextInput style={{background: 'white', color: '#2B2F36'}} name="PktTID" placeholder={<Text size="small">Enter PKT Transaction ID</Text>} />
                                     </FormField>
@@ -341,7 +341,7 @@ function SwapPKT() {//{wpkt}
                                         <TextInput style={{background: 'white', color: '#2B2F36'}} name="PktSenderAddr" placeholder={<Text size="small">Enter PKT Sender Address</Text>} />
                                     </FormField>
                                     <FormField name="EthAddr" required>
-                                        <TextInput style={{background: 'white', color: '#2B2F36'}} name="EthAddr" placeholder={<Text size="small">Enter ETH Recipient Address</Text>} />
+                                        <TextInput style={{background: 'white', color: '#2B2F36'}} name="EthAddr" placeholder={<Text size="small">Enter BSC Recipient Address</Text>} />
                                     </FormField>
                                     <StyledButton size='large' color='#F0B90C' type="submit" label="Submit" />
                                 </Box>

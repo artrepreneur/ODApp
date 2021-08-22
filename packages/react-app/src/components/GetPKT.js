@@ -125,12 +125,12 @@ function GetPKT() {
             </Text>
             <div style={{padding: '5%'}} align="center">
               <Card pad="medium" style={{backgroundColor: '#2B2F36'}}>
-                <CardHeader justify="center"><h4 style={{color: '#F0B90C'}}>Enter WPKT Transaction Hash and PKT Recipient Address:</h4></CardHeader>
+                <CardHeader justify="center"><h4 style={{color: '#F0B90C'}}>Enter WPKT (BSC) Transaction Hash and PKT Recipient Address:</h4></CardHeader>
                 <CardBody>  
                   <Form name="ReceivePKT" id="ReceivePKT" onSubmit={handleInput}>
                     <Box width="80%">
                         <FormField name="EthTxHash" required>
-                            <TextInput style={{background: 'white', color: '#2B2F36'}} name="EthTxHash" placeholder={<Text size="small">Enter Your WPKT Transaction Hash</Text>} />
+                            <TextInput style={{background: 'white', color: '#2B2F36'}} name="EthTxHash" placeholder={<Text size="small">Enter Your WPKT (BSC) Transaction Hash</Text>} />
                         </FormField>
                         {/*<FormField name="WPKTAmount" required validate={(fieldData) => {
                           if (!isNaN(fieldData)) {

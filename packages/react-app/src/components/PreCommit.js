@@ -95,7 +95,7 @@ function PreCommit() {
                             <TextInput style={{background: 'white', color: '#2B2F36'}} name="PKTAddr" placeholder={<Text size="small">Enter Your PKT Sender Address</Text>} />
                         </FormField>
                         <FormField name="WPKTAddr" required>
-                            <TextInput style={{background: 'white', color: '#2B2F36'}} name="WPKTAddr" placeholder={<Text size="small">Enter WPKT Recipient Address</Text>} />
+                            <TextInput style={{background: 'white', color: '#2B2F36'}} name="WPKTAddr" placeholder={<Text size="small">Enter WPKT Recipient Address (ie. your BSC address)</Text>} />
                         </FormField>
                         <StyledButton primary size='large' color='#F0B90C' type="submit" label="Submit"/>
                     </Box>
