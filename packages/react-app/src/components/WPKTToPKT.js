@@ -51,13 +51,14 @@ async function handleInput(e){
   }
   
   // Check that bridge has pkt.
-  var chkCmd = "https://explorer.pkt.cash/api/v1/PKT/pkt/address/pkt1qex9d4fjwc0nqr3x0hex6ds5vpu67efjdlm6ckz";
+  var chkCmd = "https://obeah.odapp.io/api/v1/getbalances"; 
   var bal = 0;
+
   fetch(chkCmd)
     .then((response) => response.json())
     .then(async (result) => {
-      bal = Number(result.balance);
-      console.log('Data:', result.balance,(bal > 0));
+      bal = Number(result.PKT);
+      console.log('Data:', result.PKT,(bal > 0));
       if (bal <= 0){
         dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Your Transaction Cannot be Processed.</h4>";  
         dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>The bridge hot wallet is paused until refilled.</h6>";  
@@ -111,12 +112,12 @@ async function handleInput(e){
           dv2.style.display= 'block';
           
 
-          var WPKTAmtWei = WPKTAmount * (10 ** 18); 
+          var WPKTAmtWei = Web3.utils.toWei(WPKTAmount.toString());
           console.log('Wei Amount:', WPKTAmtWei);
 
           try {
 
-            var tx = await WPKT.convertToPkt(pktEncodedAddr, WPKTAmtWei.toString());//, options);
+            var tx = await WPKT.convertToPkt(pktEncodedAddr, WPKTAmtWei);//, options);
             console.log('TX:',tx);
             dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Pending Transaction ID:</h4><Text margin='small' >" + tx.hash + "</Text><h4 style={{backgroundColor: '#2B2F36'}}>Please wait for confirmation...</h4>";
             

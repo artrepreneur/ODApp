@@ -189,11 +189,9 @@ async function handleInput(e){
                         payoutPromiseDone = true;
                         console.log('Recipient:',recip);
                         console.log('Amount:', amount.toString());
-                        amount = Number(amount.toString());
-                        var fees = ((amount / .965) - amount);
-                        fees = Math.round(fees);
                         var amtNoWei = Web3.utils.fromWei(amount.toString());
-                        var feesNoWei = Web3.utils.fromWei(fees.toString());
+                        var fees = ((amtNoWei / .965) - amtNoWei);
+                        var feesNoWei = Math.round(fees);
                         console.log("Amount:", amtNoWei, 'Fees:', feesNoWei);
 
                         if (Number(amtNoWei) > 0) {
