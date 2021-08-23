@@ -191,7 +191,7 @@ async function handleInput(e){
                         console.log('Amount:', amount.toString());
                         var amtNoWei = Web3.utils.fromWei(amount.toString());
                         var fees = ((amtNoWei / .965) - amtNoWei);
-                        var feesNoWei = Math.round(fees);
+                        var feesNoWei = fees.toFixed(2); //Math.round(fees);
                         console.log("Amount:", amtNoWei, 'Fees:', feesNoWei);
 
                         if (Number(amtNoWei) > 0) {
