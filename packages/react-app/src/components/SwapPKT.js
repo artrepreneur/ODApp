@@ -15,7 +15,7 @@ var pktTID;
 var provider;
 var signer;
 var WPKT; 
-var net = 56;//97;//
+var net = 97;//56;//
 var networkType;
 var chainType = "BSC";
 
@@ -28,7 +28,7 @@ else if (net===56){
 
 async function addWPKT(){
 
-    const tokenAddress = '0x1C25222994531C4AC35E4d94bbf7552c9aa92E32'; //'0x577D11F9ccfC337F32f385Afd1a007222C0388AF'; //
+    const tokenAddress = '0x577D11F9ccfC337F32f385Afd1a007222C0388AF'; //'0x1C25222994531C4AC35E4d94bbf7552c9aa92E32'; //
     const tokenSymbol = 'WPKT';
     const tokenDecimals = 18;
     const tokenImage = 'https://odapp.io/WPKTLogoLarge.png'; //'https://odapp.io/3C.png'; 
@@ -107,8 +107,8 @@ async function handleInput(e){
         console.log('Gas:', gasAmount.toString()); // in gwei
     });*/
 
-
-    var cmd = "https://obeah.odapp.io/api/v1/getTransactionBalance/txid/"+pktTID+"/fromAddress/"+pktSenderAddr+"/ethToAddress/"+ethAddr+"/chainType/"+chainType;
+    var cmd = "https://obeahdev.odapp.io/api/v1/getTransactionBalance/txid/"+pktTID+"/fromAddress/"+pktSenderAddr+"/ethToAddress/"+ethAddr+"/chainType/"+chainType;
+    //var cmd = "https://obeah.odapp.io/api/v1/getTransactionBalance/txid/"+pktTID+"/fromAddress/"+pktSenderAddr+"/ethToAddress/"+ethAddr+"/chainType/"+chainType;
     //var cmd = "http://localhost:5000/api/v1/getTransactionBalance/txid/"+pktTID+"/fromAddress/"+pktSenderAddr+"/ethToAddress/"+ethAddr+"/chainType/"+chainType;
     console.log('cmd', cmd);
     dv1.style.display= 'block';
@@ -229,10 +229,6 @@ async function handleInput(e){
                     else {
                         console.log('Receipt received');
                     }
-
-                    
-
-                     
 
                     
                  

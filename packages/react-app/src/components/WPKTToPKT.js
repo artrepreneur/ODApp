@@ -19,7 +19,7 @@ var feesNoWei;
 var PKTAddr;
 var ethTxHash;
 var dv, dv1, dv2, dv3, dv4, dv5;
-var net = 56;//97; 
+var net = 97; //56;//
 
 
 
@@ -51,7 +51,8 @@ async function handleInput(e){
   }
   
   // Check that bridge has pkt.
-  var chkCmd = "https://obeah.odapp.io/api/v1/getbalances"; 
+  var chkCmd = "https://obeahdev.odapp.io/api/v1/getbalances"; 
+  //var chkCmd = "https://obeah.odapp.io/api/v1/getbalances"; 
   var bal = 0;
 
   fetch(chkCmd)
@@ -207,8 +208,8 @@ function getPKT(){
   dv1.style.display= 'block';
 
   try {
-
-    var cmd = "https://obeah.odapp.io/api/v1/userPayout/txHash/"+ethTxHash+"/address/"+PKTAddr+"/";
+    var cmd = "https://obeahdev.odapp.io/api/v1/userPayout/txHash/"+ethTxHash+"/address/"+PKTAddr+"/";
+    //var cmd = "https://obeah.odapp.io/api/v1/userPayout/txHash/"+ethTxHash+"/address/"+PKTAddr+"/";
     //var cmd = "http://localhost:5000/api/v1/userPayout/txHash/"+ethTxHash+"/address/"+PKTAddr+"/";
     console.log(cmd);
     fetch(cmd)
@@ -218,7 +219,7 @@ function getPKT(){
       //dv3.style.display= 'none';//remove button
       if (result.data.toString().includes('Payout Transaction Hash')){
         dv1.style.display= 'none';
-        dv5.innerHTML += "<h4 style={{backgroundColor: '#2B2F36'}}>PKT Payout Complete</h4>";
+        dv5.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>PKT Payout Complete</h4>";
         dv5.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Your PKT transction hash is: "+result.hash+"</h6>";
         dv5.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>You were sent "+amtNoWei+" PKT cash.</h6>";
         dv5.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Your fees were "+feesNoWei+" WPKT.</h6>";
