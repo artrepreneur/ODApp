@@ -31,7 +31,7 @@ async function addWPKT(){
     const tokenAddress = '0x1C25222994531C4AC35E4d94bbf7552c9aa92E32'; //'0x577D11F9ccfC337F32f385Afd1a007222C0388AF'; //
     const tokenSymbol = 'WPKT';
     const tokenDecimals = 18;
-    const tokenImage = 'https://odapp.io/3C.png'; 
+    const tokenImage = 'https://odapp.io/WPKTLogoLarge.png'; //'https://odapp.io/3C.png'; 
 
     try {
 
@@ -189,6 +189,7 @@ async function handleInput(e){
                         payoutPromiseDone = true;
                         console.log('Recipient:',recip);
                         console.log('Amount:', amount.toString());
+                        amount = Number(amount.toString());
                         var fees = ((amount / .965) - amount);
                         fees = Math.round(fees);
                         var amtNoWei = Web3.utils.fromWei(amount.toString());
@@ -261,7 +262,9 @@ async function handleInput(e){
             console.log('Duplicate transaction.');
             dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Transaction Failure</h4>";
             dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>You can't claim the same transaction more than once.</h6>";
+            dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>If the WPKT token hasn't already been added to your wallet yet, use the button below to add it. </h6>";
             dv.style.display= 'block';
+            dv3.style.display= 'block';
             dv1.style.display= 'none';
             return;
            
