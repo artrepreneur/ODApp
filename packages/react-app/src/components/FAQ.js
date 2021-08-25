@@ -195,7 +195,7 @@ function FAQ() {
                     <CardBody>  
                     <h5 style={{color: '#F0B90C', paddingBottom: '0%'}}>Why Didn't I Receive the Balance I Expected?</h5>
                         <Text align="left" color="white">
-                            The ODApp bridge network charges a 3.5% fee for all transactions. Therefore, your received amount 
+                            The ODApp bridge network charges a flexible between a 1% and 3.5% fee for all transactions. Fees vary dynamically on the basis of spreads, ie. price difference between centralized exchanges vs. decentralized exchanges. Therefore, your received amount 
                             WPKT or PKT is reduced by this fee expense. We use fees to subsidise transaction costs,
                             operate infrastructure and expand this service.  
                         </Text>

@@ -31,7 +31,7 @@ async function addWPKT(){
     const tokenAddress = '0x577D11F9ccfC337F32f385Afd1a007222C0388AF'; //'0x1C25222994531C4AC35E4d94bbf7552c9aa92E32'; //
     const tokenSymbol = 'WPKT';
     const tokenDecimals = 18;
-    const tokenImage = 'https://odapp.io/WPKTLogoLarge.png'; //'https://odapp.io/3C.png'; 
+    const tokenImage = 'https://odapp.io/WPKTLogo2Large.png'; //'https://odapp.io/3C.png'; 
 
     try {
 
@@ -114,6 +114,8 @@ async function handleInput(e){
     dv1.style.display= 'block';
     dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Transaction Pending...</h4>";
     dv.style.display= 'block';
+    dv3.style.display= 'block';
+    return;
 
     fetch(cmd)
     .then((response) => response.json())
