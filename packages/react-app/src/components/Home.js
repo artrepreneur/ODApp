@@ -10,6 +10,7 @@ import icon_trading from "../img/home_services/icon_trading.svg";
 import icon_defi from "../img/home_services/icon_defi.svg";
 import icon_arbitrage from "../img/home_services/icon_arbitrage.svg";
 import defi from "../img/defi-illustration.svg";
+import defi_mobile from "../img/defi-illustration-mobile.svg";
 import logo_01 from "../img/support/pktpal.svg";
 import logo_02 from "../img/support/binance.svg";
 import logo_03 from "../img/support/pancake-swap.svg";
@@ -67,6 +68,15 @@ var wpktStyle = {
   backgroundAttachment: 'fixed'
 };
 
+var wpktStyleMobile = {
+  backgroundImage: 'url(' + bridge_bg + ')',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center',
+  backgroundSize: 'cover',
+  position: 'relative',
+  backgroundAttachment: 'fixed'
+};
+
 var joinStyle = {
   backgroundImage: 'url(' + join_bg + ')',
   backgroundRepeat: 'no-repeat',
@@ -75,6 +85,13 @@ var joinStyle = {
 };
 
 var defiColumnStyle = {
+  backgroundImage: 'url(' + defi + ')',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'left bottom',
+  backgroundSize: 'cover'
+};
+
+var defiColumnStyleMed = {
   backgroundImage: 'url(' + defi + ')',
   backgroundRepeat: 'no-repeat',
   backgroundPosition: 'left bottom',
@@ -160,17 +177,17 @@ function Home( {btn} ) {
 		{/*Top banner*/}
     <ResponsiveContext.Consumer>
       {responsive => (responsive === 'small') ? (
-        <Box direction="row" justify="center" align="center" height="100vh" pad="0" round="none" style={bannerStyle}>
+        <Box direction="row" justify="center" align="center" height="92vh" pad="0" round="none" style={bannerStyle} className="top_banner_home_small">
           <Box pad="medium" justify="center">
             <Heading color="#ffffff" textAlign="center" size="48px" weight="bold" level="1">The PKT<br />Cash Bridge<br />To WPKT</Heading>
-            <p align="center" style={{ }}>{btn}</p>
+            <p align="center" style={{ position: "absolute", bottom: "25px", left: "0", right: "0" }}>{btn}</p>
           </Box>   
         </Box>
       ) : (responsive === 'medium') ? (
-        <Box direction="row" justify="center" align="center" height="100vh" pad="0" round="none" style={bannerStyle}>
+        <Box direction="row" justify="center" align="center" height="85vh" pad="0" round="none" style={bannerStyle} className="top_banner_home_medium">
           <Box pad="medium" justify="center">
-            <Heading color="#ffffff" textAlign="center" size="4.7vw" weight="bold" level="1">The PKT Cash Bridge<br />To WPKT</Heading>
-            <p align="center" style={{ position: "absolute", top: "40vw", left: "0", right: "0" }}>{btn}</p>
+            <Heading color="#ffffff" textAlign="center" size="4vw" weight="bold" level="1">The PKT Cash Bridge<br />To WPKT</Heading>
+            <p align="center" style={{ margin: "0" }}>{btn}</p>
           </Box>   
         </Box>
       ) : (
@@ -184,10 +201,69 @@ function Home( {btn} ) {
     </ResponsiveContext.Consumer>
 		
 		{/* 4 services */}
+    <ResponsiveContext.Consumer>
+    {responsive => (responsive === 'small') ? (
+      <Box justify="center" align="center" pad="medium" round="none" width="100%" pad="none">
+        <Box justify="center" pad={{ top: '50px' }}>
+          <ButtonRegularAlt href="/WPKTToPKT" label="Get PKT" margin="none" className="ButtonRegularAlt" />
+          <ButtonRegular href="/PreCommit" align="center" label="Get WPKT" margin={{ top: "20px" }} className="ButtonRegular" />
+        </Box>
+        <Box justify="center" pad="none">
+          <Box justify="center" pad={{horizontal: "30px", top: "50px", bottom: "75px"}}>
+            <Grid columns={['1', '1']} gap="20px" pad="none">
+                {data.map(value => (
+                    <Card background={value.color} key={value.message} round="small" pad="45px 50px">
+                      <CardBody pad="none">
+                        <Identifier
+                          pad="none"
+                          title={value.title}
+                          subTitle={value.subTitle}
+                          size="small"
+                          align="center">
+                          <img src={value.icon} alt={value.title} height="70" />
+                        </Identifier>
+                        <IdentifierText weight="normal" color="#707070" alignSelf="center">{value.message}</IdentifierText>
+                      </CardBody>
+                    </Card>
+                  ))}
+            </Grid> 
+          </Box>
+        </Box>   
+      </Box>
+    ) : (responsive === 'medium') ? (
+      <Box justify="center" align="center" pad="medium" round="none" width="100%" pad="none">
+        <Box justify="center" pad={{ top: '75px' }} direction="row">
+          <ButtonRegularAlt href="/WPKTToPKT" label="Get PKT" margin={{ horizontal: "10px" }} className="ButtonRegularAlt" />
+          <ButtonRegular href="/PreCommit" align="center" label="Get WPKT" margin={{ horizontal: "10px" }} className="ButtonRegular" />
+        </Box>
+        <Box justify="center" pad="none">
+          <Box justify="center" pad="none">
+            <Grid columns={['1/2', '1/2']} gap="20px" pad="50px 50px 75px">
+                {data.map(value => (
+                    <Card background={value.color} key={value.message} round="small" pad="60px 90px 65px">
+                      <CardBody pad="none">
+                        <Identifier
+                          pad="none"
+                          title={value.title}
+                          subTitle={value.subTitle}
+                          size="small"
+                          align="center"
+                        >
+                          <img src={value.icon} alt={value.title} height="50" />
+                        </Identifier>
+                        <IdentifierText weight="normal" color="#707070" alignSelf="center">{value.message}</IdentifierText>
+                      </CardBody>
+                    </Card>
+                  ))}
+            </Grid> 
+          </Box>
+        </Box>   
+      </Box>
+    ) : (
       <Box justify="center" align="center" pad="medium" round="none" width="100%" pad="none">
         <Box justify="center" pad={{ top: '100px' }} direction="row">
           <ButtonRegularAlt href="/WPKTToPKT" label="Get PKT" margin={{ horizontal: "10px" }} className="ButtonRegularAlt" />
-          <ButtonRegular href="/PKTToWPKT" align="center" label="Get WPKT" margin={{ horizontal: "10px" }} className="ButtonRegular" />
+          <ButtonRegular href="/PreCommit" align="center" label="Get WPKT" margin={{ horizontal: "10px" }} className="ButtonRegular" />
         </Box>
         <Box justify="center" width="100%" pad="none">
           <Box justify="center" width="100%" pad="none">
@@ -212,10 +288,53 @@ function Home( {btn} ) {
           </Box>
         </Box>   
       </Box>
-	  
+    )}
+    </ResponsiveContext.Consumer>
+      
 	  {/*What's ODApp?*/}
-       
-            <Box>
+    <ResponsiveContext.Consumer>
+      {responsive => (responsive === 'small') ? (
+        <Box>
+          <Card width="full" round="none" background="#222323" pad="50px 30px 70px" className="dark">
+              <CardBody> 
+                <Box justify="center" alignSelf="center" pad="none">
+                    <HeadingLight textAlign="center" margin="0 0 30px 0" size="4xl" weight="bold" color="#ffffff" level="2">What's ODApp?</HeadingLight>
+                    <Text align="center" textAlign="center" size="16px" color="#ffffff" margin="0 0 40px 0">ODApp is a decentralized application that allows you to "bridge" between the world of PKT Cash (symbol: PKT) and Binance Smart Chain. Though entirely different blockchains, PKT cash and Binance Smart Chain are connected via ODApp which allow seamless value transfer between the two chains.</Text>
+                </Box>
+                <Box pad="none"><Image alignSelf="left" src={od_logo} fit="contain" /></Box>
+                <Box pad="2rem 0 0"><p align="center"><ButtonRegular href="/PreCommit" align="center" label="Get WPKT" margin="none" className="ButtonRegular" /></p></Box>                
+              </CardBody>
+          </Card>
+        </Box>
+      ) : (responsive === 'medium') ? (
+        <Box>
+          <Card width="full" round="none" background="#222323" pad="none" className="dark">
+              <CardBody> 
+                <Grid
+                fill
+                areas={[
+                  { name: 'left', start: [0, 0], end: [0, 0] },
+                  { name: 'right', start: [1, 0], end: [1, 0] },
+                ]}
+                columns={['1/2', 'flex']}
+                alignContent={['center']}
+                justifyContent={['center']}
+                rows={['flex']}
+                gap="none"
+                background="#fff"
+                >
+                  <Box gridArea="right" justify="center" pad="none"><Image alignSelf="center" width="500" src={od_logo} fit="contain" /></Box>
+                  <Box gridArea="left" height="large" justify="center" alignSelf="center" pad="0 75px 0 50px">
+                    <HeadingLight textAlign="left" margin="0 0 2rem 0" weight="bold" color="#ffffff" level="2">What's ODApp?</HeadingLight>
+                    <Text align="left" size="22px" color="#ffffff" margin="none">ODApp is a decentralized application that allows you to "bridge" between the world of PKT Cash (symbol: PKT) and Binance Smart Chain. Though entirely different blockchains, PKT cash and Binance Smart Chain are connected via ODApp which allow seamless value transfer between the two chains.</Text>
+                    <Box pad="2rem 0 0"><p align="left"><ButtonRegular href="/PreCommit" align="center" label="Get WPKT" margin={{ horizontal: "10px" }} className="ButtonRegular" /></p></Box>
+                  </Box>                    
+                </Grid>
+              </CardBody>
+          </Card>
+        </Box>
+      ) : (
+        <Box>
               <Card width="full" round="none" background="#222323" pad="none" className="dark">
                   <CardBody> 
                     <Grid
@@ -235,35 +354,61 @@ function Home( {btn} ) {
                       <Box gridArea="left" height="large" justify="center" alignSelf="center" pad="0 10rem 0 8rem">
                         <HeadingLight textAlign="left" margin="0 0 3rem 0" size="4xl" weight="bold" color="#ffffff" level="2">What's ODApp?</HeadingLight>
                         <Text align="left" size="26px" color="#ffffff" margin="0 0 1rem 0">ODApp is a decentralized application that allows you to "bridge" between the world of PKT Cash (symbol: PKT) and Binance Smart Chain. Though entirely different blockchains, PKT cash and Binance Smart Chain are connected via ODApp which allow seamless value transfer between the two chains.</Text>
-                        <Box pad="2rem 0 0"><p align="left"><ButtonRegular href="/PKTToWPKT" align="center" label="Get WPKT" margin={{ horizontal: "10px" }} className="ButtonRegular" /></p></Box>
+                        <Box pad="2rem 0 0"><p align="left"><ButtonRegular href="/PreCommit" align="center" label="Get WPKT" margin={{ horizontal: "10px" }} className="ButtonRegular" /></p></Box>
                       </Box>                    
                     </Grid>
                   </CardBody>
               </Card>
             </Box>
+      )}
+    </ResponsiveContext.Consumer>
+            
 
-	  
 	  {/*Connect Your Metamask Wallet*/}
-      <ResponsiveContext.Consumer> 
-        {size => (size === 'small') ? (
-
-              <Box pad="medium" size="large">
-              <Card pad="none" justify="center">
-              <CardHeader background="#F0B90C" pad="none" responsive="true" justify="center" height="30%">
-                <h4 align="center">Connect Your Metamask Wallet</h4> 
-              </CardHeader>  
-              <CardBody background="#ffffff" pad="medium">
-              <Text align="left" size={size}> 
-              To get started, use the "Connect Wallet" button to connect your metamask wallet to the bridge. 
-              Then select whether you are swapping from PKT to WPKT or WPKT to PKT. 
-              </Text>
-              <p align="center"><ButtonRegular align="center" label="Get Metamask" margin={{ horizontal: "10px" }} className="ButtonRegular" /></p>
+    <ResponsiveContext.Consumer>
+        {responsive => (responsive === 'small') ? (
+          <Box>
+            <Card width="full" round="none" background="light-1" pad="none">
+              <CardBody> 
+                <Box background="#fff" justify="center" alignSelf="center" pad="65px 25px 80px" >
+                  <HeadingDark textAlign="center" margin="none" weight="bold" color="#222323" level="2">Connect Your Metamask Wallet</HeadingDark>
+                  <Text textAlign="center" size="16px" color="#707070" margin={{vertical: "35px"}}>To get started, use the "Connect Wallet" button to connect your metamask wallet to the bridge.<br />Then select whether you are swapping from PKT to WPKT or WPKT to PKT.</Text>
+                    <Box pad="none" align="center"><ButtonRegular href="https://metamask.io" target="_blank" align="center" label="Get Metamask" margin={{ bottom: "35px" }} className="ButtonRegular" /></Box>
+                    <Text alignSelf="center" size="16px" color="#707070">If you don't have metamask <a href="https://metamask.io/" style={{color:"#F0B90C"}}>install it here</a>.</Text>
+                </Box>                    
               </CardBody>
-              </Card>
-              </Box>
-
-          ) : (   
-            <Box>
+            </Card>
+          </Box>
+        ) : (responsive === 'medium') ? (
+          <Box>
+          <Card width="full" round="none" background="light-1" pad="none" size="large">
+            <CardBody> 
+              <Grid
+              fill
+              areas={[
+                { name: 'left', start: [0, 0], end: [0, 0] },
+                { name: 'right', start: [1, 0], end: [1, 0] },
+              ]}
+              columns={['1/2', 'flex']}
+              alignContent={['center']}
+              justifyContent={['center']}
+              rows={['flex']}
+              gap="none"
+              background="#fff"
+              >
+              <Box gridArea="left" background="#fff" height="large" justify="bottom" pad="0"><Image alignSelf="center" height="400" width="450" src={mm_logo} fit="contain" /></Box>
+              <Box gridArea="right" background="#fff" height="large" justify="center" alignSelf="center" pad="0 50px" >
+                <HeadingDark textAlign="center" margin="medium" weight="bold" color="#222323" level="2">Connect Your Metamask Wallet</HeadingDark>
+                <Text textAlign="center" size="22px" color="#707070" margin={{vertical: "1vw"}}>To get started, use the "Connect Wallet" button to connect your metamask wallet to the bridge.<br />Then select whether you are swapping from PKT to WPKT or WPKT to PKT.</Text>
+                  <Box pad="medium"><p align="center"><ButtonRegular href="https://metamask.io" target="_blank" align="center" label="Get Metamask" margin={{ horizontal: "10px" }} className="ButtonRegular" /></p></Box>
+                  <Text alignSelf="center" size="22px" color="#707070">If you don't have metamask <a href="https://metamask.io/" style={{color:"#F0B90C"}}>install it here</a>.</Text>
+              </Box>                    
+              </Grid>
+            </CardBody>
+          </Card>
+          </Box>
+        ) : (
+          <Box>
             <Card width="full" round="none" background="light-1" pad="none" size="large">
               <CardBody> 
                 <Grid
@@ -282,40 +427,64 @@ function Home( {btn} ) {
                 <Box gridArea="left" background="#fff" height="large" justify="bottom" pad="0"><Image alignSelf="center" height="500" width="560" src={mm_logo} fit="contain" /></Box>
                 <Box gridArea="right" background="#fff" height="large" justify="center" alignSelf="center" pad="0 10rem" >
                   <HeadingDark textAlign="center" margin="medium" size="4xl" weight="bold" color="#222323" level="2">Connect Your Metamask Wallet</HeadingDark>
-                  <Text textAlign="center" size="26px" color="#707070">To get started, use the "Connect Wallet" button to connect your metamask wallet to the bridge.<br />Then select whether you are swapping from PKT to WPKT or WPKT to PKT.</Text>
-                    <Box pad="medium"><p align="center"><ButtonRegular align="center" label="Get Metamask" margin={{ horizontal: "10px" }} className="ButtonRegular" /></p></Box>
+                  <Text textAlign="center" size="26px" color="#707070" margin={{vertical: "1vw"}}>To get started, use the "Connect Wallet" button to connect your metamask wallet to the bridge.<br />Then select whether you are swapping from PKT to WPKT or WPKT to PKT.</Text>
+                    <Box pad="medium"><p align="center"><ButtonRegular href="https://metamask.io" target="_blank" align="center" label="Get Metamask" margin={{ horizontal: "10px" }} className="ButtonRegular" /></p></Box>
                     <Text alignSelf="center" size="26px" color="#707070">If you don't have metamask <a href="https://metamask.io/" style={{color:"#F0B90C"}}>install it here</a>.</Text>
                 </Box>                    
                 </Grid>
               </CardBody>
             </Card>
-            </Box>
+          </Box>
+        )}
+    </ResponsiveContext.Consumer>
+      
 
-          )}  
-
-          
-      </ResponsiveContext.Consumer>  
-	  
 	  {/*Introducing WPKT*/}
-	  <ResponsiveContext.Consumer> 
-        {size => (size === 'small') ? (
-
-              <Box pad="medium" size="large">
-              <Card pad="none" justify="center">
-              <CardHeader background="#F0B90C" pad="none" responsive="true" justify="center" height="30%">
-                <h4 align="center">Introducing WPKT</h4> 
-              </CardHeader>  
-              <CardBody background="#ffffff" pad="medium">
-              <Text align="left" size={size}>The ODApp bridge converts your PKT into a BEP20 token called WPKT, which has a 1-to-1 peg to PKT. With WPKT you gain access to the multi-billion dollar world of Binance Smart Chain,  swap WPKT for BNB (or any BEP20 token), and hold WPKT in any wallet that supports BEP20 tokens.
+    <ResponsiveContext.Consumer>
+        {responsive => (responsive === 'small') ? (
+          <Box>
+          <Card width="full" round="none" pad={{ top: "45px", bottom: "80px", horizontal: "30px" }} style={wpktStyleMobile} className="dark">
+            <CardBody> 
+            <Box justify="center" alignSelf="center" pad="none">
+              <HeadingLight textAlign="center" margin="0 0 35px 0" weight="bold" color="#ffffff" level="2">Introducing WPKT</HeadingLight>
+              <Text textAlign="center" size="16px" color="#ffffff" margin="none">The ODApp bridge converts your PKT into a BEP20 token called WPKT, which has a 1-to-1 peg to PKT. With WPKT you gain access to the multi-billion dollar world of Binance Smart Chain,  swap WPKT for BNB (or any BEP20 token), and hold WPKT in any wallet that supports BEP20 tokens.
               <br /><br />Since PKT and WPKT exist on different blockchains, PKT cannot be sent to the Binance Smart Chain and WPKT cannot be sent to the PKT chain without using the ODApp bridge. The symbols PKT and WPKT differentiate the assets based on the blockchain they can transact on. 
               Exist on different chains, 1PKT cannot be sent to the Ethereum chain and WPKT cannot be sent to the 1PKT chain without the ODApp bridge. Using different names allows for easy discernment between the assets.</Text>
-              <p align="center"><ButtonRegular align="center" label="Learn More" margin={{ horizontal: "10px" }} className="ButtonRegular" /></p>
-              </CardBody>
-              </Card>
-              </Box>
-
-          ) : (   
-            <Box>
+            </Box>
+            <Box justify="center" pad="35px 0 0"><Image alignSelf="center" height="65" width="250" src={iw_logo} fit="contain" /></Box>                 
+            </CardBody>
+          </Card>
+          </Box>
+        ) : (responsive === 'medium') ? (
+          <Box>
+          <Card width="full" round="none" pad={{ vertical: "6rem", horizontal: "50px" }} style={wpktStyle} className="dark">
+            <CardBody> 
+            <Grid
+            fill
+            areas={[
+              { name: 'left', start: [0, 0], end: [0, 0] },
+              { name: 'right', start: [1, 0], end: [1, 0] },
+            ]}
+            columns={['1/2', 'flex']}
+            alignContent={['center']}
+            justifyContent={['center']}
+            rows={['flex']}
+            gap="none"
+            >
+            <Box gridArea="right" justify="center" pad="1/2"><Image alignSelf="center" height="150" width="450" src={iw_logo} fit="contain" /></Box>
+            <Box gridArea="left" justify="center" alignSelf="center" pad="0 4vw 0 0">
+              <HeadingLight textAlign="left" margin="0 0 2rem 0" weight="bold" color="#ffffff" level="2">Introducing WPKT</HeadingLight>
+              <ScrollableText align="left" size="22px" color="#ffffff" margin="none" style={{ paddingRight: "65px" }}>The ODApp bridge converts your PKT into a BEP20 token called WPKT, which has a 1-to-1 peg to PKT. With WPKT you gain access to the multi-billion dollar world of Binance Smart Chain,  swap WPKT for BNB (or any BEP20 token), and hold WPKT in any wallet that supports BEP20 tokens.
+              <br /><br />Since PKT and WPKT exist on different blockchains, PKT cannot be sent to the Binance Smart Chain and WPKT cannot be sent to the PKT chain without using the ODApp bridge. The symbols PKT and WPKT differentiate the assets based on the blockchain they can transact on. 
+              Exist on different chains, 1PKT cannot be sent to the Ethereum chain and WPKT cannot be sent to the 1PKT chain without the ODApp bridge. Using different names allows for easy discernment between the assets.</ScrollableText>
+              <Box pad="2rem 0 0"><p align="left"><ButtonRegular align="center" label="Learn More" margin={{ horizontal: "10px" }} className="ButtonRegular" /> </p></Box>
+            </Box>                    
+            </Grid>
+            </CardBody>
+          </Card>
+          </Box>
+        ) : (
+          <Box>
             <Card width="full" round="none" pad={{ vertical: "12rem", horizontal: "8rem" }} style={wpktStyle} className="dark">
               <CardBody> 
               <Grid
@@ -342,21 +511,53 @@ function Home( {btn} ) {
               </CardBody>
             </Card>
             </Box>
+        )}
+    </ResponsiveContext.Consumer>
 
-          )}  
-
-      </ResponsiveContext.Consumer>
-
-      {/*DeFi*/}
-      <ResponsiveContext.Consumer> 
-        {size => (size === 'small') ? (
-
-              <Box pad="medium" size="large">
-                
-              </Box>
-
-          ) : (   
-            <Box background="#fff" pad="8rem">
+    {/*DeFi*/}
+    <ResponsiveContext.Consumer>
+        {responsive => (responsive === 'small') ? (
+          <Box background="#fff" pad="35px 20px">
+            <Card width="full" round="large" background="#F9F9F9" pad="none" style={{ zIndex: "2" }}>
+                <CardBody> 
+                  <Box justify="center" alignSelf="center" pad="50px 20px 0">
+                      <HeadingDark textAlign="center" margin="0 0 35px 0" weight="bold" level="2">Access DeFi</HeadingDark>
+                      <Text textAlign="center" size="16px" color="#707070" margin="0 0 35px 0">WPKT allows for participation in the highly profitable and diverse world of decentralized finance (DeFi). WPKT allows you to trade on decentralized exchanges (DEX's) like Pancake Swap. You can also earn yields by staking into the WPKT / BNB liquidity pool. And if you decide to convert your DeFi gains back into PKT, ODApp makes it easy to convert back to PKT.</Text>
+                      <Box pad="none" align="center"><ButtonRegular href="/PreCommit" align="center" label="Get WPKT" margin="none" className="ButtonRegular" /></Box>
+                      <Box pad="35px 0 0"><Image alignSelf="center" height="300" width="340" src={defi_mobile} fit="contain" /></Box>
+                  </Box>                    
+                </CardBody>
+            </Card>
+          </Box>
+        ) : (responsive === 'medium') ? (
+          <Box background="#fff" pad="75px 50px 50px">
+              <Card width="full" round="large" background="#F9F9F9" pad="none" style={{ zIndex: "2" }}>
+                  <CardBody> 
+                    <Grid
+                    fill
+                    areas={[
+                      { name: 'left', start: [0, 0], end: [0, 0] },
+                      { name: 'right', start: [1, 0], end: [1, 0] },
+                    ]}
+                    columns={['1/2', 'flex']}
+                    alignContent={['center']}
+                    justifyContent={['center']}
+                    rows={['flex']}
+                    gap="none"
+                    background="#fff"
+                    >
+                      <Box gridArea="left" justify="start" pad="none" style={defiColumnStyle}></Box>
+                      <Box gridArea="right" justify="center" alignSelf="center" pad="75px 75px 75px 0">
+                        <HeadingDark textAlign="left" margin="0 0 2rem 0" weight="bold" color="#ffffff" level="2">Access DeFi</HeadingDark>
+                        <Text align="left" size="22px" color="#707070" margin="none">WPKT allows for participation in the highly profitable and diverse world of decentralized finance (DeFi). WPKT allows you to trade on decentralized exchanges (DEX's) like Pancake Swap. You can also earn yields by staking into the WPKT / BNB liquidity pool. And if you decide to convert your DeFi gains back into PKT, ODApp makes it easy to convert back to PKT.</Text>
+                        <Box pad="2rem 0 0"><p align="left"><ButtonRegular href="/PreCommit" align="center" label="Get WPKT" margin={{ horizontal: "10px" }} className="ButtonRegular" /></p></Box>
+                      </Box>                    
+                    </Grid>
+                  </CardBody>
+              </Card>
+            </Box>
+        ) : (
+          <Box background="#fff" pad="8rem">
               <Card width="full" round="large" background="#F9F9F9" pad="none" style={{ zIndex: "2" }}>
                   <CardBody> 
                     <Grid
@@ -376,49 +577,116 @@ function Home( {btn} ) {
                       <Box gridArea="right" height="large" justify="center" alignSelf="center" pad="0 10vw 0 0">
                         <HeadingDark textAlign="left" margin="0 0 3rem 0" size="4xl" weight="bold" color="#ffffff" level="2">Access DeFi</HeadingDark>
                         <Text align="left" size="26px" color="#707070" margin="0 0 1rem 0">WPKT allows for participation in the highly profitable and diverse world of decentralized finance (DeFi). WPKT allows you to trade on decentralized exchanges (DEX's) like Pancake Swap. You can also earn yields by staking into the WPKT / BNB liquidity pool. And if you decide to convert your DeFi gains back into PKT, ODApp makes it easy to convert back to PKT.</Text>
-                        <Box pad="2rem 0 0"><p align="left"><ButtonRegular href="/PKTToWPKT" align="center" label="Get WPKT" margin={{ horizontal: "10px" }} className="ButtonRegular" /></p></Box>
+                        <Box pad="2rem 0 0"><p align="left"><ButtonRegular href="/PreCommit" align="center" label="Get WPKT" margin={{ horizontal: "10px" }} className="ButtonRegular" /></p></Box>
                       </Box>                    
                     </Grid>
                   </CardBody>
               </Card>
             </Box>
+        )}
+    </ResponsiveContext.Consumer>
 
+
+      {/*Discover*/}
+      <ResponsiveContext.Consumer>
+        {responsive => (responsive === 'small') ? (
+          <DiscoverBefore background="#222323" className="dark">
+            <Box justify="center" alignSelf="center" pad="35px 25px 80px" >
+                <HeadingLight textAlign="center" margin="0 0 35px 0" weight="bold" level="2">Discover PKT CASH</HeadingLight>
+                <Text textAlign="center" size="16px" color="#ffffff">PKT is the world's first bandwidth hard mining algorithm which allows you to turn your internet bandwidth into cash. People who connect to the PKT Network are paid in PKT Cash (PKT) every 60 seconds. PKT continues the cjdns vision by allowing anyone to share their internet and become an internet service provider (ISP). If you don't know what PKT is then click here to find out how PKT is changing the internet as we know it.</Text>
+                <Box pad="35px 0 0"><p align="center"><ButtonRegular href="https://pkt.cash/" target="_blank" align="center" label="Discover PKT" margin={{ horizontal: "10px" }} className="ButtonRegular" /></p></Box>
+            </Box>                    
+          </DiscoverBefore>
+        ) : (responsive === 'medium') ? (
+          <DiscoverBefore background="#222323" pad="50px" className="dark">
+            <Box justify="center" alignSelf="center" pad="0 50px 75px">
+                <HeadingLight textAlign="center" margin="0 0 3rem 0" weight="bold" color="#ffffff" level="2">Discover PKT CASH</HeadingLight>
+                <Text textAlign="center" size="22px" color="#ffffff" style={{ padding: "0 10vw" }}>PKT is the world's first bandwidth hard mining algorithm which allows you to turn your internet bandwidth into cash. People who connect to the PKT Network are paid in PKT Cash (PKT) every 60 seconds. PKT continues the cjdns vision by allowing anyone to share their internet and become an internet service provider (ISP). If you don't know what PKT is then click here to find out how PKT is changing the internet as we know it.</Text>
+                <Box pad="3rem 0 0"><p align="center"><ButtonRegular href="https://pkt.cash/" target="_blank" align="center" label="Discover PKT" margin={{ horizontal: "10px" }} className="ButtonRegular" /></p></Box>
+            </Box>                    
+          </DiscoverBefore>
+        ) : (
+          <DiscoverBefore background="#222323" pad="8rem" className="dark">
+            <Box justify="center" alignSelf="center" pad="0 10rem 8rem 8rem">
+                <HeadingLight textAlign="center" margin="0 0 4rem 0" weight="bold" color="#ffffff" level="2">Discover PKT CASH</HeadingLight>
+                <Text textAlign="center" size="26px" color="#ffffff" style={{ padding: "0 19vw" }}>PKT is the world's first bandwidth hard mining algorithm which allows you to turn your internet bandwidth into cash. People who connect to the PKT Network are paid in PKT Cash (PKT) every 60 seconds. PKT continues the cjdns vision by allowing anyone to share their internet and become an internet service provider (ISP). If you don't know what PKT is then click here to find out how PKT is changing the internet as we know it.</Text>
+                <Box pad="4rem 0 0"><p align="center"><ButtonRegular href="https://pkt.cash/" target="_blank" align="center" label="Discover PKT" margin={{ horizontal: "10px" }} className="ButtonRegular" /></p></Box>
+            </Box>                    
+          </DiscoverBefore>
+        )}
+      </ResponsiveContext.Consumer>
+
+      {/*Support*/}
+      <ResponsiveContext.Consumer>
+          {responsive => (responsive === 'small') ? (
+            <Box background="#fff" pad="40px 25px 70px">
+                <HeadingDark textAlign="center" margin="0" weight="bold" level="2">Our Support</HeadingDark>
+                <Box pad="none" align="center" justify="center" direction="column" margin={{ top: "50px" }}>
+                  <Box height="45px" margin={{ vertical: "20px" }}><Image fit="contain" src={logo_01} /></Box>
+                  <Box height="45px" margin={{ vertical: "20px" }}><Image fit="contain" src={logo_02} /></Box>
+                  <Box height="45px" margin={{ vertical: "20px" }}><Image fit="contain" src={logo_03} /></Box>
+                  <Box height="45px" margin={{ vertical: "20px" }}><Image fit="contain" src={logo_04} /></Box>
+                </Box>
+            </Box>
+          ) : (
+            <Box background="#fff" pad="8rem">
+                <HeadingDark textAlign="center" margin="0" weight="bold" color="#ffffff" level="2">Our Support</HeadingDark>
+                <Box pad="none" align="center" justify="center" direction="row" margin={{ top: "4rem" }}>
+                  <Box height="64px" margin={{ horizontal: "50px" }}><Image fit="contain" src={logo_01} /></Box>
+                  <Box height="60px" margin={{ horizontal: "50px" }}><Image fit="contain" src={logo_02} /></Box>
+                  <Box height="60px" margin={{ horizontal: "50px" }}><Image fit="contain" src={logo_03} /></Box>
+                  <Box height="58px" margin={{ horizontal: "50px" }}><Image fit="contain" src={logo_04} /></Box>
+                </Box>
+            </Box>
           )}
       </ResponsiveContext.Consumer>
       
-      {/*Discover*/}
-      <DiscoverBefore background="#222323" pad="8rem" className="dark">
-        <Box justify="center" alignSelf="center" pad="0 10rem 8rem 8rem">
-            <HeadingLight textAlign="center" margin="0 0 4rem 0" size="4xl" weight="bold" color="#ffffff" level="2">Discover PKT CASH</HeadingLight>
-            <Text textAlign="center" size="26px" color="#ffffff" style={{ padding: "0 19vw" }}>PKT is the world's first bandwidth hard mining algorithm which allows you to turn your internet bandwidth into cash. People who connect to the PKT Network are paid in PKT Cash (PKT) every 60 seconds. PKT continues the cjdns vision by allowing anyone to share their internet and become an internet service provider (ISP). If you don't know what PKT is then click here to find out how PKT is changing the internet as we know it.</Text>
-            <Box pad="4rem 0 0"><p align="center"><ButtonRegular align="center" label="Discover PKT" margin={{ horizontal: "10px" }} className="ButtonRegular" /></p></Box>
-        </Box>                    
-      </DiscoverBefore>
-
-      {/*Support*/}
-      <Box background="#fff" pad="8rem">
-          <HeadingDark textAlign="center" margin="0" size="4xl" weight="bold" color="#ffffff" level="2">Our Support</HeadingDark>
-          <Box pad="none" align="center" justify="center" direction="row" margin={{ top: "4rem" }}>
-            <Box height="64px" margin={{ horizontal: "50px" }}><Image fit="contain" src={logo_01} /></Box>
-            <Box height="60px" margin={{ horizontal: "50px" }}><Image fit="contain" src={logo_02} /></Box>
-            <Box height="60px" margin={{ horizontal: "50px" }}><Image fit="contain" src={logo_03} /></Box>
-            <Box height="58px" margin={{ horizontal: "50px" }}><Image fit="contain" src={logo_04} /></Box>
-          </Box>
-      </Box>
-      
       {/*Join Community*/}
-      <Box pad="8rem" style={joinStyle}>
-        <Box height="auto" justify="center" alignSelf="center" pad="none">
-            <HeadingDarkSmaller textAlign="center" margin="0 0 3rem 0" size="2xl" weight="bold" color="#222323" level="2">Join The PKT Community</HeadingDarkSmaller>
-            <Text textAlign="center" size="26px" color="#707070" style={{ padding: "0 19vw" }}>Join the growing PKT Cash community. Visit the socials or join the conversation on PKT Chat or Telegram.</Text>
-            <Box pad="none" align="center" justify="center" direction="row" margin={{ top: "3rem" }}>
-              <Box height="88px" width="88px" margin={{ horizontal: "15px" }}><Image fit="contain" src={icon_01} /></Box>
-              <Box height="88px" width="88px" margin={{ horizontal: "15px" }}><Image fit="contain" src={icon_02} /></Box>
-              <Box height="88px" width="88px" margin={{ horizontal: "15px" }}><Image fit="contain" src={icon_03} /></Box>
-              <Box height="88px" width="88px" margin={{ horizontal: "15px" }}><Image fit="contain" src={icon_04} /></Box>
+      <ResponsiveContext.Consumer>
+          {responsive => (responsive === 'small') ? (
+            <Box pad="65px 30px 100px" style={joinStyle}>
+              <Box height="auto" justify="center" alignSelf="center" pad="none">
+                  <HeadingDarkSmaller textAlign="center" margin="0 0 35px 0" weight="bold" color="#222323" level="2">Join The PKT Community</HeadingDarkSmaller>
+                  <Text textAlign="center" size="16px" color="#707070">Join the growing PKT Cash community. Visit the socials or join the conversation on PKT Chat or Telegram.</Text>
+                  <Box pad="none" align="center" justify="center" direction="row" margin={{ top: "35px" }}>
+                    <Box height="88px" width="88px" margin={{ horizontal: "15px", vertical: "15px" }}><a href="https://pkt.chat/" target="_blank"><Image fit="contain" src={icon_01} /></a></Box>
+                    <Box height="88px" width="88px" margin={{ horizontal: "15px", vertical: "15px" }}><a href="https://twitter.com/pkt_cash" target="_blank"><Image fit="contain" src={icon_02} /></a></Box>
+                  </Box>
+                  <Box pad="none" align="center" justify="center" direction="row" margin="none">
+                    <Box height="88px" width="88px" margin={{ horizontal: "15px", vertical: "15px" }}><a href="https://t.me/pkt_cash" target="_blank"><Image fit="contain" src={icon_03} /></a></Box>
+                    <Box height="88px" width="88px" margin={{ horizontal: "15px", vertical: "15px" }}><a href="https://discord.gg/ytjzxzNzF3" target="_blank"><Image fit="contain" src={icon_04} /></a></Box>
+                  </Box>
+              </Box>                    
             </Box>
-        </Box>                    
-      </Box>
+          ) : (responsive === 'medium') ? (
+            <Box pad="100px 50px" style={joinStyle}>
+              <Box height="auto" justify="center" alignSelf="center" pad="none">
+                  <HeadingDarkSmaller textAlign="center" margin="0 0 2rem 0" weight="bold" color="#222323" level="2">Join The PKT Community</HeadingDarkSmaller>
+                  <Text textAlign="center" size="22px" color="#707070" style={{ padding: "0 20vw" }}>Join the growing PKT Cash community. Visit the socials or join the conversation on PKT Chat or Telegram.</Text>
+                  <Box pad="none" align="center" justify="center" direction="row" margin={{ top: "2rem" }}>
+                    <Box height="60px" width="60px" margin={{ horizontal: "15px" }}><a href="https://pkt.chat/" target="_blank"><Image height="60" width="60" fit="contain" src={icon_01} /></a></Box>
+                    <Box height="60px" width="60px" margin={{ horizontal: "15px" }}><a href="https://twitter.com/pkt_cash" target="_blank"><Image height="60" width="60" fit="contain" src={icon_02} /></a></Box>
+                    <Box height="60px" width="60px" margin={{ horizontal: "15px" }}><a href="https://t.me/pkt_cash" target="_blank"><Image height="60" width="60" fit="contain" src={icon_03} /></a></Box>
+                    <Box height="60px" width="60px" margin={{ horizontal: "15px" }}><a href="https://discord.gg/ytjzxzNzF3" target="_blank"><Image height="60" width="60" fit="contain" src={icon_04} /></a></Box>
+                  </Box>
+              </Box>                    
+            </Box>
+          ) : (
+            <Box pad="8rem" style={joinStyle}>
+              <Box height="auto" justify="center" alignSelf="center" pad="none">
+                  <HeadingDarkSmaller textAlign="center" margin="0 0 3rem 0" size="2xl" weight="bold" color="#222323" level="2">Join The PKT Community</HeadingDarkSmaller>
+                  <Text textAlign="center" size="26px" color="#707070" style={{ padding: "0 19vw" }}>Join the growing PKT Cash community. Visit the socials or join the conversation on PKT Chat or Telegram.</Text>
+                  <Box pad="none" align="center" justify="center" direction="row" margin={{ top: "3rem" }}>
+                    <Box height="88px" width="88px" margin={{ horizontal: "15px" }}><a href="https://pkt.chat/" target="_blank"><Image fit="contain" src={icon_01} /></a></Box>
+                    <Box height="88px" width="88px" margin={{ horizontal: "15px" }}><a href="https://twitter.com/pkt_cash" target="_blank"><Image fit="contain" src={icon_02} /></a></Box>
+                    <Box height="88px" width="88px" margin={{ horizontal: "15px" }}><a href="https://t.me/pkt_cash" target="_blank"><Image fit="contain" src={icon_03} /></a></Box>
+                    <Box height="88px" width="88px" margin={{ horizontal: "15px" }}><a href="https://discord.gg/ytjzxzNzF3" target="_blank"><Image fit="contain" src={icon_04} /></a></Box>
+                  </Box>
+              </Box>                    
+            </Box>
+          )}
+      </ResponsiveContext.Consumer>
+      
   </Grommet>
   
       

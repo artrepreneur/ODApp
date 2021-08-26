@@ -43,7 +43,7 @@ function  Collapsible({btn}){
             </Nav>   
           </Box>  
           <Box direction="row" size="xxsmall" align="center">
-            {btn}<FormSearch color='#fff' size='large' />
+            {btn}<FormSearch color='#fff' size='36px' />
           </Box>
         </Header>
       ) : (
