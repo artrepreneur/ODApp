@@ -52,3 +52,35 @@
 	color: #fff;
     background-color: #FBA300;
 }
+@media all and (max-width:1580px) {
+    #root header #cnct {
+        padding: 12px 40px;
+        font-size: 20px;
+        line-height: 24px;
+    }
+    #root .top_banner_home_medium #cnct {
+        font-size: 22px;
+        line-height: 24px;
+        padding: 18px 60px;
+        width: auto;
+    }
+}
+@media all and (max-width:768px) {
+    #root .top_banner_home_small #cnct {
+        font-size: 20px;
+        line-height: 22px;
+        padding: 10px 10px 12px;
+        width: 70vw;
+        max-width: 265px;
+    }
+    #root .mainFooter {
+        padding:30px 30px 75px;
+        display: block;
+        text-align: center;
+    }
+    #root .mainFooterLogo {
+        text-align: center;
+        display: block;
+        margin-bottom: 10px;
+    }
+}

@@ -15,7 +15,7 @@ var pktTID;
 var provider;
 var signer;
 var WPKT; 
-var net = 97;//56;//
+var net = 56;
 var networkType;
 var chainType = "BSC";
 
@@ -28,10 +28,10 @@ else if (net===56){
 
 async function addWPKT(){
 
-    const tokenAddress = '0x577D11F9ccfC337F32f385Afd1a007222C0388AF'; //'0x1C25222994531C4AC35E4d94bbf7552c9aa92E32'; //
+    const tokenAddress = '0x1C25222994531C4AC35E4d94bbf7552c9aa92E32'; //'0x577D11F9ccfC337F32f385Afd1a007222C0388AF'; //
     const tokenSymbol = 'WPKT';
     const tokenDecimals = 18;
-    const tokenImage = 'https://odapp.io/WPKTLogo2Large.png'; //'https://odapp.io/3C.png'; 
+    const tokenImage = 'https://odapp.io/WPKTLogo2Large.png'; 
 
     try {
 
@@ -107,15 +107,15 @@ async function handleInput(e){
         console.log('Gas:', gasAmount.toString()); // in gwei
     });*/
 
-    var cmd = "https://obeahdev.odapp.io/api/v1/getTransactionBalance/txid/"+pktTID+"/fromAddress/"+pktSenderAddr+"/ethToAddress/"+ethAddr+"/chainType/"+chainType;
-    //var cmd = "https://obeah.odapp.io/api/v1/getTransactionBalance/txid/"+pktTID+"/fromAddress/"+pktSenderAddr+"/ethToAddress/"+ethAddr+"/chainType/"+chainType;
-    //var cmd = "http://localhost:5000/api/v1/getTransactionBalance/txid/"+pktTID+"/fromAddress/"+pktSenderAddr+"/ethToAddress/"+ethAddr+"/chainType/"+chainType;
+    //var cmd = "https://obeahdev.odapp.io/api/v1/getTransactionBalance/txid/"+pktTID+"/fromAddress/"+pktSenderAddr+"/ethToAddress/"+ethAddr+"/chainType/"+chainType;
+    var cmd = "https://obeah.odapp.io/api/v1/getTransactionBalance/txid/"+pktTID+"/fromAddress/"+pktSenderAddr+"/ethToAddress/"+ethAddr+"/chainType/"+chainType;
+    //var cmd = "http://localhost:3000/api/v1/getTransactionBalance/txid/"+pktTID+"/fromAddress/"+pktSenderAddr+"/ethToAddress/"+ethAddr+"/chainType/"+chainType;
     console.log('cmd', cmd);
     dv1.style.display= 'block';
     dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Transaction Pending...</h4>";
     dv.style.display= 'block';
     dv3.style.display= 'block';
-    return;
+    
 
     fetch(cmd)
     .then((response) => response.json())
@@ -193,7 +193,7 @@ async function handleInput(e){
                         console.log('Amount:', amount.toString());
                         var amtNoWei = Web3.utils.fromWei(amount.toString());
                         var fees = ((amtNoWei / .965) - amtNoWei);
-                        var feesNoWei = fees.toFixed(2); //Math.round(fees);
+                        var feesNoWei = fees.toFixed(4); //Math.round(fees);
                         console.log("Amount:", amtNoWei, 'Fees:', feesNoWei);
 
                         if (Number(amtNoWei) > 0) {
@@ -310,37 +310,35 @@ async function handleInput(e){
 
 
 
-function SwapPKT() {//{wpkt}
-    //WPKT = {wpkt};
+function SwapPKT() {
     return (
         <Box>
-        <BodyCenteredAlt>
-            <Card width="xlarge" background="light-1" pad="none" >
+        <BodyCenteredAlt><Box pad="small">
+            <Card width="large" background="light-1" pad="none" >
                 <CardHeader background="#F0B90C" pad="none" responsive="true" justify="center" height="xsmall">
                         <h2 align="center">Swap PKT to WPKT</h2> 
                 </CardHeader>          
                 <CardBody pad="large" style={{whiteSpace: 'pre-wrap', overflowWrap: 'break-word'}}> 
-                <Text align="center" size="large" style={{paddingLeft: '5%', paddingRight: '4%'}}> 
+                <Text align="center" size="medium" style={{paddingLeft: '5%', paddingRight: '4%'}}> 
                     Enter your PKT transaction ID, the address you sent your PKT from, and the BSC address you would like your WPKT sent to.
                 </Text>
                 
                 <div id="stdiv" align="center" style={{padding: '5%'}}>
                     
-                    <Card pad="medium" style={{backgroundColor: '#2B2F36'}}>
+                    <Card pad="large" style={{backgroundColor: '#2B2F36'}}>
 
                         <CardBody>                
                             <Form name="inputPktTID" id="inputPktTID" onSubmit={handleInput}>
                                 
-                                <Box width="80%">
-                                    <h4 style={{color: '#F0B90C'}}>Enter PKT Transaction ID and BSC Address: </h4>
+                                <Box width="90%">
                                     <FormField name="PktTID" required>
-                                        <TextInput style={{background: 'white', color: '#2B2F36'}} name="PktTID" placeholder={<Text size="small">Enter PKT Transaction ID</Text>} />
+                                        <TextInput style={{background: 'white', color: '#2B2F36'}} name="PktTID" placeholder={<Text size="xsmall">Enter PKT Transaction ID</Text>} />
                                     </FormField>
                                     <FormField name="PktSenderAddr" required>
-                                        <TextInput style={{background: 'white', color: '#2B2F36'}} name="PktSenderAddr" placeholder={<Text size="small">Enter PKT Sender Address</Text>} />
+                                        <TextInput style={{background: 'white', color: '#2B2F36'}} name="PktSenderAddr" placeholder={<Text size="xsmall">Enter PKT Sender Address</Text>} />
                                     </FormField>
                                     <FormField name="EthAddr" required>
-                                        <TextInput style={{background: 'white', color: '#2B2F36'}} name="EthAddr" placeholder={<Text size="small">Enter BSC Recipient Address</Text>} />
+                                        <TextInput style={{background: 'white', color: '#2B2F36'}} name="EthAddr" placeholder={<Text size="xsmall">Enter BSC Recipient Address</Text>} />
                                     </FormField>
                                     <StyledButton size='large' color='#F0B90C' type="submit" label="Submit" />
                                 </Box>
@@ -363,7 +361,7 @@ function SwapPKT() {//{wpkt}
                     </div>
                 </CardBody>
             </Card>
-        </BodyCenteredAlt>
+        </Box></BodyCenteredAlt>
         </Box>
   );
 

@@ -41,8 +41,8 @@ async function handleInput(e){
     var noFeeAdjAmtNoWei = 0;
     var feesNoWei = 0;
     var hash = 0;
-    var cmd = "https://obeahdev.odapp.io/api/v1/userPayout/txHash/"+ethTxHash+"/address/"+PKTAddr+"/";
-    //var cmd = "https://obeah.odapp.io/api/v1/userPayout/txHash/"+ethTxHash+"/address/"+PKTAddr+"/";
+    //var cmd = "https://obeahdev.odapp.io/api/v1/userPayout/txHash/"+ethTxHash+"/address/"+PKTAddr+"/";
+    var cmd = "https://obeah.odapp.io/api/v1/userPayout/txHash/"+ethTxHash+"/address/"+PKTAddr+"/";
     console.log(cmd);
     fetch(cmd)
     .then((response) => response.json())
@@ -113,8 +113,8 @@ function GetPKT() {
 
   return (
     <Box>    
-      <BodyCenteredAlt>
-        <Card width="xlarge" background="light-1" pad="none" >     
+      <BodyCenteredAlt><Box pad="small">
+        <Card width="large" background="light-1" pad="none" >     
             <CardHeader background="#F0B90C" pad="none" responsive="true" justify="center" height="30%">
                   <h2 align="center">Claim PKT</h2>
             </CardHeader>   
@@ -125,12 +125,12 @@ function GetPKT() {
             </Text>
             <div style={{padding: '5%'}} align="center">
               <Card pad="medium" style={{backgroundColor: '#2B2F36'}}>
-                <CardHeader justify="center"><h4 style={{color: '#F0B90C'}}>Enter WPKT (BSC) Transaction Hash and PKT Recipient Address:</h4></CardHeader>
+
                 <CardBody>  
                   <Form name="ReceivePKT" id="ReceivePKT" onSubmit={handleInput}>
                     <Box width="80%">
                         <FormField name="EthTxHash" required>
-                            <TextInput style={{background: 'white', color: '#2B2F36'}} name="EthTxHash" placeholder={<Text size="small">Enter Your WPKT (BSC) Transaction Hash</Text>} />
+                            <TextInput style={{background: 'white', color: '#2B2F36'}} name="EthTxHash" placeholder={<Text size="xsmall">Enter Your WPKT (BSC) Transaction Hash</Text>} />
                         </FormField>
                         {/*<FormField name="WPKTAmount" required validate={(fieldData) => {
                           if (!isNaN(fieldData)) {
@@ -144,7 +144,7 @@ function GetPKT() {
                             <TextInput style={{background: 'white', color: '#2B2F36'}} name="WPKTAmount" placeholder={<Text size="small">Enter Amount of WPKT Converted</Text>} />
                         </FormField>*/}
                         <FormField name="PKTAddr" required>
-                            <TextInput style={{background: 'white', color: '#2B2F36'}} name="PKTAddr" placeholder={<Text size="small">Enter Your PKT Recipient Address</Text>} />
+                            <TextInput style={{background: 'white', color: '#2B2F36'}} name="PKTAddr" placeholder={<Text size="xsmall">Enter Your PKT Recipient Address</Text>} />
                         </FormField>
                         <StyledButton primary size='large' color='#F0B90C' type="submit" label="Submit" />
                     </Box>
@@ -164,7 +164,7 @@ function GetPKT() {
             </div>     
             </CardBody>
         </Card>
-    </BodyCenteredAlt>
+    </Box></BodyCenteredAlt>
     </Box>
     
   );

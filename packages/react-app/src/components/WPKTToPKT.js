@@ -19,7 +19,7 @@ var feesNoWei;
 var PKTAddr;
 var ethTxHash;
 var dv, dv1, dv2, dv3, dv4, dv5;
-var net = 97; //56;//
+var net = 56;//97; //
 
 
 
@@ -51,8 +51,10 @@ async function handleInput(e){
   }
   
   // Check that bridge has pkt.
-  var chkCmd = "https://obeahdev.odapp.io/api/v1/getbalances"; 
-  //var chkCmd = "https://obeah.odapp.io/api/v1/getbalances"; 
+  //var chkCmd = "https://obeahdev.odapp.io/api/v1/getbalances"; 
+  var chkCmd = "https://obeah.odapp.io/api/v1/getbalances"; 
+  //var chkCmd = "https://localhost:3000/api/v1/getbalances";
+
   var bal = 0;
 
   fetch(chkCmd)
@@ -208,9 +210,9 @@ function getPKT(){
   dv1.style.display= 'block';
 
   try {
-    var cmd = "https://obeahdev.odapp.io/api/v1/userPayout/txHash/"+ethTxHash+"/address/"+PKTAddr+"/";
-    //var cmd = "https://obeah.odapp.io/api/v1/userPayout/txHash/"+ethTxHash+"/address/"+PKTAddr+"/";
-    //var cmd = "http://localhost:5000/api/v1/userPayout/txHash/"+ethTxHash+"/address/"+PKTAddr+"/";
+    //var cmd = "https://obeahdev.odapp.io/api/v1/userPayout/txHash/"+ethTxHash+"/address/"+PKTAddr+"/";
+    var cmd = "https://obeah.odapp.io/api/v1/userPayout/txHash/"+ethTxHash+"/address/"+PKTAddr+"/";
+    //var cmd = "http://localhost:3000/api/v1/userPayout/txHash/"+ethTxHash+"/address/"+PKTAddr+"/";
     console.log(cmd);
     fetch(cmd)
     .then((response) => response.json())
@@ -268,28 +270,28 @@ function WPKTToPKT() {
   return (
     <Box> 
       
-      <BodyCenteredAlt>
-        <Card width="xlarge" background="light-1" pad="none" >     
+      <BodyCenteredAlt><Box pad="small">
+        
+        <Card width="large" background="light-1" pad="none" >     
             <CardHeader background="#F0B90C" pad="none" justify="center" height="xsmall">
                   <h2 align="center">Get PKT</h2>
             </CardHeader>   
             <CardBody pad="large" style={{whiteSpace: 'pre-wrap', overflowWrap: 'break-word'}}> 
 
-            <Text size="large" textAlign="left" margin="small" style={{paddingLeft: '5%', paddingRight: '5%'}}>To convert your WPKT to PKT just use the DApp below. Enter the amount
+            <Text size="medium" textAlign="left" margin="small" style={{paddingLeft: '5%', paddingRight: '5%'}}>To convert your WPKT to PKT just use the DApp below. Enter the amount
             of WPKT you wish to convert, and the PKT address which will recieve the PKT.
             Be sure to enter a PKT address and not an Binance smart chain address. 
             </Text>
             <div style={{padding: '5%'}} align="center">
               <Card pad="medium" style={{backgroundColor: '#2B2F36'}}>
-                <CardHeader justify="center"><h4 style={{color: '#F0B90C'}}>Enter WPKT Amount and PKT Recipient Address:</h4></CardHeader>
                 <CardBody>  
                   <Form name="ConvertWPKTtoPKT" id="ConvertWPKTtoPKT" onSubmit={handleInput}>
                     <Box width="80%">
                         <FormField name="WPKTAmount" required>
-                            <TextInput style={{background: 'white', color: '#2B2F36'}} name="WPKTAmount" placeholder={<Text size="small">Enter Amount of WPKT to Convert</Text>} />
+                            <TextInput style={{background: 'white', color: '#2B2F36'}} name="WPKTAmount" placeholder={<Text size="xsmall">Enter Amount of WPKT to Convert</Text>} />
                         </FormField>
                         <FormField name="PKTAddr" required>
-                            <TextInput style={{background: 'white', color: '#2B2F36'}} name="PKTAddr" placeholder={<Text size="small">Enter PKT Recipient Address</Text>} />
+                            <TextInput style={{background: 'white', color: '#2B2F36'}} name="PKTAddr" placeholder={<Text size="xsmall">Enter PKT Recipient Address</Text>} />
                         </FormField>
                         <StyledButton primary size='large' color='#F0B90C' type="submit" label="Submit"/>
                     </Box>
@@ -317,7 +319,7 @@ function WPKTToPKT() {
             </CardBody>
         </Card>
    
-    </BodyCenteredAlt>
+    </Box></BodyCenteredAlt>
     </Box>
     
   );

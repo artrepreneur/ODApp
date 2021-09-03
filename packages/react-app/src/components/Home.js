@@ -3,12 +3,13 @@ import { Card, CardBody, CardHeader, CardFooter, Anchor, Box, Text, Grid, Respon
 //import { useQuery } from "@apollo/react-hooks";
 import { BodyCenteredAlt } from ".";
 import logo from "../img/logo1/3C.png";
+import logo2 from "../img/WPKTflat2.png";
 import mm_logo from "../img/metamask-min.png";
 import pkt_logo from "../img/pktlogoX-min.png";
 import defi_wpkt from "../img/defi.jpeg";
-import odapp_img from "../img/image1.jpeg";
+import odapp_img from "../img/odapp-logo-footer.b00a6f36.png";
 import { grommet } from 'grommet/themes';
-
+//import ReactPlayer from "react-player";
 
 /*import { Contract } from "@ethersproject/contracts";
 import { ethers } from "ethers";
@@ -124,34 +125,38 @@ function Home( {btn} ) {
   return (
 
     <Grommet theme={grommet}> 
-
-      <Box direction="row" justify="center" align="center" height="40%" pad="medium" background={{image:
-            'url(https://odapp.io/prple.jpg) ', repeat: "no-repeat",
-          opacity: '.80'}} round="none">
+     {/*background={{image:
+            'url(https://odapp.io/top-banner.f59e4373.png) ', repeat: "no-repeat",
+          opacity: '.90'}}<Box pad="medium" direction="row" justify="center"><Text color="#7d4cdb" size="5xl" weight="bold" style={{color:'#282c34'}}>The PKT To Binance Smart Chain Bridge</Text></Box>
+ */}
+      <Box direction="row" justify="center" align="center" height="40%" pad="medium" round="none" style={{backgroundColor: "#2B2F36"}}>
         <Box pad="medium" justify="center">
-          <Box pad="medium" direction="row" justify="center"><Text color="#7d4cdb" size="4xl" weight="bold" style={{color:"#F8F8FF", opacity: 1}}>The PKT To Binance Smart Chain Bridge</Text></Box>
+
+        <Box direction="row" pad="medium" justify="center"><img src='https://odapp.io/ODAppLogo2.jpg' width="100%" /></Box>
           <Box justify="center">
-          <Grid columns={size !== 'small' ? 'medium' : '100%'} gap="small">
-               {data.map(value => (
-                  <Card background={value.color} key={value.message} round="small">
-                    <CardBody pad="small">
-                      <Identifier
-                        pad="small"
-                        title={value.title}
-                        subTitle={value.subTitle}
-                        size="small"
-                        align="start"
-                      >
-                        {value.icon}
-                      </Identifier>
-                      {/*<Text margin="small" size="small">{value.message}</Text>*/}
-                    </CardBody>
-                    <CardFooter pad={{ horizontal: 'medium', vertical: 'small' }} background={{color:"light-2", opacity: '.20'}}>
-                      <Text size="small">{value.message}</Text>
-               </CardFooter>
-                  </Card>
-                ))}
-          </Grid> 
+          <div style={{padding:'69.77% 0 0 0', position:'relative'}}><iframe src="https://player.vimeo.com/video/595974443?h=58690c671b" style={{position:'absolute', top:'0', left:'0', width:'100%', height:'100%'}} frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+
+            
+            {/*<Grid columns={size !== 'small' ? 'medium' : '100%'} gap="small">
+                {data.map(value => (
+                    <Card background={value.color} key={value.message} round="small">
+                      <CardBody pad="small">
+                        <Identifier
+                          pad="small"
+                          title={value.title}
+                          subTitle={value.subTitle}
+                          size="small"
+                          align="start"
+                        >
+                          {value.icon}
+                        </Identifier>
+                      </CardBody>
+                      <CardFooter pad={{ horizontal: 'medium', vertical: 'small' }} background={{color:"light-2", opacity: '.20'}}>
+                        <Text size="small">{value.message}</Text>
+                </CardFooter>
+                    </Card>
+                  ))}
+            </Grid> */}
           </Box>
         </Box>   
       </Box>
@@ -200,9 +205,11 @@ function Home( {btn} ) {
                   Though entirely different blockchains, PKT cash and Binance smart chain can be connected through ODApp to 
                   allow seamless value transfer between the two chains. 
               </Text>
+              <Image fill src={odapp_img} fit="contain" />
+
             </Box>                    
             <Box gridArea="right" background="#2B2F36"  height="medium" justify="center" pad="none">
-              <Image fill src={odapp_img} fit="cover" />
+              <Image fill src={odapp_img} fit="contain" />
             </Box>
             </Grid>
             </CardBody></Card>
@@ -263,7 +270,7 @@ function Home( {btn} ) {
             </Card>*/}
               </Box>
               
-              <Box gridArea="right" background="#2B2F36" height="medium" justify="center" pad="small"><Image fill src={logo} fit="contain" /></Box>
+              <Box gridArea="right" background="#2B2F36" height="medium" justify="center" pad="small"><Image fill src={logo2} fit="contain" /></Box>
             </Grid>
             </CardBody></Card>
             </Box>
@@ -435,12 +442,7 @@ function Home( {btn} ) {
           )}  
 
           
-      </ResponsiveContext.Consumer>  
-
-
-
-     
- 
+      </ResponsiveContext.Consumer> 
         
     </BodyCenteredAlt>                
   </Grommet>

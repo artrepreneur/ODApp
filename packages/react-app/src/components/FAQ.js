@@ -8,9 +8,9 @@ function FAQ() {
 
   return (
       
-      <BodyCenteredAlt2>
+      <BodyCenteredAlt2><Box pad="small">
       
-        <Card width="xlarge" background="light-1" pad="none" >     
+        <Card width="large" background="light-1" pad="none" >     
             <CardHeader background="#F0B90C" pad="none" justify="center" height="xsmall">
                   <h2 align="center">FAQs</h2>
             </CardHeader> 
@@ -19,7 +19,7 @@ function FAQ() {
                   
 
                 <Box pad="small">
-                <Text textAlign="left" alignSelf="center" margin="small" size="large"><p>The following is a compiled list of some of our most popular inquires. 
+                <Text textAlign="left" alignSelf="center" margin="small" size="medium"><p>The following is a compiled list of some of our most popular inquires. 
                 </p></Text>
                 <Card pad="medium" style={{backgroundColor: '#2B2F36'}}>
                     <CardBody>  
@@ -205,7 +205,7 @@ function FAQ() {
 
             </CardBody>
         </Card>
-    </BodyCenteredAlt2>
+    </Box></BodyCenteredAlt2>
     
   );
 }

@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Grommet, Header, Nav, Menu, ResponsiveContext, Text} from 'grommet';
 import { grommet } from 'grommet/themes';
 import { StyledButton2, Image2 } from ".";
-import logo from "../img/logo1/3C.png";
+import logo from "../img/odapp-logo-footer.b00a6f36b.png";
 import "./random.css";
 
 import { Menu as Menu2 } from 'grommet-icons';
@@ -23,7 +23,7 @@ function  Collapsible({btn}){
   return (
     
     <Grommet theme={grommet}> 
-      <Header pad="small" height="xsmall" style={{background: 'linear-gradient(110deg, #7D4CDB 50%, #56cde0 10%)'}}>
+      <Header pad="small" height="xsmall" style={{background: 'linear-gradient(110deg, #666699 50%, #282c34 10%)'}}>
           <Box align="center" gap="small" >
               <Box gridArea='logo' direction="row" size="xxsmall"><Image2 src={logo} alt="react-logo"/>
               <Box gridArea='nameTxt' direction="row" align="center" pad="small"><Text color="#ffffff">ODApp</Text></Box></Box>

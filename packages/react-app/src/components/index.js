@@ -59,10 +59,10 @@ export const BodyCenteredAlt = styled.body`
     padding-top: 0vh;
     padding-bottom: 0vh;
     align-items: center;
-    //background: #56cde0;
-    background-image: url('https://odapp.io/prple.jpg');
+    //background: #B9D9EB;
+    background-image: url('https://odapp.io/top-banner.f59e4373.png');
+    //background-image: url('https://odapp.io/prple.jpg');
     background-repeat: repeat;
-    //background-image: url('https://odapp.io/teal.jpg');
     //background: linear-gradient(70.77deg, #c2f4ad -9.18%, #56e59c 120.09%); 
     //background: linear-gradient(70.77deg, #56cde0 -9.18%, #ffffff 80.09%);
     background-size: cover;
@@ -78,12 +78,14 @@ export const BodyCenteredAlt2 = styled.body`
     padding-top: 0vh;
     padding-bottom: 0vh;
     align-items: center;
-    background: linear-gradient(70.77deg, #7d4cdb -9.18%, #16144e 120.09%);
+    //background: linear-gradient(70.77deg, #7d4cdb -9.18%, #16144e 120.09%);
+    background-image: url('https://odapp.io/top-banner.f59e4373.png');
+    background-size: cover;
     color: white;
     display: flex;
     flex-direction: column;
     font-size: calc(10px + 2vmin);
-    justify-content: none;
+    justify-content: center;
     min-height: calc(100vh - 70px);
   `;
 

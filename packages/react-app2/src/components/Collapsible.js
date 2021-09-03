@@ -38,12 +38,12 @@ function  Collapsible({btn}){
           </Box>
           <Box align="center" gap="small">  
             <Nav direction="row">{[items.map(item => (
-                <StyledButton2 style={{color: '#ffffff', valign: 'middle', fontWeight:"600", textDecoration:"none", fontFamily: "Poppins" }} href={item.href} label={item.label} key={item.label} />
+                <StyledButton2 style={{color: '#ffffff', valign: 'middle', fontWeight:"600", textDecoration:"none", fontFamily: "'Poppins', sans-serif" }} href={item.href} label={item.label} key={item.label} />
               ))]}
             </Nav>   
           </Box>  
           <Box direction="row" size="xxsmall" align="center">
-            {btn}<FormSearch color='#fff' size='large' />
+            {btn}<FormSearch color='#fff' size='36px' />
           </Box>
         </Header>
       ) : (
@@ -53,7 +53,7 @@ function  Collapsible({btn}){
           </Box>
           <Box align="center" gap="small">  
             <Nav direction="row">{[items.map(item => (
-              <StyledButton2 style={{color: '#ffffff', valign: 'middle', fontWeight:"600", textDecoration:"none", fontFamily: "Poppins" }} href={item.href} label={item.label} key={item.label} plain="true" />
+              <StyledButton2 style={{color: '#ffffff', valign: 'middle', fontWeight:"600", textDecoration:"none", fontFamily: "'Poppins', sans-serif" }} href={item.href} label={item.label} key={item.label} plain="true" />
               ))]}
             </Nav>   
           </Box>  

@@ -16,7 +16,7 @@ import NotFound from "./components/NotFound";
 import useWeb3Modal from "./hooks/useWeb3Modal";
 import GET_TRANSFERS from "./graphql/subgraph";
 import logoFooter from "./img/odapp-logo-footer.svg";
-import { ButtonFooter } from "./components/";
+import { ButtonFooter, ImageFooter } from "./components/";
 
 import {
   Connect
@@ -133,8 +133,8 @@ function App() {
           </Switch>
         </Router>
         
-      <Footer background="#222323" pad="large" align="center" justify="center">
-          <Box size="small"><Image src={logoFooter} fit="contain" alt="react-logo" /></Box>
+      <Footer background="#222323" pad="large" align="center" justify="center" className="mainFooter">
+          <Box size="small" className="mainFooterLogo"><ImageFooter src={logoFooter} fit="contain" alt="react-logo" /></Box>
           <ButtonFooter href="/GetPKT" label="Claim PKT" color="#FFFFFF" margin={{ horizontal: "4vw" }} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
           <ButtonFooter href="https://pkt.cash/" target="_blank" align="center" label="Learn About PKT Cash" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
       </Footer>
