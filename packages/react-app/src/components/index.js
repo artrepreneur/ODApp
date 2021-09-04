@@ -141,6 +141,11 @@ export const ImageLogoMobile = styled.img`
   margin-bottom: 0px;
 `;
 
+export const ImageMobile = styled.img`
+  max-width:90%;
+  margin: 0 auto;
+`;
+
 export const Link = styled.a.attrs({
   target: "_blank",
   rel: "noopener noreferrer",
@@ -299,18 +304,35 @@ padding: 10px 0;
 `;
 
 export const ButtonCTA = styled(Button)`
-font-size: 24px;
-line-height: 36px;
+font-size: 29px;
+line-height: 40px;
+font-weight: 400;
 border-radius: 50px;
+padding: 20px;
 font-family: "Tahoma";
 color: #fff;
 border: 0;
 background: #FBA300;
-font-weight: 500;
-padding: 12px 50px;
-margin-right: 20px;
+width:100%;
+max-width:475px;
 &:focus {
   box-shadow:none;
+}
+@media all and (max-width: 1580px) {
+  font-size: 22px;
+  line-height: 24px;
+  padding: 12px;
+  max-width: 275px;
+  width:auto;
+}
+@media all and (max-width: 768px) {
+  font-size: 20px;
+  line-height: 22px;
+  padding: 10px 10px 12px;
+  margin-left:auto;
+  margin-right:auto;
+  width: 100%;
+  max-width: 70vw;
 }
   `;
 

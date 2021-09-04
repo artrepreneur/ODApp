@@ -2,7 +2,7 @@ import React from "react";
 import { Contract } from "@ethersproject/contracts";
 import { ethers } from "ethers";
 //import detectEthereumProvider from '@metamask/detect-provider';
-import { Card, CardBody, CardHeader, Box, Text } from "grommet";
+import { Card, CardBody, Grid, Heading, CardHeader, Box, Text, ResponsiveContext } from "grommet";
 import { Image, BodyCenteredAlt, StyledButton, HeadingDark, StyledTextDark } from ".";
 import { useHistory } from "react-router-dom";
 //import styled from 'styled-components';
@@ -12,7 +12,12 @@ import Web3 from "web3";
 
 var provider;
 var signer;
-var WPKT; 
+var WPKT;
+
+var formWrapStyle = {
+  boxShadow: "0px 3px 6px rgba(0, 0, 0, 0.161)",
+  width: "85%"
+}
 
 async function getSupply() {
   provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -50,30 +55,49 @@ function PKTToWPKT() {
     history.push('/SwapPKT')
   }
   return (
-    <Box>
-    <BodyCenteredAlt>
-      <Card width="xlarge" background="light-1" pad="none">
-              <CardHeader background="#F0B90C" pad="none" responsive="true" justify="center" height="xsmall">
-                <h2 align="center">Get WPKT</h2> 
-              </CardHeader>          
-              <CardBody pad="large" style={{whiteSpace: 'pre-wrap', overflowWrap: 'break-word'}}>  
-             <Text size="large" textAlign="left" margin="small">To convert your PKT to WPKT you will first need to send your PKT to ODApp's "VAULT" address, seen below, using the PKT wallet of your choice. 
-              Be sure to save your transaction ID, which is provided by your wallet, as proof of your transaction. You will need this <Text style={{fontWeight: "bold"}}>transaction ID</Text> to get your PKT onto BSC's chain. </Text>
-                <Card pad="medium" style={{backgroundColor: '#2B2F36'}}>
-                    <CardBody>
-                    <h4 align="center" style={{color: '#F0B90C'}}>Send Your PKT Here: </h4>
-                    <div style={{color:'#DEE0E2', paddingBottom:'5%'}} align="center"> pkt1qex9d4fjwc0nqr3x0hex6ds5vpu67efjdlm6ckz</div>
-                    <StyledButton primary size='large' color='#F0B90C' label="Next" onClick={navigateTo}/>
+    <ResponsiveContext.Consumer>
+        {responsive => (responsive === 'small') ? (
+          <Box>
+          </Box>
+        ) : (responsive === 'medium') ? (
+          <Box>
+          </Box>
+        ) : (
+          <Box background="#fff">
+              <Card width="full" round="none" background="#fff" pad="0 8rem" size="large">
+                    <CardBody> 
+                      <Grid
+                      fill
+                      areas={[
+                        { name: 'left', start: [0, 0], end: [0, 0] },
+                        { name: 'right', start: [1, 0], end: [1, 0] },
+                      ]}
+                      columns={['1/2', 'flex']}
+                      alignContent={['center']}
+                      justifyContent={['center']}
+                      rows={['flex']}
+                      gap="none"
+                      background="#fff"
+                      >
+                      <Box gridArea="left" background="#fff" height={{ min: "85vh" }} justify="center" alignSelf="center">
+                          <HeadingDark textAlign="start" margin={{ bottom: "50px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Get WPKT</HeadingDark>
+                          <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>To convert your PKT to WPKT you will first need to send your PKT to ODApp's "VAULT" address, seen below, using the PKT wallet of your choice. Be sure to save your transaction ID, which is provided by your wallet, as proof of your transaction. You will need this transaction ID to get your PKT onto BSC's chain.</StyledTextDark>
+                      </Box>
+                      <Box gridArea="right" background="#fff" height="large" justify="center" alignSelf="center" pad="0">
+                          <Box background="#f9f9f9" pad={{ vertical: "large", horizontal: "large" }} round="25px" justify="center" alignSelf="center" style={formWrapStyle}>
+                            <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="24px" margin={{ bottom: "50px", top: "0", horizontal: "0" }}  textAlign="center">Send Your PKT Here: </Heading>
+                            <Box justify="center" alignSelf="center">
+                              <div style={{color: "#222323", background: 'white', fontSize: "24px", fontWeight: "normal", borderRadius: "6px", padding: "12px 20px", marginBottom: "35px"}} align="center">pkt1qex9d4fjwc0nqr3x0hex6ds5vpu67efjdlm6ckz</div>
+                              <StyledButton hoverIndicator={{background: "#222323", boxShadow: "0"}} size='large' color="#fff" type="submit" label="Next" onClick={navigateTo}/>
+                            </Box>
+                          </Box>
+                      </Box>                    
+                      </Grid>
                     </CardBody>
-                </Card>
-              {/*<Card pad='small' justify='center' width='100%'>
-              <div id="spply">
-              </div>
-              </Card>*/}
-              </CardBody>
-        </Card>  
-    </BodyCenteredAlt> 
-    </Box> 
+              </Card>
+          </Box>
+        )}
+    </ResponsiveContext.Consumer>
   );
 }
 

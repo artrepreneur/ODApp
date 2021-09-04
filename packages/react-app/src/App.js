@@ -47,7 +47,7 @@ function WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal, clr}) {
   const [label, setLabel] = useState(initialLabel);
   return (
     
-    <Button id="cnct" primary size="large" align="center" color="#FBA300" class="mainConnect" label={!provider ? "Connect Wallet" : "Disconnect Wallet"} onClick={async () => {
+    <Button id="cnct" primary size="large" align="center" color="#FBA300" className="mainConnect" label={!provider ? "Connect Wallet" : "Disconnect Wallet"} onClick={async () => {
       if (typeof window.ethereum === 'undefined') {
         alert('Please install metamask to use this site');
         return;

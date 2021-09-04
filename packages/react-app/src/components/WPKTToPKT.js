@@ -266,6 +266,7 @@ function WPKTToPKT() {
     console.log('OK to receive PKT.', history);
     history.push('/GetPKT')
   }
+  const size = React.useContext(ResponsiveContext);
 
   
   return (
@@ -273,7 +274,7 @@ function WPKTToPKT() {
     <ResponsiveContext.Consumer>
       {responsive => (responsive === 'small') ? (
         <Box background="#fff">
-            <Card width="full" round="none" background="#fff" pad="0 8rem" size="large">
+            <Card width="full" round="none" background="#fff" pad="75px 20px 100px">
                   <CardBody> 
                     <Grid
                     fill
@@ -353,10 +354,10 @@ function WPKTToPKT() {
                     <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="20px" margin={{ bottom: "50px", top: "0" }}  textAlign="center">Enter WPKT Amount and PKT Recipient Address</Heading>
                     <Box justify="center" alignSelf="center">
                         <FormField name="WPKTAmount" required contentProps={{ border: false, margin: "0" }}>
-                            <TextInput style={{background: 'white', color: '#222323', fontSize: "24px", fontWeight: "normal", borderRadius: "6px", height: "60px" }} name="WPKTAmount" placeholder={<Text weight="normal" size="20px" color="#707070">Enter Amount of WPKT to Convert</Text>} />
+                            <TextInput style={{background: 'white', color: '#222323', fontSize: "16px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="WPKTAmount" placeholder={<Text weight="normal" size="16px" color="#707070">Enter Amount of WPKT to Convert</Text>} />
                         </FormField>
                         <FormField name="PKTAddr" required contentProps={{ border: false, margin: "20px 0 0" }}>
-                            <TextInput style={{background: 'white', color: '#222323', fontSize: "24px", fontWeight: "normal", borderRadius: "6px", height: "60px" }} name="PKTAddr" placeholder={<Text weight="normal" size="20px" color="#707070">Enter PKT Recipient Address</Text>} />
+                            <TextInput style={{background: 'white', color: '#222323', fontSize: "16px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="PKTAddr" placeholder={<Text weight="normal" size="16px" color="#707070">Enter PKT Recipient Address</Text>} />
                         </FormField>
                         <StyledButton hoverIndicator={{background: "#222323", boxShadow: "0"}} size='large' color="#fff" type="submit" label="Submit"/>
                     </Box>
@@ -399,8 +400,8 @@ function WPKTToPKT() {
                 background="#fff"
                 >
                 <Box gridArea="left" background="#fff" height={{ min: "85vh" }} justify="center" alignSelf="center">
-                    <HeadingDark textAlign="left" margin={{ bottom: "50px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Swap WPKT to PKT</HeadingDark>
-                    <StyledTextDark textAlign="left" style={{ paddingRight: "6vw" }}>To convert your WPKT to PKT enter the amount of WPKT you wish to convert, and the PKT address that will receive the PKT. Be sure to enter a valid PKT address and not Binance Smart Chain address.</StyledTextDark>
+                    <HeadingDark textAlign="start" margin={{ bottom: "50px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Swap WPKT to PKT</HeadingDark>
+                    <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>To convert your WPKT to PKT enter the amount of WPKT you wish to convert, and the PKT address that will receive the PKT. Be sure to enter a valid PKT address and not Binance Smart Chain address.</StyledTextDark>
                 </Box>
                 <Box gridArea="right" background="#fff" height="large" justify="center" alignSelf="center" pad="0">
                     <Box background="#f9f9f9" pad={{ vertical: "large", horizontal: "xlarge" }} round="25px" justify="center" alignSelf="center" style={formWrapStyle}>
