@@ -1,6 +1,6 @@
 import React from "react";
-import { Form, Box, Card, Text, CardBody, Grid, Heading, TextInput, Spinner, FormField, CardHeader, ResponsiveContext } from "grommet";
-import { BodyCenteredAlt, StyledButton, HeadingDark, StyledTextDark } from ".";
+import { Form, Box, Card, Text, CardBody, Grid, Heading, TextInput, Spinner, FormField, CardHeader, ResponsiveContext, Grommet } from "grommet";
+import { HeadingDark, StyledTextDark, ButtonRegular, ButtonForm } from ".";
 import { useHistory } from "react-router-dom";
 import Web3 from "web3";
 
@@ -10,6 +10,12 @@ var formWrapStyle = {
   boxShadow: "0px 3px 6px rgba(0, 0, 0, 0.161)",
   width: "85%"
 }
+var formWrapStyleMed = {
+  width: "80%"
+};
+var formWrapStyleMob = {
+  boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+};
 
 function round(value, decimals) {
   return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
@@ -116,57 +122,150 @@ function GetPKT() {
   }
 
   return (
-    <Box background="#fff">
-        <Card width="full" round="none" background="#fff" pad="0 8rem" size="large">
-              <CardBody> 
-                <Grid
-                fill
-                areas={[
-                  { name: 'left', start: [0, 0], end: [0, 0] },
-                  { name: 'right', start: [1, 0], end: [1, 0] },
-                ]}
-                columns={['1/2', 'flex']}
-                alignContent={['center']}
-                justifyContent={['center']}
-                rows={['flex']}
-                gap="none"
-                background="#fff"
-                >
-                <Box gridArea="left" background="#fff" height={{ min: "85vh" }} justify="center" alignSelf="center">
-                    <HeadingDark textAlign="left" margin={{ bottom: "50px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Reclaim PKT</HeadingDark>
-                    <StyledTextDark textAlign="left" style={{ paddingRight: "6vw" }}>If you sent your WPKT to the ODApp bridge, but failed to receive your PKT within 2 hours, use this process to reclaim your PKT. Enter the transaction hash you received when you sent your WPKT to the ODApp bridge, as well as your PKT recipient address.</StyledTextDark>
-                </Box>
-                <Box gridArea="right" background="#fff" height="large" justify="center" alignSelf="center" pad="0">
-                    <Box background="#f9f9f9" pad={{ vertical: "large", horizontal: "xlarge" }} round="25px" justify="center" alignSelf="center" style={formWrapStyle}>
-                    <Form name="ReceivePKT" id="ReceivePKT" onSubmit={handleInput}>
-                    <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="24px" margin={{ bottom: "50px", top: "0" }}  textAlign="center">Enter Your WPKT Transaction and PKT Recipient Hash</Heading>
-                    <Box justify="center" alignSelf="center">
-                        <FormField name="EthTxHash" required contentProps={{ border: false }}>
-                            <TextInput style={{background: 'white', color: '#222323', fontSize: "24px", fontWeight: "normal", borderRadius: "6px" }} name="EthTxHash" placeholder={<Text weight="normal" size="24px" color="#707070">WPKT Transaction Hash</Text>} />
-                        </FormField>
-                        <FormField name="PKTAddr" required contentProps={{ border: false }}>
-                            <TextInput style={{background: 'white', color: '#222323', fontSize: "24px", fontWeight: "normal", borderRadius: "6px", padding: "12px 20px" }} name="PKTAddr" placeholder={<Text weight="normal" size="24px" color="#707070">PKT Recipient Hash</Text>} />
-                        </FormField>
-                        <StyledButton hoverIndicator={{background: "#222323", boxShadow: "0"}} size='large' color="#fff" type="submit" label="Submit"/>
-                    </Box>
-                    </Form>
-                    <div hidden id="outputCard2" style={{paddingTop: '2%'}}>
-                      <Box id="outputCard2" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white', padding:'0%'}}>
-                          <div hidden align="center" id="output2" style={{padding:'2%'}}>
-                          </div>  
-                          <div id="spin" pad="medium" style={{padding:'2%'}}><Spinner size="medium" /></div>
-                          <div hidden align="center" id="recPKT" style={{padding:'2%'}}>
-                              <StyledButton size='large' color='#F0B90C' label='Receive PKT' id='recPKT' onClick={navigateTo()}/> 
-                          </div> 
-                      </Box>
-                    </div> 
-                    </Box>
-                </Box>                    
-                </Grid>
-              </CardBody>
-        </Card>
-    </Box>
-    
+    <Grommet>
+      <ResponsiveContext.Consumer>
+        {responsive => (responsive === 'small') ? (
+          <Box background="#fff">
+          <Card width="full" round="none" background="#fff" pad="75px 20px 100px">
+                   <CardBody> 
+                     <Box background="#fff" justify="center" alignSelf="center">
+                         <HeadingDark textAlign="center" margin={{ bottom: "35px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Reclaim PKT</HeadingDark>
+                         <StyledTextDark textAlign="center">If you sent your WPKT to the ODApp bridge, but failed to receive your PKT within 2 hours, use this process to reclaim your PKT. Enter the transaction hash you received when you sent your WPKT to the ODApp bridge, as well as your PKT recipient address.</StyledTextDark>
+                     </Box>
+                     <Box background="#fff" justify="center" alignSelf="center" pad="50px 0 0">
+                         <Box background="#f9f9f9" pad={{ top: "40px", bottom: "50px", horizontal: "20px" }} round="23px" justify="center" alignSelf="center" style={formWrapStyleMob}>
+                         <Form name="ReceivePKT" id="ReceivePKT" onSubmit={handleInput}>
+                         <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="18px" margin={{ bottom: "35px", top: "0" }}  textAlign="center">Enter Your WPKT Transaction and PKT Recipient Hash</Heading>
+                         <Box justify="center" alignSelf="center">
+                             <FormField name="EthTxHash" required contentProps={{ border: false, margin: "0" }}>
+                                 <TextInput style={{background: 'white', color: '#222323', fontSize: "18px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="EthTxHash" placeholder={<Text weight="normal" size="18px" color="#707070">WPKT Transaction Hash</Text>} />
+                             </FormField>
+                             <FormField name="PKTAddr" required contentProps={{ border: false, margin: "20px 0 0" }}>
+                                 <TextInput style={{background: 'white', color: '#222323', fontSize: "18px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="PKTAddr" placeholder={<Text weight="normal" size="18px" color="#707070">PKT Recipient Hash</Text>} />
+                             </FormField>
+                             <ButtonForm hoverIndicator={{background: "#222323", boxShadow: "0"}} margin={{top: "35px", horizontal: "auto"}} type="submit" label="Submit"/>
+                         </Box>
+                         </Form>
+                         <div hidden id="outputCard2" style={{paddingTop: '2%'}}>
+                           <Box id="outputCard2" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white', padding:'0%'}}>
+                               <div hidden align="center" id="output2" style={{padding:'2%'}}>
+                               </div>  
+                               <div id="spin" pad="medium" style={{padding:'2%'}}><Spinner size="medium" /></div>
+                               <div hidden align="center" id="recPKT" style={{padding:'2%'}}>
+                                   <ButtonForm size='large' color='#F0B90C' label='Receive PKT' id='recPKT' onClick={navigateTo()}/> 
+                               </div> 
+                           </Box>
+                         </div> 
+                         </Box>
+                     </Box>                    
+                   </CardBody>
+             </Card>
+         </Box>
+        ) : (responsive === 'medium') ? (
+          <Box background="#fff">
+             <Card width="full" round="none" background="#fff" pad="150px 50px">
+                      <CardBody> 
+                        <Grid
+                        fill
+                        areas={[
+                          { name: 'left', start: [0, 0], end: [0, 0] },
+                          { name: 'right', start: [1, 0], end: [1, 0] },
+                        ]}
+                        columns={['1/2', 'flex']}
+                        alignContent="center"
+                        justifyContent="between"
+                        rows={['flex']}
+                        gap="none"
+                        background="#fff"
+                        >
+                        <Box gridArea="left" background="#fff" justify="center" alignSelf="center">
+                            <HeadingDark textAlign="left" margin={{ bottom: "50px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Reclaim PKT</HeadingDark>
+                            <StyledTextDark textAlign="left" style={{ paddingRight: "6vw" }}>If you sent your WPKT to the ODApp bridge, but failed to receive your PKT within 2 hours, use this process to reclaim your PKT. Enter the transaction hash you received when you sent your WPKT to the ODApp bridge, as well as your PKT recipient address.</StyledTextDark>
+                        </Box>
+                        <Box gridArea="right" background="#fff" justify="center" alignSelf="center" pad="0">
+                            <Box background="#f9f9f9" pad={{ vertical: "large", horizontal: "large" }} round="25px" justify="center" alignSelf="center" style={formWrapStyleMed}>
+                            <Form name="ReceivePKT" id="ReceivePKT" onSubmit={handleInput}>
+                            <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="20px" margin={{ bottom: "35px", top: "0" }}  textAlign="center">Enter Your WPKT Transaction and PKT Recipient Hash</Heading>
+                            <Box justify="center" alignSelf="center">
+                                <FormField name="EthTxHash" required contentProps={{ border: false, margin: "0" }}>
+                                    <TextInput style={{background: 'white', color: '#222323', fontSize: "20px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="EthTxHash" placeholder={<Text weight="normal" size="20px" color="#707070">WPKT Transaction Hash</Text>} />
+                                </FormField>
+                                <FormField name="PKTAddr" required contentProps={{ border: false, margin: "20px 0 0" }}>
+                                    <TextInput style={{background: 'white', color: '#222323', fontSize: "20px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="PKTAddr" placeholder={<Text weight="normal" size="20px" color="#707070">PKT Recipient Hash</Text>} />
+                                </FormField>
+                                <ButtonForm hoverIndicator={{background: "#222323", boxShadow: "0"}} margin={{top: "35px", horizontal: "auto"}} type="submit" label="Submit"/>
+                            </Box>
+                            </Form>
+                            <div hidden id="outputCard2" style={{paddingTop: '2%'}}>
+                              <Box id="outputCard2" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white', padding:'0%'}}>
+                                  <div hidden align="center" id="output2" style={{padding:'2%'}}>
+                                  </div>  
+                                  <div id="spin" pad="medium" style={{padding:'2%'}}><Spinner size="medium" /></div>
+                                  <div hidden align="center" id="recPKT" style={{padding:'2%'}}>
+                                      <ButtonForm size='large' color='#F0B90C' label='Receive PKT' id='recPKT' onClick={navigateTo()}/> 
+                                  </div> 
+                              </Box>
+                            </div> 
+                            </Box>
+                        </Box>                    
+                        </Grid>
+                      </CardBody>
+                </Card>
+            </Box>
+        ) : (
+          <Box background="#fff">
+             <Card width="full" round="none" background="#fff" pad="0 8rem" size="large">
+                      <CardBody> 
+                        <Grid
+                        fill
+                        areas={[
+                          { name: 'left', start: [0, 0], end: [0, 0] },
+                          { name: 'right', start: [1, 0], end: [1, 0] },
+                        ]}
+                        columns={['1/2', 'flex']}
+                        alignContent="center"
+                        justifyContent="between"
+                        rows={['flex']}
+                        gap="none"
+                        background="#fff"
+                        >
+                        <Box gridArea="left" background="#fff" height={{ min: "85vh" }} justify="center" alignSelf="center">
+                            <HeadingDark textAlign="left" margin={{ bottom: "50px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Reclaim PKT</HeadingDark>
+                            <StyledTextDark textAlign="left" style={{ paddingRight: "6vw" }}>If you sent your WPKT to the ODApp bridge, but failed to receive your PKT within 2 hours, use this process to reclaim your PKT. Enter the transaction hash you received when you sent your WPKT to the ODApp bridge, as well as your PKT recipient address.</StyledTextDark>
+                        </Box>
+                        <Box gridArea="right" background="#fff" height="large" justify="center" alignSelf="center" pad="0">
+                            <Box background="#f9f9f9" pad={{ vertical: "large", horizontal: "xlarge" }} round="25px" justify="center" alignSelf="center" style={formWrapStyle}>
+                            <Form name="ReceivePKT" id="ReceivePKT" onSubmit={handleInput}>
+                            <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="24px" margin={{ bottom: "50px", top: "0" }}  textAlign="center">Enter Your WPKT Transaction and PKT Recipient Hash</Heading>
+                            <Box justify="center" alignSelf="center">
+                                <FormField name="EthTxHash" required contentProps={{ border: false, margin: "0" }}>
+                                    <TextInput style={{background: 'white', color: '#222323', fontSize: "24px", fontWeight: "normal", borderRadius: "6px", height: "60px" }} name="EthTxHash" placeholder={<Text weight="normal" size="24px" color="#707070">WPKT Transaction Hash</Text>} />
+                                </FormField>
+                                <FormField name="PKTAddr" required contentProps={{ border: false, margin: "20px 0 0" }}>
+                                    <TextInput style={{background: 'white', color: '#222323', fontSize: "24px", fontWeight: "normal", borderRadius: "6px", height: "60px" }} name="PKTAddr" placeholder={<Text weight="normal" size="24px" color="#707070">PKT Recipient Hash</Text>} />
+                                </FormField>
+                                <ButtonForm hoverIndicator={{background: "#222323", boxShadow: "0"}} margin={{top: "50px", horizontal: "auto"}} type="submit" label="Submit"/>
+                            </Box>
+                            </Form>
+                            <div hidden id="outputCard2" style={{paddingTop: '2%'}}>
+                              <Box id="outputCard2" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white', padding:'0%'}}>
+                                  <div hidden align="center" id="output2" style={{padding:'2%'}}>
+                                  </div>  
+                                  <div id="spin" pad="medium" style={{padding:'2%'}}><Spinner size="medium" /></div>
+                                  <div hidden align="center" id="recPKT" style={{padding:'2%'}}>
+                                      <ButtonForm size='large' color='#F0B90C' label='Receive PKT' id='recPKT' onClick={navigateTo()}/> 
+                                  </div> 
+                              </Box>
+                            </div> 
+                            </Box>
+                        </Box>                    
+                        </Grid>
+                      </CardBody>
+                </Card>
+            </Box>
+        )}
+      </ResponsiveContext.Consumer>
+    </Grommet>
   );
 }
 

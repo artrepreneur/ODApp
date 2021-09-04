@@ -52,6 +52,29 @@
 	color: #fff;
     background-color: #FBA300;
 }
+#root .drop_menu:focus {
+    box-shadow: none;
+}
+body .drop_menu_wrap {
+    top: 0 !important;
+    max-height: 100vh !important;
+    background-color: #222223;
+}
+.drop_menu_wrap .kVFtzT {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    align-items: center;
+    color: #fff;
+    font-size: 20px;
+    line-height: 30px;
+}
+.drop_menu_wrap .iuBOfw {
+    align-items: end;
+    padding: 24px 31px;
+}
 @media all and (max-width:1580px) {
     #root header #cnct {
         padding: 12px 40px;

@@ -6,9 +6,9 @@ import detectEthereumProvider from '@metamask/detect-provider';
 import addresses from "./abi/addresses";
 import abis from "./abi/abis";
 
-import { Grid, Form, Box, Card, Text, CardBody, Spinner, TextInput, FormField, CardHeader, Heading, ResponsiveContext } from "grommet";
+import { Grid, Form, Box, Card, Text, CardBody, Spinner, TextInput, FormField, CardHeader, Heading, ResponsiveContext, Grommet } from "grommet";
 
-import { BodyCenteredAlt, StyledButton,HeadingDark, StyledTextDark } from ".";
+import { ButtonForm, StyledButton,HeadingDark, StyledTextDark, ButtonRegular } from ".";
 import Web3 from "web3";
 
 var pktTID;
@@ -23,6 +23,12 @@ var formWrapStyle = {
     boxShadow: "0px 3px 6px rgba(0, 0, 0, 0.161)",
     width: "85%"
   }
+  var formWrapStyleMed = {
+    width: "80%"
+  };
+  var formWrapStyleMob = {
+    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+  };
   
 if (net===97){
     networkType = "testnet";
@@ -319,51 +325,139 @@ async function handleInput(e){
 function SwapPKT() {//{wpkt}
     //WPKT = {wpkt};
     return (
-
-        <Box background="#fff">
-            <Card width="full" round="none" background="#fff" pad="0 8rem" size="large">
-                <CardBody> 
-                    <Grid fill areas={[ { name: 'left', start: [0, 0], end: [0, 0] }, { name: 'right', start: [1, 0], end: [1, 0] },]}
-                        columns={['1/2', 'flex']} alignContent={['center']} justifyContent={['center']} rows={['flex']} gap="none"
-                        background="#fff">
-                        <Box gridArea="left" background="#fff" height={{ min: "85vh" }} justify="center" alignSelf="center">
-                            <HeadingDark textAlign="start" margin={{ bottom: "50px", top: "0", horizontal: "0" }} size="4xl" weight="bold" color="#222323" level="2">Swap PKT to WPKT</HeadingDark>
-                            <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>To convert your PKT to WPKT you will first need to complete a pre-commit process by entering your PKT sender address and your intended WPKT recipient address. Once the pre-commit is complete, you will have a unique address pair. You can re-use your unique address pair in the ODApp bridge as many times as you want, or create another unique pair in the future.</StyledTextDark>
-                        </Box>
-                        <Box gridArea="right" background="#fff" height="large" justify="center" alignSelf="center" pad="0">
-                            <Box background="#f9f9f9" pad={{ vertical: "large", horizontal: "xlarge" }} round="25px" justify="center" alignSelf="center" style={formWrapStyle}>
-                            <Form name="inputPktTID" id="inputPktTID" onSubmit={handleInput}>
-                            <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="24px" margin={{ bottom: "50px", top: "0" }}  textAlign="center">Enter PKT Transaction ID and ETH Address: </Heading>
-                            <Box justify="center" alignSelf="center">
-                                <FormField name="PktTID" required contentProps={{ border: false }}>
-                                    <TextInput style={{background: 'white', color: '#222323', fontSize: "24px", fontWeight: "normal", borderRadius: "6px" }} name="PktTID" placeholder={<Text weight="normal" size="24px" color="#707070">Enter Amount of WPKT to Convert</Text>} />
-                                </FormField>
-                                <FormField name="PktSenderAddr" required contentProps={{ border: false }}>
-                                    <TextInput style={{background: 'white', color: '#222323', fontSize: "24px", fontWeight: "normal", borderRadius: "6px", padding: "12px 20px" }} name="PktSenderAddr" placeholder={<Text weight="normal" size="24px" color="#707070">Enter PKT Recipient Address</Text>} />
-                                </FormField>
-                                <FormField name="EthAddr" required contentProps={{ border: false }}>
-                                    <TextInput style={{background: 'white', color: '#222323', fontSize: "24px", fontWeight: "normal", borderRadius: "6px", padding: "12px 20px" }} name="EthAddr" placeholder={<Text weight="normal" size="24px" color="#707070">Enter PKT Recipient Address</Text>} />
-                                </FormField>
-                                <StyledButton hoverIndicator={{background: "#222323", boxShadow: "0"}} size='large' color="#fff" type="submit" label="Submit"/>
+    <Grommet>
+    <ResponsiveContext.Consumer>
+        {responsive => (responsive === 'small') ? (
+            <Box background="#fff">
+                <Card width="full" round="none" background="#fff" pad="75px 20px 100px">
+                    <CardBody> 
+                            <Box background="#fff" justify="center" alignSelf="center">
+                                <HeadingDark textAlign="center" margin={{ bottom: "35px", top: "0", horizontal: "0" }} size="4xl" weight="bold" color="#222323" level="2">Swap PKT to WPKT</HeadingDark>
+                                <StyledTextDark textAlign="center">To convert your PKT to WPKT you will first need to complete a pre-commit process by entering your PKT sender address and your intended WPKT recipient address. Once the pre-commit is complete, you will have a unique address pair. You can re-use your unique address pair in the ODApp bridge as many times as you want, or create another unique pair in the future.</StyledTextDark>
                             </Box>
-                            </Form>
-                            <div style={{paddingTop: '2%'}}>
-                                <Box hidden id="outputCard" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white', padding:'0%'}}>
-                                    <div hidden align="center" id="output" style={{padding:'2%'}}>
-                                    </div>
-                                    <div id="spin" hidden pad="medium" style={{padding:'2%'}}><Spinner size="medium" /></div>  
-                                    <div hidden align="center" id="addToken" style={{padding:'2%'}}>
-                                        <StyledButton size='large' color='#F0B90C' label='Add Token To Wallet' id='addToken' onClick={() => addWPKT()}/> 
-                                    </div> 
+                            <Box background="#fff" justify="center" alignSelf="center" pad="50px 0 0">
+                                <Box background="#f9f9f9" pad={{ top: "40px", bottom: "50px", horizontal: "20px" }} round="23px" justify="center" alignSelf="center" style={formWrapStyleMob}>
+                                <Form name="inputPktTID" id="inputPktTID" onSubmit={handleInput}>
+                                <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="18px" margin={{ bottom: "35px", top: "0" }}  textAlign="center">Enter PKT Transaction ID and ETH Address: </Heading>
+                                <Box justify="center" alignSelf="center">
+                                    <FormField name="PktTID" required contentProps={{ border: false, margin: "0" }}>
+                                        <TextInput style={{background: 'white', color: '#222323', fontSize: "18px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="PktTID" placeholder={<Text weight="normal" size="18px" color="#707070">Enter Amount of WPKT to Convert</Text>} />
+                                    </FormField>
+                                    <FormField name="PktSenderAddr" required contentProps={{ border: false, margin: "20px 0 0" }}>
+                                        <TextInput style={{background: 'white', color: '#222323', fontSize: "18px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="PktSenderAddr" placeholder={<Text weight="normal" size="18px" color="#707070">Enter PKT Recipient Address</Text>} />
+                                    </FormField>
+                                    <FormField name="EthAddr" required contentProps={{ border: false, margin: "20px 0 0" }}>
+                                        <TextInput style={{background: 'white', color: '#222323', fontSize: "18px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="EthAddr" placeholder={<Text weight="normal" size="18px" color="#707070">Enter PKT Recipient Address</Text>} />
+                                    </FormField>
+                                    <ButtonForm hoverIndicator={{background: "#222323", boxShadow: "0"}} margin={{top: "35px", horizontal: "auto"}} size='large' color="#fff" type="submit" label="Submit"/>
                                 </Box>
-                            </div>
+                                </Form>
+                                <div style={{paddingTop: '2%'}}>
+                                    <Box hidden id="outputCard" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white', padding:'0%'}}>
+                                        <div hidden align="center" id="output" style={{padding:'2%'}}>
+                                        </div>
+                                        <div id="spin" hidden pad="medium" style={{padding:'2%'}}><Spinner size="medium" /></div>  
+                                        <div hidden align="center" id="addToken" style={{padding:'2%'}}>
+                                            <StyledButton size='large' color='#F0B90C' label='Add Token To Wallet' id='addToken' onClick={() => addWPKT()}/> 
+                                        </div> 
+                                    </Box>
+                                </div>
+                                </Box>
+                            </Box>                    
+                    </CardBody>
+                </Card>
+            </Box>
+        ) : (responsive === 'medium') ? (
+            <Box background="#fff">
+                <Card width="full" round="none" background="#fff" pad="150px 50px">
+                    <CardBody> 
+                        <Grid fill areas={[ { name: 'left', start: [0, 0], end: [0, 0] }, { name: 'right', start: [1, 0], end: [1, 0] },]}
+                            columns={['1/2', 'flex']} alignContent="center" justifyContent="between" rows={['flex']} gap="none"
+                            background="#fff">
+                            <Box gridArea="left" background="#fff" justify="center" alignSelf="center">
+                                <HeadingDark textAlign="start" margin={{ bottom: "50px", top: "0", horizontal: "0" }} size="4xl" weight="bold" color="#222323" level="2">Swap PKT to WPKT</HeadingDark>
+                                <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>To convert your PKT to WPKT you will first need to complete a pre-commit process by entering your PKT sender address and your intended WPKT recipient address. Once the pre-commit is complete, you will have a unique address pair. You can re-use your unique address pair in the ODApp bridge as many times as you want, or create another unique pair in the future.</StyledTextDark>
                             </Box>
-                        </Box>                    
-                    </Grid>
-                </CardBody>
-            </Card>
-        </Box>
-
+                            <Box gridArea="right" background="#fff" justify="end" alignSelf="center" pad="0">
+                                <Box background="#f9f9f9" pad={{ vertical: "large", horizontal: "large" }} round="25px" justify="center" alignSelf="center" style={formWrapStyleMed}>
+                                <Form name="inputPktTID" id="inputPktTID" onSubmit={handleInput}>
+                                <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="20px" margin={{ bottom: "35px", top: "0" }}  textAlign="center">Enter PKT Transaction ID and ETH Address: </Heading>
+                                <Box justify="center" alignSelf="center">
+                                    <FormField name="PktTID" required contentProps={{ border: false, margin: "0" }}>
+                                        <TextInput style={{background: 'white', color: '#222323', fontSize: "20px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="PktTID" placeholder={<Text weight="normal" size="20px" color="#707070">Enter Amount of WPKT to Convert</Text>} />
+                                    </FormField>
+                                    <FormField name="PktSenderAddr" required contentProps={{ border: false, margin: "20px 0 0" }}>
+                                        <TextInput style={{background: 'white', color: '#222323', fontSize: "20px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="PktSenderAddr" placeholder={<Text weight="normal" size="20px" color="#707070">Enter PKT Recipient Address</Text>} />
+                                    </FormField>
+                                    <FormField name="EthAddr" required contentProps={{ border: false, margin: "20px 0 0" }}>
+                                        <TextInput style={{background: 'white', color: '#222323', fontSize: "20px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="EthAddr" placeholder={<Text weight="normal" size="20px" color="#707070">Enter PKT Recipient Address</Text>} />
+                                    </FormField>
+                                    <ButtonForm hoverIndicator={{background: "#222323", boxShadow: "0"}} margin={{top: "35px", horizontal: "auto"}} size='large' color="#fff" type="submit" label="Submit"/>
+                                </Box>
+                                </Form>
+                                <div style={{paddingTop: '2%'}}>
+                                    <Box hidden id="outputCard" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white', padding:'0%'}}>
+                                        <div hidden align="center" id="output" style={{padding:'2%'}}>
+                                        </div>
+                                        <div id="spin" hidden pad="medium" style={{padding:'2%'}}><Spinner size="medium" /></div>  
+                                        <div hidden align="center" id="addToken" style={{padding:'2%'}}>
+                                            <StyledButton size='large' color='#F0B90C' label='Add Token To Wallet' id='addToken' onClick={() => addWPKT()}/> 
+                                        </div> 
+                                    </Box>
+                                </div>
+                                </Box>
+                            </Box>                    
+                        </Grid>
+                    </CardBody>
+                </Card>
+            </Box> 
+        ) : (
+            <Box background="#fff">
+                <Card width="full" round="none" background="#fff" pad="0 8rem" size="large">
+                    <CardBody> 
+                        <Grid fill areas={[ { name: 'left', start: [0, 0], end: [0, 0] }, { name: 'right', start: [1, 0], end: [1, 0] },]}
+                            columns={['1/2', 'flex']} alignContent="center" justifyContent="between" rows={['flex']} gap="none"
+                            background="#fff">
+                            <Box gridArea="left" background="#fff" height={{ min: "85vh" }} justify="center" alignSelf="center">
+                                <HeadingDark textAlign="start" margin={{ bottom: "50px", top: "0", horizontal: "0" }} size="4xl" weight="bold" color="#222323" level="2">Swap PKT to WPKT</HeadingDark>
+                                <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>To convert your PKT to WPKT you will first need to complete a pre-commit process by entering your PKT sender address and your intended WPKT recipient address. Once the pre-commit is complete, you will have a unique address pair. You can re-use your unique address pair in the ODApp bridge as many times as you want, or create another unique pair in the future.</StyledTextDark>
+                            </Box>
+                            <Box gridArea="right" background="#fff" height="large" justify="center" alignSelf="center" pad="0">
+                                <Box background="#f9f9f9" pad={{ vertical: "large", horizontal: "xlarge" }} round="25px" justify="center" alignSelf="center" style={formWrapStyle}>
+                                <Form name="inputPktTID" id="inputPktTID" onSubmit={handleInput}>
+                                <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="24px" margin={{ bottom: "50px", top: "0" }}  textAlign="center">Enter PKT Transaction ID and ETH Address: </Heading>
+                                <Box justify="center" alignSelf="center">
+                                    <FormField name="PktTID" required contentProps={{ border: false, margin: "0" }}>
+                                        <TextInput style={{background: 'white', color: '#222323', fontSize: "24px", fontWeight: "normal", borderRadius: "6px", height: "60px" }} name="PktTID" placeholder={<Text weight="normal" size="24px" color="#707070">Enter Amount of WPKT to Convert</Text>} />
+                                    </FormField>
+                                    <FormField name="PktSenderAddr" required contentProps={{ border: false, margin: "20px 0 0" }}>
+                                        <TextInput style={{background: 'white', color: '#222323', fontSize: "24px", fontWeight: "normal", borderRadius: "6px", height: "60px" }} name="PktSenderAddr" placeholder={<Text weight="normal" size="24px" color="#707070">Enter PKT Recipient Address</Text>} />
+                                    </FormField>
+                                    <FormField name="EthAddr" required contentProps={{ border: false, margin: "20px 0 0" }}>
+                                        <TextInput style={{background: 'white', color: '#222323', fontSize: "24px", fontWeight: "normal", borderRadius: "6px", height: "60px" }} name="EthAddr" placeholder={<Text weight="normal" size="24px" color="#707070">Enter PKT Recipient Address</Text>} />
+                                    </FormField>
+                                    <ButtonForm hoverIndicator={{background: "#222323", boxShadow: "0"}} margin={{top: "35px", horizontal: "auto"}} size='large' color="#fff" type="submit" label="Submit"/>
+                                </Box>
+                                </Form>
+                                <div style={{paddingTop: '2%'}}>
+                                    <Box hidden id="outputCard" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white', padding:'0%'}}>
+                                        <div hidden align="center" id="output" style={{padding:'2%'}}>
+                                        </div>
+                                        <div id="spin" hidden pad="medium" style={{padding:'2%'}}><Spinner size="medium" /></div>  
+                                        <div hidden align="center" id="addToken" style={{padding:'2%'}}>
+                                            <StyledButton size='large' color='#F0B90C' label='Add Token To Wallet' id='addToken' onClick={() => addWPKT()}/> 
+                                        </div> 
+                                    </Box>
+                                </div>
+                                </Box>
+                            </Box>                    
+                        </Grid>
+                    </CardBody>
+                </Card>
+            </Box>
+        )}
+    </ResponsiveContext.Consumer>
+    </Grommet>
   );
 
   

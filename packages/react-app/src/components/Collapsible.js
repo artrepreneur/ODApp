@@ -28,7 +28,11 @@ function  Collapsible({btn}){
             <Box gridArea='logo' direction="row" size="xxsmall"><ImageLogoMobile src={logo} alt="react-logo"/></Box>
         </Box>
         <Box align="center" gap="small">  
-          <Menu icon={<Menu2/>} color="#fff" dropProps={{round: 'none'}} dropAlign={{right: 'right', top: 'top'}} dropBackground={{ color: "#fff", opacity: "none" }} size='large' margin='xsmall' items={items} />
+          <Menu className="drop_menu"
+            icon={<Menu2 color='#fff'/>}
+            dropProps={{round: 'none', width: "100vw", color: "#fff", height: "100vh", className: "drop_menu_wrap"}} 
+            dropAlign={{right: 'right', top: 'top'}} 
+            size='large' margin='xsmall' items={items} justifyContent='center' />
         </Box>
       </Header>
       ) : (responsive === 'medium') ? (

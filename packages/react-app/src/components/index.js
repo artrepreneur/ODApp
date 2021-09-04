@@ -380,7 +380,7 @@ export const ImageFooter = styled.img`
 export const ButtonRegular = styled(Button)`
   color: #fff;
   font-size: 29px;
-  line-height: 40px;
+  line-height: 35px;
   font-weight: 400;
   border-radius: 50px;
   border:1px solid #FBA300;
@@ -394,8 +394,13 @@ export const ButtonRegular = styled(Button)`
     transition: all 0.25s ease-in-out;
   background: #FBA300;
   text-align:center;
+  &:hover {
+    box-shadow:none;
+    border-color:transparent;
+  }
   &:focus {
     box-shadow:none;
+    border-color:transparent;
   }
   @media all and (max-width: 1580px) {
     font-size: 22px;
@@ -482,4 +487,44 @@ overflow: auto;
   font-size: 22px;
   line-height: 28px;
 }
+`;
+
+export const ButtonForm = styled(Button)`
+  color: #fff;
+  font-size: 29px;
+  line-height: 35px;
+  font-weight: 400;
+  border-radius: 50px;
+  border:1px solid #FBA300;
+  padding: 20px;
+  width: 100%;
+  max-width:475px;
+  font-family: 'Tahoma';
+  -webkit-transition: all 0.25s ease-in-out;
+	-moz-transition: all 0.25s ease-in-out;
+    -ms-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+  background: #FBA300;
+  text-align:center;
+  &:hover {
+    box-shadow:none;
+    border-color:transparent;
+  }
+  &:focus {
+    box-shadow:none;
+    border-color:transparent;
+  }
+  @media all and (max-width: 1580px) {
+    font-size: 20px;
+    line-height: 22px;
+    padding: 18px;
+    max-width: 90%;
+  }
+  @media all and (max-width: 768px) {
+    font-size: 18px;
+    line-height: 20px;
+    padding: 10px 10px 12px;
+    max-width: 90%;
+  }
 `;
