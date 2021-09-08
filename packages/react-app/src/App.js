@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { ethers } from "ethers";
 import detectEthereumProvider from '@metamask/detect-provider'
-import { Button, Footer, Text, Box, Nav, Anchor, Image } from "grommet";
+import { Button, Footer, Text, Box, Grommet, ResponsiveContext } from "grommet";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import SwapPKT from "./components/SwapPKT";
@@ -16,7 +16,7 @@ import NotFound from "./components/NotFound";
 import useWeb3Modal from "./hooks/useWeb3Modal";
 import GET_TRANSFERS from "./graphql/subgraph";
 import logoFooter from "./img/odapp-logo-footer.svg";
-import { ButtonFooter, ImageFooter } from "./components/";
+import { ButtonFooter, ImageFooter, customBreakpoints } from "./components/";
 
 import {
   Connect
@@ -132,13 +132,42 @@ function App() {
             <Route component={NotFound} />
           </Switch>
         </Router>
-        
-      <Footer background="#222323" pad="large" align="center" justify="center" className="mainFooter">
-          <Box size="small" className="mainFooterLogo"><ImageFooter src={logoFooter} fit="contain" alt="react-logo" /></Box>
-          <ButtonFooter href="/GetPKT" label="Claim PKT" color="#FFFFFF" margin={{ horizontal: "4vw" }} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
-          <ButtonFooter href="https://pkt.cash/" target="_blank" align="center" label="Learn About PKT Cash" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
-      </Footer>
+      <Grommet theme={customBreakpoints}>
+      <ResponsiveContext.Consumer>
+          {responsive => (responsive === 'smallmob') ? (
+            <Footer background="#222323" pad="35px 25px 75px" align="center" justify="center" className="mainFooter">
+              <Box size="small" align="center"><ImageFooter src={logoFooter} fit="contain" alt="react-logo" /></Box>
+              <ButtonFooter href="/GetPKT" label="Claim PKT" color="#FFFFFF" margin={{ top: "50px", bottom: "40px" }} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+              <ButtonFooter href="https://pkt.cash/" target="_blank" align="center" label="Learn About PKT Cash" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+            </Footer>
+          ) : (responsive === 'small') ? (
+            <Footer background="#222323" pad="35px 25px 75px" align="center" justify="center" className="mainFooter">
+              <Box size="small" align="center"><ImageFooter src={logoFooter} fit="contain" alt="react-logo" /></Box>
+              <ButtonFooter href="/GetPKT" label="Claim PKT" color="#FFFFFF" margin={{ top: "50px", bottom: "40px" }} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+              <ButtonFooter href="https://pkt.cash/" target="_blank" align="center" label="Learn About PKT Cash" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+            </Footer>
+          ) : (responsive === 'tablet') ? (
+            <Footer background="#222323" pad="large" align="center" justify="center" className="mainFooter">
+                <Box size="small" className="mainFooterLogo"><ImageFooter src={logoFooter} fit="contain" alt="react-logo" /></Box>
+                <ButtonFooter href="/GetPKT" label="Claim PKT" color="#FFFFFF" margin={{ horizontal: "4vw" }} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+                <ButtonFooter href="https://pkt.cash/" target="_blank" align="center" label="Learn About PKT Cash" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+            </Footer>
+          ) : (responsive === 'medium') ? (
+            <Footer background="#222323" pad="large" align="center" justify="center" className="mainFooter">
+                <Box size="small" className="mainFooterLogo"><ImageFooter src={logoFooter} fit="contain" alt="react-logo" /></Box>
+                <ButtonFooter href="/GetPKT" label="Claim PKT" color="#FFFFFF" margin={{ horizontal: "4vw" }} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+                <ButtonFooter href="https://pkt.cash/" target="_blank" align="center" label="Learn About PKT Cash" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+            </Footer>
+          ) : (
+            <Footer background="#222323" pad="large" align="center" justify="center" className="mainFooter">
+                <Box size="small" className="mainFooterLogo"><ImageFooter src={logoFooter} fit="contain" alt="react-logo" /></Box>
+                <ButtonFooter href="/GetPKT" label="Claim PKT" color="#FFFFFF" margin={{ horizontal: "4vw" }} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+                <ButtonFooter href="https://pkt.cash/" target="_blank" align="center" label="Learn About PKT Cash" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+            </Footer>
+          )}
+      </ResponsiveContext.Consumer>
       <Box background={{ color: "#FBA300" }} pad="small" size="xxsmall" align="center" alignSelf="center"><Text textAlign="center" size="15px" color="#fff">Copyright © ODapp.io</Text></Box>
+      </Grommet>
     </div>
   );
 }

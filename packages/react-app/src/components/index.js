@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Button, Anchor, Header, Heading, Text } from "grommet";
-//import bkgnd from "../cool-background.png";
+import { deepMerge } from "grommet/utils";
 import defiBefore from "../img/home-discover-before.svg";
 
 export const themefont = {
@@ -18,6 +18,29 @@ export const themefontNav = {
     }
   }
 };
+
+export const customBreakpoints = deepMerge({
+  global: {
+    breakpoints: {
+      smallmob: {
+        value: 767
+      },
+      small: {
+        value: 992
+      },
+      tablet: {
+        value: 1170
+      },
+      medium: {
+        value: 1680
+      },
+      large: {}
+    },
+    font: {
+      family: "Tahoma",
+    }
+  }
+});
 
 export const StyledButton = styled(Button)`
   font-size: 29px;
@@ -45,7 +68,7 @@ export const StyledButton2 = styled(Button)`
     border:0;
     box-shadow:none;
   }
-  @media all and (max-width: 1580px) {
+  @media all and (max-width: 1680px) {
     font-size: 20px;
     line-height: 32px;
   }
@@ -192,7 +215,7 @@ export const DiscoverBefore = styled.div`
     background-size: cover;
     margin-top: 1px;
   }
-  @media all and (max-width: 1580px) {
+  @media all and (max-width: 1680px) {
     &:before {
       height: 25vw;
       top: -25vw;
@@ -212,13 +235,21 @@ export const HeadingDark = styled(Heading)`
   font-weight: bold;
   font-size: 64px;
   line-height: 77px;
-  @media all and (max-width: 1580px) {
+  @media all and (max-width: 1680px) {
     font-size: 48px;
     line-height: 58px;
   }
-  @media all and (max-width: 768px) {
+  @media all and (max-width: 1170px) {
+    font-size: 44px;
+    line-height: 52px;
+  }
+  @media all and (max-width: 992px) {
     font-size: 38px;
     line-height: 46px;
+  }
+  @media all and (max-width: 767px) {
+    font-size: 32px;
+    line-height: 40px;
   }
 `;  
 
@@ -228,13 +259,21 @@ export const HeadingLight = styled(Heading)`
   font-weight: bold;
   font-size: 64px;
   line-height: 77px;
-  @media all and (max-width: 1580px) {
+  @media all and (max-width: 1680px) {
     font-size: 48px;
     line-height: 58px;
   }
-  @media all and (max-width: 768px) {
+  @media all and (max-width: 1170px) {
+    font-size: 44px;
+    line-height: 52px;
+  }
+  @media all and (max-width: 992px) {
     font-size: 38px;
     line-height: 46px;
+  }
+  @media all and (max-width: 767px) {
+    font-size: 32px;
+    line-height: 40px;
   }
 `;  
 
@@ -244,7 +283,7 @@ font-size: 36px;
 line-height: 52px;
 color: #707070;
 font-family: "Poppins";
-@media all and (max-width: 1580px) {
+@media all and (max-width: 1680px) {
   font-size: 30px;
   line-height: 40px;
 }
@@ -259,13 +298,17 @@ font-size: 28px;
 line-height: 34px;
 color: #707070;
 font-family: "Tahoma";
-@media all and (max-width: 1580px) {
+@media all and (max-width: 1680px) {
   font-size: 20px;
   line-height: 30px;
 }
-@media all and (max-width: 768px) {
+@media all and (max-width: 1170px) {
   font-size: 18px;
   line-height: 26px;
+}
+@media all and (max-width: 767px) {
+  font-size: 16px;
+  line-height: 24px;
 }
 `;
 
@@ -277,7 +320,7 @@ color: #707070;
 font-family: "Tahoma";
 text-align: center;
 padding-top: 10px;
-@media all and (max-width: 1580px) {
+@media all and (max-width: 1680px) {
   font-size: 20px;
   line-height: 30px;
 }
@@ -293,11 +336,15 @@ line-height: 34px;
 font-family: "Tahoma";
 text-align: center;
 padding: 10px 0;
-@media all and (max-width: 1580px) {
+@media all and (max-width: 1680px) {
   font-size: 20px;
   line-height: 30px;
 }
-@media all and (max-width: 768px) {
+@media all and (max-width: 992px) {
+  font-size: 18px;
+  line-height: 20px;
+}
+@media all and (max-width: 767px) {
   font-size: 16px;
   line-height: 18px;
 }
@@ -318,62 +365,88 @@ max-width:475px;
 &:focus {
   box-shadow:none;
 }
-@media all and (max-width: 1580px) {
+@media all and (max-width: 1680px) {
   font-size: 22px;
   line-height: 24px;
   padding: 12px;
   max-width: 275px;
   width:auto;
 }
-@media all and (max-width: 768px) {
+@media all and (max-width: 1170px) {
+  min-width: 25vw;
+  width: auto;
+  padding: 18px 50px 15px;
+}
+@media all and (max-width: 992px) {
   font-size: 20px;
   line-height: 22px;
-  padding: 10px 10px 12px;
+  padding: 12px 10px 14px;
+  width: 100%;
+  max-width: 265px;
+}
+@media all and (max-width: 767px) {
+  font-size: 18px;
+  line-height: 24px;
+  padding: 10px 10px 11px;
   margin-left:auto;
   margin-right:auto;
   width: 100%;
-  max-width: 70vw;
+  max-width: 265px;
 }
   `;
 
 export const ButtonFooter = styled(Button)`
-  font-size: 24px;
-  line-height: 36px;
+  font-size: 28px;
+  line-height: 35px;
   border-radius: 50px;
   font-family: "Tahoma";
   color: #fff;
   border: 0;
   background: #FBA300;
   font-weight: 500;
-  padding: 12px 50px;
-  width: 25rem;
-  text-align:center;
+  padding: 21px 50px;
+  width: 30rem;
+  text-align: center;
   &:focus {
     box-shadow:none;
   }
-  @media all and (max-width: 1580px) {
+  @media all and (max-width: 1680px) {
     font-size: 22px;
     line-height: 24px;
+    width: 30vw;
     padding: 18px;
-    min-width: 20vw;
-    width: auto;
   }
-  @media all and (max-width: 768px) {
-    font-size: 20px;
-    line-height: 22px;
-    padding: 10px 10px 12px;
-    width: 70vw;
+  @media all and (max-width: 1170px) {
+    font-size: 22px;
+    line-height: 24px;
+    width: 28vw;
+    padding: 15px;
+  }
+  @media all and (max-width: 992px) {
+    font-size: 16px;
+    line-height: 18px;
+    width: 30vw;
+    padding: 15px 0;
+  }
+  @media all and (max-width: 767px) {
+    font-size: 18px;
+    line-height: 25px;
+    padding:10px;
+    width:100%;
     max-width:265px;
-    margin-top:40px;
   }
   `;
 
 export const ImageFooter = styled.img`
-  @media all and (max-width: 1580px) {
-    max-width:100px;
+  @media all and (max-width: 1680px) {
+    max-width: 125px;
+    margin-top: -5px;
   }
-  @media all and (max-width: 768px) {
-    max-width:150px;
+  @media all and (max-width: 992px) {
+    max-width: 100px;
+  }
+  @media all and (max-width: 767px) {
+    max-width:115px;
   }
 `;
 
@@ -402,17 +475,30 @@ export const ButtonRegular = styled(Button)`
     box-shadow:none;
     border-color:transparent;
   }
-  @media all and (max-width: 1580px) {
+  @media all and (max-width: 1680px) {
     font-size: 22px;
     line-height: 24px;
     padding: 18px;
     width: 20vw;
   }
-  @media all and (max-width: 768px) {
+  @media all and (max-width: 1170px) {
+    min-width: 25vw;
+    width: auto;
+    padding: 18px 50px 15px;
+  }
+  @media all and (max-width: 992px) {
     font-size: 20px;
     line-height: 22px;
-    padding: 10px 10px 12px;
-    width: 70vw;
+    padding: 12px 10px 14px;
+    width: 100%;
+    max-width: 265px;
+  }
+  @media all and (max-width: 767px) {
+    font-size: 18px;
+    line-height: 25px;
+    padding: 10px;
+    width: 100%;
+    max-width: 265px;
   }
 `;
 
@@ -436,17 +522,30 @@ export const ButtonRegularAlt = styled(Button)`
   &:focus {
     box-shadow:none;
   }
-  @media all and (max-width: 1580px) {
+  @media all and (max-width: 1680px) {
     font-size: 22px;
     line-height: 24px;
     padding: 18px;
     width: 20vw;
   }
-  @media all and (max-width: 768px) {
+  @media all and (max-width: 1170px) {
+    min-width: 25vw;
+    width: auto;
+    padding: 18px 50px 15px;
+  }
+  @media all and (max-width: 992px) {
     font-size: 20px;
     line-height: 22px;
-    padding: 10px 10px 12px;
-    width: 70vw;
+    padding: 12px 10px 14px;
+    width: 100%;
+    max-width: 265px;
+  }
+  @media all and (max-width: 767px) {
+    font-size: 18px;
+    line-height: 25px;
+    padding: 10px;
+    width: 100%;
+    max-width: 265px;
   }
 `;
 
@@ -456,9 +555,17 @@ export const HeadingDarkSmaller = styled(Heading)`
   font-weight: bold;
   font-size: 54px;
   line-height: 66px;
-  @media all and (max-width: 1580px) {
+  @media all and (max-width: 1680px) {
     font-size: 44px;
     line-height: 54px;
+  }
+  @media all and (max-width: 992px) {
+    font-size: 38px;
+    line-height: 46px;
+  }
+  @media all and (max-width: 767px) {
+    font-size: 32px;
+    line-height: 40px;
   }
 `;
 
@@ -483,7 +590,7 @@ overflow: auto;
   outline: none;
   border-radius: 90px;
 }
-@media all and (max-width: 1580px) {
+@media all and (max-width: 1680px) {
   font-size: 22px;
   line-height: 28px;
 }
@@ -515,13 +622,19 @@ export const ButtonForm = styled(Button)`
     box-shadow:none;
     border-color:transparent;
   }
-  @media all and (max-width: 1580px) {
+  @media all and (max-width: 1680px) {
     font-size: 20px;
     line-height: 22px;
     padding: 18px;
     max-width: 90%;
   }
-  @media all and (max-width: 768px) {
+  @media all and (max-width: 1170px) {
+    padding: 15px;
+  }
+  @media all and (max-width: 992px) {
+    
+  }
+  @media all and (max-width: 767px) {
     font-size: 18px;
     line-height: 20px;
     padding: 10px 10px 12px;
