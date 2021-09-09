@@ -11,10 +11,10 @@ function  Collapsible({btn}){
   
 
   const items = [
-    { label: 'Home', href: '/' },
-    { label: 'Get WPKT', href: 'PreCommit' },
-    { label: 'Get PKT', href: 'WPKTToPKT' },
-    { label: 'FAQs', href: 'FAQ' },
+    { label: 'Home', href: '/', className: 'menu_link' },
+    { label: 'Get WPKT', href: 'PreCommit', className: 'menu_link' },
+    { label: 'Get PKT', href: 'WPKTToPKT', className: 'menu_link' },
+    { label: 'FAQs', href: 'FAQ', className: 'menu_link' },
   ];
 
   const history = useHistory();
@@ -60,7 +60,7 @@ function  Collapsible({btn}){
           </Box>
           <Box align="center" gap="small">  
             <Menu className="drop_menu"
-              icon={<Menu2 color='#fff'/>}
+              icon={<Menu2 color='#fff' />}
               dropProps={{round: 'none', width: "100vw", color: "#fff", height: "100vh", className: "drop_menu_wrap"}} 
               dropAlign={{right: 'right', top: 'top'}} 
               size='large' margin='xsmall' items={items} justifyContent='center' />

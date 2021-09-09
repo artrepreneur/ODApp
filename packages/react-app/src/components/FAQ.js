@@ -143,6 +143,12 @@ var receiveWPKT = {
   backgroundPosition: 'left bottom',
   backgroundSize: '50%'
 }
+var receiveWPKTMobLand = {
+  backgroundImage: 'url(' + receive_wpkt_illustration + ')',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'left bottom',
+  backgroundSize: '60%'
+}
 
 var receiveWPKTMob = {
   backgroundImage: 'url(' + receive_wpkt_illustration + ')',
@@ -1344,7 +1350,7 @@ function FAQ() {
         </Box>
       ) : (responsive === 'small') ? (
         <Box>
-          <Card width="full" round="none" background="#222323" pad="50px 20px" style={receiveWPKTMob}>
+          <Card width="full" round="none" background="#222323" pad="50px 20px" style={receiveWPKTMobLand}>
               <Box justify="center" alignSelf="center" pad="0 3vw 0 40vw">
                 <HeadingLight textAlign="center" margin="0 0 35px 0" level="2">Why Didn't I Receive WPKT?</HeadingLight>
                 <Text textAlign="center" size="18px" color="#fff">If you didn't receive WPKT your transaction failed. This can happen for many reasons, but the solution in any case is inevitably the same. You simply need to perform the transaction again using your PKT transaction hash as proof of transaction (PoTx).</Text>

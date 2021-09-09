@@ -23,7 +23,7 @@ export const customBreakpoints = deepMerge({
   global: {
     breakpoints: {
       smallmob: {
-        value: 767
+        value: 480
       },
       small: {
         value: 992
@@ -247,7 +247,7 @@ export const HeadingDark = styled(Heading)`
     font-size: 38px;
     line-height: 46px;
   }
-  @media all and (max-width: 767px) {
+  @media all and (max-width:480px) {
     font-size: 32px;
     line-height: 40px;
   }
@@ -271,7 +271,7 @@ export const HeadingLight = styled(Heading)`
     font-size: 38px;
     line-height: 46px;
   }
-  @media all and (max-width: 767px) {
+  @media all and (max-width: 480px) {
     font-size: 32px;
     line-height: 40px;
   }
@@ -306,7 +306,7 @@ font-family: "Tahoma";
   font-size: 18px;
   line-height: 26px;
 }
-@media all and (max-width: 767px) {
+@media all and (max-width:992px) {
   font-size: 16px;
   line-height: 24px;
 }
@@ -344,7 +344,7 @@ padding: 10px 0;
   font-size: 18px;
   line-height: 20px;
 }
-@media all and (max-width: 767px) {
+@media all and (max-width: 480px) {
   font-size: 16px;
   line-height: 18px;
 }
@@ -384,7 +384,7 @@ max-width:475px;
   width: 100%;
   max-width: 265px;
 }
-@media all and (max-width: 767px) {
+@media all and (max-width: 480px) {
   font-size: 18px;
   line-height: 24px;
   padding: 10px 10px 11px;
@@ -428,7 +428,7 @@ export const ButtonFooter = styled(Button)`
     width: 30vw;
     padding: 15px 0;
   }
-  @media all and (max-width: 767px) {
+  @media all and (max-width: 480px) {
     font-size: 18px;
     line-height: 25px;
     padding:10px;
@@ -445,7 +445,7 @@ export const ImageFooter = styled.img`
   @media all and (max-width: 992px) {
     max-width: 100px;
   }
-  @media all and (max-width: 767px) {
+  @media all and (max-width: 480px) {
     max-width:115px;
   }
 `;
@@ -493,7 +493,7 @@ export const ButtonRegular = styled(Button)`
     width: 100%;
     max-width: 265px;
   }
-  @media all and (max-width: 767px) {
+  @media all and (max-width: 480px) {
     font-size: 18px;
     line-height: 25px;
     padding: 10px;
@@ -540,7 +540,7 @@ export const ButtonRegularAlt = styled(Button)`
     width: 100%;
     max-width: 265px;
   }
-  @media all and (max-width: 767px) {
+  @media all and (max-width: 480px) {
     font-size: 18px;
     line-height: 25px;
     padding: 10px;
@@ -563,7 +563,7 @@ export const HeadingDarkSmaller = styled(Heading)`
     font-size: 38px;
     line-height: 46px;
   }
-  @media all and (max-width: 767px) {
+  @media all and (max-width: 480px) {
     font-size: 32px;
     line-height: 40px;
   }
@@ -634,7 +634,7 @@ export const ButtonForm = styled(Button)`
   @media all and (max-width: 992px) {
     
   }
-  @media all and (max-width: 767px) {
+  @media all and (max-width: 480px) {
     font-size: 18px;
     line-height: 20px;
     padding: 10px 10px 12px;

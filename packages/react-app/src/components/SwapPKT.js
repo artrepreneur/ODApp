@@ -437,10 +437,10 @@ function SwapPKT() {//{wpkt}
                                 </Form>
                                 <div style={{paddingTop: '2%'}}>
                                     <Box hidden id="outputCard" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white', padding:'0%'}}>
-                                        <div hidden align="center" id="output" style={{padding:'2%'}}>
+                                        <div hidden align="center" id="output" style={{padding:'2%', wordBreak: "break-word"}}>
                                         </div>
-                                        <div id="spin" hidden pad="medium" style={{padding:'2%'}}><Spinner size="medium" /></div>  
-                                        <div hidden align="center" id="addToken" style={{padding:'2%'}}>
+                                        <div id="spin" hidden pad="medium" style={{padding:'2%', wordBreak: "break-word"}}><Spinner size="medium" /></div>  
+                                        <div hidden align="center" id="addToken" style={{padding:'2%', wordBreak: "break-word"}}>
                                             <StyledButton size='large' color='#F0B90C' label='Add Token To Wallet' id='addToken' onClick={() => addWPKT()}/> 
                                         </div> 
                                     </Box>
@@ -480,10 +480,10 @@ function SwapPKT() {//{wpkt}
                                 </Form>
                                 <div style={{paddingTop: '2%'}}>
                                     <Box hidden id="outputCard" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white', padding:'0%'}}>
-                                        <div hidden align="center" id="output" style={{padding:'2%'}}>
+                                        <div hidden align="center" id="output" style={{padding:'2%', wordBreak: "break-word"}}>
                                         </div>
-                                        <div id="spin" hidden pad="medium" style={{padding:'2%'}}><Spinner size="medium" /></div>  
-                                        <div hidden align="center" id="addToken" style={{padding:'2%'}}>
+                                        <div id="spin" hidden pad="medium" style={{padding:'2%', wordBreak: "break-word"}}><Spinner size="medium" /></div>  
+                                        <div hidden align="center" id="addToken" style={{padding:'2%', wordBreak: "break-word"}}>
                                             <StyledButton size='large' color='#F0B90C' label='Add Token To Wallet' id='addToken' onClick={() => addWPKT()}/> 
                                         </div> 
                                     </Box>
@@ -524,10 +524,10 @@ function SwapPKT() {//{wpkt}
                                 </Form>
                                 <div style={{paddingTop: '2%'}}>
                                     <Box hidden id="outputCard" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white', padding:'0%'}}>
-                                        <div hidden align="center" id="output" style={{padding:'2%'}}>
+                                        <div hidden align="center" id="output" style={{padding:'2%', wordBreak: "break-word"}}>
                                         </div>
-                                        <div id="spin" hidden pad="medium" style={{padding:'2%'}}><Spinner size="medium" /></div>  
-                                        <div hidden align="center" id="addToken" style={{padding:'2%'}}>
+                                        <div id="spin" hidden pad="medium" style={{padding:'2%', wordBreak: "break-word"}}><Spinner size="medium" /></div>  
+                                        <div hidden align="center" id="addToken" style={{padding:'2%', wordBreak: "break-word"}}>
                                             <StyledButton size='large' color='#F0B90C' label='Add Token To Wallet' id='addToken' onClick={() => addWPKT()}/> 
                                         </div> 
                                     </Box>

@@ -231,12 +231,12 @@ function GetPKT() {
                                 <ButtonForm hoverIndicator={{background: "#222323", boxShadow: "0"}} margin={{top: "35px", horizontal: "auto"}} type="submit" label="Submit"/>
                             </Box>
                             </Form>
-                            <div hidden id="outputCard2" style={{paddingTop: '2%'}}>
+                            <div hidden id="outputCard2" style={{paddingTop: '2%', wordBreak: "break-word"}}>
                               <Box id="outputCard2" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white', padding:'0%'}}>
-                                  <div hidden align="center" id="output2" style={{padding:'2%'}}>
+                                  <div hidden align="center" id="output2" style={{padding:'2%', wordBreak: "break-word"}}>
                                   </div>  
-                                  <div id="spin" pad="medium" style={{padding:'2%'}}><Spinner size="medium" /></div>
-                                  <div hidden align="center" id="recPKT" style={{padding:'2%'}}>
+                                  <div id="spin" pad="medium" style={{padding:'2%', wordBreak: "break-word"}}><Spinner size="medium" /></div>
+                                  <div hidden align="center" id="recPKT" style={{padding:'2%', wordBreak: "break-word"}}>
                                       <ButtonForm size='large' color='#F0B90C' label='Receive PKT' id='recPKT' onClick={navigateTo()}/> 
                                   </div> 
                               </Box>
@@ -282,12 +282,12 @@ function GetPKT() {
                                 <ButtonForm hoverIndicator={{background: "#222323", boxShadow: "0"}} margin={{top: "35px", horizontal: "auto"}} type="submit" label="Submit"/>
                             </Box>
                             </Form>
-                            <div hidden id="outputCard2" style={{paddingTop: '2%'}}>
+                            <div hidden id="outputCard2" style={{paddingTop: '2%', wordBreak: "break-word"}}>
                               <Box id="outputCard2" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white', padding:'0%'}}>
-                                  <div hidden align="center" id="output2" style={{padding:'2%'}}>
+                                  <div hidden align="center" id="output2" style={{padding:'2%', wordBreak: "break-word"}}>
                                   </div>  
-                                  <div id="spin" pad="medium" style={{padding:'2%'}}><Spinner size="medium" /></div>
-                                  <div hidden align="center" id="recPKT" style={{padding:'2%'}}>
+                                  <div id="spin" pad="medium" style={{padding:'2%', wordBreak: "break-word"}}><Spinner size="medium" /></div>
+                                  <div hidden align="center" id="recPKT" style={{padding:'2%', wordBreak: "break-word"}}>
                                       <ButtonForm size='large' color='#F0B90C' label='Receive PKT' id='recPKT' onClick={navigateTo()}/> 
                                   </div> 
                               </Box>
@@ -333,12 +333,12 @@ function GetPKT() {
                                 <ButtonForm hoverIndicator={{background: "#222323", boxShadow: "0"}} margin={{top: "50px", horizontal: "auto"}} type="submit" label="Submit"/>
                             </Box>
                             </Form>
-                            <div hidden id="outputCard2" style={{paddingTop: '2%'}}>
+                            <div hidden id="outputCard2" style={{paddingTop: '2%', wordBreak: "break-word"}}>
                               <Box id="outputCard2" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white', padding:'0%'}}>
-                                  <div hidden align="center" id="output2" style={{padding:'2%'}}>
+                                  <div hidden align="center" id="output2" style={{padding:'2%', wordBreak: "break-word"}}>
                                   </div>  
-                                  <div id="spin" pad="medium" style={{padding:'2%'}}><Spinner size="medium" /></div>
-                                  <div hidden align="center" id="recPKT" style={{padding:'2%'}}>
+                                  <div id="spin" pad="medium" style={{padding:'2%', wordBreak: "break-word"}}><Spinner size="medium" /></div>
+                                  <div hidden align="center" id="recPKT" style={{padding:'2%', wordBreak: "break-word"}}>
                                       <ButtonForm size='large' color='#F0B90C' label='Receive PKT' id='recPKT' onClick={navigateTo()}/> 
                                   </div> 
                               </Box>

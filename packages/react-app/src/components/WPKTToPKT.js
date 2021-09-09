@@ -303,8 +303,8 @@ function WPKTToPKT() {
                     </Form>
                     <div hidden id="div1" style={{paddingTop: '2%'}}>
                       <Box id="box1" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white',  padding:'0%'}}>
-                          <div hidden align="center" id="output1" style={{padding:'2%', wordBreak: "break-all"}}></div>  
-                          <div hidden align="center" id="recPKT" style={{padding:'2%', wordBreak: "break-all"}}>
+                          <div hidden align="center" id="output1" style={{padding:'2%', wordBreak: "break-word"}}></div>  
+                          <div hidden align="center" id="recPKT" style={{padding:'2%', wordBreak: "break-word"}}>
                               <ButtonForm size='large' color='#F0B90C' label='Claim PKT' onClick={() => getPKT()}/>
                           </div> 
                           <div id="spin" pad="medium" style={{padding:'2%'}}><Spinner size="medium" /></div>
@@ -344,8 +344,8 @@ function WPKTToPKT() {
                     </Form>
                     <div hidden id="div1" style={{paddingTop: '2%'}}>
                       <Box id="box1" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white',  padding:'0%'}}>
-                          <div hidden align="center" id="output1" style={{padding:'2%', wordBreak: "break-all"}}></div>  
-                          <div hidden align="center" id="recPKT" style={{padding:'2%', wordBreak: "break-all"}}>
+                          <div hidden align="center" id="output1" style={{padding:'2%', wordBreak: "break-word"}}></div>  
+                          <div hidden align="center" id="recPKT" style={{padding:'2%', wordBreak: "break-word"}}>
                               <ButtonForm size='large' color='#F0B90C' label='Claim PKT' onClick={() => getPKT()}/>
                           </div> 
                           <div id="spin" pad="medium" style={{padding:'2%'}}><Spinner size="medium" /></div>
@@ -385,8 +385,8 @@ function WPKTToPKT() {
                     </Form>
                     <div hidden id="div1" style={{paddingTop: '2%'}}>
                       <Box id="box1" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white',  padding:'0%'}}>
-                          <div hidden align="center" id="output1" style={{padding:'2%', wordBreak: "break-all"}}></div>  
-                          <div hidden align="center" id="recPKT" style={{padding:'2%', wordBreak: "break-all"}}>
+                          <div hidden align="center" id="output1" style={{padding:'2%', wordBreak: "break-word"}}></div>  
+                          <div hidden align="center" id="recPKT" style={{padding:'2%', wordBreak: "break-word"}}>
                               <ButtonForm size='large' color='#F0B90C' label='Claim PKT' onClick={() => getPKT()}/>
                           </div> 
                           <div id="spin" pad="medium" style={{padding:'2%'}}><Spinner size="medium" /></div>
@@ -439,8 +439,8 @@ function WPKTToPKT() {
                     </Form>
                     <div hidden id="div1" style={{paddingTop: '2%'}}>
                       <Box id="box1" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white',  padding:'0%'}}>
-                          <div hidden align="center" id="output1" style={{padding:'2%', wordBreak: "break-all"}}></div>  
-                          <div hidden align="center" id="recPKT" style={{padding:'2%', wordBreak: "break-all"}}>
+                          <div hidden align="center" id="output1" style={{padding:'2%', wordBreak: "break-word"}}></div>  
+                          <div hidden align="center" id="recPKT" style={{padding:'2%', wordBreak: "break-word"}}>
                               <ButtonForm size='large' color='#F0B90C' label='Claim PKT' onClick={() => getPKT()}/>
                           </div> 
                           <div id="spin" pad="medium" style={{padding:'2%'}}><Spinner size="medium" /></div>
@@ -494,8 +494,8 @@ function WPKTToPKT() {
                     </Form>
                     <div hidden id="div1" style={{paddingTop: '2%'}}>
                       <Box id="box1" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white',  padding:'0%'}}>
-                          <div hidden align="center" id="output1" style={{padding:'2%', wordBreak: "break-all"}}></div>  
-                          <div hidden align="center" id="recPKT" style={{padding:'2%', wordBreak: "break-all"}}>
+                          <div hidden align="center" id="output1" style={{padding:'2%', wordBreak: "break-word"}}></div>  
+                          <div hidden align="center" id="recPKT" style={{padding:'2%', wordBreak: "break-word"}}>
                               <ButtonForm size='large' color='#F0B90C' label='Claim PKT' onClick={() => getPKT()}/>
                           </div> 
                           <div id="spin" pad="medium" style={{padding:'2%'}}><Spinner size="medium" /></div>
