@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Form, Box, Card, Text, CardBody, TextInput, Spinner, FormField, CardHeader, Grid } from "grommet";
+import { Form, Box, Card, Text, CardBody, TextInput, Spinner, FormField, CardHeader } from "grommet";
 import { BodyCenteredAlt, StyledButton } from ".";
 import { useHistory } from "react-router-dom";
 
@@ -27,6 +27,7 @@ async function handleInput(e){
 
      // Check that bridge has pkt.
     var chkCmd = "https://obeah.odapp.io/api/v1/commitAddresses/pktSenderAddress/"+pktAddr+"/ethRecipientAddress/"+wpktAddr+"/";
+    //var chkCmd = "https://obeahdev.odapp.io/api/v1/commitAddresses/pktSenderAddress/"+pktAddr+"/ethRecipientAddress/"+wpktAddr+"/";
     //var chkCmd = "http://localhost:5000/api/v1/commitAddresses/pktSenderAddress/"+pktAddr+"/ethRecipientAddress/"+wpktAddr+"/";
     dv.style.display= 'block';
     dv1.style.display= 'block';
