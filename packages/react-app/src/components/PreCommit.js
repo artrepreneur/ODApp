@@ -215,7 +215,7 @@ function PreCommit() {
                         gap="none"
                         background="#fff"
                         >
-                        <Box gridArea="left" background="#fff" justify="center" alignSelf="center">
+                        <Box gridArea="left" background="#fff" justify="center" alignSelf="start">
                             <HeadingDark textAlign="start" margin={{ bottom: "35px", top: "0" }} weight="bold" color="#222323" level="2">Swap PKT to WPKT</HeadingDark>
                             <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>To convert your PKT to WPKT you will first need to complete a pre-commit process by entering your PKT sender address and your intended WPKT recipient address. Once the pre-commit is complete, you will have a unique address pair. You can re-use your unique address pair in the ODApp bridge as many times as you want, or create another unique pair in the future.</StyledTextDark>
                         </Box>
@@ -265,7 +265,7 @@ function PreCommit() {
                         gap="none"
                         background="#fff"
                         >
-                        <Box gridArea="left" background="#fff" height={{ min: "85vh" }} justify="center" alignSelf="center">
+                        <Box gridArea="left" background="#fff" height={{ min: "85vh" }} justify="center" alignSelf="start">
                             <HeadingDark textAlign="start" margin={{ bottom: "50px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Swap PKT to WPKT</HeadingDark>
                             <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>To convert your PKT to WPKT you will first need to complete a pre-commit process by entering your PKT sender address and your intended WPKT recipient address. Once the pre-commit is complete, you will have a unique address pair. You can re-use your unique address pair in the ODApp bridge as many times as you want, or create another unique pair in the future.</StyledTextDark>
                         </Box>

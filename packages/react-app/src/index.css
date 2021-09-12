@@ -1,4 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;0,600;0,700;1,400;1,600&display=swap');
+@font-face {
+  font-family: 'Tahoma';
+  src: url('./components/font/Tahoma.eot');
+  src: url('./components/font/Tahoma.eot?#iefix') format('embedded-opentype'),
+      url('./components/font/Tahoma.woff2') format('woff2'),
+      url('./components/font/Tahoma.woff') format('woff'),
+      url('./components/font/Tahoma-Regular.ttf')  format('truetype'),
+      url('./components/font/Tahoma.svg#Tahoma') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Tahoma';
+  src: url('./components/font/Tahoma-Bold.eot');
+  src: url('./components/font/Tahoma-Bold.eot?#iefix') format('embedded-opentype'),
+      url('./components/font/Tahoma-Bold.woff2') format('woff2'),
+      url('./components/font/Tahoma-Bold.woff') format('woff'),
+      url('./components/font/Tahoma-Bold.ttf')  format('truetype'),
+      url('./components/font/Tahoma-Bold.svg#Tahoma-Bold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
 
 body {
   margin: 0;

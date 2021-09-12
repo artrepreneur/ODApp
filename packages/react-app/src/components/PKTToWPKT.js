@@ -143,7 +143,7 @@ function PKTToWPKT() {
                       gap="none"
                       background="#fff"
                       >
-                      <Box gridArea="left" background="#fff" justify="center" alignSelf="center">
+                      <Box gridArea="left" background="#fff" justify="center" alignSelf="start">
                           <HeadingDark textAlign="start" margin={{ bottom: "50px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Get WPKT</HeadingDark>
                           <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>To convert your PKT to WPKT you will first need to send your PKT to ODApp's "VAULT" address, seen below, using the PKT wallet of your choice. Be sure to save your transaction ID, which is provided by your wallet, as proof of your transaction. You will need this transaction ID to get your PKT onto BSC's chain.</StyledTextDark>
                       </Box>
@@ -177,7 +177,7 @@ function PKTToWPKT() {
                       gap="none"
                       background="#fff"
                       >
-                      <Box gridArea="left" background="#fff" height={{ min: "85vh" }} justify="center" alignSelf="center">
+                      <Box gridArea="left" background="#fff" height={{ min: "85vh" }} justify="center" alignSelf="start">
                           <HeadingDark textAlign="start" margin={{ bottom: "50px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Get WPKT</HeadingDark>
                           <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>To convert your PKT to WPKT you will first need to send your PKT to ODApp's "VAULT" address, seen below, using the PKT wallet of your choice. Be sure to save your transaction ID, which is provided by your wallet, as proof of your transaction. You will need this transaction ID to get your PKT onto BSC's chain.</StyledTextDark>
                       </Box>

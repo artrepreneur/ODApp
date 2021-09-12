@@ -365,7 +365,7 @@ function WPKTToPKT() {
         <Box background="#fff">
         <Card width="full" round="none" background="#fff" pad="75px 50px 100px">
               <CardBody> 
-                <Box background="#fff" justify="center" alignSelf="center">
+                <Box background="#fff" justify="center" alignSelf="start">
                     <HeadingDark textAlign="center" margin={{ bottom: "35px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Swap WPKT to PKT</HeadingDark>
                     <StyledTextDark textAlign="center">To convert your WPKT to PKT enter the amount of WPKT you wish to convert, and the PKT address that will receive the PKT. Be sure to enter a valid PKT address and not Binance Smart Chain address.</StyledTextDark>
                 </Box>
@@ -419,7 +419,7 @@ function WPKTToPKT() {
                 gap="none"
                 background="#fff"
                 >
-                <Box gridArea="left" background="#fff" justify="center" alignSelf="center">
+                <Box gridArea="left" background="#fff" justify="center" alignSelf="start">
                     <HeadingDark textAlign="start" margin={{ bottom: "50px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Swap WPKT to PKT</HeadingDark>
                     <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>To convert your WPKT to PKT enter the amount of WPKT you wish to convert, and the PKT address that will receive the PKT. Be sure to enter a valid PKT address and not Binance Smart Chain address.</StyledTextDark>
                 </Box>
@@ -474,7 +474,7 @@ function WPKTToPKT() {
                 gap="none"
                 background="#fff"
                 >
-                <Box gridArea="left" background="#fff" height={{ min: "85vh" }} justify="center" alignSelf="center">
+                <Box gridArea="left" background="#fff" height={{ min: "85vh" }} justify="center" alignSelf="start">
                     <HeadingDark textAlign="start" margin={{ bottom: "50px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Swap WPKT to PKT</HeadingDark>
                     <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>To convert your WPKT to PKT enter the amount of WPKT you wish to convert, and the PKT address that will receive the PKT. Be sure to enter a valid PKT address and not Binance Smart Chain address.</StyledTextDark>
                 </Box>

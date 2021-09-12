@@ -344,7 +344,7 @@ function SwapPKT() {//{wpkt}
                                 <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="18px" margin={{ bottom: "35px", top: "0" }}  textAlign="center">Enter PKT Transaction ID and ETH Address: </Heading>
                                 <Box justify="center" alignSelf="center">
                                     <FormField name="PktTID" required contentProps={{ border: false, margin: "0" }}>
-                                        <TextInput style={{background: 'white', color: '#222323', fontSize: "18px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="PktTID" placeholder={<Text weight="normal" size="18px" color="#707070">Enter Amount of WPKT to Convert</Text>} />
+                                        <TextInput style={{background: 'white', color: '#222323', fontSize: "18px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="PktTID" placeholder={<Text weight="normal" size="18px" color="#707070">Enter PKT Transaction ID</Text>} />
                                     </FormField>
                                     <FormField name="PktSenderAddr" required contentProps={{ border: false, margin: "20px 0 0" }}>
                                         <TextInput style={{background: 'white', color: '#222323', fontSize: "18px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="PktSenderAddr" placeholder={<Text weight="normal" size="18px" color="#707070">Enter PKT Recipient Address</Text>} />
@@ -384,7 +384,7 @@ function SwapPKT() {//{wpkt}
                                 <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="18px" margin={{ bottom: "35px", top: "0" }}  textAlign="center">Enter PKT Transaction ID and ETH Address: </Heading>
                                 <Box justify="center" alignSelf="center">
                                     <FormField name="PktTID" required contentProps={{ border: false, margin: "0" }}>
-                                        <TextInput style={{background: 'white', color: '#222323', fontSize: "18px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="PktTID" placeholder={<Text weight="normal" size="18px" color="#707070">Enter Amount of WPKT to Convert</Text>} />
+                                        <TextInput style={{background: 'white', color: '#222323', fontSize: "18px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="PktTID" placeholder={<Text weight="normal" size="18px" color="#707070">Enter PKT Transaction ID</Text>} />
                                     </FormField>
                                     <FormField name="PktSenderAddr" required contentProps={{ border: false, margin: "20px 0 0" }}>
                                         <TextInput style={{background: 'white', color: '#222323', fontSize: "18px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="PktSenderAddr" placeholder={<Text weight="normal" size="18px" color="#707070">Enter PKT Recipient Address</Text>} />
@@ -424,7 +424,7 @@ function SwapPKT() {//{wpkt}
                                 <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="18px" margin={{ bottom: "35px", top: "0" }}  textAlign="center">Enter PKT Transaction ID and ETH Address: </Heading>
                                 <Box justify="center" alignSelf="center">
                                     <FormField name="PktTID" required contentProps={{ border: false, margin: "0" }}>
-                                        <TextInput style={{background: 'white', color: '#222323', fontSize: "18px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="PktTID" placeholder={<Text weight="normal" size="18px" color="#707070">Enter Amount of WPKT to Convert</Text>} />
+                                        <TextInput style={{background: 'white', color: '#222323', fontSize: "18px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="PktTID" placeholder={<Text weight="normal" size="18px" color="#707070">Enter PKT Transaction ID</Text>} />
                                     </FormField>
                                     <FormField name="PktSenderAddr" required contentProps={{ border: false, margin: "20px 0 0" }}>
                                         <TextInput style={{background: 'white', color: '#222323', fontSize: "18px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="PktSenderAddr" placeholder={<Text weight="normal" size="18px" color="#707070">Enter PKT Recipient Address</Text>} />
@@ -457,7 +457,7 @@ function SwapPKT() {//{wpkt}
                         <Grid fill areas={[ { name: 'left', start: [0, 0], end: [0, 0] }, { name: 'right', start: [1, 0], end: [1, 0] },]}
                             columns={['1/2', 'flex']} alignContent="center" justifyContent="between" rows={['flex']} gap="none"
                             background="#fff">
-                            <Box gridArea="left" background="#fff" justify="center" alignSelf="center">
+                            <Box gridArea="left" background="#fff" justify="center" alignSelf="start">
                                 <HeadingDark textAlign="start" margin={{ bottom: "50px", top: "0", horizontal: "0" }} size="4xl" weight="bold" color="#222323" level="2">Swap PKT to WPKT</HeadingDark>
                                 <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>To convert your PKT to WPKT you will first need to complete a pre-commit process by entering your PKT sender address and your intended WPKT recipient address. Once the pre-commit is complete, you will have a unique address pair. You can re-use your unique address pair in the ODApp bridge as many times as you want, or create another unique pair in the future.</StyledTextDark>
                             </Box>
@@ -467,7 +467,7 @@ function SwapPKT() {//{wpkt}
                                 <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="20px" margin={{ bottom: "35px", top: "0" }}  textAlign="center">Enter PKT Transaction ID and ETH Address: </Heading>
                                 <Box justify="center" alignSelf="center">
                                     <FormField name="PktTID" required contentProps={{ border: false, margin: "0" }}>
-                                        <TextInput style={{background: 'white', color: '#222323', fontSize: "20px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="PktTID" placeholder={<Text weight="normal" size="20px" color="#707070">Enter Amount of WPKT to Convert</Text>} />
+                                        <TextInput style={{background: 'white', color: '#222323', fontSize: "20px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="PktTID" placeholder={<Text weight="normal" size="20px" color="#707070">Enter PKT Transaction ID</Text>} />
                                     </FormField>
                                     <FormField name="PktSenderAddr" required contentProps={{ border: false, margin: "20px 0 0" }}>
                                         <TextInput style={{background: 'white', color: '#222323', fontSize: "20px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="PktSenderAddr" placeholder={<Text weight="normal" size="20px" color="#707070">Enter PKT Recipient Address</Text>} />
@@ -501,7 +501,7 @@ function SwapPKT() {//{wpkt}
                         <Grid fill areas={[ { name: 'left', start: [0, 0], end: [0, 0] }, { name: 'right', start: [1, 0], end: [1, 0] },]}
                             columns={['1/2', 'flex']} alignContent="center" justifyContent="between" rows={['flex']} gap="none"
                             background="#fff">
-                            <Box gridArea="left" background="#fff" height={{ min: "85vh" }} justify="center" alignSelf="center">
+                            <Box gridArea="left" background="#fff" height={{ min: "85vh" }} justify="center" alignSelf="start">
                                 <HeadingDark textAlign="start" margin={{ bottom: "50px", top: "0", horizontal: "0" }} size="4xl" weight="bold" color="#222323" level="2">Swap PKT to WPKT</HeadingDark>
                                 <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>To convert your PKT to WPKT you will first need to complete a pre-commit process by entering your PKT sender address and your intended WPKT recipient address. Once the pre-commit is complete, you will have a unique address pair. You can re-use your unique address pair in the ODApp bridge as many times as you want, or create another unique pair in the future.</StyledTextDark>
                             </Box>
@@ -511,7 +511,7 @@ function SwapPKT() {//{wpkt}
                                 <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="24px" margin={{ bottom: "50px", top: "0" }}  textAlign="center">Enter PKT Transaction ID and ETH Address: </Heading>
                                 <Box justify="center" alignSelf="center">
                                     <FormField name="PktTID" required contentProps={{ border: false, margin: "0" }}>
-                                        <TextInput style={{background: 'white', color: '#222323', fontSize: "24px", fontWeight: "normal", borderRadius: "6px", height: "60px" }} name="PktTID" placeholder={<Text weight="normal" size="24px" color="#707070">Enter Amount of WPKT to Convert</Text>} />
+                                        <TextInput style={{background: 'white', color: '#222323', fontSize: "24px", fontWeight: "normal", borderRadius: "6px", height: "60px" }} name="PktTID" placeholder={<Text weight="normal" size="24px" color="#707070">Enter PKT Transaction ID</Text>} />
                                     </FormField>
                                     <FormField name="PktSenderAddr" required contentProps={{ border: false, margin: "20px 0 0" }}>
                                         <TextInput style={{background: 'white', color: '#222323', fontSize: "24px", fontWeight: "normal", borderRadius: "6px", height: "60px" }} name="PktSenderAddr" placeholder={<Text weight="normal" size="24px" color="#707070">Enter PKT Recipient Address</Text>} />
