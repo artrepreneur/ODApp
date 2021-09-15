@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardBody, Box, Text, Grid, ResponsiveContext, Image, Grommet, Heading } from "grommet";
+import { Card, CardBody, Box, Text, Grid, ResponsiveContext, Image, Grommet, Heading, Anchor } from "grommet";
 import banner_bg from "../img/main-page/top-banner.png";
 import mm_logo from "../img/metamask-illustration.svg";
 import iw_logo from "../img/introducing-WPKT-logo.png";
@@ -11,7 +11,7 @@ import icon_defi from "../img/home_services/icon_defi.svg";
 import icon_arbitrage from "../img/home_services/icon_arbitrage.svg";
 import defi from "../img/defi-illustration.svg";
 import defi_mobile from "../img/defi-illustration-mobile.svg";
-import logo_01 from "../img/support/pktpal.svg";
+import logo_01 from "../img/support/pktpal.png";
 import logo_02 from "../img/support/binance.svg";
 import logo_03 from "../img/support/pancake-swap.svg";
 import logo_04 from "../img/support/anode.svg";
@@ -176,20 +176,26 @@ function Home( {btn} ) {
         <Box direction="row" justify="center" align="center" height="92vh" pad="0" round="none" style={bannerStyle} className="top_banner_home_small">
           <Box pad="medium" justify="center">
             <Heading color="#ffffff" textAlign="center" size="48px" weight="bold" level="1" margin={{top: "-50px"}}>The PKT<br />Cash Bridge<br />To WPKT</Heading>
+            <Text textAlign="center" size="18px" weight="bold" color="#ffffff">WPKT Contract Address</Text>
+            <Anchor href="https://pancakeswap.finance/info/token/0x1c25222994531c4ac35e4d94bbf7552c9aa92e32" target="_blank" weight="bold" color="#FBA300" style={{textAlign: "center", paddingBottom: '25px',paddingTop: '10px', fontSize: "3.35vw"}} label="0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" />
             <Fade bottom><p align="center" style={{ position: "absolute", bottom: "70px", left: "0", right: "0" }}>{btn}</p></Fade>
           </Box>   
         </Box>
       ) : (responsive === 'small') ? (
-        <Box direction="row" justify="center" align="center" pad="15vw" round="none" style={bannerStyle} className="top_banner_home_small">
+        <Box direction="row" justify="center" align="center" pad="15vw 10vw" round="none" style={bannerStyle} className="top_banner_home_small">
           <Box pad="medium" justify="center">
             <Heading color="#ffffff" textAlign="center" size="38px" weight="bold" level="1">The PKT Cash Bridge<br />To WPKT</Heading>
-            <Fade bottom><p align="center" style={{ marginTop: "35px" }}>{btn}</p></Fade>
+            <Text textAlign="center" size="22px" weight="bold" color="#ffffff">WPKT Contract Address</Text>
+            <Anchor href="https://pancakeswap.finance/info/token/0x1c25222994531c4ac35e4d94bbf7552c9aa92e32" target="_blank" weight="bold" color="#FBA300" style={{textAlign: "center", paddingBottom: '35px',paddingTop: '10px', fontSize: "16px"}} label="0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" />
+            <Fade bottom><p align="center">{btn}</p></Fade>
           </Box>   
         </Box>
       ) : (responsive === 'tablet') ? (
         <Box direction="row" justify="around" align="center" height="65vw" pad="0" round="none" style={bannerStyle} className="top_banner_home_small">
           <Box pad="medium" justify="center">
             <Heading color="#ffffff" textAlign="center" size="48px" weight="bold" level="1">The PKT Cash Bridge<br />To WPKT</Heading>
+            <Text textAlign="center" size="22px" weight="bold" color="#ffffff">WPKT Contract Address</Text>
+            <Anchor href="https://pancakeswap.finance/info/token/0x1c25222994531c4ac35e4d94bbf7552c9aa92e32" target="_blank" weight="bold" color="#FBA300" style={{textAlign: "center", paddingBottom: '35px',paddingTop: '10px', fontSize: "18px"}} label="0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" />
             <Fade bottom><p align="center" margin={{ top: "35px" }}>{btn}</p></Fade>
           </Box>   
         </Box>
@@ -197,6 +203,8 @@ function Home( {btn} ) {
         <Box direction="row" justify="center" align="center" height="85vh" pad="0" round="none" style={bannerStyle} className="top_banner_home_medium">
           <Box pad="medium" justify="center">
             <Heading color="#ffffff" textAlign="center" size="4vw" weight="bold" level="1">The PKT Cash Bridge<br />To WPKT</Heading>
+            <Text textAlign="center" size="24px" weight="bold" color="#ffffff">WPKT Contract Address</Text>
+            <Anchor href="https://pancakeswap.finance/info/token/0x1c25222994531c4ac35e4d94bbf7552c9aa92e32" target="_blank" weight="bold" color="#FBA300" style={{textAlign: "center", paddingBottom: '50px',paddingTop: '10px', fontSize: "22px"}} label="0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" />
             <Fade bottom><p align="center" style={{ margin: "0" }}>{btn}</p></Fade>
           </Box>   
         </Box>
@@ -204,6 +212,8 @@ function Home( {btn} ) {
         <Box direction="row" justify="center" align="center" height="90vh" pad="0" round="none" style={bannerStyle}>
           <Box pad="medium" justify="center">
             <Heading color="#ffffff" textAlign="center" size="4.7vw" weight="bold" level="1">The PKT Cash Bridge<br />To WPKT</Heading>
+            <Text textAlign="center" size="28px" weight="bold" color="#ffffff">WPKT Contract Address</Text>
+            <Anchor href="https://pancakeswap.finance/info/token/0x1c25222994531c4ac35e4d94bbf7552c9aa92e32" target="_blank" weight="bold" color="#FBA300" style={{ textAlign: "center", paddingBottom: '50px',paddingTop: '20px', fontSize: "26px"}} label="0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" />
             <Fade bottom><p align="center" style={{ position: "absolute", top: "37vw", left: "0", right: "0" }}>{btn}</p></Fade>
           </Box>   
         </Box>
