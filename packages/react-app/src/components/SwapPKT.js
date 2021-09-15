@@ -67,6 +67,7 @@ async function addWPKT(){
     }
 }
 
+
 async function handleInput(e){
     var payoutPromiseDone = false;
 
@@ -113,7 +114,6 @@ async function handleInput(e){
         return;
     }
 
-
     // For Gas estimates
     /*await WPKT.estimateGas.mint(ethAddr, Web3.utils.toWei('100000'))
     .then(async function(gasAmount){
@@ -128,7 +128,6 @@ async function handleInput(e){
     dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Checking PKT Chain</h6>";
     dv.style.display= 'block';
     dv3.style.display= 'none';
-
 
     fetch(cmd)
     .then((response) => response.json())
@@ -323,6 +322,8 @@ async function handleInput(e){
         dv1.style.display= 'none';
         return;
     });
+    //window.scrollTo(0,document.body.scrollHeight);
+
 }
 
 
@@ -484,8 +485,8 @@ function SwapPKT() {//{wpkt}
                                     <Box hidden id="outputCard" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white', padding:'0%'}}>
                                         <div hidden align="center" id="output" style={{padding:'2%', wordBreak: "break-word"}}>
                                         </div>
-                                        <div id="spin" align="center" hidden pad="medium" style={{padding:'2%', wordBreak: "break-word"}}><Spinner size="large" /></div>
-                                        <div hidden align="center" id="addToken" pad="medium" style={{padding:'2%', wordBreak: "break-word"}}>
+                                        <div id="spin" align="center" height="100%" hidden pad="medium" style={{padding:'2%', wordBreak: "break-word"}}><Spinner size="large" /></div>
+                                        <div hidden align="center" height="100%" id="addToken" pad="medium" style={{padding:'2%', wordBreak: "break-word"}}>
                                             <StyledButton size='large' pad="medium" color='#F0B90C' label='Add Token To Wallet' id='addToken' onClick={() => addWPKT()}/>
                                         </div>
                                     </Box>
@@ -528,8 +529,8 @@ function SwapPKT() {//{wpkt}
                                     <Box hidden id="outputCard" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white', padding:'0%'}}>
                                         <div hidden align="center" id="output" style={{padding:'2%', wordBreak: "break-word"}}>
                                         </div>
-                                        <div id="spin" align="center" hidden pad="medium" style={{padding:'2%', wordBreak: "break-word"}}><Spinner size="large" /></div>
-                                        <div hidden align="center" id="addToken" pad="medium" style={{padding:'2%', wordBreak: "break-word"}}>
+                                        <div id="spin" align="center" height="100%" hidden pad="medium" style={{padding:'2%', wordBreak: "break-word"}}><Spinner size="large" /></div>
+                                        <div hidden align="center" height="100%" id="addToken" pad="medium" style={{padding:'2%', wordBreak: "break-word"}}>
                                             <StyledButton size='large' pad="medium" color='#F0B90C' label='Add Token To Wallet' id='addToken' onClick={() => addWPKT()}/>
                                         </div>
                                     </Box>

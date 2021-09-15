@@ -177,7 +177,7 @@ function Home( {btn} ) {
           <Box pad="medium" justify="center">
             <Heading color="#ffffff" textAlign="center" size="48px" weight="bold" level="1" margin={{top: "-50px"}}>The PKT<br />Cash Bridge<br />To WPKT</Heading>
             <Fade bottom><p align="center" style={{ position: "absolute", bottom: "70px", left: "0", right: "0" }}>{btn}</p></Fade>
-            <Text color="#ffffff" style={{ wordBreak: "break-all", paddingTop:"5%", paddingBottom:"5%"}} textAlign="center" size="small" weight="bold" level="1">0x1C25222994531C4AC35E4d94bbf7552c9aa92E32</Text>
+            {/*<Text color="#ffffff" style={{ wordBreak: "break-all", paddingTop:"5%", paddingBottom:"5%"}} textAlign="center" size="small" weight="bold" level="1">0x1C25222994531C4AC35E4d94bbf7552c9aa92E32</Text>*/}
           </Box>
         </Box>
       ) : (responsive === 'small') ? (
@@ -185,7 +185,7 @@ function Home( {btn} ) {
           <Box pad="medium" justify="center">
             <Heading color="#ffffff" textAlign="center" size="38px" weight="bold" level="1">The PKT Cash Bridge<br />To WPKT</Heading>
             <Fade bottom><p align="center" style={{ marginTop: "35px" }}>{btn}</p></Fade>
-            <Text style={{ wordBreak: "break-all", paddingTop:"5%", paddingBottom:"5%"}}  color="#ffffff" textAlign="center" size="small" weight="bold" level="1">0x1C25222994531C4AC35E4d94bbf7552c9aa92E32</Text>
+            {/*<Text style={{ wordBreak: "break-all", paddingTop:"5%", paddingBottom:"5%"}}  color="#ffffff" textAlign="center" size="small" weight="bold" level="1">0x1C25222994531C4AC35E4d94bbf7552c9aa92E32</Text>*/}
           </Box>
         </Box>
       ) : (responsive === 'tablet') ? (
@@ -193,7 +193,7 @@ function Home( {btn} ) {
           <Box pad="medium" justify="center">
             <Heading color="#ffffff" textAlign="center" size="48px" weight="bold" level="1">The PKT Cash Bridge<br />To WPKT</Heading>
             <Fade bottom><p align="center" margin={{ top: "35px" }}>{btn}</p></Fade>
-            <Text color="#ffffff" style={{ wordBreak: "break-all", paddingTop:"5%", paddingBottom:"5%"}}  textAlign="center" size="small" weight="bold" level="1">0x1C25222994531C4AC35E4d94bbf7552c9aa92E32</Text>
+            {/*<Text color="#ffffff" style={{ wordBreak: "break-all", paddingTop:"5%", paddingBottom:"5%"}}  textAlign="center" size="small" weight="bold" level="1">0x1C25222994531C4AC35E4d94bbf7552c9aa92E32</Text>*/}
           </Box>
         </Box>
       ) : (responsive === 'medium') ? (
@@ -201,7 +201,7 @@ function Home( {btn} ) {
           <Box pad="medium" justify="center">
             <Heading color="#ffffff" textAlign="center" size="4vw" weight="bold" level="1">The PKT Cash Bridge<br />To WPKT</Heading>
             <Fade bottom><p align="center" style={{ margin: "0" }}>{btn}</p></Fade>
-            <Text color="#ffffff" style={{ wordBreak: "break-all", paddingTop:"5%", paddingBottom:"5%"}} textAlign="center" size="large" weight="bold" level="1">0x1C25222994531C4AC35E4d94bbf7552c9aa92E32</Text>
+            {/*<Text color="#ffffff" style={{ wordBreak: "break-all", paddingTop:"5%", paddingBottom:"5%"}} textAlign="center" size="large" weight="bold" level="1">0x1C25222994531C4AC35E4d94bbf7552c9aa92E32</Text>*/}
           </Box>
         </Box>
       ) : (
@@ -209,7 +209,7 @@ function Home( {btn} ) {
           <Box pad="medium" justify="center">
             <Heading color="#ffffff" textAlign="center" size="4.7vw" weight="bold" level="1">The PKT Cash Bridge<br /></Heading>
             <Fade bottom><p align="center" style={{ position: "absolute", top: "37vw", left: "0", right: "0" }}>{btn}</p></Fade>
-            <Text color="#ffffff" style={{ wordBreak: "break-all", paddingTop:"5%", paddingBottom:"5%"}} textAlign="center" size="xlarge" weight="bold" level="1">0x1C25222994531C4AC35E4d94bbf7552c9aa92E32</Text>
+            {/*<Text color="#ffffff" style={{ wordBreak: "break-all", paddingTop:"5%", paddingBottom:"5%"}} textAlign="center" size="xlarge" weight="bold" level="1">0x1C25222994531C4AC35E4d94bbf7552c9aa92E32</Text>*/}
           </Box>
         </Box>
       )}
@@ -570,6 +570,7 @@ function Home( {btn} ) {
             <CardBody>
             <Box justify="center" alignSelf="center" pad="none">
               <HeadingLight textAlign="center" margin="0 0 35px 0" weight="bold" color="#ffffff" level="2">Introducing WPKT</HeadingLight>
+              <Text align="left" style={{ wordBreak: "break-all", paddingTop:"2%", paddingBottom:"2%"}}  color="#ffffff" textAlign="left" size="medium" weight="bold" level="1">BSC: 0x1C25222994531C4AC35E4d94bbf7552c9aa92E32</Text>
               <Text textAlign="center" size="16px" color="#ffffff" margin="none">The ODApp bridge converts your PKT into a BEP20 token called WPKT, which has a 1-to-1 peg to PKT. With WPKT you gain access to the multi-billion dollar world of Binance Smart Chain,  swap WPKT for BNB (or any BEP20 token), and hold WPKT in any wallet that supports BEP20 tokens.
               <br /><br />Since PKT and WPKT exist on different blockchains, PKT cannot be sent to the Binance Smart Chain and WPKT cannot be sent to the PKT chain without using the ODApp bridge. The symbols PKT and WPKT differentiate the assets based on the blockchain they can transact on.
               Exist on different chains, 1PKT cannot be sent to the Ethereum chain and WPKT cannot be sent to the 1PKT chain without the ODApp bridge. Using different names allows for easy discernment between the assets.</Text>
@@ -584,6 +585,7 @@ function Home( {btn} ) {
             <CardBody>
             <Box justify="center" alignSelf="center" pad="none">
               <HeadingLight textAlign="center" margin="0 0 35px 0" weight="bold" color="#ffffff" level="2">Introducing WPKT</HeadingLight>
+              <Text align="left" style={{ wordBreak: "break-all", paddingTop:"2%", paddingBottom:"2%"}}  color="#ffffff" textAlign="left" size="medium" weight="bold" level="1">BSC: 0x1C25222994531C4AC35E4d94bbf7552c9aa92E32</Text>
               <Text textAlign="center" size="18px" color="#ffffff" margin="none">The ODApp bridge converts your PKT into a BEP20 token called WPKT, which has a 1-to-1 peg to PKT. With WPKT you gain access to the multi-billion dollar world of Binance Smart Chain,  swap WPKT for BNB (or any BEP20 token), and hold WPKT in any wallet that supports BEP20 tokens.
               <br /><br />Since PKT and WPKT exist on different blockchains, PKT cannot be sent to the Binance Smart Chain and WPKT cannot be sent to the PKT chain without using the ODApp bridge. The symbols PKT and WPKT differentiate the assets based on the blockchain they can transact on.
               Exist on different chains, 1PKT cannot be sent to the Ethereum chain and WPKT cannot be sent to the 1PKT chain without the ODApp bridge. Using different names allows for easy discernment between the assets.</Text>
@@ -598,6 +600,7 @@ function Home( {btn} ) {
             <CardBody>
             <Box justify="center" alignSelf="center" pad="none">
               <HeadingLight textAlign="center" margin="0 0 35px 0" weight="bold" color="#ffffff" level="2">Introducing WPKT</HeadingLight>
+              <Text align="left" style={{ wordBreak: "break-all", paddingTop:"2%", paddingBottom:"2%"}}  color="#ffffff" textAlign="left" size="large" weight="bold" level="1">BSC: 0x1C25222994531C4AC35E4d94bbf7552c9aa92E32</Text>
               <Text textAlign="center" size="20px" color="#ffffff" margin="none">The ODApp bridge converts your PKT into a BEP20 token called WPKT, which has a 1-to-1 peg to PKT. With WPKT you gain access to the multi-billion dollar world of Binance Smart Chain,  swap WPKT for BNB (or any BEP20 token), and hold WPKT in any wallet that supports BEP20 tokens.
               <br /><br />Since PKT and WPKT exist on different blockchains, PKT cannot be sent to the Binance Smart Chain and WPKT cannot be sent to the PKT chain without using the ODApp bridge. The symbols PKT and WPKT differentiate the assets based on the blockchain they can transact on.
               Exist on different chains, 1PKT cannot be sent to the Ethereum chain and WPKT cannot be sent to the 1PKT chain without the ODApp bridge. Using different names allows for easy discernment between the assets.</Text>
@@ -625,6 +628,7 @@ function Home( {btn} ) {
             <Box gridArea="right" justify="center" pad="1/2"><Image alignSelf="center" height="150" width="450" src={iw_logo} fit="contain" /></Box>
             <Box gridArea="left" justify="center" alignSelf="center" pad="0 4vw 0 0">
               <HeadingLight textAlign="left" margin="0 0 2rem 0" weight="bold" color="#ffffff" level="2">Introducing WPKT</HeadingLight>
+              <Text align="left" style={{ wordBreak: "break-all", paddingTop:"2%", paddingBottom:"2%"}}  color="#ffffff" textAlign="left" size="large" weight="bold" level="1">BSC: 0x1C25222994531C4AC35E4d94bbf7552c9aa92E32</Text>
               <ScrollableText align="left" size="22px" color="#ffffff" margin="none" style={{ paddingRight: "65px" }}>The ODApp bridge converts your PKT into a BEP20 token called WPKT, which has a 1-to-1 peg to PKT. With WPKT you gain access to the multi-billion dollar world of Binance Smart Chain,  swap WPKT for BNB (or any BEP20 token), and hold WPKT in any wallet that supports BEP20 tokens.
               <br /><br />Since PKT and WPKT exist on different blockchains, PKT cannot be sent to the Binance Smart Chain and WPKT cannot be sent to the PKT chain without using the ODApp bridge. The symbols PKT and WPKT differentiate the assets based on the blockchain they can transact on.
               Exist on different chains, 1PKT cannot be sent to the Ethereum chain and WPKT cannot be sent to the 1PKT chain without the ODApp bridge. Using different names allows for easy discernment between the assets.</ScrollableText>
@@ -653,6 +657,7 @@ function Home( {btn} ) {
               <Box gridArea="right" justify="center" pad="1/2"><Image alignSelf="center" height="195" width="750" src={iw_logo} fit="contain" /></Box>
               <Box gridArea="left" justify="center" alignSelf="center" pad="0 8vw 0 0">
                 <HeadingLight textAlign="left" margin="0 0 3rem 0" size="4xl" weight="bold" color="#ffffff" level="2">Introducing WPKT</HeadingLight>
+                <Text align="left" style={{ wordBreak: "break-all", paddingTop:"2%", paddingBottom:"2%"}}  color="#ffffff" textAlign="left" size="large" weight="bold" level="1">BSC: 0x1C25222994531C4AC35E4d94bbf7552c9aa92E32</Text>
                 <ScrollableText align="left" size="large" color="#ffffff" margin="0 0 1rem 0" style={{ paddingRight: "65px" }}>The ODApp bridge converts your PKT into a BEP20 token called WPKT, which has a 1-to-1 peg to PKT. With WPKT you gain access to the multi-billion dollar world of Binance Smart Chain,  swap WPKT for BNB (or any BEP20 token), and hold WPKT in any wallet that supports BEP20 tokens.
                 <br /><br />Since PKT and WPKT exist on different blockchains, PKT cannot be sent to the Binance Smart Chain and WPKT cannot be sent to the PKT chain without using the ODApp bridge. The symbols PKT and WPKT differentiate the assets based on the blockchain they can transact on.
                 Exist on different chains, 1PKT cannot be sent to the Ethereum chain and WPKT cannot be sent to the 1PKT chain without the ODApp bridge. Using different names allows for easy discernment between the assets.</ScrollableText>
