@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-
-
 import { useQuery } from "@apollo/react-hooks";
 import { ethers } from "ethers";
 import detectEthereumProvider from '@metamask/detect-provider'
-import { Footer, Text, Nav, Anchor, Box, ResponsiveContext, Button } from "grommet";
+import { Button, Footer, Text, Box, Grommet, ResponsiveContext } from "grommet";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import SwapPKT from "./components/SwapPKT";
@@ -17,17 +15,19 @@ import FAQ from "./components/FAQ";
 import NotFound from "./components/NotFound";
 import useWeb3Modal from "./hooks/useWeb3Modal";
 import GET_TRANSFERS from "./graphql/subgraph";
+import logoFooter from "./img/odapp-logo-footer.svg";
+import { ButtonFooter, ImageFooter, customBreakpoints } from "./components/";
 
 import {
   Connect
 } from 'grommet-icons';
 
-var clr = '#F0B90C';
+var clr = '#FBA300';
 var provider;
 
 async function checkMetamask(){
 
-  provider = await detectEthereumProvider(); 
+  provider = await detectEthereumProvider();
   if (provider) {
     console.log('Metamask successfully detected!');
     provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -38,21 +38,21 @@ async function checkMetamask(){
     alert('Please install metamask');
     return false;
   }
-  
+
 }
 
 function WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal, clr}) {
-  
-  var initialLabel = !provider ? "Connect Wallet" : "Disconnect Wallet"; 
+
+  var initialLabel = !provider ? "Connect Wallet" : "Disconnect Wallet";
   const [label, setLabel] = useState(initialLabel);
   return (
-    
-    <Button id="cnct" primary size="small" align="center" color="#F0B90C" icon={<Connect/>}  label={!provider ? "Connect Wallet" : "Disconnect Wallet"} onClick={async () => {
+
+    <Button id="cnct" primary size="large" align="center" color="#FBA300" className="mainConnect" label={!provider ? "Connect Wallet" : "Disconnect Wallet"} onClick={async () => {
       if (typeof window.ethereum === 'undefined') {
         alert('Please install metamask to use this site');
         return;
       }
-      
+
       if (!provider) {
         setLabel("Connect Wallet");
         loadWeb3Modal();
@@ -66,28 +66,43 @@ function WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal, clr}) {
   );
 }
 
+
 async function connectMetamask(){
   try {
     // Will open the MetaMask UI
-    await window.ethereum.request({ method: 'eth_requestAccounts' });
-    
-    if (!provider) {
+    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    if (accounts.length > 0 ){
+      const account = accounts[0];
+      console.log('Account Connected:', account);
+      provider = await checkMetamask();
+      console.log('Provider', provider);
+      return provider;
+
+    }
+    else {
+      console.log('Connect metamask');
+    }
+
+
+    /*if (!provider) {
       alert('install metamask');
     }
     else {
       provider = new ethers.providers.Web3Provider(window.ethereum);
       console.log('Connect provider', provider);
       return provider;
-    }
+    }*/
+
+
   } catch (error) {
     console.error(error);
     alert(error);
-    return provider;
+    //return provider;
   }
 }
 
 function App() {
-  
+
   const { loading, error, data } = useQuery(GET_TRANSFERS);
   const [provider, loadWeb3Modal, logoutOfWeb3Modal] = useWeb3Modal();
   const items = [
@@ -102,10 +117,8 @@ function App() {
     }
   }, [loading, error, data]);
 
-
   return (
     <div>
-
     <Collapsible btn={ WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal, clr}) }/>
         <Router>
           <Switch>
@@ -133,22 +146,44 @@ function App() {
             <Route component={NotFound} />
           </Switch>
         </Router>
-        
-      <Footer background="#282c34" pad="large">
-        <Text textAlign="center" size="small">
-        Copyright © ODapp.io
-        </Text>
-        <Box direction="row" pad="none" justifyContent='right'>
-          <Nav direction="row">
-            <Anchor label="Claim PKT" style={{color: '#F0B90C'}} href="/GetPKT" />
-            <Anchor label="About PKT" style={{color: '#F0B90C'}} href="https://pkt.cash" />
-          </Nav>            
-        </Box>
-      </Footer>
+      <Grommet theme={customBreakpoints}>
+      <ResponsiveContext.Consumer>
+          {responsive => (responsive === 'smallmob') ? (
+            <Footer background="#222323" pad="35px 25px 75px" align="center" justify="center" className="mainFooter">
+              <Box size="small" align="center"><ImageFooter src={logoFooter} fit="contain" alt="react-logo" /></Box>
+              <ButtonFooter href="/GetPKT" label="Claim PKT" color="#FFFFFF" margin={{ top: "50px", bottom: "40px" }} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+              <ButtonFooter href="https://pkt.cash/" target="_blank" align="center" label="Learn About PKT Cash" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+            </Footer>
+          ) : (responsive === 'small') ? (
+            <Footer background="#222323" pad="35px 25px 75px" align="center" justify="center" className="mainFooter">
+              <Box size="small" align="center"><ImageFooter src={logoFooter} fit="contain" alt="react-logo" /></Box>
+              <ButtonFooter href="/GetPKT" label="Claim PKT" color="#FFFFFF" margin={{ top: "50px", bottom: "40px" }} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+              <ButtonFooter href="https://pkt.cash/" target="_blank" align="center" label="Learn About PKT Cash" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+            </Footer>
+          ) : (responsive === 'tablet') ? (
+            <Footer background="#222323" pad="large" align="center" justify="center" className="mainFooter">
+                <Box size="small" className="mainFooterLogo"><ImageFooter src={logoFooter} fit="contain" alt="react-logo" /></Box>
+                <ButtonFooter href="/GetPKT" label="Claim PKT" color="#FFFFFF" margin={{ horizontal: "4vw" }} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+                <ButtonFooter href="https://pkt.cash/" target="_blank" align="center" label="Learn About PKT Cash" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+            </Footer>
+          ) : (responsive === 'medium') ? (
+            <Footer background="#222323" pad="large" align="center" justify="center" className="mainFooter">
+                <Box size="small" className="mainFooterLogo"><ImageFooter src={logoFooter} fit="contain" alt="react-logo" /></Box>
+                <ButtonFooter href="/GetPKT" label="Claim PKT" color="#FFFFFF" margin={{ horizontal: "4vw" }} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+                <ButtonFooter href="https://pkt.cash/" target="_blank" align="center" label="Learn About PKT Cash" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+            </Footer>
+          ) : (
+            <Footer background="#222323" pad="large" align="center" justify="center" className="mainFooter">
+                <Box size="small" className="mainFooterLogo"><ImageFooter src={logoFooter} fit="contain" alt="react-logo" /></Box>
+                <ButtonFooter href="/GetPKT" label="Claim PKT" color="#FFFFFF" margin={{ horizontal: "4vw" }} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+                <ButtonFooter href="https://pkt.cash/" target="_blank" align="center" label="Learn About PKT Cash" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+            </Footer>
+          )}
+      </ResponsiveContext.Consumer>
+      <Box background={{ color: "#FBA300" }} pad="small" size="xxsmall" align="center" alignSelf="center"><Text textAlign="center" size="15px" color="#fff">Copyright © ODapp.io</Text></Box>
+      </Grommet>
     </div>
   );
 }
 
 export default App;
-
-
