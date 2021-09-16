@@ -377,7 +377,7 @@ function Home( {btn} ) {
                     <HeadingLight textAlign="center" margin="0 0 30px 0" size="4xl" weight="bold" color="#ffffff" level="2">What's ODApp?</HeadingLight>
                     <Text align="center" textAlign="center" size="16px" color="#ffffff" margin="0 0 40px 0">ODApp is a decentralized application that allows you to "bridge" between the world of PKT Cash (symbol: PKT) and Binance Smart Chain. Though entirely different blockchains, PKT cash and Binance Smart Chain are connected via ODApp which allow seamless value transfer between the two chains.</Text>
                 </Box>
-                <Box pad="none"><Image alignSelf="left" src={od_logo} fit="contain" /></Box>
+                <Box pad="none"><Image alignSelf="center" height="300" src={od_logo} fit="contain" /></Box>
                 <Box pad="2rem 0 0"><p align="center"><ButtonRegular href="/PreCommit" align="center" label="Get WPKT" margin="none" className="ButtonRegular" /></p></Box>                
               </CardBody>
           </Card>

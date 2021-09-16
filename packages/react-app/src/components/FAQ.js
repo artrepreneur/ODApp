@@ -166,10 +166,10 @@ function FAQ() {
     <ResponsiveContext.Consumer>
       {responsive => (responsive === 'smallmob') ? (
         <Box direction="row" justify="left" align="center" height="88vh" pad={{ horizontal: "25px" }} round="none" style={bannerStyle}>
-          <Box pad="medium" justify="left">
+          <Box pad="medium" justify="left" margin={{top: "-25vh"}}>
             <HeadingLight textAlign="center" margin="0 0 45px 0" level="1">FAQ</HeadingLight>
             <Text textAlign="center" size="16px" color="#ffffff" margin="0 ">The following is a compiled list of some of our most common questions.</Text>
-            <ButtonCTA label="Keep Reading" color="#FFFFFF" style={{position: "absolute", bottom: "70px", left: "0", right: "0"}} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+            <ButtonCTA label="Keep Reading" color="#FFFFFF" style={{position: "absolute", bottom: "25vh", left: "0", right: "0"}} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
           </Box>   
         </Box>
       ) : (responsive === 'small') ? (
@@ -319,7 +319,7 @@ function FAQ() {
                     <HeadingLight textAlign="center" margin="0 0 45px 0" level="2">What is PKT?</HeadingLight>
                     <Text textAlign="center" size="16px" color="#fff" margin="0 0 40px 0">PKT is the currency of the decentralized bandwidth marketplace. PKT strives to bring a free and decentralized internet to the world, and is powered by blockchain. The currency is scarce and mined using a bandwidth hard Proof of Work (PoW) called PacketCrypt. Since it is mined, it is a digitally hard asset and therefore cannot be created out of thin air. For more details on the project check <a href="https://pkt.cash/" target="_blank" rel="noopener noreferrer" style={{color: "#FBA300"}}>here</a>.</Text>
               </Box>
-              <Box justify="start" pad="none"><Image alignSelf="center" style={{maxWidth: "100%"}} src={pktMobImg} fit="cover" /></Box>                   
+              <Box justify="start" pad="none"><Image alignSelf="center" style={{maxWidth: "100%"}} src={pktMobImg} fit="contain" /></Box>                   
           </Card>
         </Box>
       ) : (responsive === 'small') ? (
@@ -419,7 +419,7 @@ function FAQ() {
                 <HeadingDark textAlign="center" margin="0 0 45px 0" level="2">What is WPKT?</HeadingDark>
                 <Text textAlign="center" size="16px" color="#707070">WPKT is PKT on the ethereum blockchain. It is a wrapped version of PKT, hence the "W" in WPKT. WPKT can only come into existence when PKT is sent to the vault address, thus WPKT can't be inflated, and has a 1-to-1 peg to PKT. As there can only be 6 billion PKT in existence, there can never be more than 6 billion WPKT. WPKT is an ERC20 token and is compatible with all ERC20 platforms.</Text>
               </Box>
-              <Box justify="start"><Image alignSelf="center" style={{maxWidth: "125%"}} src={wpkt_illustration} fit="contain" /></Box>           
+              <Box justify="start"><Image alignSelf="center" style={{maxWidth: "125%"}} src={wpkt_illustration} fit="contain" height="400" /></Box>           
           </Card>
         </Box>
       ) : (responsive === 'small') ? (
@@ -522,7 +522,7 @@ function FAQ() {
                 <HeadingLight textAlign="center" margin="0 0 45px 0" level="2">What is the Vault?</HeadingLight>
                 <Text textAlign="center" size="16px" color="#fff">The vault is a PKT address which stores the PKT that WPKT tokens are issued against. When PKT coins are sent to the vault, the equivalent amount of WPKT can be claimed with the PKT transaction hash. The transaction hash is an identifier you receive after a transaction. So if you send PKT to the vault address, your wallet will return a PKT transaction hash as proof of your transaction. This transaction proof, or transaction hash, allows the equivalent amount of WPKT, less fees, to be claimed.</Text>
               </Box>
-              <Box justify="start" pad="none"><Image alignSelf="center" style={{maxWidth: "95%"}} margin={{top:"50px"}} src={vault_illustration} fit="contain" /></Box>             
+              <Box justify="start" pad="none"><Image alignSelf="center" height="300" style={{maxWidth: "95%"}} margin={{top:"50px"}} src={vault_illustration} fit="contain" /></Box>             
           </Card>
         </Box>
       ) : (responsive === 'small') ? (
@@ -625,7 +625,7 @@ function FAQ() {
                     <HeadingDark textAlign="center" margin="0 0 50px 0" level="2">What is Metamask?</HeadingDark>
                     <Text textAlign="center" size="16px" color="#707070">Metamask is a popular wallet that is compatible with multiple chains, including Binance Smart Chain, Ethereum, Polygon and others. ODApp transacts through Metamask so you must install it to use this bridge. For more details on installing Metamask check <a href="https://metamask.io/" target="_blank" rel="noopener noreferrer" style={{color: "#FBA300"}}>here</a>.</Text>
               </Box>
-              <Box justify="start" style={metamaskBgMob} pad="0 0 75px"><Image alignSelf="center" style={{maxWidth: "80%"}} src={metamask_illustration} fit="contain" /></Box>                 
+              <Box justify="start" style={metamaskBgMob} pad="0 0 75px"><Image alignSelf="center" height="300" style={{maxWidth: "80%"}} src={metamask_illustration} fit="contain" /></Box>                 
           </Card>
         </Box>
       ) : (responsive === 'small') ? (
@@ -728,7 +728,7 @@ function FAQ() {
                 <HeadingLight textAlign="center" margin="0 0 40px 0" level="2">What is a Smart Contract?</HeadingLight>
                 <Text textAlign="center" size="16px" color="#fff">A smart contract is a program that runs on top of a blockchain. As such, smart contracts can be used to issue tokens. ODapp uses smart contracts to issue WPKT on-chain.</Text>
               </Box>
-              <Box justify="start"><Image alignSelf="center" style={{maxWidth: "90%", margin: "0 auto"}} src={smart_contract_illustration} fit="contain" /></Box>
+              <Box justify="start"><Image alignSelf="center" height="300" style={{maxWidth: "90%", margin: "0 auto"}} src={smart_contract_illustration} fit="contain" /></Box>
           </Card>
         </Box>
       ) : (responsive === 'small') ? (
@@ -1447,7 +1447,7 @@ function FAQ() {
                   <HeadingDark textAlign="center" margin="0 0 40px 0" level="2">Why Didn't I Receive the Balance I Expected?</HeadingDark>
                   <Text textAlign="center" size="16px" color="#707070">The ODApp bridge network charges a 3.5% fee for all transactions. Therefore, your received amount WPKT or PKT is reduced by this fee expense. We use fees to subsidise transaction costs over Chainlink, operate infrastructure and expand this service.</Text>
               </Box>
-              <Box><Image style={{maxWidth: "100%"}} alignSelf="center" src={expected_balance_illustration} fit="contain" /></Box>
+              <Box><Image style={{maxWidth: "100%"}} height="350" alignSelf="center" src={expected_balance_illustration} fit="contain" /></Box>
           </Card>
         </Box>
       ) : (responsive === 'small') ? (
