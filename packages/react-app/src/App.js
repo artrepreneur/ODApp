@@ -12,7 +12,7 @@ import PreCommit from "./components/PreCommit";
 import Collapsible from "./components/Collapsible";
 import GetPKT from "./components/GetPKT";
 import FAQ from "./components/FAQ";
-import ReCommit from "./components/ReCommit";//*%*/
+import ReCommit from "./components/ReCommit";
 import NotFound from "./components/NotFound";
 import useWeb3Modal from "./hooks/useWeb3Modal";
 import GET_TRANSFERS from "./graphql/subgraph";

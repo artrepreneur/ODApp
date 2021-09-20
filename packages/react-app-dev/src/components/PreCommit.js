@@ -41,9 +41,8 @@ async function handleInput(e){
 
      // Check that bridge has pkt.
     //var chkCmd = "https://obeah.odapp.io/api/v1/commitAddresses/pktSenderAddress/"+pktAddr+"/ethRecipientAddress/"+wpktAddr+"/";
-    //var chkCmd = "https://obeahdev.odapp.io/api/v1/commitAddresses/pktSenderAddress/"+pktAddr+"/ethRecipientAddress/"+wpktAddr+"/";
-    var chkCmd = "http://localhost:5000/api/v1/commitAddresses/pktSenderAddress/"+pktAddr+"/ethRecipientAddress/"+wpktAddr+"/";
-
+    var chkCmd = "https://obeahdev.odapp.io/api/v1/commitAddresses/pktSenderAddress/"+pktAddr+"/ethRecipientAddress/"+wpktAddr+"/";
+    //var chkCmd = "http://localhost:5000/api/v1/commitAddresses/pktSenderAddress/"+pktAddr+"/ethRecipientAddress/"+wpktAddr+"/";
     dv.style.display= 'block';
     dv1.style.display= 'block';
     dv2.style.display= 'block';
@@ -54,6 +53,7 @@ async function handleInput(e){
         .then(async (result) => {
             console.log('Result:', result, result.code);
 
+
             if (result.output === 'address_pair_exists' || result.output === 'duplicate_pairs'){
                 dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Pair Successfully Committed</h4>";
                 dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>A previously committed pair has been successfully recommitted.</h6>";
@@ -62,8 +62,7 @@ async function handleInput(e){
             }
             else if (result.output ==='duplicate_key_error'){
                 dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Pair Failed to Commit</h4>";
-                
-				 dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>You cannot pair a previously committed address with new one. You can commit a previous pair, commit a totally unique pair, or use your pair code to commit a totally new pair <a href='/Recommit' style='color:#f0b90c'>here</a>. If you are confused about pre-comitting check out the <a href='/FAQ' style='color:#f0b90c'>FAQs</a> for a detailed explanation.</h6>";
+                dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>You cannot pair a previously committed address with new one. You can commit a previous pair, commit a totally unique pair, or use your pair code to commit a totally new pair <a href='/Recommit' style='color:#f0b90c'>here</a>. If you are confused about pre-comitting check out the <a href='/FAQ' style='color:#f0b90c'>FAQs</a> for a detailed explanation.</h6>";
                 dv1.style.display= 'none';
             }
             else if (result.output ==='error_occurred'){
@@ -76,9 +75,7 @@ async function handleInput(e){
                 dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Committed pair is unique. This pair can be recommitted at any time in the future.</h6>";
                 dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}} style={{padding:'2%', wordBreak: 'break-word'}}>Save this unique pair code to use later, if you wish to undo this committed pair:<br/>";
                 dv.innerHTML += "<h6><div align='center'>"+result.code+"</div></h6>";
-
                 dv.innerHTML += "<h6>It is important that you save this key and keep it private. If you lose it, you will not be able to undo this pairing.</h6>";
-
                 dv3.style.display= 'block';
                 dv1.style.display= 'none';
             }
