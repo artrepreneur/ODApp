@@ -38,9 +38,9 @@ async function handleInput(e){
     console.log("Pair Code:", pairCode);
 
     // Check that bridge has pkt.
-    var chkCmd = "https://obeah.odapp.io/api/v1/recommitAddresses/hashCode/"+pairCode+"/";
+    //var chkCmd = "https://obeah.odapp.io/api/v1/recommitAddresses/hashCode/"+pairCode+"/";
     //var chkCmd = "https://obeahdev.odapp.io/api/v1/recommitAddresses/hashCode/"+pairCode+"/";
-    //var chkCmd = "http://localhost:5000/api/v1/recommitAddresses/hashCode/"+pairCode+"/";
+    var chkCmd = "http://localhost:5000/api/v1/recommitAddresses/hashCode/"+pairCode+"/";
 
     dv.style.display= 'block';
     dv1.style.display= 'block';
@@ -113,7 +113,7 @@ function ReCommit() {
                             <Box id="box1" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white',  padding:'0%'}}>
                                 <div hidden align="center" id="output1" style={{padding:'2%', wordBreak: "break-all"}}></div>
                                 <div hidden align="center" id="recWPKT" style={{paddingBottom:'2%', wordBreak: "break-all"}}>
-                                    <ButtonForm hoverIndicator={{background: "#222323", boxShadow: "0"}} size='large' color="#fff" label='Get WPKT' onClick={navigateTo}/>
+                                    <ButtonForm hoverIndicator={{background: "#222323", boxShadow: "0"}} size='large' color="#fff" label='Commit New Pair' onClick={navigateTo}/>
                                 </div>
                                 <div id="spin" align="center" pad="medium" style={{padding:'2%', wordBreak: "break-all"}}><Spinner size="large" /></div>
                             </Box>
@@ -146,7 +146,7 @@ function ReCommit() {
                             <Box id="box1" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white',  padding:'0%'}}>
                                 <div hidden align="center" id="output1" style={{padding:'2%'}}></div>
                                 <div hidden align="center" id="recWPKT" style={{paddingBottom:'2%'}}>
-                                    <ButtonForm hoverIndicator={{background: "#222323", boxShadow: "0"}} size='large' color="#fff" label='Get WPKT' onClick={navigateTo}/>
+                                    <ButtonForm hoverIndicator={{background: "#222323", boxShadow: "0"}} size='large' color="#fff" label='Commit New Pair' onClick={navigateTo}/>
                                 </div>
                                 <div id="spin" align="center" pad="medium" style={{padding:'2%'}}><Spinner size="large" /></div>
                             </Box>
@@ -179,7 +179,7 @@ function ReCommit() {
                             <Box id="box1" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white',  padding:'0%'}}>
                                 <div hidden align="center" id="output1" style={{padding:'2%', wordBreak: "break-all"}}></div>
                                 <div hidden align="center" id="recWPKT" style={{paddingBottom:'2%', wordBreak: "break-all"}}>
-                                    <ButtonForm hoverIndicator={{background: "#222323", boxShadow: "0"}} size='large' color="#fff" label='Get WPKT' onClick={navigateTo}/>
+                                    <ButtonForm hoverIndicator={{background: "#222323", boxShadow: "0"}} size='large' color="#fff" label='Commit New Pair' onClick={navigateTo}/>
                                 </div>
                                 <div id="spin" align="center" pad="medium" style={{padding:'2%', wordBreak: "break-all"}}><Spinner size="large" /></div>
                             </Box>
@@ -225,7 +225,7 @@ function ReCommit() {
                             <Box id="box1" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white',  padding:'0%'}}>
                                 <div hidden align="center" id="output1" style={{padding:'2%'}}></div>
                                 <div hidden align="center" id="recWPKT" style={{paddingBottom:'2%'}}>
-                                    <ButtonForm hoverIndicator={{background: "#222323", boxShadow: "0"}} size='large' color="#fff" label='Get WPKT' onClick={navigateTo}/>
+                                    <ButtonForm hoverIndicator={{background: "#222323", boxShadow: "0"}} size='large' color="#fff" label='Commit New Pair' onClick={navigateTo}/>
                                 </div>
                                 <div id="spin" align="center" pad="medium" style={{padding:'2%'}}><Spinner size="large" /></div>
                             </Box>
@@ -272,7 +272,7 @@ function ReCommit() {
                             <Box id="box1" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white',  padding:'0%'}}>
                                 <div hidden align="center" id="output1" style={{padding:'2%'}}></div>
                                 <div hidden align="center" id="recWPKT" style={{paddingBottom:'2%'}}>
-                                    <ButtonForm hoverIndicator={{background: "#222323", boxShadow: "0"}} size='large' color="#fff" label='Get WPKT' onClick={navigateTo}/>
+                                    <ButtonForm hoverIndicator={{background: "#222323", boxShadow: "0"}} size='large' color="#fff" label='Commit New Pair' onClick={navigateTo}/>
                                 </div>
                                 <div id="spin" align="center" pad="medium" style={{padding:'2%'}}><Spinner size="large" /></div>
                             </Box>

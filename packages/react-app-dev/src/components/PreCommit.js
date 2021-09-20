@@ -41,8 +41,8 @@ async function handleInput(e){
 
      // Check that bridge has pkt.
     //var chkCmd = "https://obeah.odapp.io/api/v1/commitAddresses/pktSenderAddress/"+pktAddr+"/ethRecipientAddress/"+wpktAddr+"/";
-    var chkCmd = "https://obeahdev.odapp.io/api/v1/commitAddresses/pktSenderAddress/"+pktAddr+"/ethRecipientAddress/"+wpktAddr+"/";
-    //var chkCmd = "http://localhost:5000/api/v1/commitAddresses/pktSenderAddress/"+pktAddr+"/ethRecipientAddress/"+wpktAddr+"/";
+    //var chkCmd = "https://obeahdev.odapp.io/api/v1/commitAddresses/pktSenderAddress/"+pktAddr+"/ethRecipientAddress/"+wpktAddr+"/";
+    var chkCmd = "http://localhost:5000/api/v1/commitAddresses/pktSenderAddress/"+pktAddr+"/ethRecipientAddress/"+wpktAddr+"/";
     dv.style.display= 'block';
     dv1.style.display= 'block';
     dv2.style.display= 'block';
