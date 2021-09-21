@@ -36,7 +36,7 @@ var bannerStyle = {
     backgroundSize: 'cover',
     position: 'relative'
   };
-  
+
 var pktStyle = {
   backgroundColor: '#222323',
   backgroundImage: 'url(' + pktBg + ')',
@@ -158,19 +158,19 @@ var receiveWPKTMob = {
 }
 
 function FAQ() {
-  
+
   return (
 
-    <Grommet theme={customBreakpoints}> 
+    <Grommet theme={customBreakpoints}>
 		{/*Top banner*/}
     <ResponsiveContext.Consumer>
       {responsive => (responsive === 'smallmob') ? (
         <Box direction="row" justify="left" align="center" height="88vh" pad={{ horizontal: "25px" }} round="none" style={bannerStyle}>
-          <Box pad="medium" justify="left">
+          <Box pad="medium" justify="left" margin={{top: "-25vh"}}>
             <HeadingLight textAlign="center" margin="0 0 45px 0" level="1">FAQ</HeadingLight>
             <Text textAlign="center" size="16px" color="#ffffff" margin="0 ">The following is a compiled list of some of our most common questions.</Text>
-            <ButtonCTA label="Keep Reading" color="#FFFFFF" style={{position: "absolute", bottom: "70px", left: "0", right: "0"}} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
-          </Box>   
+            <ButtonCTA label="Keep Reading" color="#FFFFFF" style={{position: "absolute", bottom: "25vh", left: "0", right: "0"}} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+          </Box>
         </Box>
       ) : (responsive === 'small') ? (
         <Box direction="row" justify="left" align="center" pad={{ horizontal: "20px", vertical: "4rem"}} round="none" style={bannerStyle}>
@@ -178,7 +178,7 @@ function FAQ() {
             <HeadingLight textAlign="start" margin="0 0 35px 0" level="1">FAQ</HeadingLight>
             <Text textAlign="start" size="18px" color="#ffffff" margin="0 ">The following is a compiled list of some of our most common questions.</Text>
             <ButtonCTA label="Keep Reading" color="#FFFFFF" margin={{ top: "50px" }} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
-          </Box>   
+          </Box>
         </Box>
       ) : (responsive === 'tablet') ? (
         <Box direction="row" justify="left" align="center" pad={{ horizontal: "20px", vertical: "8rem"}} round="none" style={bannerStyle}>
@@ -186,7 +186,7 @@ function FAQ() {
             <HeadingLight textAlign="start" margin="0 0 50px 0" level="1">FAQ</HeadingLight>
             <Text textAlign="start" size="22px" color="#ffffff" margin="0 ">The following is a compiled list of some of our most common questions.</Text>
             <ButtonCTA label="Keep Reading" color="#FFFFFF" margin={{ top: "50px" }} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
-          </Box>   
+          </Box>
         </Box>
       ) : (responsive === 'medium') ? (
         <Box direction="row" justify="left" align="center" pad={{ horizontal: "25px", vertical: "8rem"}} round="none" style={bannerStyle}>
@@ -194,7 +194,7 @@ function FAQ() {
             <HeadingLight textAlign="start" margin="0 0 50px 0" level="1">FAQ</HeadingLight>
             <Text textAlign="start" size="22px" color="#ffffff" margin="0 ">The following is a compiled list of some of our most common questions.</Text>
             <ButtonCTA label="Keep Reading" color="#FFFFFF" margin={{ top: "50px" }} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
-          </Box>   
+          </Box>
         </Box>
       ) : (
         <Box direction="row" justify="left" align="center" height="large" pad={{ horizontal: "8rem" }} round="none" style={bannerStyle}>
@@ -202,7 +202,7 @@ function FAQ() {
             <HeadingLight textAlign="start" margin="0 0 4vw 0" level="1">FAQ</HeadingLight>
             <Text textAlign="start" size="26px" color="#ffffff" margin="0 ">The following is a compiled list of some of our most common questions.</Text>
             <Slide bottom cascade><ButtonCTA label="Keep Reading" color="#FFFFFF" margin={{ top: "4vw" }} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} /></Slide>
-          </Box>   
+          </Box>
         </Box>
       )}
     </ResponsiveContext.Consumer>
@@ -216,7 +216,7 @@ function FAQ() {
                     <HeadingDark textAlign="center" margin="0 0 45px 0" level="2">What is a Bridge?</HeadingDark>
                     <Text textAlign="center" size="16px" color="#707070">A bridge is a connection point between two disparate blockchains. It allows chains that aren't connected in any way to bi-directionally communicate and transfer value. ODApp uses smart contracts, a bridge server, and Chainlink to transfer value from one chain to another.</Text>
               </Box>
-              <Box gridArea="right" justify="center" margin={{top:"35px"}}><ImageMobile alignSelf="center" src={bridge_illustration} fit="contain" /></Box>              
+              <Box gridArea="right" justify="center" margin={{top:"35px"}}><ImageMobile alignSelf="center" src={bridge_illustration} fit="contain" /></Box>
           </Card>
         </Box>
       ) : (responsive === 'small') ? (
@@ -226,13 +226,13 @@ function FAQ() {
                 <HeadingDark textAlign="center" margin="0 0 35px 0" level="2">What is a Bridge?</HeadingDark>
                 <Text textAlign="center" size="18px" color="#707070">A bridge is a connection point between two disparate blockchains. It allows chains that aren't connected in any way to bi-directionally communicate and transfer value. ODApp uses smart contracts, a bridge server, and Chainlink to transfer value from one chain to another.</Text>
               </Box>
-              <Box gridArea="right" justify="center" margin={{top:"50px"}}><ImageMobile alignSelf="center" width="400" src={bridge_illustration} fit="contain" /></Box>              
+              <Box gridArea="right" justify="center" margin={{top:"50px"}}><ImageMobile alignSelf="center" width="400" src={bridge_illustration} fit="contain" /></Box>
           </Card>
         </Box>
       ) : (responsive === 'tablet') ? (
         <Box>
           <Card width="full" round="none" background="#fff" pad="0 50px" >
-              <CardBody> 
+              <CardBody>
                 <Grid
                 fill
                 areas={[
@@ -250,7 +250,7 @@ function FAQ() {
                   <Box gridArea="left" justify="center" alignSelf="center"><Slide left>
                     <HeadingDark textAlign="start" margin="0 0 35px 0" level="2">What is a Bridge?</HeadingDark>
                     <Text textAlign="start" size="20px" color="#707070">A bridge is a connection point between two disparate blockchains. It allows chains that aren't connected in any way to bi-directionally communicate and transfer value. ODApp uses smart contracts, a bridge server, and Chainlink to transfer value from one chain to another.</Text>
-                  </Slide></Box>                    
+                  </Slide></Box>
                 </Grid>
               </CardBody>
           </Card>
@@ -258,7 +258,7 @@ function FAQ() {
       ) : (responsive === 'medium') ? (
         <Box>
           <Card width="full" round="none" background="#fff" pad="0 50px" >
-              <CardBody> 
+              <CardBody>
                 <Grid
                 fill
                 areas={[
@@ -276,7 +276,7 @@ function FAQ() {
                   <Box gridArea="left" justify="center" alignSelf="center"><Slide left>
                     <HeadingDark textAlign="start" margin="0 0 50px 0" level="2">What is a Bridge?</HeadingDark>
                     <Text textAlign="start" size="22px" color="#707070">A bridge is a connection point between two disparate blockchains. It allows chains that aren't connected in any way to bi-directionally communicate and transfer value. ODApp uses smart contracts, a bridge server, and Chainlink to transfer value from one chain to another.</Text>
-                  </Slide></Box>                    
+                  </Slide></Box>
                 </Grid>
               </CardBody>
           </Card>
@@ -284,7 +284,7 @@ function FAQ() {
       ) : (
         <Box>
           <Card width="full" round="none" background="#fff" pad="none" >
-              <CardBody> 
+              <CardBody>
                 <Grid
                 fill
                 areas={[
@@ -302,7 +302,7 @@ function FAQ() {
                   <Box gridArea="left" height="large" justify="center" alignSelf="center" pad="0 10rem 0 8rem"><Slide left>
                     <HeadingDark textAlign="start" margin="0 0 50px 0" level="2">What is a Bridge?</HeadingDark>
                     <Text textAlign="start" size="26px" color="#707070">A bridge is a connection point between two disparate blockchains. It allows chains that aren't connected in any way to bi-directionally communicate and transfer value. ODApp uses smart contracts, a bridge server, and Chainlink to transfer value from one chain to another.</Text>
-                  </Slide></Box>                  
+                  </Slide></Box>
                 </Grid>
               </CardBody>
           </Card>
@@ -319,7 +319,7 @@ function FAQ() {
                     <HeadingLight textAlign="center" margin="0 0 45px 0" level="2">What is PKT?</HeadingLight>
                     <Text textAlign="center" size="16px" color="#fff" margin="0 0 40px 0">PKT is the currency of the decentralized bandwidth marketplace. PKT strives to bring a free and decentralized internet to the world, and is powered by blockchain. The currency is scarce and mined using a bandwidth hard Proof of Work (PoW) called PacketCrypt. Since it is mined, it is a digitally hard asset and therefore cannot be created out of thin air. For more details on the project check <a href="https://pkt.cash/" target="_blank" rel="noopener noreferrer" style={{color: "#FBA300"}}>here</a>.</Text>
               </Box>
-              <Box justify="start" pad="none"><Image alignSelf="center" style={{maxWidth: "100%"}} src={pktMobImg} fit="cover" /></Box>                   
+              <Box justify="start" pad="none"><Image alignSelf="center" style={{maxWidth: "100%"}} src={pktMobImg} fit="contain" /></Box>
           </Card>
         </Box>
       ) : (responsive === 'small') ? (
@@ -329,13 +329,13 @@ function FAQ() {
                     <HeadingLight textAlign="center" margin="0 0 35px 0" level="2">What is PKT?</HeadingLight>
                     <Text textAlign="center" size="18px" color="#fff" margin="0 0 35px 0">PKT is the currency of the decentralized bandwidth marketplace. PKT strives to bring a free and decentralized internet to the world, and is powered by blockchain. The currency is scarce and mined using a bandwidth hard Proof of Work (PoW) called PacketCrypt. Since it is mined, it is a digitally hard asset and therefore cannot be created out of thin air. For more details on the project check <a href="https://pkt.cash/" target="_blank" rel="noopener noreferrer" style={{color: "#FBA300"}}>here</a>.</Text>
               </Box>
-              <Box justify="start" pad="none"><Image alignSelf="center" width="350" style={{maxWidth: "100%"}} src={pktMobImg} fit="cover" /></Box>                   
+              <Box justify="start" pad="none"><Image alignSelf="center" width="350" style={{maxWidth: "100%"}} src={pktMobImg} fit="cover" /></Box>
           </Card>
-        </Box>   
+        </Box>
       ) : (responsive === 'tablet') ? (
         <Box>
           <Card width="full" round="none" pad="0 50px" style={pktStyle}>
-              <CardBody> 
+              <CardBody>
                 <Grid
                 fill
                 areas={[
@@ -352,15 +352,15 @@ function FAQ() {
                   <Box gridArea="right" justify="center" alignSelf="center" pad="6rem 0">
                     <HeadingLight textAlign="start" margin="0 0 35px 0" level="2">What is PKT?</HeadingLight>
                     <Text textAlign="start" size="20px" color="#fff" margin="0">PKT is the currency of the decentralized bandwidth marketplace. PKT strives to bring a free and decentralized internet to the world, and is powered by blockchain. The currency is scarce and mined using a bandwidth hard Proof of Work (PoW) called PacketCrypt. Since it is mined, it is a digitally hard asset and therefore cannot be created out of thin air. For more details on the project check <a href="https://pkt.cash/" target="_blank" rel="noopener noreferrer" style={{color: "#FBA300"}}>here</a>.</Text>
-                  </Box>                    
+                  </Box>
                 </Grid>
               </CardBody>
           </Card>
-        </Box>   
+        </Box>
       ) : (responsive === 'medium') ? (
         <Box>
           <Card width="full" round="none" pad="0 50px" style={pktStyle}>
-              <CardBody> 
+              <CardBody>
                 <Grid
                 fill
                 areas={[
@@ -377,15 +377,15 @@ function FAQ() {
                   <Slide right><Box gridArea="right" justify="center" alignSelf="center" pad="6rem 0">
                     <HeadingLight textAlign="start" margin="0 0 50px 0" level="2">What is PKT?</HeadingLight>
                     <Text textAlign="start" size="22px" color="#fff" margin="0">PKT is the currency of the decentralized bandwidth marketplace. PKT strives to bring a free and decentralized internet to the world, and is powered by blockchain. The currency is scarce and mined using a bandwidth hard Proof of Work (PoW) called PacketCrypt. Since it is mined, it is a digitally hard asset and therefore cannot be created out of thin air. For more details on the project check <a href="https://pkt.cash/" target="_blank" rel="noopener noreferrer" style={{color: "#FBA300"}}>here</a>.</Text>
-                  </Box></Slide>                 
+                  </Box></Slide>
                 </Grid>
               </CardBody>
           </Card>
-        </Box>   
+        </Box>
       ) : (
         <Box>
           <Card width="full" round="none" pad="none" style={pktStyle}>
-              <CardBody> 
+              <CardBody>
                 <Grid
                 fill
                 areas={[
@@ -402,14 +402,14 @@ function FAQ() {
                   <Slide right><Box gridArea="right" height="large" justify="center" alignSelf="center" pad="0 10rem 0 8rem">
                     <HeadingLight textAlign="start" margin="0 0 50px 0" level="2">What is PKT?</HeadingLight>
                     <Text textAlign="start" size="26px" color="#fff" margin="0 45px 0 0">PKT is the currency of the decentralized bandwidth marketplace. PKT strives to bring a free and decentralized internet to the world, and is powered by blockchain. The currency is scarce and mined using a bandwidth hard Proof of Work (PoW) called PacketCrypt. Since it is mined, it is a digitally hard asset and therefore cannot be created out of thin air. For more details on the project check <a href="https://pkt.cash/" target="_blank" rel="noopener noreferrer" style={{color: "#FBA300"}}>here</a>.</Text>
-                  </Box></Slide>                  
+                  </Box></Slide>
                 </Grid>
               </CardBody>
           </Card>
         </Box>
       )}
-    </ResponsiveContext.Consumer>      
-            
+    </ResponsiveContext.Consumer>
+
     {/* What is WPKT */}
     <ResponsiveContext.Consumer>
       {responsive => (responsive === 'smallmob') ? (
@@ -419,7 +419,7 @@ function FAQ() {
                 <HeadingDark textAlign="center" margin="0 0 45px 0" level="2">What is WPKT?</HeadingDark>
                 <Text textAlign="center" size="16px" color="#707070">WPKT is PKT on the ethereum blockchain. It is a wrapped version of PKT, hence the "W" in WPKT. WPKT can only come into existence when PKT is sent to the vault address, thus WPKT can't be inflated, and has a 1-to-1 peg to PKT. As there can only be 6 billion PKT in existence, there can never be more than 6 billion WPKT. WPKT is an ERC20 token and is compatible with all ERC20 platforms.</Text>
               </Box>
-              <Box justify="start"><Image alignSelf="center" style={{maxWidth: "125%"}} src={wpkt_illustration} fit="contain" /></Box>           
+              <Box justify="start"><Image alignSelf="center" style={{maxWidth: "125%"}} src={wpkt_illustration} fit="contain" height="400" /></Box>
           </Card>
         </Box>
       ) : (responsive === 'small') ? (
@@ -429,13 +429,13 @@ function FAQ() {
                 <HeadingDark textAlign="center" margin="0 0 35px 0" level="2">What is WPKT?</HeadingDark>
                 <Text textAlign="center" size="18px" color="#707070">WPKT is PKT on the ethereum blockchain. It is a wrapped version of PKT, hence the "W" in WPKT. WPKT can only come into existence when PKT is sent to the vault address, thus WPKT can't be inflated, and has a 1-to-1 peg to PKT. As there can only be 6 billion PKT in existence, there can never be more than 6 billion WPKT. WPKT is an ERC20 token and is compatible with all ERC20 platforms.</Text>
               </Box>
-              <Box justify="start"><Image alignSelf="center" width="400" src={wpkt_illustration} fit="contain" /></Box>           
+              <Box justify="start"><Image alignSelf="center" width="400" src={wpkt_illustration} fit="contain" /></Box>
           </Card>
         </Box>
       ) : (responsive === 'tablet') ? (
         <Box>
           <Card width="full" round="none" background="#fff" pad="0 50px">
-              <CardBody> 
+              <CardBody>
                 <Grid
                 fill
                 areas={[
@@ -453,7 +453,7 @@ function FAQ() {
                   <Box gridArea="left" justify="center" alignSelf="center"><Slide left>
                     <HeadingDark textAlign="start" margin="0 0 35px 0" level="2">What is WPKT?</HeadingDark>
                     <Text textAlign="start" size="20px" color="#707070">WPKT is PKT on the ethereum blockchain. It is a wrapped version of PKT, hence the "W" in WPKT. WPKT can only come into existence when PKT is sent to the vault address, thus WPKT can't be inflated, and has a 1-to-1 peg to PKT. As there can only be 6 billion PKT in existence, there can never be more than 6 billion WPKT. WPKT is an ERC20 token and is compatible with all ERC20 platforms.</Text>
-                  </Slide></Box>                    
+                  </Slide></Box>
                 </Grid>
               </CardBody>
           </Card>
@@ -461,7 +461,7 @@ function FAQ() {
       ) : (responsive === 'medium') ? (
         <Box>
           <Card width="full" round="none" background="#fff" pad="0 50px">
-              <CardBody> 
+              <CardBody>
                 <Grid
                 fill
                 areas={[
@@ -479,7 +479,7 @@ function FAQ() {
                   <Box gridArea="left" justify="center" alignSelf="center"><Slide left>
                     <HeadingDark textAlign="start" margin="0 0 50px 0" level="2">What is WPKT?</HeadingDark>
                     <Text textAlign="start" size="22px" color="#707070">WPKT is PKT on the ethereum blockchain. It is a wrapped version of PKT, hence the "W" in WPKT. WPKT can only come into existence when PKT is sent to the vault address, thus WPKT can't be inflated, and has a 1-to-1 peg to PKT. As there can only be 6 billion PKT in existence, there can never be more than 6 billion WPKT. WPKT is an ERC20 token and is compatible with all ERC20 platforms.</Text>
-                  </Slide></Box>               
+                  </Slide></Box>
                 </Grid>
               </CardBody>
           </Card>
@@ -487,7 +487,7 @@ function FAQ() {
       ) : (
         <Box>
           <Card width="full" round="none" background="#fff" pad="none">
-              <CardBody> 
+              <CardBody>
                 <Grid
                 fill
                 areas={[
@@ -505,14 +505,14 @@ function FAQ() {
                   <Box gridArea="left" justify="center" alignSelf="center" pad="0 9rem 0 8rem"><Slide left>
                     <HeadingDark textAlign="start" margin="0 0 50px 0" level="2">What is WPKT?</HeadingDark>
                     <Text textAlign="start" size="26px" color="#707070">WPKT is PKT on the ethereum blockchain. It is a wrapped version of PKT, hence the "W" in WPKT. WPKT can only come into existence when PKT is sent to the vault address, thus WPKT can't be inflated, and has a 1-to-1 peg to PKT. As there can only be 6 billion PKT in existence, there can never be more than 6 billion WPKT. WPKT is an ERC20 token and is compatible with all ERC20 platforms.</Text>
-                    </Slide></Box>             
+                    </Slide></Box>
                 </Grid>
               </CardBody>
           </Card>
-        </Box> 
+        </Box>
       )}
     </ResponsiveContext.Consumer>
-            
+
     {/* What is the Vault */}
     <ResponsiveContext.Consumer>
       {responsive => (responsive === 'smallmob') ? (
@@ -522,7 +522,7 @@ function FAQ() {
                 <HeadingLight textAlign="center" margin="0 0 45px 0" level="2">What is the Vault?</HeadingLight>
                 <Text textAlign="center" size="16px" color="#fff">The vault is a PKT address which stores the PKT that WPKT tokens are issued against. When PKT coins are sent to the vault, the equivalent amount of WPKT can be claimed with the PKT transaction hash. The transaction hash is an identifier you receive after a transaction. So if you send PKT to the vault address, your wallet will return a PKT transaction hash as proof of your transaction. This transaction proof, or transaction hash, allows the equivalent amount of WPKT, less fees, to be claimed.</Text>
               </Box>
-              <Box justify="start" pad="none"><Image alignSelf="center" style={{maxWidth: "95%"}} margin={{top:"50px"}} src={vault_illustration} fit="contain" /></Box>             
+              <Box justify="start" pad="none"><Image alignSelf="center" height="300" style={{maxWidth: "95%"}} margin={{top:"50px"}} src={vault_illustration} fit="contain" /></Box>
           </Card>
         </Box>
       ) : (responsive === 'small') ? (
@@ -532,13 +532,13 @@ function FAQ() {
                 <HeadingLight textAlign="center" margin="0 0 35px 0" level="2">What is the Vault?</HeadingLight>
                 <Text textAlign="center" size="18px" color="#fff">The vault is a PKT address which stores the PKT that WPKT tokens are issued against. When PKT coins are sent to the vault, the equivalent amount of WPKT can be claimed with the PKT transaction hash. The transaction hash is an identifier you receive after a transaction. So if you send PKT to the vault address, your wallet will return a PKT transaction hash as proof of your transaction. This transaction proof, or transaction hash, allows the equivalent amount of WPKT, less fees, to be claimed.</Text>
               </Box>
-              <Box justify="start" pad="none"><Image alignSelf="center" width="400" src={vault_illustration} fit="contain" /></Box>             
+              <Box justify="start" pad="none"><Image alignSelf="center" width="400" src={vault_illustration} fit="contain" /></Box>
           </Card>
-        </Box> 
+        </Box>
       ) : (responsive === 'tablet') ? (
         <Box>
           <Card width="full" round="none" background="#222323" pad="0 50px" style={vaultStyle}>
-              <CardBody> 
+              <CardBody>
                 <Grid
                 fill
                 areas={[
@@ -556,15 +556,15 @@ function FAQ() {
                   <Box gridArea="right" justify="center" alignSelf="center" pad="6rem 0"><Slide right>
                     <HeadingLight textAlign="start" margin="0 0 35px 0" level="2">What is the Vault?</HeadingLight>
                     <Text textAlign="start" size="20px" color="#fff">The vault is a PKT address which stores the PKT that WPKT tokens are issued against. When PKT coins are sent to the vault, the equivalent amount of WPKT can be claimed with the PKT transaction hash. The transaction hash is an identifier you receive after a transaction. So if you send PKT to the vault address, your wallet will return a PKT transaction hash as proof of your transaction. This transaction proof, or transaction hash, allows the equivalent amount of WPKT, less fees, to be claimed.</Text>
-                  </Slide></Box>                
+                  </Slide></Box>
                 </Grid>
               </CardBody>
           </Card>
-        </Box> 
+        </Box>
       ) : (responsive === 'medium') ? (
         <Box>
           <Card width="full" round="none" background="#222323" pad="0 50px" style={vaultStyle}>
-              <CardBody> 
+              <CardBody>
                 <Grid
                 fill
                 areas={[
@@ -582,15 +582,15 @@ function FAQ() {
                   <Box gridArea="right" justify="center" alignSelf="center" pad="6rem 0"><Slide right>
                     <HeadingLight textAlign="start" margin="0 0 50px 0" level="2">What is the Vault?</HeadingLight>
                     <Text textAlign="start" size="22px" color="#fff">The vault is a PKT address which stores the PKT that WPKT tokens are issued against. When PKT coins are sent to the vault, the equivalent amount of WPKT can be claimed with the PKT transaction hash. The transaction hash is an identifier you receive after a transaction. So if you send PKT to the vault address, your wallet will return a PKT transaction hash as proof of your transaction. This transaction proof, or transaction hash, allows the equivalent amount of WPKT, less fees, to be claimed.</Text>
-                  </Slide></Box>                
+                  </Slide></Box>
                 </Grid>
               </CardBody>
           </Card>
-        </Box> 
+        </Box>
       ) : (
         <Box>
           <Card width="full" round="none" background="#222323" pad="8rem" style={vaultStyle}>
-                  <CardBody> 
+                  <CardBody>
                     <Grid
                     fill
                     areas={[
@@ -608,14 +608,14 @@ function FAQ() {
                       <Box gridArea="right" justify="center" alignSelf="center" pad="0 0 0 8rem"><Slide right>
                         <HeadingLight textAlign="start" margin="0 0 50px 0" level="2">What is the Vault?</HeadingLight>
                         <Text textAlign="start" size="26px" color="#fff" margin="0 3rem 0 0">The vault is a PKT address which stores the PKT that WPKT tokens are issued against. When PKT coins are sent to the vault, the equivalent amount of WPKT can be claimed with the PKT transaction hash. The transaction hash is an identifier you receive after a transaction. So if you send PKT to the vault address, your wallet will return a PKT transaction hash as proof of your transaction. This transaction proof, or transaction hash, allows the equivalent amount of WPKT, less fees, to be claimed.</Text>
-                      </Slide></Box>               
+                      </Slide></Box>
                     </Grid>
                   </CardBody>
           </Card>
         </Box>
       )}
     </ResponsiveContext.Consumer>
-            
+
     {/* What is Metamask? */}
     <ResponsiveContext.Consumer>
       {responsive => (responsive === 'smallmob') ? (
@@ -625,7 +625,7 @@ function FAQ() {
                     <HeadingDark textAlign="center" margin="0 0 50px 0" level="2">What is Metamask?</HeadingDark>
                     <Text textAlign="center" size="16px" color="#707070">Metamask is a popular wallet that is compatible with multiple chains, including Binance Smart Chain, Ethereum, Polygon and others. ODApp transacts through Metamask so you must install it to use this bridge. For more details on installing Metamask check <a href="https://metamask.io/" target="_blank" rel="noopener noreferrer" style={{color: "#FBA300"}}>here</a>.</Text>
               </Box>
-              <Box justify="start" style={metamaskBgMob} pad="0 0 75px"><Image alignSelf="center" style={{maxWidth: "80%"}} src={metamask_illustration} fit="contain" /></Box>                 
+              <Box justify="start" style={metamaskBgMob} pad="0 0 75px"><Image alignSelf="center" height="300" style={{maxWidth: "80%"}} src={metamask_illustration} fit="contain" /></Box>
           </Card>
         </Box>
       ) : (responsive === 'small') ? (
@@ -635,13 +635,13 @@ function FAQ() {
                   <HeadingDark textAlign="center" margin="0 0 35px 0" level="2">What is Metamask?</HeadingDark>
                   <Text textAlign="center" size="18px" color="#707070">Metamask is a popular wallet that is compatible with multiple chains, including Binance Smart Chain, Ethereum, Polygon and others. ODApp transacts through Metamask so you must install it to use this bridge. For more details on installing Metamask check <a href="https://metamask.io/" target="_blank" rel="noopener noreferrer" style={{color: "#FBA300"}}>here</a>.</Text>
               </Box>
-              <Box justify="start" style={metamaskBgMob} pad="35px 0 50px"><Image alignSelf="center" width="350" src={metamask_illustration} fit="contain" /></Box>                 
+              <Box justify="start" style={metamaskBgMob} pad="35px 0 50px"><Image alignSelf="center" width="350" src={metamask_illustration} fit="contain" /></Box>
           </Card>
         </Box>
       ) : (responsive === 'tablet') ? (
         <Box>
               <Card width="full" round="none" background="#fff" pad="0 50px">
-                  <CardBody> 
+                  <CardBody>
                     <Grid
                     fill
                     areas={[
@@ -659,7 +659,7 @@ function FAQ() {
                       <Box gridArea="left" justify="center" alignSelf="center" pad="6em 0"><Slide left>
                         <HeadingDark textAlign="left" margin="0 0 35px 0" level="2">What is Metamask?</HeadingDark>
                         <Text textAlign="start" size="20px" color="#707070" margin="0 0 1rem 0">Metamask is a popular wallet that is compatible with multiple chains, including Binance Smart Chain, Ethereum, Polygon and others. ODApp transacts through Metamask so you must install it to use this bridge. For more details on installing Metamask check <a href="https://metamask.io/" target="_blank" rel="noopener noreferrer" style={{color: "#FBA300"}}>here</a>.</Text>
-                      </Slide></Box>                    
+                      </Slide></Box>
                     </Grid>
                   </CardBody>
               </Card>
@@ -667,7 +667,7 @@ function FAQ() {
       ) : (responsive === 'medium') ? (
         <Box>
               <Card width="full" round="none" background="#fff" pad="0 50px">
-                  <CardBody> 
+                  <CardBody>
                     <Grid
                     fill
                     areas={[
@@ -685,7 +685,7 @@ function FAQ() {
                       <Box gridArea="left" justify="center" alignSelf="center" pad="6em 0"><Slide left>
                         <HeadingDark textAlign="left" margin="0 0 50px 0" level="2">What is Metamask?</HeadingDark>
                         <Text textAlign="start" size="22px" color="#707070" margin="0 0 1rem 0">Metamask is a popular wallet that is compatible with multiple chains, including Binance Smart Chain, Ethereum, Polygon and others. ODApp transacts through Metamask so you must install it to use this bridge. For more details on installing Metamask check <a href="https://metamask.io/" target="_blank" rel="noopener noreferrer" style={{color: "#FBA300"}}>here</a>.</Text>
-                      </Slide></Box>                    
+                      </Slide></Box>
                     </Grid>
                   </CardBody>
               </Card>
@@ -693,7 +693,7 @@ function FAQ() {
       ) : (
         <Box>
           <Card width="full" round="none" background="#fff" pad="none" >
-              <CardBody> 
+              <CardBody>
                     <Grid
                     fill
                     areas={[
@@ -711,13 +711,13 @@ function FAQ() {
                       <Box gridArea="left" height="large" justify="center" alignSelf="center" pad="0 10rem 0 8rem"><Slide left>
                         <HeadingDark textAlign="left" margin="0 0 50px 0" level="2">What is Metamask?</HeadingDark>
                         <Text textAlign="start" size="26px" color="#707070" margin="0 0 1rem 0">Metamask is a popular wallet that is compatible with multiple chains, including Binance Smart Chain, Ethereum, Polygon and others. ODApp transacts through Metamask so you must install it to use this bridge. For more details on installing Metamask check <a href="https://metamask.io/" target="_blank" rel="noopener noreferrer" style={{color: "#FBA300"}}>here</a>.</Text>
-                      </Slide></Box>                    
+                      </Slide></Box>
                     </Grid>
               </CardBody>
             </Card>
         </Box>
       )}
-    </ResponsiveContext.Consumer>       
+    </ResponsiveContext.Consumer>
 
     {/* What is a Smart Contract */}
     <ResponsiveContext.Consumer>
@@ -728,7 +728,7 @@ function FAQ() {
                 <HeadingLight textAlign="center" margin="0 0 40px 0" level="2">What is a Smart Contract?</HeadingLight>
                 <Text textAlign="center" size="16px" color="#fff">A smart contract is a program that runs on top of a blockchain. As such, smart contracts can be used to issue tokens. ODapp uses smart contracts to issue WPKT on-chain.</Text>
               </Box>
-              <Box justify="start"><Image alignSelf="center" style={{maxWidth: "90%", margin: "0 auto"}} src={smart_contract_illustration} fit="contain" /></Box>
+              <Box justify="start"><Image alignSelf="center" height="300" style={{maxWidth: "90%", margin: "0 auto"}} src={smart_contract_illustration} fit="contain" /></Box>
           </Card>
         </Box>
       ) : (responsive === 'small') ? (
@@ -744,7 +744,7 @@ function FAQ() {
       ) : (responsive === 'tablet') ? (
         <Box>
               <Card width="full" round="none" background="#222323" pad="0 50px">
-                  <CardBody> 
+                  <CardBody>
                     <Grid
                     fill
                     areas={[
@@ -762,7 +762,7 @@ function FAQ() {
                       <Box gridArea="right" justify="center" alignSelf="center"><Slide right>
                         <HeadingLight textAlign="left" margin="0 0 35px 0" level="2">What is a Smart Contract?</HeadingLight>
                         <Text textAlign="start" size="20px" color="#fff">A smart contract is a program that runs on top of a blockchain. As such, smart contracts can be used to issue tokens. ODapp uses smart contracts to issue WPKT on-chain.</Text>
-                      </Slide></Box>                    
+                      </Slide></Box>
                     </Grid>
                   </CardBody>
               </Card>
@@ -770,7 +770,7 @@ function FAQ() {
       ) : (responsive === 'medium') ? (
         <Box>
               <Card width="full" round="none" background="#222323" pad="0 50px">
-                  <CardBody> 
+                  <CardBody>
                     <Grid
                     fill
                     areas={[
@@ -788,7 +788,7 @@ function FAQ() {
                       <Box gridArea="right" justify="center" alignSelf="center"><Slide right>
                         <HeadingLight textAlign="left" margin="0 0 50px 0" level="2">What is a Smart Contract?</HeadingLight>
                         <Text textAlign="start" size="22px" color="#fff">A smart contract is a program that runs on top of a blockchain. As such, smart contracts can be used to issue tokens. ODapp uses smart contracts to issue WPKT on-chain.</Text>
-                      </Slide></Box>                    
+                      </Slide></Box>
                     </Grid>
                   </CardBody>
               </Card>
@@ -796,7 +796,7 @@ function FAQ() {
       ) : (
         <Box>
           <Card width="full" round="none" background="#222323" pad="4rem 8rem">
-                  <CardBody> 
+                  <CardBody>
                     <Grid
                     fill
                     areas={[
@@ -814,14 +814,14 @@ function FAQ() {
                       <Box gridArea="right" justify="center" alignSelf="center" pad="0 0 0 10vw"><Slide right>
                         <HeadingLight textAlign="start" margin="0 0 50px 0" level="2">What is a Smart Contract?</HeadingLight>
                         <Text textAlign="start" size="26px" color="#fff" margin="0 0 1rem 0">A smart contract is a program that runs on top of a blockchain. As such, smart contracts can be used to issue tokens. ODapp uses smart contracts to issue WPKT on-chain.</Text>
-                      </Slide></Box>                    
+                      </Slide></Box>
                     </Grid>
                   </CardBody>
               </Card>
           </Box>
       )}
-    </ResponsiveContext.Consumer>   
-            
+    </ResponsiveContext.Consumer>
+
     {/* What is a Transaction Hash? */}
     <ResponsiveContext.Consumer>
       {responsive => (responsive === 'smallmob') ? (
@@ -831,7 +831,7 @@ function FAQ() {
                     <HeadingDark textAlign="center" margin="0 0 40px 0" level="2">What is a Transaction Hash?</HeadingDark>
                     <Text textAlign="center" size="16px" color="#707070">A transaction hash is a unique identifier for your transaction. It is proof that your transaction has been performed, and it is verifiable on a blockchain. ODApp uses PKT transaction hashes to verify that coins were sent to the vault address, and Binance Smart Chain transaction hashes to prove that tokens were sent to the WPKT smart contract. Transaction hashes are a cryptographically sound way to prove that value has been transferred, and thus it is utilized for cross-chain interactions. ODApp uses a proof of transaction (PoTx) system to value transfer between chains.</Text>
               </Box>
-              <Box justify="start" pad="50px 0 25px"><ImageMobile alignSelf="center" src={trans_hash_illustration} fit="contain" /></Box>          
+              <Box justify="start" pad="50px 0 25px"><ImageMobile alignSelf="center" src={trans_hash_illustration} fit="contain" /></Box>
           </Card>
         </Box>
       ) : (responsive === 'small') ? (
@@ -841,13 +841,13 @@ function FAQ() {
                     <HeadingDark textAlign="center" margin="0 0 35px 0" level="2">What is a Transaction Hash?</HeadingDark>
                     <Text textAlign="center" size="18px" color="#707070">A transaction hash is a unique identifier for your transaction. It is proof that your transaction has been performed, and it is verifiable on a blockchain. ODApp uses PKT transaction hashes to verify that coins were sent to the vault address, and Binance Smart Chain transaction hashes to prove that tokens were sent to the WPKT smart contract. Transaction hashes are a cryptographically sound way to prove that value has been transferred, and thus it is utilized for cross-chain interactions. ODApp uses a proof of transaction (PoTx) system to value transfer between chains.</Text>
               </Box>
-              <Box margin={{top: "35px"}}><ImageMobile alignSelf="center" width="400" src={trans_hash_illustration} fit="contain" /></Box>          
+              <Box margin={{top: "35px"}}><ImageMobile alignSelf="center" width="400" src={trans_hash_illustration} fit="contain" /></Box>
           </Card>
         </Box>
       ) : (responsive === 'tablet') ? (
         <Box>
             <Card width="full" round="none" background="#fff" pad="0 50px" style={hashBg}>
-                  <CardBody> 
+                  <CardBody>
                     <Grid
                     fill
                     areas={[
@@ -865,7 +865,7 @@ function FAQ() {
                       <Box gridArea="left" justify="center" alignSelf="center" pad="4rem 0"><Slide left>
                         <HeadingDark textAlign="start" margin="0 0 35px 0" level="2">What is a Transaction Hash?</HeadingDark>
                         <Text textAlign="start" size="20px" color="#707070">A transaction hash is a unique identifier for your transaction. It is proof that your transaction has been performed, and it is verifiable on a blockchain. ODApp uses PKT transaction hashes to verify that coins were sent to the vault address, and Binance Smart Chain transaction hashes to prove that tokens were sent to the WPKT smart contract. Transaction hashes are a cryptographically sound way to prove that value has been transferred, and thus it is utilized for cross-chain interactions. ODApp uses a proof of transaction (PoTx) system to value transfer between chains.</Text>
-                      </Slide></Box>                    
+                      </Slide></Box>
                     </Grid>
                   </CardBody>
               </Card>
@@ -873,7 +873,7 @@ function FAQ() {
       ) : (responsive === 'medium') ? (
         <Box>
             <Card width="full" round="none" background="#fff" pad="0 50px" style={hashBg}>
-                  <CardBody> 
+                  <CardBody>
                     <Grid
                     fill
                     areas={[
@@ -891,7 +891,7 @@ function FAQ() {
                       <Box gridArea="left" justify="center" alignSelf="center" pad="4rem 0"><Slide left>
                         <HeadingDark textAlign="start" margin="0 0 50px 0" level="2">What is a Transaction Hash?</HeadingDark>
                         <Text textAlign="start" size="22px" color="#707070">A transaction hash is a unique identifier for your transaction. It is proof that your transaction has been performed, and it is verifiable on a blockchain. ODApp uses PKT transaction hashes to verify that coins were sent to the vault address, and Binance Smart Chain transaction hashes to prove that tokens were sent to the WPKT smart contract. Transaction hashes are a cryptographically sound way to prove that value has been transferred, and thus it is utilized for cross-chain interactions. ODApp uses a proof of transaction (PoTx) system to value transfer between chains.</Text>
-                      </Slide></Box>                    
+                      </Slide></Box>
                     </Grid>
                   </CardBody>
               </Card>
@@ -899,7 +899,7 @@ function FAQ() {
       ) : (
         <Box>
             <Card width="full" round="none" background="#fff" pad="12rem 0 12rem 8rem" style={hashBg}>
-                  <CardBody> 
+                  <CardBody>
                     <Grid
                     fill
                     areas={[
@@ -917,14 +917,14 @@ function FAQ() {
                       <Box gridArea="left" justify="center" alignSelf="center"><Slide left>
                         <HeadingDark textAlign="start" margin="0 0 50px 0" level="2">What is a Transaction Hash?</HeadingDark>
                         <Text textAlign="start" size="26px" color="#707070" margin="0 14vw 0 0">A transaction hash is a unique identifier for your transaction. It is proof that your transaction has been performed, and it is verifiable on a blockchain. ODApp uses PKT transaction hashes to verify that coins were sent to the vault address, and Binance Smart Chain transaction hashes to prove that tokens were sent to the WPKT smart contract. Transaction hashes are a cryptographically sound way to prove that value has been transferred, and thus it is utilized for cross-chain interactions. ODApp uses a proof of transaction (PoTx) system to value transfer between chains.</Text>
-                      </Slide></Box>                    
+                      </Slide></Box>
                     </Grid>
                   </CardBody>
             </Card>
         </Box>
       )}
     </ResponsiveContext.Consumer>
-            
+
     {/* I Didn't Save My Transaction Hash? */}
     <ResponsiveContext.Consumer>
       {responsive => (responsive === 'smallmob') ? (
@@ -946,11 +946,11 @@ function FAQ() {
               </Box>
               <Box margin={{top: "35px"}}><ImageMobile alignSelf="center" width="350" src={save_hash_illustration} fit="contain" /></Box>
           </Card>
-        </Box> 
+        </Box>
       ) : (responsive === 'tablet') ? (
         <Box>
           <Card width="full" round="none" background="#222323" pad="0 50px">
-                <CardBody> 
+                <CardBody>
                   <Grid
                   fill
                   areas={[
@@ -968,15 +968,15 @@ function FAQ() {
                     <Box gridArea="right" justify="center" alignSelf="center" pad="4rem 0"><Slide right>
                       <HeadingLight textAlign="start" margin="0 0 35px 0" level="2">I Didn't Save My Transaction Hash?</HeadingLight>
                       <Text textAlign="start" size="20px" color="#fff">If you lost your transaction hash, or didn't save it, you can recover it on-chain. Your Binance Smart Chain transactions are saved in your Metamask wallet, but you can also find them on etherscan. Just search for your Binance Smart Chain address and find the last transaction you performed off the address with the WPKT contract. Similarly, you can search for your PKT transaction hashes on the PKT explorer. To find your transaction hash, lookup the last transaction your PKT address executed against the address:<br /><br /><span style={{color: "#FBA300", textDecoration: "underlined"}}>pkt1qex9d4fjwc0nqr3x0hex6ds5vpu67efjdlm6ckz</span><br /><br />Once you have your transaction hashes, you can complete bridging in any case.</Text>
-                    </Slide></Box>                    
+                    </Slide></Box>
                   </Grid>
                 </CardBody>
             </Card>
-        </Box> 
+        </Box>
       ) : (responsive === 'medium') ? (
         <Box>
             <Card width="full" round="none" background="#222323" pad="0 50px">
-                  <CardBody> 
+                  <CardBody>
                     <Grid
                     fill
                     areas={[
@@ -994,15 +994,15 @@ function FAQ() {
                       <Box gridArea="right" justify="center" alignSelf="center" pad="4rem 0"><Slide right>
                         <HeadingLight textAlign="start" margin="0 0 50px 0" level="2">I Didn't Save My Transaction Hash?</HeadingLight>
                         <Text textAlign="start" size="22px" color="#fff">If you lost your transaction hash, or didn't save it, you can recover it on-chain. Your Binance Smart Chain transactions are saved in your Metamask wallet, but you can also find them on etherscan. Just search for your Binance Smart Chain address and find the last transaction you performed off the address with the WPKT contract. Similarly, you can search for your PKT transaction hashes on the PKT explorer. To find your transaction hash, lookup the last transaction your PKT address executed against the address:<br /><br /><span style={{color: "#FBA300", textDecoration: "underlined"}}>pkt1qex9d4fjwc0nqr3x0hex6ds5vpu67efjdlm6ckz</span><br /><br />Once you have your transaction hashes, you can complete bridging in any case.</Text>
-                      </Slide></Box>                    
+                      </Slide></Box>
                     </Grid>
                   </CardBody>
               </Card>
-          </Box> 
+          </Box>
       ) : (
         <Box>
           <Card width="full" round="none" background="#222323" pad="8rem">
-                  <CardBody> 
+                  <CardBody>
                     <Grid
                     fill
                     areas={[
@@ -1020,14 +1020,14 @@ function FAQ() {
                       <Box gridArea="right" justify="center" alignSelf="center" margin={{left: "10rem", right: "2rem"}}><Slide right>
                         <HeadingLight textAlign="start" margin="0 0 50px 0" level="2">I Didn't Save My Transaction Hash?</HeadingLight>
                         <Text textAlign="start" size="26px" color="#fff">If you lost your transaction hash, or didn't save it, you can recover it on-chain. Your Binance Smart Chain transactions are saved in your Metamask wallet, but you can also find them on etherscan. Just search for your Binance Smart Chain address and find the last transaction you performed off the address with the WPKT contract. Similarly, you can search for your PKT transaction hashes on the PKT explorer. To find your transaction hash, lookup the last transaction your PKT address executed against the address:<br /><br /><span style={{color: "#FBA300", textDecoration: "underlined"}}>pkt1qex9d4fjwc0nqr3x0hex6ds5vpu67efjdlm6ckz</span><br /><br />Once you have your transaction hashes, you can complete bridging in any case.</Text>
-                      </Slide></Box>                    
+                      </Slide></Box>
                     </Grid>
                   </CardBody>
               </Card>
         </Box>
       )}
     </ResponsiveContext.Consumer>
-            
+
     {/* Why Does Bridging Take So Long? */}
     <ResponsiveContext.Consumer>
       {responsive => (responsive === 'smallmob') ? (
@@ -1053,7 +1053,7 @@ function FAQ() {
       ) : (responsive === 'tablet') ? (
         <Box>
               <Card width="full" round="none" background="#fff" pad="0 50px" style={watchBg}>
-                  <CardBody> 
+                  <CardBody>
                     <Grid
                     fill
                     areas={[
@@ -1071,7 +1071,7 @@ function FAQ() {
                       <Box gridArea="left" justify="center" alignSelf="center" pad="4rem 0"><Slide left>
                         <HeadingDark textAlign="start" margin="0 0 35px 0" level="2">Why Does Bridging Take So Long?</HeadingDark>
                         <Text textAlign="start" size="20px" color="#707070">Cross-chain bridging, as it is commonly known, is a process which involves settlement over two different chains. Normally, blockchain settlement over a single chain is limited to the speed of the chain. Every chain's speed is limited to its transactions per second (TPS) which is dependent on its block time. On average, Binance smart chain's block time is around 12 seconds while PKT cash's block time is 1 minute. In practice, we wait for several blocks of confirmation for a transaction to be approved, so we are waiting multiples of block time to settle. Additionally, Chainlink is used to create cross-chain communication. Chainlink adds additional latency to the process, via oracle requests. So, all of this together accounts for a slow settlement time. Bridging isn't exchanging or swapping, it is an entirely different process, and thus speed expectations should be adjusted to meet the realities of bridging.</Text>
-                      </Slide></Box>                    
+                      </Slide></Box>
                     </Grid>
                   </CardBody>
               </Card>
@@ -1079,7 +1079,7 @@ function FAQ() {
       ) : (responsive === 'medium') ? (
         <Box>
               <Card width="full" round="none" background="#fff" pad="0 50px" style={watchBg}>
-                  <CardBody> 
+                  <CardBody>
                     <Grid
                     fill
                     areas={[
@@ -1097,15 +1097,15 @@ function FAQ() {
                       <Box gridArea="left" justify="center" alignSelf="center" pad="4rem 0"><Slide left>
                         <HeadingDark textAlign="start" margin="0 0 50px 0" level="2">Why Does Bridging Take So Long?</HeadingDark>
                         <Text textAlign="start" size="22px" color="#707070">Cross-chain bridging, as it is commonly known, is a process which involves settlement over two different chains. Normally, blockchain settlement over a single chain is limited to the speed of the chain. Every chain's speed is limited to its transactions per second (TPS) which is dependent on its block time. On average, Binance smart chain's block time is around 12 seconds while PKT cash's block time is 1 minute. In practice, we wait for several blocks of confirmation for a transaction to be approved, so we are waiting multiples of block time to settle. Additionally, Chainlink is used to create cross-chain communication. Chainlink adds additional latency to the process, via oracle requests. So, all of this together accounts for a slow settlement time. Bridging isn't exchanging or swapping, it is an entirely different process, and thus speed expectations should be adjusted to meet the realities of bridging.</Text>
-                      </Slide></Box>                    
+                      </Slide></Box>
                     </Grid>
                   </CardBody>
               </Card>
-          </Box> 
+          </Box>
       ) : (
         <Box>
             <Card width="full" round="none" background="#fff" pad="10rem 6rem 10rem 8rem" style={watchBg}>
-                  <CardBody> 
+                  <CardBody>
                     <Grid
                     fill
                     areas={[
@@ -1123,14 +1123,14 @@ function FAQ() {
                       <Box gridArea="left" height="large" justify="center" alignSelf="center" pad="0 5vw 0 0"><Slide left>
                         <HeadingDark textAlign="start" margin="0 0 50px 0" level="2">Why Does Bridging Take So Long?</HeadingDark>
                         <Text textAlign="start" size="26px" color="#707070">Cross-chain bridging, as it is commonly known, is a process which involves settlement over two different chains. Normally, blockchain settlement over a single chain is limited to the speed of the chain. Every chain's speed is limited to its transactions per second (TPS) which is dependent on its block time. On average, Binance smart chain's block time is around 12 seconds while PKT cash's block time is 1 minute. In practice, we wait for several blocks of confirmation for a transaction to be approved, so we are waiting multiples of block time to settle. Additionally, Chainlink is used to create cross-chain communication. Chainlink adds additional latency to the process, via oracle requests. So, all of this together accounts for a slow settlement time. Bridging isn't exchanging or swapping, it is an entirely different process, and thus speed expectations should be adjusted to meet the realities of bridging.</Text>
-                      </Slide></Box>                    
+                      </Slide></Box>
                     </Grid>
                   </CardBody>
               </Card>
           </Box>
       )}
     </ResponsiveContext.Consumer>
-          
+
     {/* Why Must I Pre-Commit When Bridging WPKT? */}
     <ResponsiveContext.Consumer>
       {responsive => (responsive === 'smallmob') ? (
@@ -1140,7 +1140,7 @@ function FAQ() {
                   <HeadingLight textAlign="center" margin="0 0 40px 0" level="2">Why Must I Pre-Commit When Bridging WPKT?</HeadingLight>
                   <Text textAlign="center" size="16px" color="#fff">When bridging from PKT to WPKT it is important to pre-commit the PKT sender address as well as the WPKT recipient address (which is a Binance smart chain address). Sending funds to the vault address without performing this step first can result in your transaction being front-run by a malicious attacker. Specifically, an attacker may get your transaction id and submit it as their own. This can be prevented by pre-committing your sender / recipient pair before sending money to the vault. You must be sure to send money to the vault from the sender address you have declared. And your WPKT can only be received by the recipient address committed. It is important to note that all sender / recipient address pairs are unique. You cannot reuse the sender address with a different recipient or vice versa. You can reuse the same sender / recipient pair ad infinitum, but you can't mix and match to make new pairs using either declared address. If you wish to declare a new recipient address you must also add a new sender address. If you want to add a new sender you must also add a new recipient. Though it is somewhat limiting, the protection it offers far outweighs any inconvenience.</Text>
               </Box>
-              <Box justify="start"><ImageMobile alignSelf="center" src={pre_commit_illustration} fit="contain" /></Box>                 
+              <Box justify="start"><ImageMobile alignSelf="center" src={pre_commit_illustration} fit="contain" /></Box>
           </Card>
         </Box>
       ) : (responsive === 'small') ? (
@@ -1150,13 +1150,13 @@ function FAQ() {
                   <HeadingLight textAlign="center" margin="0 0 35px 0" level="2">Why Must I Pre-Commit When Bridging WPKT?</HeadingLight>
                   <Text textAlign="center" size="18px" color="#fff">When bridging from PKT to WPKT it is important to pre-commit the PKT sender address as well as the WPKT recipient address (which is a Binance smart chain address). Sending funds to the vault address without performing this step first can result in your transaction being front-run by a malicious attacker. Specifically, an attacker may get your transaction id and submit it as their own. This can be prevented by pre-committing your sender / recipient pair before sending money to the vault. You must be sure to send money to the vault from the sender address you have declared. And your WPKT can only be received by the recipient address committed. It is important to note that all sender / recipient address pairs are unique. You cannot reuse the sender address with a different recipient or vice versa. You can reuse the same sender / recipient pair ad infinitum, but you can't mix and match to make new pairs using either declared address. If you wish to declare a new recipient address you must also add a new sender address. If you want to add a new sender you must also add a new recipient. Though it is somewhat limiting, the protection it offers far outweighs any inconvenience.</Text>
               </Box>
-              <Box margin={{top: "35px"}}><ImageMobile alignSelf="center" width="350" src={pre_commit_illustration} fit="contain" /></Box>                 
+              <Box margin={{top: "35px"}}><ImageMobile alignSelf="center" width="350" src={pre_commit_illustration} fit="contain" /></Box>
           </Card>
         </Box>
       ) : (responsive === 'tablet') ? (
         <Box>
             <Card width="full" round="none" background="#222323" pad="0 50px" style={precommitBridge}>
-                  <CardBody> 
+                  <CardBody>
                     <Grid
                     fill
                     areas={[
@@ -1174,7 +1174,7 @@ function FAQ() {
                       <Box gridArea="right" justify="center" alignSelf="center" pad="4rem 0"><Slide right>
                         <HeadingLight textAlign="start" margin="0 0 35px 0" level="2">Why Must I Pre-Commit When Bridging WPKT?</HeadingLight>
                         <Text textAlign="start" size="20px" color="#fff">When bridging from PKT to WPKT it is important to pre-commit the PKT sender address as well as the WPKT recipient address (which is a Binance smart chain address). Sending funds to the vault address without performing this step first can result in your transaction being front-run by a malicious attacker. Specifically, an attacker may get your transaction id and submit it as their own. This can be prevented by pre-committing your sender / recipient pair before sending money to the vault. You must be sure to send money to the vault from the sender address you have declared. And your WPKT can only be received by the recipient address committed. It is important to note that all sender / recipient address pairs are unique. You cannot reuse the sender address with a different recipient or vice versa. You can reuse the same sender / recipient pair ad infinitum, but you can't mix and match to make new pairs using either declared address. If you wish to declare a new recipient address you must also add a new sender address. If you want to add a new sender you must also add a new recipient. Though it is somewhat limiting, the protection it offers far outweighs any inconvenience.</Text>
-                      </Slide></Box>                    
+                      </Slide></Box>
                     </Grid>
                   </CardBody>
               </Card>
@@ -1182,7 +1182,7 @@ function FAQ() {
       ) : (responsive === 'medium') ? (
         <Box>
             <Card width="full" round="none" background="#222323" pad="0 50px" style={precommitBridge}>
-                  <CardBody> 
+                  <CardBody>
                     <Grid
                     fill
                     areas={[
@@ -1200,15 +1200,15 @@ function FAQ() {
                       <Box gridArea="right" justify="center" alignSelf="center" pad="4rem 0"><Slide right>
                         <HeadingLight textAlign="start" margin="0 0 50px 0" level="2">Why Must I Pre-Commit When Bridging WPKT?</HeadingLight>
                         <Text textAlign="start" size="22px" color="#fff">When bridging from PKT to WPKT it is important to pre-commit the PKT sender address as well as the WPKT recipient address (which is a Binance smart chain address). Sending funds to the vault address without performing this step first can result in your transaction being front-run by a malicious attacker. Specifically, an attacker may get your transaction id and submit it as their own. This can be prevented by pre-committing your sender / recipient pair before sending money to the vault. You must be sure to send money to the vault from the sender address you have declared. And your WPKT can only be received by the recipient address committed. It is important to note that all sender / recipient address pairs are unique. You cannot reuse the sender address with a different recipient or vice versa. You can reuse the same sender / recipient pair ad infinitum, but you can't mix and match to make new pairs using either declared address. If you wish to declare a new recipient address you must also add a new sender address. If you want to add a new sender you must also add a new recipient. Though it is somewhat limiting, the protection it offers far outweighs any inconvenience.</Text>
-                      </Slide></Box>                    
+                      </Slide></Box>
                     </Grid>
                   </CardBody>
               </Card>
-          </Box> 
+          </Box>
       ) : (
         <Box>
           <Card width="full" round="none" background="#222323" pad="8rem" style={precommitBridge}>
-                  <CardBody> 
+                  <CardBody>
                     <Grid
                     fill
                     areas={[
@@ -1226,7 +1226,7 @@ function FAQ() {
                       <Box gridArea="right" justify="center" alignSelf="center" pad="0 0 0 10rem"><Slide right>
                         <HeadingLight textAlign="start" margin="0 0 50px 0" level="2">Why Must I Pre-Commit When Bridging WPKT?</HeadingLight>
                         <Text textAlign="start" size="26px" color="#fff">When bridging from PKT to WPKT it is important to pre-commit the PKT sender address as well as the WPKT recipient address (which is a Binance smart chain address). Sending funds to the vault address without performing this step first can result in your transaction being front-run by a malicious attacker. Specifically, an attacker may get your transaction id and submit it as their own. This can be prevented by pre-committing your sender / recipient pair before sending money to the vault. You must be sure to send money to the vault from the sender address you have declared. And your WPKT can only be received by the recipient address committed. It is important to note that all sender / recipient address pairs are unique. You cannot reuse the sender address with a different recipient or vice versa. You can reuse the same sender / recipient pair ad infinitum, but you can't mix and match to make new pairs using either declared address. If you wish to declare a new recipient address you must also add a new sender address. If you want to add a new sender you must also add a new recipient. Though it is somewhat limiting, the protection it offers far outweighs any inconvenience.</Text>
-                      </Slide></Box>                    
+                      </Slide></Box>
                     </Grid>
                   </CardBody>
             </Card>
@@ -1243,7 +1243,7 @@ function FAQ() {
                   <HeadingDark textAlign="center" margin="0 0 40px 0" level="2">Why Didn't I Receive PKT?</HeadingDark>
                   <Text textAlign="center" size="16px" color="#707070">If you were attempting to transfer from WPKT to PKT and didn't receive your PKT, you can use this link or click "Claim PKT" below, to get your allocation. You will need your transaction hash to complete this transaction. The transaction hash was provided to you on the "GetPKT" screen. You can also find it inside of your Metamask wallet in the transaction history. You can use this guide to find token transactions in Metamask.</Text>
             </Box>
-            <Box justify="start"><Image alignSelf="center" style={{maxWidth: "100vw"}} src={recive_pkt_illustration_mob} fit="contain" /></Box>            
+            <Box justify="start"><Image alignSelf="center" style={{maxWidth: "100vw"}} src={recive_pkt_illustration_mob} fit="contain" /></Box>
         </Card>
       </Box>
     ) : (responsive === 'small') ? (
@@ -1253,13 +1253,13 @@ function FAQ() {
                   <HeadingDark textAlign="center" margin="0 0 35px 0" level="2">Why Didn't I Receive PKT?</HeadingDark>
                   <Text textAlign="center" size="18px" color="#707070">If you were attempting to transfer from WPKT to PKT and didn't receive your PKT, you can use this link or click "Claim PKT" below, to get your allocation. You will need your transaction hash to complete this transaction. The transaction hash was provided to you on the "GetPKT" screen. You can also find it inside of your Metamask wallet in the transaction history. You can use this guide to find token transactions in Metamask.</Text>
             </Box>
-            <Box margin={{top:"35px"}}><Image alignSelf="center" width="350" src={recive_pkt_illustration_mob} fit="contain" /></Box>            
+            <Box margin={{top:"35px"}}><Image alignSelf="center" width="350" src={recive_pkt_illustration_mob} fit="contain" /></Box>
         </Card>
-      </Box> 
+      </Box>
     ) : (responsive === 'tablet') ? (
       <Box>
         <Card width="full" round="none" background="#fff" pad="0 50px" style={receivePKT}>
-            <CardBody> 
+            <CardBody>
               <Grid
               fill
               areas={[
@@ -1277,15 +1277,15 @@ function FAQ() {
                 <Box gridArea="left" justify="center" alignSelf="center" pad="6rem 0"><Slide left>
                   <HeadingDark textAlign="start" margin="0 0 35px 0" level="2">Why Didn't I Receive PKT?</HeadingDark>
                   <Text textAlign="start" size="20px" color="#707070" margin="0 10vw 0 0">If you were attempting to transfer from WPKT to PKT and didn't receive your PKT, you can use this link or click "Claim PKT" below, to get your allocation. You will need your transaction hash to complete this transaction. The transaction hash was provided to you on the "GetPKT" screen. You can also find it inside of your Metamask wallet in the transaction history. You can use this guide to find token transactions in Metamask.</Text>
-                </Slide></Box>                    
+                </Slide></Box>
               </Grid>
             </CardBody>
         </Card>
-      </Box> 
+      </Box>
     ) : (responsive === 'medium') ? (
       <Box>
         <Card width="full" round="none" background="#fff" pad="0 50px" style={receivePKT}>
-            <CardBody> 
+            <CardBody>
               <Grid
               fill
               areas={[
@@ -1303,15 +1303,15 @@ function FAQ() {
                 <Box gridArea="left" justify="center" alignSelf="center" pad="6rem 0"><Slide left>
                   <HeadingDark textAlign="start" margin="0 0 50px 0" level="2">Why Didn't I Receive PKT?</HeadingDark>
                   <Text textAlign="start" size="22px" color="#707070" margin="0 10vw 0 0">If you were attempting to transfer from WPKT to PKT and didn't receive your PKT, you can use this link or click "Claim PKT" below, to get your allocation. You will need your transaction hash to complete this transaction. The transaction hash was provided to you on the "GetPKT" screen. You can also find it inside of your Metamask wallet in the transaction history. You can use this guide to find token transactions in Metamask.</Text>
-                </Slide></Box>                    
+                </Slide></Box>
               </Grid>
             </CardBody>
         </Card>
-      </Box>    
+      </Box>
     ) : (
       <Box>
         <Card width="full" round="none" background="#fff" pad="8rem" style={receivePKT}>
-            <CardBody> 
+            <CardBody>
               <Grid
               fill
               areas={[
@@ -1329,11 +1329,11 @@ function FAQ() {
                 <Box gridArea="left" justify="center" alignSelf="center"><Slide left>
                   <HeadingDark textAlign="start" margin="0 0 50px 0" level="2">Why Didn't I Receive PKT?</HeadingDark>
                   <Text textAlign="start" size="26px" color="#707070" margin="0 15vw 0 0">If you were attempting to transfer from WPKT to PKT and didn't receive your PKT, you can use this link or click "Claim PKT" below, to get your allocation. You will need your transaction hash to complete this transaction. The transaction hash was provided to you on the "GetPKT" screen. You can also find it inside of your Metamask wallet in the transaction history. You can use this guide to find token transactions in Metamask.</Text>
-                </Slide></Box>                    
+                </Slide></Box>
               </Grid>
             </CardBody>
         </Card>
-      </Box>  
+      </Box>
     )}
     </ResponsiveContext.Consumer>
 
@@ -1345,7 +1345,7 @@ function FAQ() {
               <Box justify="center" alignSelf="center" pad="0 0 25px">
                 <HeadingLight textAlign="center" margin="0 0 40px 0" level="2">Why Didn't I Receive WPKT?</HeadingLight>
                 <Text textAlign="center" size="16px" color="#fff">If you didn't receive WPKT your transaction failed. This can happen for many reasons, but the solution in any case is inevitably the same. You simply need to perform the transaction again using your PKT transaction hash as proof of transaction (PoTx).</Text>
-              </Box>                    
+              </Box>
           </Card>
         </Box>
       ) : (responsive === 'small') ? (
@@ -1354,13 +1354,13 @@ function FAQ() {
               <Box justify="center" alignSelf="center" pad="0 3vw 0 40vw">
                 <HeadingLight textAlign="center" margin="0 0 35px 0" level="2">Why Didn't I Receive WPKT?</HeadingLight>
                 <Text textAlign="center" size="18px" color="#fff">If you didn't receive WPKT your transaction failed. This can happen for many reasons, but the solution in any case is inevitably the same. You simply need to perform the transaction again using your PKT transaction hash as proof of transaction (PoTx).</Text>
-              </Box>                    
+              </Box>
           </Card>
         </Box>
       ) : (responsive === 'tablet') ? (
         <Box>
             <Card width="full" round="none" background="#222323" pad="0 50px" style={receiveWPKT}>
-                  <CardBody> 
+                  <CardBody>
                     <Grid
                     fill
                     areas={[
@@ -1378,7 +1378,7 @@ function FAQ() {
                       <Box gridArea="right" justify="center" alignSelf="center" pad="6rem 0"><Slide right>
                         <HeadingLight textAlign="start" margin="0 0 35px 0" level="2">Why Didn't I Receive WPKT?</HeadingLight>
                         <Text textAlign="start" size="20px" color="#fff">If you didn't receive WPKT your transaction failed. This can happen for many reasons, but the solution in any case is inevitably the same. You simply need to perform the transaction again using your PKT transaction hash as proof of transaction (PoTx).</Text>
-                      </Slide></Box>                    
+                      </Slide></Box>
                     </Grid>
                   </CardBody>
               </Card>
@@ -1386,7 +1386,7 @@ function FAQ() {
       ) : (responsive === 'medium') ? (
         <Box>
             <Card width="full" round="none" background="#222323" pad="0 50px" style={receiveWPKT}>
-                  <CardBody> 
+                  <CardBody>
                     <Grid
                     fill
                     areas={[
@@ -1404,15 +1404,15 @@ function FAQ() {
                       <Box gridArea="right" justify="center" alignSelf="center" pad="6rem 0"><Slide right>
                         <HeadingLight textAlign="start" margin="0 0 50px 0" level="2">Why Didn't I Receive WPKT?</HeadingLight>
                         <Text textAlign="start" size="22px" color="#fff">If you didn't receive WPKT your transaction failed. This can happen for many reasons, but the solution in any case is inevitably the same. You simply need to perform the transaction again using your PKT transaction hash as proof of transaction (PoTx).</Text>
-                      </Slide></Box>                    
+                      </Slide></Box>
                     </Grid>
                   </CardBody>
               </Card>
-          </Box> 
+          </Box>
       ) : (
         <Box>
             <Card width="full" round="none" background="#222323" pad="12rem 8rem" style={receiveWPKT}>
-                  <CardBody> 
+                  <CardBody>
                     <Grid
                     fill
                     areas={[
@@ -1430,7 +1430,7 @@ function FAQ() {
                       <Box gridArea="right" justify="center" alignSelf="center" pad="0 0 0 9vw"><Slide right>
                         <HeadingLight textAlign="start" margin="0 0 50px 0" level="2">Why Didn't I Receive WPKT?</HeadingLight>
                         <Text textAlign="start" size="26px" color="#fff">If you didn't receive WPKT your transaction failed. This can happen for many reasons, but the solution in any case is inevitably the same. You simply need to perform the transaction again using your PKT transaction hash as proof of transaction (PoTx).</Text>
-                      </Slide></Box>                    
+                      </Slide></Box>
                     </Grid>
                   </CardBody>
               </Card>
@@ -1438,7 +1438,7 @@ function FAQ() {
       )}
     </ResponsiveContext.Consumer>
 
-    {/* Why Didn't I Receive the Balance I Expected? */}        
+    {/* Why Didn't I Receive the Balance I Expected? */}
     <ResponsiveContext.Consumer>
       {responsive => (responsive === 'smallmob') ? (
         <Box>
@@ -1447,7 +1447,7 @@ function FAQ() {
                   <HeadingDark textAlign="center" margin="0 0 40px 0" level="2">Why Didn't I Receive the Balance I Expected?</HeadingDark>
                   <Text textAlign="center" size="16px" color="#707070">The ODApp bridge network charges a 3.5% fee for all transactions. Therefore, your received amount WPKT or PKT is reduced by this fee expense. We use fees to subsidise transaction costs over Chainlink, operate infrastructure and expand this service.</Text>
               </Box>
-              <Box><Image style={{maxWidth: "100%"}} alignSelf="center" src={expected_balance_illustration} fit="contain" /></Box>
+              <Box><Image style={{maxWidth: "100%"}} height="350" alignSelf="center" src={expected_balance_illustration} fit="contain" /></Box>
           </Card>
         </Box>
       ) : (responsive === 'small') ? (
@@ -1463,7 +1463,7 @@ function FAQ() {
       ) : (responsive === 'tablet') ? (
         <Box>
             <Card width="full" round="none" background="#fff" pad="0 50px" >
-                  <CardBody> 
+                  <CardBody>
                     <Grid
                     fill
                     areas={[
@@ -1481,7 +1481,7 @@ function FAQ() {
                       <Box gridArea="left" justify="center" alignSelf="center"><Slide left>
                         <HeadingDark textAlign="start" margin="0 0 35px 0" level="2">Why Didn't I Receive the Balance I Expected?</HeadingDark>
                         <Text textAlign="start" size="20px" color="#707070" margin="0 5rem 0 0">The ODApp bridge network charges a 3.5% fee for all transactions. Therefore, your received amount WPKT or PKT is reduced by this fee expense. We use fees to subsidise transaction costs over Chainlink, operate infrastructure and expand this service.</Text>
-                      </Slide></Box>                    
+                      </Slide></Box>
                     </Grid>
                   </CardBody>
               </Card>
@@ -1489,7 +1489,7 @@ function FAQ() {
       ) : (responsive === 'medium') ? (
         <Box>
             <Card width="full" round="none" background="#fff" pad="0 50px" >
-                  <CardBody> 
+                  <CardBody>
                     <Grid
                     fill
                     areas={[
@@ -1507,15 +1507,15 @@ function FAQ() {
                       <Box gridArea="left" justify="center" alignSelf="center"><Slide left>
                         <HeadingDark textAlign="start" margin="0 0 50px 0" level="2">Why Didn't I Receive the Balance I Expected?</HeadingDark>
                         <Text textAlign="start" size="22px" color="#707070" margin="0 5rem 0 0">The ODApp bridge network charges a 3.5% fee for all transactions. Therefore, your received amount WPKT or PKT is reduced by this fee expense. We use fees to subsidise transaction costs over Chainlink, operate infrastructure and expand this service.</Text>
-                      </Slide></Box>                    
+                      </Slide></Box>
                     </Grid>
                   </CardBody>
               </Card>
-          </Box>  
+          </Box>
       ) : (
         <Box>
             <Card width="full" round="none" background="#fff" pad="3rem 8rem" >
-                  <CardBody> 
+                  <CardBody>
                     <Grid
                     fill
                     areas={[
@@ -1533,16 +1533,16 @@ function FAQ() {
                       <Box gridArea="left" justify="center" alignSelf="center"><Slide left>
                         <HeadingDark textAlign="start" margin="0 0 50px 0" level="2">Why Didn't I Receive the Balance I Expected?</HeadingDark>
                         <Text textAlign="start" size="26px" color="#707070" margin="0 10rem 0 0">The ODApp bridge network charges a 3.5% fee for all transactions. Therefore, your received amount WPKT or PKT is reduced by this fee expense. We use fees to subsidise transaction costs over Chainlink, operate infrastructure and expand this service.</Text>
-                      </Slide></Box>                    
+                      </Slide></Box>
                     </Grid>
                   </CardBody>
               </Card>
           </Box>
       )}
     </ResponsiveContext.Consumer>
-            
+
     </Grommet>
-      
+
   );
 }
 

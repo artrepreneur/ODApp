@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardBody, Box, Text, Grid, ResponsiveContext, Image, Grommet, Heading } from "grommet";
+import { Card, CardBody, Box, Text, Grid, ResponsiveContext, Image, Grommet, Heading, Anchor } from "grommet";
 import banner_bg from "../img/main-page/top-banner.png";
 import mm_logo from "../img/metamask-illustration.svg";
 import iw_logo from "../img/introducing-WPKT-logo.png";
@@ -172,48 +172,53 @@ function Home( {btn} ) {
     <Grommet theme={customBreakpoints}>
 		{/*Top banner*/}
     <ResponsiveContext.Consumer>
-      {responsive => (responsive === 'smallmob') ? (
-        <Box direction="row" justify="center" align="center" height="92vh" pad="0" round="none" style={bannerStyle} className="top_banner_home_small">
-          <Box pad="medium" justify="center">
-            <Heading color="#ffffff" textAlign="center" size="48px" weight="bold" level="1" margin={{top: "-50px"}}>The PKT<br />Cash Bridge<br />To WPKT</Heading>
-            <Fade bottom><p align="center" style={{ position: "absolute", bottom: "70px", left: "0", right: "0" }}>{btn}</p></Fade>
-            {/*<Text color="#ffffff" style={{ wordBreak: "break-all", paddingTop:"5%", paddingBottom:"5%"}} textAlign="center" size="small" weight="bold" level="1">0x1C25222994531C4AC35E4d94bbf7552c9aa92E32</Text>*/}
-          </Box>
-        </Box>
-      ) : (responsive === 'small') ? (
-        <Box direction="row" justify="center" align="center" pad="15vw" round="none" style={bannerStyle} className="top_banner_home_small">
-          <Box pad="medium" justify="center">
-            <Heading color="#ffffff" textAlign="center" size="38px" weight="bold" level="1">The PKT Cash Bridge<br />To WPKT</Heading>
-            <Fade bottom><p align="center" style={{ marginTop: "35px" }}>{btn}</p></Fade>
-            {/*<Text style={{ wordBreak: "break-all", paddingTop:"5%", paddingBottom:"5%"}}  color="#ffffff" textAlign="center" size="small" weight="bold" level="1">0x1C25222994531C4AC35E4d94bbf7552c9aa92E32</Text>*/}
-          </Box>
-        </Box>
-      ) : (responsive === 'tablet') ? (
-        <Box direction="row" justify="around" align="center" height="65vw" pad="0" round="none" style={bannerStyle} className="top_banner_home_small">
-          <Box pad="medium" justify="center">
-            <Heading color="#ffffff" textAlign="center" size="48px" weight="bold" level="1">The PKT Cash Bridge<br />To WPKT</Heading>
-            <Fade bottom><p align="center" margin={{ top: "35px" }}>{btn}</p></Fade>
-            {/*<Text color="#ffffff" style={{ wordBreak: "break-all", paddingTop:"5%", paddingBottom:"5%"}}  textAlign="center" size="small" weight="bold" level="1">0x1C25222994531C4AC35E4d94bbf7552c9aa92E32</Text>*/}
-          </Box>
-        </Box>
-      ) : (responsive === 'medium') ? (
-        <Box direction="row" justify="center" align="center" height="85vh" pad="0" round="none" style={bannerStyle} className="top_banner_home_medium">
-          <Box pad="medium" justify="center">
-            <Heading color="#ffffff" textAlign="center" size="4vw" weight="bold" level="1">The PKT Cash Bridge<br />To WPKT</Heading>
-            <Fade bottom><p align="center" style={{ margin: "0" }}>{btn}</p></Fade>
-            {/*<Text color="#ffffff" style={{ wordBreak: "break-all", paddingTop:"5%", paddingBottom:"5%"}} textAlign="center" size="large" weight="bold" level="1">0x1C25222994531C4AC35E4d94bbf7552c9aa92E32</Text>*/}
-          </Box>
-        </Box>
-      ) : (
-        <Box direction="row" justify="center" align="center" height="90vh" pad="0" round="none" style={bannerStyle}>
-          <Box pad="medium" justify="center">
-            <Heading color="#ffffff" textAlign="center" size="4.7vw" weight="bold" level="1">The PKT Cash Bridge<br /></Heading>
-            <Fade bottom><p align="center" style={{ position: "absolute", top: "37vw", left: "0", right: "0" }}>{btn}</p></Fade>
-            {/*<Text color="#ffffff" style={{ wordBreak: "break-all", paddingTop:"5%", paddingBottom:"5%"}} textAlign="center" size="xlarge" weight="bold" level="1">0x1C25222994531C4AC35E4d94bbf7552c9aa92E32</Text>*/}
-          </Box>
-        </Box>
-      )}
-    </ResponsiveContext.Consumer>
+     {responsive => (responsive === 'smallmob') ? (
+       <Box direction="row" justify="center" align="center" height="92vh" pad="0" round="none" style={bannerStyle} className="top_banner_home_small">
+         <Box pad="medium" justify="center">
+           <Heading color="#ffffff" textAlign="center" size="48px" weight="bold" level="1" margin={{top: "-50px"}}>The PKT<br />Cash Bridge<br />To WPKT</Heading>
+           <Text textAlign="center" size="18px" weight="bold" color="#ffffff">WPKT Contract Address</Text>
+           <Anchor href="https://pancakeswap.finance/info/token/0x1c25222994531c4ac35e4d94bbf7552c9aa92e32" target="_blank" weight="bold" color="#FBA300" style={{textAlign: "center", paddingBottom: '25px',paddingTop: '10px', fontSize: "3.35vw"}} label="0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" />
+           <Fade bottom><p align="center" style={{ position: "absolute", bottom: "70px", left: "0", right: "0" }}>{btn}</p></Fade>
+         </Box>
+       </Box>
+     ) : (responsive === 'small') ? (
+       <Box direction="row" justify="center" align="center" pad="15vw 10vw" round="none" style={bannerStyle} className="top_banner_home_small">
+         <Box pad="medium" justify="center">
+           <Heading color="#ffffff" textAlign="center" size="38px" weight="bold" level="1">The PKT Cash Bridge<br />To WPKT</Heading>
+           <Text textAlign="center" size="22px" weight="bold" color="#ffffff">WPKT Contract Address</Text>
+           <Anchor href="https://pancakeswap.finance/info/token/0x1c25222994531c4ac35e4d94bbf7552c9aa92e32" target="_blank" weight="bold" color="#FBA300" style={{textAlign: "center", paddingBottom: '35px',paddingTop: '10px', fontSize: "16px"}} label="0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" />
+           <Fade bottom><p align="center">{btn}</p></Fade>
+         </Box>
+       </Box>
+     ) : (responsive === 'tablet') ? (
+       <Box direction="row" justify="around" align="center" height="65vw" pad="0" round="none" style={bannerStyle} className="top_banner_home_small">
+         <Box pad="medium" justify="center">
+           <Heading color="#ffffff" textAlign="center" size="48px" weight="bold" level="1">The PKT Cash Bridge<br />To WPKT</Heading>
+           <Text textAlign="center" size="22px" weight="bold" color="#ffffff">WPKT Contract Address</Text>
+           <Anchor href="https://pancakeswap.finance/info/token/0x1c25222994531c4ac35e4d94bbf7552c9aa92e32" target="_blank" weight="bold" color="#FBA300" style={{textAlign: "center", paddingBottom: '35px',paddingTop: '10px', fontSize: "18px"}} label="0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" />
+           <Fade bottom><p align="center" margin={{ top: "35px" }}>{btn}</p></Fade>
+         </Box>
+       </Box>
+     ) : (responsive === 'medium') ? (
+       <Box direction="row" justify="center" align="center" height="85vh" pad="0" round="none" style={bannerStyle} className="top_banner_home_medium">
+         <Box pad="medium" justify="center">
+           <Heading color="#ffffff" textAlign="center" size="4vw" weight="bold" level="1">The PKT Cash Bridge<br />To WPKT</Heading>
+           <Text textAlign="center" size="24px" weight="bold" color="#ffffff">WPKT Contract Address</Text>
+           <Anchor href="https://pancakeswap.finance/info/token/0x1c25222994531c4ac35e4d94bbf7552c9aa92e32" target="_blank" weight="bold" color="#FBA300" style={{textAlign: "center", paddingBottom: '50px',paddingTop: '10px', fontSize: "22px"}} label="0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" />
+           <Fade bottom><p align="center" style={{ margin: "0" }}>{btn}</p></Fade>
+         </Box>
+       </Box>
+     ) : (
+       <Box direction="row" justify="center" align="center" height="90vh" pad="0" round="none" style={bannerStyle}>
+         <Box pad="medium" justify="center">
+           <Heading color="#ffffff" textAlign="center" size="4.7vw" weight="bold" level="1">The PKT Cash Bridge<br />To WPKT</Heading>
+           <Text textAlign="center" size="28px" weight="bold" color="#ffffff">WPKT Contract Address</Text>
+           <Anchor href="https://pancakeswap.finance/info/token/0x1c25222994531c4ac35e4d94bbf7552c9aa92e32" target="_blank" weight="bold" color="#FBA300" style={{ textAlign: "center", paddingBottom: '50px',paddingTop: '20px', fontSize: "26px"}} label="0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" />
+           <Fade bottom><p align="center" style={{ position: "absolute", top: "37vw", left: "0", right: "0" }}>{btn}</p></Fade>
+         </Box>
+       </Box>
+     )}
+   </ResponsiveContext.Consumer>
 
 		{/* 4 services */}
     <ResponsiveContext.Consumer>
@@ -570,7 +575,6 @@ function Home( {btn} ) {
             <CardBody>
             <Box justify="center" alignSelf="center" pad="none">
               <HeadingLight textAlign="center" margin="0 0 35px 0" weight="bold" color="#ffffff" level="2">Introducing WPKT</HeadingLight>
-              <Text align="left" style={{ wordBreak: "break-all", paddingTop:"2%", paddingBottom:"2%"}}  color="#ffffff" textAlign="left" size="medium" weight="bold" level="1">BSC: 0x1C25222994531C4AC35E4d94bbf7552c9aa92E32</Text>
               <Text textAlign="center" size="16px" color="#ffffff" margin="none">The ODApp bridge converts your PKT into a BEP20 token called WPKT, which has a 1-to-1 peg to PKT. With WPKT you gain access to the multi-billion dollar world of Binance Smart Chain,  swap WPKT for BNB (or any BEP20 token), and hold WPKT in any wallet that supports BEP20 tokens.
               <br /><br />Since PKT and WPKT exist on different blockchains, PKT cannot be sent to the Binance Smart Chain and WPKT cannot be sent to the PKT chain without using the ODApp bridge. The symbols PKT and WPKT differentiate the assets based on the blockchain they can transact on.
               Exist on different chains, 1PKT cannot be sent to the Ethereum chain and WPKT cannot be sent to the 1PKT chain without the ODApp bridge. Using different names allows for easy discernment between the assets.</Text>
@@ -585,7 +589,6 @@ function Home( {btn} ) {
             <CardBody>
             <Box justify="center" alignSelf="center" pad="none">
               <HeadingLight textAlign="center" margin="0 0 35px 0" weight="bold" color="#ffffff" level="2">Introducing WPKT</HeadingLight>
-              <Text align="left" style={{ wordBreak: "break-all", paddingTop:"2%", paddingBottom:"2%"}}  color="#ffffff" textAlign="left" size="medium" weight="bold" level="1">BSC: 0x1C25222994531C4AC35E4d94bbf7552c9aa92E32</Text>
               <Text textAlign="center" size="18px" color="#ffffff" margin="none">The ODApp bridge converts your PKT into a BEP20 token called WPKT, which has a 1-to-1 peg to PKT. With WPKT you gain access to the multi-billion dollar world of Binance Smart Chain,  swap WPKT for BNB (or any BEP20 token), and hold WPKT in any wallet that supports BEP20 tokens.
               <br /><br />Since PKT and WPKT exist on different blockchains, PKT cannot be sent to the Binance Smart Chain and WPKT cannot be sent to the PKT chain without using the ODApp bridge. The symbols PKT and WPKT differentiate the assets based on the blockchain they can transact on.
               Exist on different chains, 1PKT cannot be sent to the Ethereum chain and WPKT cannot be sent to the 1PKT chain without the ODApp bridge. Using different names allows for easy discernment between the assets.</Text>
@@ -600,7 +603,6 @@ function Home( {btn} ) {
             <CardBody>
             <Box justify="center" alignSelf="center" pad="none">
               <HeadingLight textAlign="center" margin="0 0 35px 0" weight="bold" color="#ffffff" level="2">Introducing WPKT</HeadingLight>
-              <Text align="left" style={{ wordBreak: "break-all", paddingTop:"2%", paddingBottom:"2%"}}  color="#ffffff" textAlign="left" size="large" weight="bold" level="1">BSC: 0x1C25222994531C4AC35E4d94bbf7552c9aa92E32</Text>
               <Text textAlign="center" size="20px" color="#ffffff" margin="none">The ODApp bridge converts your PKT into a BEP20 token called WPKT, which has a 1-to-1 peg to PKT. With WPKT you gain access to the multi-billion dollar world of Binance Smart Chain,  swap WPKT for BNB (or any BEP20 token), and hold WPKT in any wallet that supports BEP20 tokens.
               <br /><br />Since PKT and WPKT exist on different blockchains, PKT cannot be sent to the Binance Smart Chain and WPKT cannot be sent to the PKT chain without using the ODApp bridge. The symbols PKT and WPKT differentiate the assets based on the blockchain they can transact on.
               Exist on different chains, 1PKT cannot be sent to the Ethereum chain and WPKT cannot be sent to the 1PKT chain without the ODApp bridge. Using different names allows for easy discernment between the assets.</Text>
@@ -628,7 +630,6 @@ function Home( {btn} ) {
             <Box gridArea="right" justify="center" pad="1/2"><Image alignSelf="center" height="150" width="450" src={iw_logo} fit="contain" /></Box>
             <Box gridArea="left" justify="center" alignSelf="center" pad="0 4vw 0 0">
               <HeadingLight textAlign="left" margin="0 0 2rem 0" weight="bold" color="#ffffff" level="2">Introducing WPKT</HeadingLight>
-              <Text align="left" style={{ wordBreak: "break-all", paddingTop:"2%", paddingBottom:"2%"}}  color="#ffffff" textAlign="left" size="large" weight="bold" level="1">BSC: 0x1C25222994531C4AC35E4d94bbf7552c9aa92E32</Text>
               <ScrollableText align="left" size="22px" color="#ffffff" margin="none" style={{ paddingRight: "65px" }}>The ODApp bridge converts your PKT into a BEP20 token called WPKT, which has a 1-to-1 peg to PKT. With WPKT you gain access to the multi-billion dollar world of Binance Smart Chain,  swap WPKT for BNB (or any BEP20 token), and hold WPKT in any wallet that supports BEP20 tokens.
               <br /><br />Since PKT and WPKT exist on different blockchains, PKT cannot be sent to the Binance Smart Chain and WPKT cannot be sent to the PKT chain without using the ODApp bridge. The symbols PKT and WPKT differentiate the assets based on the blockchain they can transact on.
               Exist on different chains, 1PKT cannot be sent to the Ethereum chain and WPKT cannot be sent to the 1PKT chain without the ODApp bridge. Using different names allows for easy discernment between the assets.</ScrollableText>
@@ -657,7 +658,6 @@ function Home( {btn} ) {
               <Box gridArea="right" justify="center" pad="1/2"><Image alignSelf="center" height="195" width="750" src={iw_logo} fit="contain" /></Box>
               <Box gridArea="left" justify="center" alignSelf="center" pad="0 8vw 0 0">
                 <HeadingLight textAlign="left" margin="0 0 3rem 0" size="4xl" weight="bold" color="#ffffff" level="2">Introducing WPKT</HeadingLight>
-                <Text align="left" style={{ wordBreak: "break-all", paddingTop:"2%", paddingBottom:"2%"}}  color="#ffffff" textAlign="left" size="large" weight="bold" level="1">BSC: 0x1C25222994531C4AC35E4d94bbf7552c9aa92E32</Text>
                 <ScrollableText align="left" size="large" color="#ffffff" margin="0 0 1rem 0" style={{ paddingRight: "65px" }}>The ODApp bridge converts your PKT into a BEP20 token called WPKT, which has a 1-to-1 peg to PKT. With WPKT you gain access to the multi-billion dollar world of Binance Smart Chain,  swap WPKT for BNB (or any BEP20 token), and hold WPKT in any wallet that supports BEP20 tokens.
                 <br /><br />Since PKT and WPKT exist on different blockchains, PKT cannot be sent to the Binance Smart Chain and WPKT cannot be sent to the PKT chain without using the ODApp bridge. The symbols PKT and WPKT differentiate the assets based on the blockchain they can transact on.
                 Exist on different chains, 1PKT cannot be sent to the Ethereum chain and WPKT cannot be sent to the 1PKT chain without the ODApp bridge. Using different names allows for easy discernment between the assets.</ScrollableText>
@@ -827,6 +827,8 @@ function Home( {btn} ) {
           </DiscoverBefore>
         )}
       </ResponsiveContext.Consumer>
+
+      <div style={{padding:'69.77% 0 0 0', position:'relative'}}><iframe src="https://player.vimeo.com/video/595974443?h=58690c671b" style={{position:'absolute', top:'0', left:'0', width:'100%', height:'100%'}} frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 
       {/*Support*/}
       <ResponsiveContext.Consumer>

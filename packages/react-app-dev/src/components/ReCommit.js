@@ -39,8 +39,8 @@ async function handleInput(e){
 
     // Check that bridge has pkt.
     //var chkCmd = "https://obeah.odapp.io/api/v1/recommitAddresses/hashCode/"+pairCode+"/";
-    //var chkCmd = "https://obeahdev.odapp.io/api/v1/recommitAddresses/hashCode/"+pairCode+"/";
-    var chkCmd = "http://localhost:5000/api/v1/recommitAddresses/hashCode/"+pairCode+"/";
+    var chkCmd = "https://obeahdev.odapp.io/api/v1/recommitAddresses/hashCode/"+pairCode+"/";
+    //var chkCmd = "http://localhost:5000/api/v1/recommitAddresses/hashCode/"+pairCode+"/";
 
     dv.style.display= 'block';
     dv1.style.display= 'block';
