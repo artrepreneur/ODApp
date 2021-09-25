@@ -425,7 +425,7 @@ function Home( {btn} ) {
                 gap="none"
                 background="#fff"
                 >
-                  <Fade right><Box gridArea="right" justify="center" pad="none"><Image alignSelf="center" width="500" src={od_logo} fit="contain" /></Box></Fade>
+                  <Box gridArea="right" justify="center" pad="none"><Image alignSelf="center" width="500" src={od_logo} fit="contain" /></Box>
                   <Box gridArea="left" height="large" justify="center" alignSelf="center" pad="0 75px 0 50px">
                     <HeadingLight textAlign="left" margin="0 0 2rem 0" weight="bold" color="#ffffff" level="2">What's ODApp?</HeadingLight>
                     <Text align="left" size="22px" color="#ffffff" margin="none">ODApp is a decentralized application that allows you to "bridge" between the world of PKT Cash (symbol: PKT) and Binance Smart Chain. Though entirely different blockchains, PKT cash and Binance Smart Chain are connected via ODApp which allow seamless value transfer between the two chains.</Text>
@@ -452,7 +452,7 @@ function Home( {btn} ) {
                     gap="none"
                     background="#fff"
                     >
-                      <Fade right><Box gridArea="right" height="100vh" justify="start" pad="0 0 0 5rem"><Image alignSelf="left" width="675" src={od_logo} fit="contain" /></Box></Fade>
+                      <Box gridArea="right" height="100vh" justify="start" pad="0 0 0 5rem"><Image alignSelf="left" width="675" src={od_logo} fit="contain" /></Box>
                       <Box gridArea="left" height="large" justify="center" alignSelf="center" pad="0 10rem 0 8rem">
                         <HeadingLight textAlign="left" margin="0 0 3rem 0" size="4xl" weight="bold" color="#ffffff" level="2">What's ODApp?</HeadingLight>
                         <Text align="left" size="26px" color="#ffffff" margin="0 0 1rem 0">ODApp is a decentralized application that allows you to "bridge" between the world of PKT Cash (symbol: PKT) and Binance Smart Chain. Though entirely different blockchains, PKT cash and Binance Smart Chain are connected via ODApp which allow seamless value transfer between the two chains.</Text>
@@ -524,7 +524,7 @@ function Home( {btn} ) {
               gap="none"
               background="#fff"
               >
-              <Fade left><Box gridArea="left" background="#fff" height="large" justify="bottom" pad="0"><Image alignSelf="center" height="400" width="450" src={mm_logo} fit="contain" /></Box></Fade>
+              <Box gridArea="left" background="#fff" height="large" justify="bottom" pad="0"><Image alignSelf="center" height="400" width="450" src={mm_logo} fit="contain" /></Box>
               <Box gridArea="right" background="#fff" height="large" justify="center" alignSelf="center" pad="0 50px" >
                 <HeadingDark textAlign="center" margin="medium" weight="bold" color="#222323" level="2">Connect Your MetaMask Wallet</HeadingDark>
                 <Text textAlign="center" size="22px" color="#707070" margin={{vertical: "1vw"}}>To get started, use the "Connect Wallet" button to connect your MetaMask wallet to the bridge.<br />Then select whether you are swapping from PKT to WPKT or WPKT to PKT.</Text>
@@ -552,7 +552,7 @@ function Home( {btn} ) {
                 gap="none"
                 background="#fff"
                 >
-                <Fade left><Box gridArea="left" background="#fff" height="large" justify="bottom" pad="0"><Image alignSelf="center" height="500" width="560" src={mm_logo} fit="contain" /></Box></Fade>
+                <Box gridArea="left" background="#fff" height="large" justify="bottom" pad="0"><Image alignSelf="center" height="500" width="560" src={mm_logo} fit="contain" /></Box>
                 <Box gridArea="right" background="#fff" height="large" justify="center" alignSelf="center" pad="0 10rem" >
                   <HeadingDark textAlign="center" margin="medium" size="4xl" weight="bold" color="#222323" level="2">Connect Your MetaMask Wallet</HeadingDark>
                   <Text textAlign="center" size="26px" color="#707070" margin={{vertical: "1vw"}}>To get started, use the "Connect Wallet" button to connect your MetaMask wallet to the bridge.<br />Then select whether you are swapping from PKT to WPKT or WPKT to PKT.</Text>
@@ -827,8 +827,50 @@ function Home( {btn} ) {
           </DiscoverBefore>
         )}
       </ResponsiveContext.Consumer>
-
-      <div style={{padding:'69.77% 0 0 0', position:'relative'}}><iframe src="https://player.vimeo.com/video/595974443?h=58690c671b" style={{position:'absolute', top:'0', left:'0', width:'100%', height:'100%'}} frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+      
+      <ResponsiveContext.Consumer>
+          {responsive => (responsive === 'smallmob') ? (
+            <Box background="#fff" pad="40px 25px 0">
+                <HeadingDark textAlign="center" margin="0" weight="bold" color="#ffffff" level="2">Video Tutorial</HeadingDark>
+                <Box pad="none" align="center" justify="center" margin={{ top: "1rem" }} style={{position: "relative"}}>
+                  <iframe src="https://player.vimeo.com/video/595974443?h=58690c671b" style={{top:'0', left:'0', width:'100vw', height:'100%'}} frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                  <script src="https://player.vimeo.com/api/player.js"></script>
+                </Box>
+            </Box>
+          ) : (responsive === 'small') ? (
+            <Box background="#fff" pad="50px 30px 75px">
+                <HeadingDark textAlign="center" margin="0" weight="bold" color="#ffffff" level="2">Video Tutorial</HeadingDark>
+                <Box pad="none" align="center" justify="center" margin={{ top: "2rem" }} style={{position: "relative"}}>
+                  <iframe src="https://player.vimeo.com/video/595974443?h=58690c671b" style={{top:'0', left:'0', width:'100%', height:'40vw'}} frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                  <script src="https://player.vimeo.com/api/player.js"></script>
+                </Box>
+            </Box>
+          ) : (responsive === 'tablet') ? (
+            <Box background="#fff" pad="50px 30px 75px">
+                <HeadingDark textAlign="center" margin="0" weight="bold" color="#ffffff" level="2">Video Tutorial</HeadingDark>
+                <Box pad="none" align="center" justify="center" margin={{ top: "2rem" }} style={{position: "relative"}}>
+                  <iframe src="https://player.vimeo.com/video/595974443?h=58690c671b" style={{top:'0', left:'0', width:'100%', height:'50vw'}} frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                  <script src="https://player.vimeo.com/api/player.js"></script>
+                </Box>
+            </Box>
+          ) : (responsive === 'medium') ? (
+            <Box background="#fff" pad="8rem 8rem 0">
+                <HeadingDark textAlign="center" margin="0" weight="bold" color="#ffffff" level="2">Video Tutorial</HeadingDark>
+                <Box pad="none" align="center" justify="center" margin={{ top: "2rem" }} style={{position: "relative"}}>
+                  <iframe src="https://player.vimeo.com/video/595974443?h=58690c671b" style={{top:'0', left:'0', width:'100%', height:'40vw'}} frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                  <script src="https://player.vimeo.com/api/player.js"></script>
+                </Box>
+            </Box>
+          ) : (
+            <Box background="#fff" pad="8rem 8rem 0">
+                <HeadingDark textAlign="center" margin="0" weight="bold" color="#ffffff" level="2">Video Tutorial</HeadingDark>
+                <Box pad="none" align="center" justify="center" margin={{ top: "2rem" }} style={{position: "relative"}}>
+                  <iframe src="https://player.vimeo.com/video/595974443?h=58690c671b" style={{top:'0', left:'0', width:'100%', height:'40vw'}} frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                  <script src="https://player.vimeo.com/api/player.js"></script>
+                </Box>
+            </Box>
+          )}
+      </ResponsiveContext.Consumer>
 
       {/*Support*/}
       <ResponsiveContext.Consumer>
