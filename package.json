@@ -25,7 +25,9 @@
       "**/@graphprotocol/graph-ts/**"
     ],
     "packages": [
-      "packages/*"
+      "packages/contracts",
+      "packages/react-app",
+      "packages/subgraph"
     ]
   }
 }
