@@ -1241,7 +1241,7 @@ function FAQ() {
         <Card width="full" round="none" background="#fff" pad="70px 25px 0">
             <Box justify="center" alignSelf="center" pad="0 0 25px">
                   <HeadingDark textAlign="center" margin="0 0 40px 0" level="2">Why Didn't I Receive PKT?</HeadingDark>
-                  <Text textAlign="center" size="16px" color="#707070">If you were attempting to transfer from WPKT to PKT and didn't receive your PKT, you can use this link or click "Claim PKT" below, to get your allocation. You will need your transaction hash to complete this transaction. The transaction hash was provided to you on the "GetPKT" screen. You can also find it inside of your Metamask wallet in the transaction history. You can use this guide to find token transactions in Metamask.</Text>
+                  <Text textAlign="center" size="16px" color="#707070">If you were attempting to transfer from WPKT to PKT and didn't receive your PKT, you can use this link or click "Recover PKT" below, to get your allocation. You will need your transaction hash to complete this transaction. The transaction hash was provided to you on the "GetPKT" screen. You can also find it inside of your Metamask wallet in the transaction history. You can use this guide to find token transactions in Metamask.</Text>
             </Box>
             <Box justify="start"><Image alignSelf="center" style={{maxWidth: "100vw"}} src={recive_pkt_illustration_mob} fit="contain" /></Box>
         </Card>
@@ -1251,7 +1251,7 @@ function FAQ() {
         <Card width="full" round="none" background="#fff" pad="50px 20px">
             <Box justify="center" alignSelf="center" pad="0 14vw">
                   <HeadingDark textAlign="center" margin="0 0 35px 0" level="2">Why Didn't I Receive PKT?</HeadingDark>
-                  <Text textAlign="center" size="18px" color="#707070">If you were attempting to transfer from WPKT to PKT and didn't receive your PKT, you can use this link or click "Claim PKT" below, to get your allocation. You will need your transaction hash to complete this transaction. The transaction hash was provided to you on the "GetPKT" screen. You can also find it inside of your Metamask wallet in the transaction history. You can use this guide to find token transactions in Metamask.</Text>
+                  <Text textAlign="center" size="18px" color="#707070">If you were attempting to transfer from WPKT to PKT and didn't receive your PKT, you can use this link or click "Recover PKT" below, to get your allocation. You will need your transaction hash to complete this transaction. The transaction hash was provided to you on the "GetPKT" screen. You can also find it inside of your Metamask wallet in the transaction history. You can use this guide to find token transactions in Metamask.</Text>
             </Box>
             <Box margin={{top:"35px"}}><Image alignSelf="center" width="350" src={recive_pkt_illustration_mob} fit="contain" /></Box>
         </Card>
@@ -1276,7 +1276,7 @@ function FAQ() {
                 <Box gridArea="right" justify="start"><Image alignSelf="center" width="375" src={recive_pkt_illustration} fit="contain" /></Box>
                 <Box gridArea="left" justify="center" alignSelf="center" pad="6rem 0"><Slide left>
                   <HeadingDark textAlign="start" margin="0 0 35px 0" level="2">Why Didn't I Receive PKT?</HeadingDark>
-                  <Text textAlign="start" size="20px" color="#707070" margin="0 10vw 0 0">If you were attempting to transfer from WPKT to PKT and didn't receive your PKT, you can use this link or click "Claim PKT" below, to get your allocation. You will need your transaction hash to complete this transaction. The transaction hash was provided to you on the "GetPKT" screen. You can also find it inside of your Metamask wallet in the transaction history. You can use this guide to find token transactions in Metamask.</Text>
+                  <Text textAlign="start" size="20px" color="#707070" margin="0 10vw 0 0">If you were attempting to transfer from WPKT to PKT and didn't receive your PKT, you can use this link or click "Recover PKT" below, to get your allocation. You will need your transaction hash to complete this transaction. The transaction hash was provided to you on the "GetPKT" screen. You can also find it inside of your Metamask wallet in the transaction history. You can use this guide to find token transactions in Metamask.</Text>
                 </Slide></Box>
               </Grid>
             </CardBody>
@@ -1302,7 +1302,7 @@ function FAQ() {
                 <Box gridArea="right" justify="start"><Image alignSelf="center" width="400" src={recive_pkt_illustration} fit="contain" /></Box>
                 <Box gridArea="left" justify="center" alignSelf="center" pad="6rem 0"><Slide left>
                   <HeadingDark textAlign="start" margin="0 0 50px 0" level="2">Why Didn't I Receive PKT?</HeadingDark>
-                  <Text textAlign="start" size="22px" color="#707070" margin="0 10vw 0 0">If you were attempting to transfer from WPKT to PKT and didn't receive your PKT, you can use this link or click "Claim PKT" below, to get your allocation. You will need your transaction hash to complete this transaction. The transaction hash was provided to you on the "GetPKT" screen. You can also find it inside of your Metamask wallet in the transaction history. You can use this guide to find token transactions in Metamask.</Text>
+                  <Text textAlign="start" size="22px" color="#707070" margin="0 10vw 0 0">If you were attempting to transfer from WPKT to PKT and didn't receive your PKT, you can use this link or click "Recover PKT" below, to get your allocation. You will need your transaction hash to complete this transaction. The transaction hash was provided to you on the "GetPKT" screen. You can also find it inside of your Metamask wallet in the transaction history. You can use this guide to find token transactions in Metamask.</Text>
                 </Slide></Box>
               </Grid>
             </CardBody>
@@ -1328,7 +1328,7 @@ function FAQ() {
                 <Box gridArea="right" justify="start"><Image alignSelf="center" width="475" src={recive_pkt_illustration} fit="contain" /></Box>
                 <Box gridArea="left" justify="center" alignSelf="center"><Slide left>
                   <HeadingDark textAlign="start" margin="0 0 50px 0" level="2">Why Didn't I Receive PKT?</HeadingDark>
-                  <Text textAlign="start" size="26px" color="#707070" margin="0 15vw 0 0">If you were attempting to transfer from WPKT to PKT and didn't receive your PKT, you can use this link or click "Claim PKT" below, to get your allocation. You will need your transaction hash to complete this transaction. The transaction hash was provided to you on the "GetPKT" screen. You can also find it inside of your Metamask wallet in the transaction history. You can use this guide to find token transactions in Metamask.</Text>
+                  <Text textAlign="start" size="26px" color="#707070" margin="0 15vw 0 0">If you were attempting to transfer from WPKT to PKT and didn't receive your PKT, you can use this link or click "Recover PKT" below, to get your allocation. You will need your transaction hash to complete this transaction. The transaction hash was provided to you on the "GetPKT" screen. You can also find it inside of your Metamask wallet in the transaction history. You can use this guide to find token transactions in Metamask.</Text>
                 </Slide></Box>
               </Grid>
             </CardBody>

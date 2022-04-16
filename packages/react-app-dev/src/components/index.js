@@ -123,7 +123,7 @@ export const BodyCenteredAlt = styled.body`
     background-image: url('https://odapp.io/prple.jpg');
     background-repeat: repeat;
     //background-image: url('https://odapp.io/teal.jpg');
-    //background: linear-gradient(70.77deg, #c2f4ad -9.18%, #56e59c 120.09%); 
+    //background: linear-gradient(70.77deg, #c2f4ad -9.18%, #56e59c 120.09%);
     //background: linear-gradient(70.77deg, #56cde0 -9.18%, #ffffff 80.09%);
     background-size: cover;
     color: white;
@@ -251,7 +251,7 @@ export const HeadingDark = styled(Heading)`
     font-size: 32px;
     line-height: 40px;
   }
-`;  
+`;
 
 export const HeadingLight = styled(Heading)`
   color: #fff;
@@ -275,7 +275,7 @@ export const HeadingLight = styled(Heading)`
     font-size: 32px;
     line-height: 40px;
   }
-`;  
+`;
 
 export const IdentifierTitle = styled(Text)`
 font-weight: 900;
@@ -632,7 +632,7 @@ export const ButtonForm = styled(Button)`
     padding: 15px;
   }
   @media all and (max-width: 992px) {
-    
+
   }
   @media all and (max-width: 480px) {
     font-size: 18px;

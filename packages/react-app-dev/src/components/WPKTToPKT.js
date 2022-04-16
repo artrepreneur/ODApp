@@ -2,10 +2,9 @@ import React from "react";
 import { Contract } from "@ethersproject/contracts";
 import { Grid, Form, Box, Card, Text, CardBody, TextInput, Spinner, FormField, Heading, ResponsiveContext, Grommet } from "grommet";
 import { HeadingDark, ButtonForm, StyledTextDark, customBreakpoints } from ".";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { ethers } from "ethers";
 import detectEthereumProvider from '@metamask/detect-provider';
-
 import addresses from "./abi/addresses";
 import abis from "./abi/abis";
 import Web3 from "web3";
@@ -19,7 +18,11 @@ var feesNoWei;
 var PKTAddr;
 var ethTxHash;
 var dv, dv1, dv2, dv3, dv4, dv5, dv2_2;
-var net = 97; //56;
+var bscNet = 97;
+var ethNet = 4;
+var maticNet = 80001;
+var net = bscNet;
+var loc;
 
 var formWrapStyle = {
   boxShadow: "0px 3px 6px rgba(0, 0, 0, 0.161)",
@@ -49,12 +52,15 @@ async function handleInput(e){
   dv3.style.display= 'none';
   dv2_2.style.display= 'none';
 
-
-
-
+  dv5 = document.getElementById("output2");
 
   e.preventDefault();
   WPKTAmount = e.value.WPKTAmount.trim();
+
+  dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Withdrawals are suspended for this development site.</h4>";
+  dv.style.display= 'block';
+  dv2.style.display= 'block';
+  return;
 
   if(isNaN(WPKTAmount)){
     dv.style.display= 'block';
@@ -63,7 +69,6 @@ async function handleInput(e){
     dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Your amount must be a number.</h4>";
     return;
   }
-
 
   PKTAddr = e.value.PKTAddr.trim().toString();
   console.log('WPKT Amount to Convert:', WPKTAmount, 'PKT Recipient Address:', PKTAddr);
@@ -76,11 +81,8 @@ async function handleInput(e){
     return;
   }
 
-
   // Check that bridge has pkt.
   var chkCmd = "https://obeahdev.odapp.io/api/v1/getbalances";
-  //var chkCmd = "https://obeah.odapp.io/api/v1/getbalances";
-
   var bal = 0;
 
   fetch(chkCmd)
@@ -116,8 +118,13 @@ async function handleInput(e){
 
           var network = await window.ethereum.request({ method: 'net_version' })
           console.log(network);
-          if (Number(network)!= Number(net)){
-              dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Connect Metamask to Binance smart chain Mainnet.</h4>";
+          if (Number(network)!== Number(net)){
+              if (Number(net) == bscNet)
+                dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Connect Metamask to Binance smart chain Testnet.</h4>";
+              else if (Number(net) == ethNet)
+                dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Connect Metamask to Ethereum Testnet.</h4>";
+              else if (Number(net) == maticNet)
+                dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Connect Metamask to Matic Testnet.</h4>";
               dv1.style.display= 'none';
               dv.style.display= 'block';
               dv2.style.display= 'block';
@@ -149,7 +156,7 @@ async function handleInput(e){
 
             var tx = await WPKT.convertToPkt(pktEncodedAddr, WPKTAmtWei);
             console.log('TX:',tx);
-            dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Pending Transaction ID:</h4><Text margin='small' >" + tx.hash + "</Text><h4 style={{backgroundColor: '#2B2F36'}}>Please wait for confirmation...</h4>";
+            dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Pending Transaction ID:</h4><Text margin='small' >" + tx.hash + "</Text><h4 style={{backgroundColor: '#2B2F36'}}>Please wait for sufficient network confirmations, this could take a while...</h4>";
             ethTxHash = tx.hash;
 
             var receipt = await tx.wait();
@@ -166,11 +173,11 @@ async function handleInput(e){
                 console.log("Amount:", amtNoWei, 'Fees:', feesNoWei, 'Original Amt:', originalAmt);
                 if (Number(amtNoWei) > 0) {
                     dv1.style.display= 'none';
-                    dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>WPKT Successfully Sent</h4><h6 style={{backgroundColor: '#2B2F36'}}><b>Your WPKT transaction hash is " + receipt.transactionHash + "</h6>";
+                    dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>WPKT Successfully Burned</h4><h6 style={{backgroundColor: '#2B2F36'}}><b>Your WPKT transaction hash is " + receipt.transactionHash + "</h6>";
                     dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>You sent "+originalAmt+" WPKT tokens to the WPKT contract.</h6>";
                     dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Your fees were "+feesNoWei+" WPKT.</h6>";
                     dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>After fees you will receive "+amtNoWei+" PKT.</h6>";
-                    dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Use the button \"Claim PKT\" to complete the bridge and receive your PKT. Please save your transaction hash. <p>If there are any issues you can always use your transaction hash to retrieve your PKT.</p></h6>";
+                    dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Use the button \"Recover PKT\" to complete the bridge and receive your PKT. Please save your transaction hash. <p>If there are any issues you can always use your transaction hash to retrieve your PKT.</p></h6>";
                     dv3.style.display= 'block';
                     dv2.style.display= 'block';
                 }
@@ -186,7 +193,7 @@ async function handleInput(e){
             else {
               console.log('Transaction Receipt Success. Receipt:', receipt);
               dv1.style.display= 'none';
-              dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>WPKT Successfully Sent</h4><h6 style={{backgroundColor: '#2B2F36'}}><b>Your WPKT transaction hash is " + receipt.transactionHash + "</h6>";
+              dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>WPKT Successfully Burned</h4><h6 style={{backgroundColor: '#2B2F36'}}><b>Your WPKT transaction hash is " + receipt.transactionHash + "</h6>";
               dv2.style.display= 'block';
               dv3.style.display= 'block';
               return;
@@ -202,7 +209,7 @@ async function handleInput(e){
                 dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Make sure you are logged into Metamask.</h6>";
               }
               else {
-                dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Make sure your entered the correct address and amount.</h6>";
+                dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Make sure your entered the correct address and that you have a balance of WPKT to convert.</h6>";
               }
           }
         }
@@ -220,7 +227,6 @@ async function handleInput(e){
       dv2.style.display= 'block';
       dv1.style.display='none';
       dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>No data returned. Either obeahdev.odapp.io is down, or transaction returned no data.</h4>";
-      //dv.innerHTML += "<h4 style={{backgroundColor: '#2B2F36'}}><a color='white' href='http://localhost:3000/GetPKT'>Click Here</a></h4>";
       return;
     });
 }
@@ -236,14 +242,11 @@ function getPKT(){
   dv3 = document.getElementById("recPKT");
   dv4 = document.getElementById("div2");
   dv5 = document.getElementById("output2");
-
   dv1.style.display= 'block';
 
-
   try {
+    var cmd = "https://obeahdev.odapp.io/api/v1/userPayout/txHash/"+ethTxHash+"/address/"+PKTAddr+"/netId/"+net+"/";
 
-    var cmd = "https://obeahdev.odapp.io/api/v1/userPayout/txHash/"+ethTxHash+"/address/"+PKTAddr+"/";
-    //var cmd = "http://localhost:5000/api/v1/userPayout/txHash/"+ethTxHash+"/address/"+PKTAddr+"/";
     console.log(cmd);
     fetch(cmd)
     .then((response) => response.json())
@@ -276,7 +279,7 @@ function getPKT(){
       dv5.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Transaction Failure</h4>";
       dv5.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>There was a problem communicating with the bridge servers.</h6>";
       dv5.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Save your transaction ID and try to claim again in a few minutes.</h6>";
-      dv5.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>You can also use the \"Claim PKT\" menu item below.</h6>";
+      dv5.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>You can also use the \"Recover PKT\" menu item below.</h6>";
       dv1.style.display= 'none';
       dv4.style.display= 'block';
       dv5.style.display= 'block';
@@ -290,14 +293,54 @@ function getPKT(){
   }
 }
 
+if (typeof window.ethereum !== 'undefined'
+|| (typeof window.web3 !== 'undefined')) {
+  window.ethereum.on('networkChanged', function (network) {
+    console.log('Current Network:', network, 'Current Route:', loc);
+    if (loc && loc.pathname === '/WPKTToPKT'){
+      dv = document.getElementById("output1");
+      //dv2 = document.getElementById("div1");
+      dv.style.display= 'none';
+      //dv2.style.display= 'none';
+      nError();
+    }
+  });
+}
+
+
+async function nError(){
+  var network = await window.ethereum.request({ method: 'net_version' })
+  console.log("Check Net:", (Number(network)!== Number(net)));
+  dv = document.getElementById("output1");
+  dv1 = document.getElementById("spin");
+  dv2 = document.getElementById("div1");
+  if (Number(network)!== Number(net)){
+      if (Number(net) == bscNet)
+        dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Connect Metamask to Binance smart chain Testnet.</h4>";
+      else if (Number(net) == ethNet)
+        dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Connect Metamask to Ethereum Testnet.</h4>";
+      else if (Number(net) == maticNet)
+        dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Connect Metamask to Matic Testnet.</h4>";
+      dv.style.display= 'block';
+      dv1.style.display= 'none';
+      dv2.style.display= 'block';
+      return;
+  }
+}
+
+
+
 function WPKTToPKT() {
   const history = useHistory();
+  loc = useLocation();
+
+
   const navigateTo = () => {
     console.log('OK to receive PKT.', history);
     history.push('/GetPKT')
   }
   const size = React.useContext(ResponsiveContext);
-
+  const [checked, setChecked] = React.useState(false);
 
   return (
     <Grommet theme={customBreakpoints}>
@@ -328,7 +371,7 @@ function WPKTToPKT() {
                       <Box id="box1" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white',  padding:'0%'}}>
                           <div hidden align="center" id="output1" style={{padding:'2%', wordBreak: "break-word"}}></div>
                           <div hidden align="center" id="recPKT" style={{padding:'2%', wordBreak: "break-word"}}>
-                              <ButtonForm size='large' color='#F0B90C' label='Claim PKT' onClick={() => getPKT()}/>
+                              <ButtonForm size='large' color='#F0B90C' label='Recover PKT' onClick={() => getPKT()}/>
                           </div>
                           <div id="spin" align="center" pad="medium" style={{padding:'2%'}}><Spinner size="large" /></div>
                       </Box>
@@ -369,7 +412,7 @@ function WPKTToPKT() {
                       <Box id="box1" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white',  padding:'0%'}}>
                           <div hidden align="center" id="output1" style={{padding:'2%', wordBreak: "break-word"}}></div>
                           <div hidden align="center" id="recPKT" style={{padding:'2%', wordBreak: "break-word"}}>
-                              <ButtonForm size='large' color='#F0B90C' label='Claim PKT' onClick={() => getPKT()}/>
+                              <ButtonForm size='large' color='#F0B90C' label='Recover PKT' onClick={() => getPKT()}/>
                           </div>
                           <div id="spin" align="center" pad="medium" style={{padding:'2%'}}><Spinner size="large" /></div>
                       </Box>
@@ -410,7 +453,7 @@ function WPKTToPKT() {
                       <Box id="box1" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white',  padding:'0%'}}>
                           <div hidden align="center" id="output1" style={{padding:'2%', wordBreak: "break-word"}}></div>
                           <div hidden align="center" id="recPKT" style={{padding:'2%', wordBreak: "break-word"}}>
-                              <ButtonForm size='large' color='#F0B90C' label='Claim PKT' onClick={() => getPKT()}/>
+                              <ButtonForm size='large' color='#F0B90C' label='Recover PKT' onClick={() => getPKT()}/>
                           </div>
                           <div id="spin" align="center" pad="medium" style={{padding:'2%'}}><Spinner size="large" /></div>
                       </Box>
@@ -464,7 +507,7 @@ function WPKTToPKT() {
                       <Box id="box1" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white',  padding:'0%'}}>
                           <div hidden align="center" id="output1" style={{padding:'2%', wordBreak: "break-word"}}></div>
                           <div hidden align="center" id="recPKT" style={{padding:'2%', wordBreak: "break-word"}}>
-                              <ButtonForm size='large' color='#F0B90C' label='Claim PKT' onClick={() => getPKT()}/>
+                              <ButtonForm size='large' color='#F0B90C' label='Recover PKT' onClick={() => getPKT()}/>
                           </div>
                           <div id="spin" align="center" pad="medium" style={{padding:'2%'}}><Spinner size="large" /></div>
                       </Box>
@@ -501,7 +544,7 @@ function WPKTToPKT() {
                     <HeadingDark textAlign="start" margin={{ bottom: "50px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Swap WPKT to PKT</HeadingDark>
                     <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>To convert your WPKT to PKT enter the amount of WPKT you wish to convert, and the PKT address that will receive the PKT. Be sure to enter a valid PKT address and not Binance Smart Chain address.</StyledTextDark>
                 </Box>
-                <Box gridArea="right" background="#fff" height="large" justify="center" alignSelf="center" pad="0">
+                <Box gridArea="right" background="#fff" justify="end" alignSelf="center" pad="0">
                     <Box background="#f9f9f9" pad={{ vertical: "large", horizontal: "xlarge" }} round="25px" justify="center" alignSelf="center" style={formWrapStyle}>
                     <Form name="ConvertWPKTtoPKT" id="ConvertWPKTtoPKT" onSubmit={handleInput}>
                     <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="24px" margin={{ bottom: "50px", top: "0" }}  textAlign="center">Enter WPKT Amount and PKT Recipient Address</Heading>
@@ -519,14 +562,15 @@ function WPKTToPKT() {
                       <Box id="box1" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white',  padding:'0%'}}>
                           <div hidden align="center" id="output1" style={{padding:'2%', wordBreak: "break-word"}}></div>
                           <div hidden align="center" id="recPKT" style={{padding:'2%', wordBreak: "break-word"}}>
-                              <ButtonForm size='large' color='#F0B90C' label='Claim PKT' onClick={() => getPKT()}/>
+                              <ButtonForm size='large' color='#F0B90C' label='Recover PKT' onClick={() => getPKT()}/>
                           </div>
                           <div id="spin" align="center" pad="medium" style={{padding:'2%'}}><Spinner size="large" /></div>
                       </Box>
                     </div>
-                    <div hidden id="div2" style={{paddingTop: '2%'}}>
+                    <div hidden id="div2" style={{paddingTop: '2%', wordBreak: "break-word"}}>
                       <Box id="box2" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white',  padding:'0%'}}>
-                        <div hidden align="center" id="output2" style={{padding:'2%'}}></div>
+                        <div hidden align="center" id="output2" style={{padding:'2%', wordBreak: "break-word"}}>
+                        </div>
                       </Box>
                     </div>
                     </Box>

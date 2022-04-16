@@ -72,7 +72,7 @@ function PKTToWPKT() {
                     <CardBody>
                       <Box background="#fff" justify="center" alignSelf="center">
                           <HeadingDark textAlign="center" margin={{ bottom: "35px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Get WPKT</HeadingDark>
-                          <StyledTextDark textAlign="center">To convert your PKT to WPKT you will first need to send your PKT to ODApp's "VAULT" address, seen below, using the PKT wallet of your choice. Be sure to save your Transaction Hash, which is provided by your wallet, as proof of your transaction. You will need this Transaction Hash to get your PKT onto BSC's chain.</StyledTextDark>
+                          <StyledTextDark textAlign="center">To convert your PKT to WPKT you will first need to send your PKT to ODApp's "VAULT" address, using the PKT wallet of your choice. Be sure to save your transaction ID, which is provided by your wallet, as proof of your transaction. You will need this transaction ID to get your PKT onto BSC's chain.  <br/><br/>For security, you will need to wait about 7 minutes to claim your WPKT. For transactions greater than 7 million PKT will take 3 hours to complete. </StyledTextDark>
                       </Box>
                       <Box background="#fff" justify="center" alignSelf="center" pad="50px 0 0">
                           <Box background="#f9f9f9" pad={{ top: "40px", bottom: "50px", horizontal: "20px" }} round="23px" justify="center" alignSelf="center" style={formWrapStyleMob}>
@@ -92,7 +92,7 @@ function PKTToWPKT() {
                     <CardBody>
                       <Box background="#fff" justify="center" alignSelf="center">
                           <HeadingDark textAlign="center" margin={{ bottom: "35px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Get WPKT</HeadingDark>
-                          <StyledTextDark textAlign="center">To convert your PKT to WPKT you will first need to send your PKT to ODApp's "VAULT" address, seen below, using the PKT wallet of your choice. Be sure to save your Transaction Hash, which is provided by your wallet, as proof of your transaction. You will need this Transaction Hash to get your PKT onto BSC's chain.</StyledTextDark>
+                          <StyledTextDark textAlign="center">To convert your PKT to WPKT you will first need to send your PKT to ODApp's "VAULT" address, using the PKT wallet of your choice. Be sure to save your transaction ID, which is provided by your wallet, as proof of your transaction. You will need this transaction ID to get your PKT onto BSC's chain.  <br/><br/>For security, you will need to wait about 7 minutes to claim your WPKT. For transactions greater than 7 million PKT will take 3 hours to complete. </StyledTextDark>
                       </Box>
                       <Box background="#fff" justify="center" alignSelf="center" pad="50px 0 0">
                           <Box background="#f9f9f9" pad={{ top: "40px", bottom: "50px", horizontal: "20px" }} round="23px" justify="center" alignSelf="center" style={formWrapStyleMob}>
@@ -112,7 +112,7 @@ function PKTToWPKT() {
                     <CardBody>
                       <Box background="#fff" justify="center" alignSelf="center">
                           <HeadingDark textAlign="center" margin={{ bottom: "35px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Get WPKT</HeadingDark>
-                          <StyledTextDark textAlign="center">To convert your PKT to WPKT you will first need to send your PKT to ODApp's "VAULT" address, seen below, using the PKT wallet of your choice. Be sure to save your Transaction Hash, which is provided by your wallet, as proof of your transaction. You will need this Transaction Hash to get your PKT onto BSC's chain.</StyledTextDark>
+                          <StyledTextDark textAlign="center">To convert your PKT to WPKT you will first need to send your PKT to ODApp's "VAULT" address, using the PKT wallet of your choice. Be sure to save your transaction ID, which is provided by your wallet, as proof of your transaction. You will need this transaction ID to get your PKT onto BSC's chain.   <br/><br/>For security, you will need to wait about 7 minutes to claim your WPKT. For transactions greater than 7 million PKT will take 3 hours to complete. </StyledTextDark>
                       </Box>
                       <Box background="#fff" justify="center" alignSelf="center" pad="50px 0 0">
                           <Box background="#f9f9f9" pad={{ top: "40px", bottom: "50px", horizontal: "20px" }} round="23px" justify="center" alignSelf="center" style={formWrapStyleMob}>
@@ -145,7 +145,7 @@ function PKTToWPKT() {
                       >
                       <Box gridArea="left" background="#fff" justify="center" alignSelf="start">
                           <HeadingDark textAlign="start" margin={{ bottom: "50px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Get WPKT</HeadingDark>
-                          <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>To convert your PKT to WPKT you will first need to send your PKT to ODApp's "VAULT" address, seen below, using the PKT wallet of your choice. Be sure to save your Transaction Hash, which is provided by your wallet, as proof of your transaction. You will need this Transaction Hash to get your PKT onto BSC's chain.</StyledTextDark>
+                          <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>To convert your PKT to WPKT you will first need to send your PKT to ODApp's "VAULT" address, using the PKT wallet of your choice. Be sure to save your transaction ID, which is provided by your wallet, as proof of your transaction. You will need this transaction ID to get your PKT onto BSC's chain.   <br/><br/>For security, you will need to wait about 7 minutes to claim your WPKT. For transactions greater than 7 million PKT will take 3 hours to complete. </StyledTextDark>
                       </Box>
                       <Box gridArea="right" background="#fff" justify="center" alignSelf="center" pad="0">
                           <Box background="#f9f9f9" pad={{ vertical: "large", horizontal: "medium" }} round="25px" justify="center" alignSelf="center" style={formWrapStyleMed}>
@@ -179,7 +179,7 @@ function PKTToWPKT() {
                       >
                       <Box gridArea="left" background="#fff" height={{ min: "85vh" }} justify="center" alignSelf="start">
                           <HeadingDark textAlign="start" margin={{ bottom: "50px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Get WPKT</HeadingDark>
-                          <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>To convert your PKT to WPKT you will first need to send your PKT to ODApp's "VAULT" address, seen below, using the PKT wallet of your choice. Be sure to save your Transaction Hash, which is provided by your wallet, as proof of your transaction. You will need this Transaction Hash to get your PKT onto BSC's chain.</StyledTextDark>
+                          <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>To convert your PKT to WPKT you will first need to send your PKT to ODApp's "VAULT" address, using the PKT wallet of your choice. Be sure to save your transaction ID, which is provided by your wallet, as proof of your transaction. You will need this transaction ID to get your PKT onto BSC's chain.   <br/><br/>For security, you will need to wait about 7 minutes to claim your WPKT. For transactions greater than 7 million PKT will take 3 hours to complete. </StyledTextDark>
                       </Box>
                       <Box gridArea="right" background="#fff" height="large" justify="center" alignSelf="center" pad="0">
                           <Box background="#f9f9f9" pad={{ vertical: "large", horizontal: "medium" }} round="25px" justify="center" alignSelf="center" style={formWrapStyle}>
@@ -189,7 +189,7 @@ function PKTToWPKT() {
                               <ButtonForm hoverIndicator={{background: "#222323", boxShadow: "0"}} margin={{top: "50px", horizontal: "auto"}} size='large' color="#fff" type="submit" label="Next" onClick={navigateTo}/>
                             </Box>
                           </Box>
-                      </Box>                    
+                      </Box>
                       </Grid>
                     </CardBody>
               </Card>

@@ -39,10 +39,18 @@ async function handleInput(e){
     pktAddr= e.value.PKTAddr.trim();
     console.log("PKT Sender:", pktAddr, "WPKT Recipient:", wpktAddr);
 
-     // Check that bridge has pkt.
+    if (wpktAddr===pktAddr){
+      dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Pair Failed to Commit</h4>";
+      dv.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>\"PKT Sender Address\" must not be same as the \"WPKT Recipient Address\"</h6>";
+      dv.style.display= 'block';
+      dv2.style.display= 'block';
+      return;
+    }
+
+    // Commit it
     var chkCmd = "https://obeah.odapp.io/api/v1/commitAddresses/pktSenderAddress/"+pktAddr+"/ethRecipientAddress/"+wpktAddr+"/";
-    //var chkCmd = "https://obeahdev.odapp.io/api/v1/commitAddresses/pktSenderAddress/"+pktAddr+"/ethRecipientAddress/"+wpktAddr+"/";
-    //var chkCmd = "http://localhost:5000/api/v1/commitAddresses/pktSenderAddress/"+pktAddr+"/ethRecipientAddress/"+wpktAddr+"/";
+    console.log(chkCmd);
+
     dv.style.display= 'block';
     dv1.style.display= 'block';
     dv2.style.display= 'block';
@@ -104,7 +112,7 @@ function PreCommit() {
                             <StyledTextDark textAlign="center">To convert your PKT to WPKT you will first need to complete a pre-commit process by entering your PKT sender address and your intended WPKT recipient address. Once the pre-commit is complete, you will have a unique address pair. You can re-use your unique address pair in the ODApp bridge as many times as you want, or create another unique pair in the future.</StyledTextDark>
                         </Box>
                         <Box background="#fff" justify="center" alignSelf="center" pad="50px 0 0">
-                            <Box background="#f9f9f9" pad={{ top: "40px", bottom: "50px", horizontal: "20px" }} round="23px" justify="center" alignSelf="center" style={formWrapStyleMob}>
+                            <Box background="#f9f9f9" pad={{ top: "40px", bottom: "50px", horizontal: "20px" }} round="23px" justify="end" alignSelf="center" style={formWrapStyleMob}>
                             <Form name="Commitment" id="Commitment" onSubmit={handleInput}>
                             <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="18px" margin={{ bottom: "35px", top: "0" }}  textAlign="center">Enter Sender and Recipient Address</Heading>
                             <Box justify="center" alignSelf="center">
@@ -140,7 +148,7 @@ function PreCommit() {
                             <StyledTextDark textAlign="center">To convert your PKT to WPKT you will first need to complete a pre-commit process by entering your PKT sender address and your intended WPKT recipient address. Once the pre-commit is complete, you will have a unique address pair. You can re-use your unique address pair in the ODApp bridge as many times as you want, or create another unique pair in the future.</StyledTextDark>
                         </Box>
                         <Box background="#fff" justify="center" alignSelf="center" pad="50px 0 0">
-                            <Box background="#f9f9f9" pad={{ top: "40px", bottom: "50px", horizontal: "20px" }} round="23px" justify="center" alignSelf="center" style={formWrapStyleMob}>
+                            <Box background="#f9f9f9" pad={{ top: "40px", bottom: "50px", horizontal: "20px" }} round="23px" justify="end" alignSelf="center" style={formWrapStyleMob}>
                             <Form name="Commitment" id="Commitment" onSubmit={handleInput}>
                             <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="18px" margin={{ bottom: "35px", top: "0" }}  textAlign="center">Enter Sender and Recipient Address</Heading>
                             <Box justify="center" alignSelf="center">
@@ -176,7 +184,7 @@ function PreCommit() {
                             <StyledTextDark textAlign="center">To convert your PKT to WPKT you will first need to complete a pre-commit process by entering your PKT sender address and your intended WPKT recipient address. Once the pre-commit is complete, you will have a unique address pair. You can re-use your unique address pair in the ODApp bridge as many times as you want, or create another unique pair in the future.</StyledTextDark>
                         </Box>
                         <Box background="#fff" justify="center" alignSelf="center" pad="50px 0 0">
-                            <Box background="#f9f9f9" pad={{ top: "40px", bottom: "50px", horizontal: "large" }} round="23px" justify="center" alignSelf="center" style={formWrapStyleMob}>
+                            <Box background="#f9f9f9" pad={{ top: "40px", bottom: "50px", horizontal: "large" }} round="23px" justify="end" alignSelf="center" style={formWrapStyleMob}>
                             <Form name="Commitment" id="Commitment" onSubmit={handleInput}>
                             <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="18px" margin={{ bottom: "35px", top: "0" }}  textAlign="center">Enter Sender and Recipient Address</Heading>
                             <Box justify="center" alignSelf="center">
@@ -225,7 +233,7 @@ function PreCommit() {
                             <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>To convert your PKT to WPKT you will first need to complete a pre-commit process by entering your PKT sender address and your intended WPKT recipient address. Once the pre-commit is complete, you will have a unique address pair. You can re-use your unique address pair in the ODApp bridge as many times as you want, or create another unique pair in the future.</StyledTextDark>
                         </Box>
                         <Box gridArea="right" background="#fff" justify="center" alignSelf="center" pad="0">
-                            <Box background="#f9f9f9" pad={{ vertical: "large", horizontal: "large" }} round="25px" justify="center" alignSelf="center" style={formWrapStyleMed}>
+                            <Box background="#f9f9f9" pad={{ vertical: "large", horizontal: "large" }} round="25px" justify="end" alignSelf="center" style={formWrapStyleMed}>
                             <Form name="Commitment" id="Commitment" onSubmit={handleInput}>
                             <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="20px" margin={{ bottom: "35px", top: "0" }}  textAlign="center">Enter Sender and Recipient Address</Heading>
                             <Box justify="center" alignSelf="center">
@@ -275,7 +283,7 @@ function PreCommit() {
                             <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>To convert your PKT to WPKT you will first need to complete a pre-commit process by entering your PKT sender address and your intended WPKT recipient address. Once the pre-commit is complete, you will have a unique address pair. You can re-use your unique address pair in the ODApp bridge as many times as you want, or create another unique pair in the future.</StyledTextDark>
                         </Box>
                         <Box gridArea="right" background="#fff" height="large" justify="center" alignSelf="center" pad="0">
-                            <Box background="#f9f9f9" pad={{ vertical: "large", horizontal: "xlarge" }} round="25px" justify="center" alignSelf="center" style={formWrapStyle}>
+                            <Box background="#f9f9f9" pad={{ vertical: "large", horizontal: "xlarge" }} round="25px" justify="end" alignSelf="center" style={formWrapStyle}>
                             <Form name="Commitment" id="Commitment" onSubmit={handleInput}>
                             <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="24px" margin={{ bottom: "50px", top: "0" }}  textAlign="center">Enter Sender and Recipient Address</Heading>
                             <Box justify="center" alignSelf="center">

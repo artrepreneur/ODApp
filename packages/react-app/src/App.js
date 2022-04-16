@@ -6,14 +6,17 @@ import { Button, Footer, Text, Box, Grommet, ResponsiveContext } from "grommet";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import SwapPKT from "./components/SwapPKT";
+import Teleport from "./components/Teleport";
 import PKTToWPKT from "./components/PKTToWPKT";
 import WPKTToPKT from "./components/WPKTToPKT";
 import PreCommit from "./components/PreCommit";
 import Collapsible from "./components/Collapsible";
 import GetPKT from "./components/GetPKT";
+import GetWPKT from "./components/GetWPKT";
 import FAQ from "./components/FAQ";
 import ReCommit from "./components/ReCommit";
 import NotFound from "./components/NotFound";
+import ToS from "./components/ToS";
 import useWeb3Modal from "./hooks/useWeb3Modal";
 import GET_TRANSFERS from "./graphql/subgraph";
 import logoFooter from "./img/odapp-logo-footer.svg";
@@ -110,6 +113,7 @@ function App() {
     { label: 'HOME', href: '/' },
     { label: 'PKT-to-WPKT', href: 'PKTToWPKT' },
     { label: 'WPKT-to-PKT', href: 'WPKTToPKT' },
+    //{ label: 'Teleport', href: 'Teleport' },
     { label: 'FAQ', href: 'FAQ' },
   ];
   React.useEffect(() => {
@@ -135,17 +139,26 @@ function App() {
             <Route exact path="/SwapPKT">
               <SwapPKT />
             </Route>
+            <Route exact path="/Teleport">
+              <Teleport />
+            </Route>
             <Route exact path="/WPKTToPKT">
               <WPKTToPKT />
             </Route>
             <Route exact path="/GetPKT">
               <GetPKT />
             </Route>
+            <Route exact path="/GetWPKT">
+              <GetWPKT />
+            </Route>
             <Route exact path="/FAQ">
               <FAQ />
             </Route>
             <Route exact path="/ReCommit">
               <ReCommit />
+            </Route>
+            <Route exact path="/ToS">
+              <ToS />
             </Route>
             <Route component={NotFound} />
           </Switch>
@@ -155,41 +168,47 @@ function App() {
           {responsive => (responsive === 'smallmob') ? (
             <Footer background="#222323" pad="35px 25px 75px" align="center" justify="center" className="mainFooter">
               <Box size="small" align="center"><ImageFooter src={logoFooter} fit="contain" alt="react-logo" /></Box>
-              <ButtonFooter href="/GetPKT" label="Claim PKT" color="#FFFFFF" margin={{ top: "50px", bottom: "40px" }} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+              <ButtonFooter href="/GetPKT" label="Recover PKT" color="#FFFFFF" margin={{ top: "50px", bottom: "40px"}} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+              {/*<ButtonFooter href="/GetWPKT" label="Recover WPKT" color="#FFFFFF" margin={{ bottom: "40px" }} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />*/}
               <ButtonFooter href="https://pkt.cash/" target="_blank" align="center" margin={{ bottom: "40px" }} label="Learn About PKT Cash" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
               <ButtonFooter href="/ReCommit" align="center" label="Recommit Pair" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
             </Footer>
           ) : (responsive === 'small') ? (
-            <Footer background="#222323" pad="35px 25px 75px" align="center" justify="center" className="mainFooter">
+            <Footer background="#222323" pad="35px 25px 75px" align="center" justify="center" className="mainFooter" >
               <Box size="small" align="center"><ImageFooter src={logoFooter} fit="contain" alt="react-logo" /></Box>
-              <ButtonFooter href="/GetPKT" label="Claim PKT" color="#FFFFFF" margin={{ top: "50px", bottom: "40px" }} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+              <ButtonFooter href="/GetPKT" label="Recover PKT" color="#FFFFFF" margin={{ top: "50px", bottom: "40px"}} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+              {/*<ButtonFooter href="/GetWPKT" label="Recover WPKT" color="#FFFFFF" margin={{ bottom: "40px" }} hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />*/}
               <ButtonFooter href="https://pkt.cash/" target="_blank" align="center" margin={{ bottom: "40px" }} label="Learn About PKT Cash" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
               <ButtonFooter href="/ReCommit" align="center" label="Recommit Pair" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+
             </Footer>
           ) : (responsive === 'tablet') ? (
-            <Footer background="#222323" pad="large" align="center" justify="center" className="mainFooter">
+            <Footer background="#222323" pad="large" align="center" justify="center" className="mainFooter"> {/*style={{bottom:'0px', position:'fixed'}}*/}
                 <Box size="small" className="mainFooterLogo"><ImageFooter src={logoFooter} fit="contain" alt="react-logo" /></Box>
-                <ButtonFooter href="/GetPKT" label="Claim PKT" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+                <ButtonFooter href="/GetPKT" label="Recover PKT" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+                {/* <ButtonFooter href="/GetWPKT" label="Recover WPKT" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} /> */}
                 <ButtonFooter href="https://pkt.cash/" target="_blank" align="center" label="Learn About PKT Cash" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
                 <ButtonFooter href="/ReCommit" align="center" label="Recommit Pair" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
             </Footer>
           ) : (responsive === 'medium') ? (
             <Footer background="#222323" pad="large" align="center" justify="center" className="mainFooter">
                 <Box size="small" className="mainFooterLogo"><ImageFooter src={logoFooter} fit="contain" alt="react-logo" /></Box>
-                <ButtonFooter href="/GetPKT" label="Claim PKT" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+                <ButtonFooter href="/GetPKT" label="Recover PKT" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+                {/* <ButtonFooter href="/GetWPKT" label="Recover WPKT" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} /> */}
                 <ButtonFooter href="https://pkt.cash/" target="_blank" align="center" label="Learn About PKT Cash" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
                 <ButtonFooter href="/ReCommit" align="center" label="Recommit Pair" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
             </Footer>
           ) : (
-            <Footer background="#222323" pad="large" align="center" justify="center" className="mainFooter">
+            <Footer background="#222323" pad="large" align="center" justify="center" className="">
                 <Box size="small" className="mainFooterLogo"><ImageFooter src={logoFooter} fit="contain" alt="react-logo" /></Box>
-                <ButtonFooter href="/GetPKT" label="Claim PKT" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+                <ButtonFooter href="/GetPKT" label="Recover PKT" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
+              {/* <ButtonFooter href="/GetWPKT" label="Recover WPKT" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} /> */}
                 <ButtonFooter href="https://pkt.cash/" target="_blank" align="center" label="Learn About PKT Cash" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
                 <ButtonFooter href="/ReCommit" align="center" label="Recommit Pair" color="#FFFFFF" hoverIndicator={{ color: "#FBA300", background: "#fff", border: "0", boxShadow: "0" }} />
             </Footer>
           )}
       </ResponsiveContext.Consumer>
-      <Box background={{ color: "#FBA300" }} pad="small" size="xxsmall" align="center" alignSelf="center"><Text textAlign="center" size="15px" color="#fff">Copyright © ODapp.io</Text></Box>
+      <Box background={{ color: "#FBA300" }} pad="small" size="xxsmall" align="center" alignSelf="center"><Text textAlign="center" size="15px" color="#fff"><a style={{color:"white"}} href="/ToS">Terms of Service</a></Text></Box>
       </Grommet>
     </div>
   );

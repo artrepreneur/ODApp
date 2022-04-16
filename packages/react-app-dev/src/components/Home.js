@@ -24,18 +24,20 @@ import { customBreakpoints, DiscoverBefore, ScrollableText } from ".";
 import {HeadingDark , HeadingLight, ButtonRegularAlt, ButtonRegular, HeadingDarkSmaller, IdentifierTitle, IdentifierSubTitle, IdentifierText} from ".";
 import Fade from 'react-reveal/Fade';
 
-/*import { Contract } from "@ethersproject/contracts";
+
+
+import detectEthereumProvider from '@metamask/detect-provider';
+import { Contract } from "@ethersproject/contracts";
 import { ethers } from "ethers";
 import addresses from "./abi/addresses";
 import abis from "./abi/abis";
-import Web3 from "web3";*/
+import Web3 from "web3";
 
-/*var provider;
+var provider;
 var signer;
 var WPKT;
-var supply = 0;
 
-
+/*var supply = 0;
 async function getSupply() {
   provider = new ethers.providers.Web3Provider(window.ethereum);
   signer = provider.getSigner();
@@ -48,7 +50,58 @@ async function getSupply() {
   dv.style.display= 'block';
   dv.innerHTML = "Total WPKT Supply To Date: "+Math.round(supplyNoWei*1000000000)/1000000000+" Minted";
   return supply;
-} */
+}*/
+
+
+var count = 0;
+var feeRateText = "1%";
+async function getFeeRate() {
+  console.log('count', count);
+
+  if (count == 0){
+    count++;
+    const mm_provider = await detectEthereumProvider()  ;
+
+    if (mm_provider !== window.ethereum){
+        console.log('Multiple wallets installed');
+        return;
+    }
+    else {
+        console.log('window.ethereum is current wallet.');
+    }
+
+    var network = await window.ethereum.request({ method: 'net_version' })
+
+    var conAddr;
+    if (Number(network) === 97){
+        conAddr ="0x2559F8E4815886E3D98f58348B93758324D6c664";
+        //alert("Connect Metamask to Binance Smart Chain "+networkType);
+    }
+    else if(Number(network) === 56){
+      conAddr = "0x1Be501fEf026B8ab9da419cD26c6A09b7ddA140b";
+    }
+    else{
+      return;
+    }
+
+    // Get the provider.
+    provider = new ethers.providers.Web3Provider(window.ethereum);
+    signer = provider.getSigner();
+
+    WPKT = new Contract(conAddr, abis.WPKT, signer);
+    console.log('WPKT Contract:', signer);
+
+    var feeRate = await WPKT.feeRate();
+    var feeRateNoWei = Web3.utils.fromWei(feeRate.toString());
+    feeRateText = (parseFloat(feeRateNoWei) * 100).toFixed(2) + '%';
+    console.log('feeRate:', feeRateText);
+    var dv = document.getElementById("output");
+    dv.style.display= 'block';
+    dv.innerHTML = "WPKT Current Fee Rate: "+feeRateText;//"<h4 style={{backgroundColor: '#2B2F36'}}>"+feeRateText+"</h4>";
+    dv.style.display= 'block';
+  }
+}
+
 
 var bannerStyle = {
   backgroundImage: 'url(' + banner_bg + ')',
@@ -99,7 +152,7 @@ var defiColumnStyleMed = {
 
 function Home( {btn} ) {
   //getSupply();
-  //const cards = ['Bridge PKTC Cash onto Ethereum','Trade PKTC Cash on Uniswap. Yield Farm, stake and more.'];
+  getFeeRate();
 
   const Identifier = ({ children, title, subTitle, size, ...rest }) => (
     <Box gap="medium" align="center" {...rest}>
@@ -168,7 +221,6 @@ function Home( {btn} ) {
 
 
   return (
-
     <Grommet theme={customBreakpoints}>
 		{/*Top banner*/}
     <ResponsiveContext.Consumer>
@@ -178,6 +230,8 @@ function Home( {btn} ) {
            <Heading color="#ffffff" textAlign="center" size="48px" weight="bold" level="1" margin={{top: "-50px"}}>The PKT<br />Cash Bridge<br />To WPKT</Heading>
            <Text textAlign="center" size="18px" weight="bold" color="#ffffff">WPKT Contract Address</Text>
            <Anchor href="https://pancakeswap.finance/info/token/0x1c25222994531c4ac35e4d94bbf7552c9aa92e32" target="_blank" weight="bold" color="#FBA300" style={{textAlign: "center", paddingBottom: '25px',paddingTop: '10px', fontSize: "3.35vw"}} label="0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" />
+           <Text textAlign="center" size="18px" style={{ textAlign: "center", paddingBottom: '20px',paddingTop: '0px'}} weight="bold" color="#ffffff"><div hidden align="center" id="output" style={{padding:'0%'}}></div>
+</Text>
            <Fade bottom><p align="center" style={{ position: "absolute", bottom: "70px", left: "0", right: "0" }}>{btn}</p></Fade>
          </Box>
        </Box>
@@ -187,6 +241,8 @@ function Home( {btn} ) {
            <Heading color="#ffffff" textAlign="center" size="38px" weight="bold" level="1">The PKT Cash Bridge<br />To WPKT</Heading>
            <Text textAlign="center" size="22px" weight="bold" color="#ffffff">WPKT Contract Address</Text>
            <Anchor href="https://pancakeswap.finance/info/token/0x1c25222994531c4ac35e4d94bbf7552c9aa92e32" target="_blank" weight="bold" color="#FBA300" style={{textAlign: "center", paddingBottom: '35px',paddingTop: '10px', fontSize: "16px"}} label="0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" />
+           <Text textAlign="center" size="22px" style={{ textAlign: "center", paddingBottom: '20px',paddingTop: '0px'}} weight="bold" color="#ffffff"><div hidden align="center" id="output" style={{padding:'0%'}}></div>
+</Text>
            <Fade bottom><p align="center">{btn}</p></Fade>
          </Box>
        </Box>
@@ -196,6 +252,8 @@ function Home( {btn} ) {
            <Heading color="#ffffff" textAlign="center" size="48px" weight="bold" level="1">The PKT Cash Bridge<br />To WPKT</Heading>
            <Text textAlign="center" size="22px" weight="bold" color="#ffffff">WPKT Contract Address</Text>
            <Anchor href="https://pancakeswap.finance/info/token/0x1c25222994531c4ac35e4d94bbf7552c9aa92e32" target="_blank" weight="bold" color="#FBA300" style={{textAlign: "center", paddingBottom: '35px',paddingTop: '10px', fontSize: "18px"}} label="0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" />
+           <Text textAlign="center" size="22px" style={{ textAlign: "center", paddingBottom: '20px',paddingTop: '0px'}} weight="bold" color="#ffffff"><div hidden align="center" id="output" style={{padding:'0%'}}></div>
+</Text>
            <Fade bottom><p align="center" margin={{ top: "35px" }}>{btn}</p></Fade>
          </Box>
        </Box>
@@ -205,6 +263,9 @@ function Home( {btn} ) {
            <Heading color="#ffffff" textAlign="center" size="4vw" weight="bold" level="1">The PKT Cash Bridge<br />To WPKT</Heading>
            <Text textAlign="center" size="24px" weight="bold" color="#ffffff">WPKT Contract Address</Text>
            <Anchor href="https://pancakeswap.finance/info/token/0x1c25222994531c4ac35e4d94bbf7552c9aa92e32" target="_blank" weight="bold" color="#FBA300" style={{textAlign: "center", paddingBottom: '50px',paddingTop: '10px', fontSize: "22px"}} label="0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" />
+           <Text textAlign="center" size="24px" style={{ textAlign: "center", paddingBottom: '20px',paddingTop: '0px'}} weight="bold" color="#ffffff">
+              <div hidden align="center" id="output" style={{padding:'0%'}}></div>
+           </Text>
            <Fade bottom><p align="center" style={{ margin: "0" }}>{btn}</p></Fade>
          </Box>
        </Box>
@@ -214,7 +275,10 @@ function Home( {btn} ) {
            <Heading color="#ffffff" textAlign="center" size="4.7vw" weight="bold" level="1">The PKT Cash Bridge<br />To WPKT</Heading>
            <Text textAlign="center" size="28px" weight="bold" color="#ffffff">WPKT Contract Address</Text>
            <Anchor href="https://pancakeswap.finance/info/token/0x1c25222994531c4ac35e4d94bbf7552c9aa92e32" target="_blank" weight="bold" color="#FBA300" style={{ textAlign: "center", paddingBottom: '50px',paddingTop: '20px', fontSize: "26px"}} label="0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" />
-           <Fade bottom><p align="center" style={{ position: "absolute", top: "37vw", left: "0", right: "0" }}>{btn}</p></Fade>
+           <Text textAlign="center" size="28px" style={{ textAlign: "center", paddingBottom: '20px',paddingTop: '0px'}} weight="bold" color="#ffffff">
+             <div hidden align="center" id="output" style={{padding:'0%'}}></div>
+           </Text>
+           <Fade bottom><p align="center" style={{ margin: "0" }}>{btn}</p></Fade>
          </Box>
        </Box>
      )}
@@ -425,7 +489,7 @@ function Home( {btn} ) {
                 gap="none"
                 background="#fff"
                 >
-                  <Fade right><Box gridArea="right" justify="center" pad="none"><Image alignSelf="center" width="500" src={od_logo} fit="contain" /></Box></Fade>
+                  <Fade right><Box gridArea="right" justify="center" pad="xlarge"><Image alignSelf="center" width="500" src={od_logo} fit="contain" /></Box></Fade>
                   <Box gridArea="left" height="large" justify="center" alignSelf="center" pad="0 75px 0 50px">
                     <HeadingLight textAlign="left" margin="0 0 2rem 0" weight="bold" color="#ffffff" level="2">What's ODApp?</HeadingLight>
                     <Text align="left" size="22px" color="#ffffff" margin="none">ODApp is a decentralized application that allows you to "bridge" between the world of PKT Cash (symbol: PKT) and Binance Smart Chain. Though entirely different blockchains, PKT cash and Binance Smart Chain are connected via ODApp which allow seamless value transfer between the two chains.</Text>

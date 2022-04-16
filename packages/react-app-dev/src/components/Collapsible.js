@@ -8,13 +8,14 @@ import { FormSearch } from 'grommet-icons';
 import { useHistory } from "react-router-dom";
 
 function  Collapsible({btn}){
-  
+
 
   const items = [
     { label: 'Home', href: '/', className: 'menu_link' },
     { label: 'Get WPKT', href: 'PreCommit', className: 'menu_link' },
     { label: 'Get PKT', href: 'WPKTToPKT', className: 'menu_link' },
-    { label: 'FAQs', href: 'FAQ', className: 'menu_link' },
+    { label: 'Teleport', href: 'Teleport', className: 'menu_link' },
+    { label: 'FAQs', href: 'FAQ', className: 'menu_link' }
   ];
 
   const history = useHistory();
@@ -24,7 +25,7 @@ function  Collapsible({btn}){
   }
 
   return (
-    
+
     <Grommet theme={customBreakpoints}>
       <ResponsiveContext.Consumer>
       {responsive => (responsive === 'smallmob') ? (
@@ -32,11 +33,11 @@ function  Collapsible({btn}){
         <Box align="center" gap="small" >
             <Box gridArea='logo' direction="row" size="xxsmall"><ImageLogoMobile src={logo} alt="react-logo"/></Box>
         </Box>
-        <Box align="center" gap="small">  
+        <Box align="center" gap="small">
           <Menu className="drop_menu"
             icon={<Menu2 color='#fff'/>}
-            dropProps={{round: 'none', width: "100vw", color: "#fff", height: "100vh", className: "drop_menu_wrap"}} 
-            dropAlign={{right: 'right', top: 'top'}} 
+            dropProps={{round: 'none', width: "100vw", color: "#fff", height: "100vh", className: "drop_menu_wrap"}}
+            dropAlign={{right: 'right', top: 'top'}}
             size='large' margin='xsmall' items={items} justifyContent='center' />
         </Box>
       </Header>
@@ -45,11 +46,11 @@ function  Collapsible({btn}){
           <Box align="center" gap="small" >
               <Box gridArea='logo' direction="row" size="small"><ImageLogoMobile src={logo} alt="react-logo"/></Box>
           </Box>
-          <Box align="center" gap="small">  
+          <Box align="center" gap="small">
             <Menu className="drop_menu"
               icon={<Menu2 color='#fff'/>}
-              dropProps={{round: 'none', width: "100vw", color: "#fff", height: "100vh", className: "drop_menu_wrap"}} 
-              dropAlign={{right: 'right', top: 'top'}} 
+              dropProps={{round: 'none', width: "100vw", color: "#fff", height: "100vh", className: "drop_menu_wrap"}}
+              dropAlign={{right: 'right', top: 'top'}}
               size='large' margin='xsmall' items={items} justifyContent='center' />
           </Box>
         </Header>
@@ -58,11 +59,11 @@ function  Collapsible({btn}){
           <Box align="center" gap="small" >
               <Box gridArea='logo' direction="row" size="xxsmall"><ImageLogoMobile src={logo} alt="react-logo"/></Box>
           </Box>
-          <Box align="center" gap="small">  
+          <Box align="center" gap="small">
             <Menu className="drop_menu"
               icon={<Menu2 color='#fff' />}
-              dropProps={{round: 'none', width: "100vw", color: "#fff", height: "100vh", className: "drop_menu_wrap"}} 
-              dropAlign={{right: 'right', top: 'top'}} 
+              dropProps={{round: 'none', width: "100vw", color: "#fff", height: "100vh", className: "drop_menu_wrap"}}
+              dropAlign={{right: 'right', top: 'top'}}
               size='large' margin='xsmall' items={items} justifyContent='center' />
           </Box>
         </Header>
@@ -71,12 +72,12 @@ function  Collapsible({btn}){
           <Box align="center" gap="small" >
               <Box gridArea='logo' direction="row" size="xxsmall"><Image2 src={logo} alt="react-logo"/></Box>
           </Box>
-          <Box align="center" gap="small">  
+          <Box align="center" gap="small">
             <Nav direction="row">{[items.map(item => (
                 <StyledButton2 style={{color: '#ffffff', valign: 'middle', fontWeight:"600", textDecoration:"none", fontFamily: "'Poppins', sans-serif" }} href={item.href} label={item.label} key={item.label} />
               ))]}
-            </Nav>   
-          </Box>  
+            </Nav>
+          </Box>
           <Box direction="row" size="xxsmall" align="center">
             {btn}<FormSearch color='#fff' size='36px' />
           </Box>
@@ -86,12 +87,12 @@ function  Collapsible({btn}){
           <Box align="center" gap="small" >
               <Box gridArea='logo' direction="row" size="xxsmall"><Image2 src={logo} alt="react-logo"/></Box>
           </Box>
-          <Box align="center" gap="small">  
+          <Box align="center" gap="small">
             <Nav direction="row">{[items.map(item => (
               <StyledButton2 style={{color: '#ffffff', valign: 'middle', fontWeight:"600", textDecoration:"none", fontFamily: "'Poppins', sans-serif" }} href={item.href} label={item.label} key={item.label} plain="true" onClick={navigateTo} />
               ))]}
-            </Nav>   
-          </Box>  
+            </Nav>
+          </Box>
           <Box direction="row" size="xxsmall" align="center">
             {btn}<FormSearch color='#fff' size='large' />
           </Box>

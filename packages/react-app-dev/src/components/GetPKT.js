@@ -38,14 +38,11 @@ async function handleInput(e){
   dv3.style.display= 'none';
 
 
+  dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Withdrawals are suspended for this development site.</h4>";
+  dv.style.display= 'block';
+  dv2.style.display= 'block';
+  return;
 
-  // Check if number
-  /*if(isNaN(WPKTAmount)){
-    dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>You must enter the number of WPKT you are converting.</h4>";
-    dv1.style.display= 'none';
-    dv.style.display= 'block';
-    dv2.style.display= 'block';
-  }if{}*/
 
   dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Transaction Pending...</h4>";
   dv1.style.display= 'block';
@@ -57,8 +54,9 @@ async function handleInput(e){
     var noFeeAdjAmtNoWei = 0;
     var feesNoWei = 0;
     var hash = 0;
-    var cmd = "https://obeahdev.odapp.io/api/v1/userPayout/txHash/"+ethTxHash+"/address/"+PKTAddr+"/";
-    //var cmd = "https://obeah.odapp.io/api/v1/userPayout/txHash/"+ethTxHash+"/address/"+PKTAddr+"/";
+    var cmd = "https://obeahdev.odapp.io/api/v1/userPayout/txHash/"+ethTxHash+"/address/"+PKTAddr+"/netId/56";
+    //var cmd = "https://localhost:3200/api/v1/userPayout/txHash/"+ethTxHash+"/address/"+PKTAddr+"/netId/56";
+
     console.log(cmd);
     fetch(cmd)
     .then((response) => response.json())
@@ -66,14 +64,14 @@ async function handleInput(e){
       console.log('Data:', result.data, result.amt, result.hash);
 
       if (result.amt !== undefined) {
-        WPKTAmount = Number(result.amt); //Web3.utils.fromWei(result.amt);
+        WPKTAmount = Number(result.amt);
         noFeeAdjAmtNoWei = Number(WPKTAmount) /.965;
         feesNoWei = noFeeAdjAmtNoWei - WPKTAmount;
         round(feesNoWei, 6);
         hash = result.hash;
       }
 
-      if (result.data.toString().includes('Payout Transaction Hash')){ //Currently this fails -- possibly result.hash
+      if (result.data.toString().includes('Payout Transaction ID')){ //Currently this fails -- possibly result.hash
         dv3.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Pending Transaction Complete.</h4>";
         dv3.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Your transction hash is: "+hash+"</h6>";
         dv3.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>You were sent "+WPKTAmount+" PKT cash.</h6>";
@@ -86,7 +84,7 @@ async function handleInput(e){
         dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>This transaction has already been paid out.</h4>";
         if (!result.err2 && result.TID !== undefined) {
           console.log("POT:",result.POT.toString(),"TID", result.TID.toString());
-          dv.innerHTML = "<h6 style={{backgroundColor: '#2B2F36'}}>The transaction hash is:"+result.TID.toString()+"</h6>";
+          dv.innerHTML = "<h6 style={{backgroundColor: '#2B2F36'}}>The Transaction ID is:"+result.TID.toString()+"</h6>";
 
         }
         dv1.style.display = 'none';
@@ -135,8 +133,8 @@ function GetPKT() {
           <Card width="full" round="none" background="#fff" pad="75px 20px 100px">
                    <CardBody>
                      <Box background="#fff" justify="center" alignSelf="center">
-                         <HeadingDark textAlign="center" margin={{ bottom: "35px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Reclaim PKT</HeadingDark>
-                         <StyledTextDark textAlign="center">If you sent your WPKT to the ODApp bridge, but failed to receive your PKT within 2 hours, use this process to reclaim your PKT. Enter the transaction hash you received when you sent your WPKT to the ODApp bridge, as well as your PKT recipient address.</StyledTextDark>
+                         <HeadingDark textAlign="center" margin={{ bottom: "35px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Recover PKT</HeadingDark>
+                         <StyledTextDark textAlign="center">If you sent your WPKT to the ODApp bridge, but failed to receive your PKT within 2 hours, use this process to reclaim your PKT. Enter the Transaction ID you received when you sent your WPKT to the ODApp bridge, as well as your PKT recipient address.</StyledTextDark>
                      </Box>
                      <Box background="#fff" justify="center" alignSelf="center" pad="50px 0 0">
                          <Box background="#f9f9f9" pad={{ top: "40px", bottom: "50px", horizontal: "20px" }} round="23px" justify="center" alignSelf="center" style={formWrapStyleMob}>
@@ -144,7 +142,7 @@ function GetPKT() {
                          <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="18px" margin={{ bottom: "35px", top: "0" }}  textAlign="center">Enter Your WPKT Transaction and PKT Recipient Address</Heading>
                          <Box justify="center" alignSelf="center">
                              <FormField name="EthTxHash" required contentProps={{ border: false, margin: "0" }}>
-                                 <TextInput style={{background: 'white', color: '#222323', fontSize: "18px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="EthTxHash" placeholder={<Text weight="normal" size="18px" color="#707070">WPKT Transaction Hash</Text>} />
+                                 <TextInput style={{background: 'white', color: '#222323', fontSize: "18px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="EthTxHash" placeholder={<Text weight="normal" size="18px" color="#707070">WPKT Transaction ID</Text>} />
                              </FormField>
                              <FormField name="PKTAddr" required contentProps={{ border: false, margin: "20px 0 0" }}>
                                  <TextInput style={{background: 'white', color: '#222323', fontSize: "18px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="PKTAddr" placeholder={<Text weight="normal" size="18px" color="#707070">PKT Recipient Address</Text>} />
@@ -172,8 +170,8 @@ function GetPKT() {
             <Card width="full" round="none" background="#fff" pad="75px 50px 100px">
                     <CardBody>
                       <Box background="#fff" justify="center" alignSelf="center">
-                          <HeadingDark textAlign="center" margin={{ bottom: "35px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Reclaim PKT</HeadingDark>
-                          <StyledTextDark textAlign="center">If you sent your WPKT to the ODApp bridge, but failed to receive your PKT within 2 hours, use this process to reclaim your PKT. Enter the transaction hash you received when you sent your WPKT to the ODApp bridge, as well as your PKT recipient address.</StyledTextDark>
+                          <HeadingDark textAlign="center" margin={{ bottom: "35px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Recover PKT</HeadingDark>
+                          <StyledTextDark textAlign="center">If you sent your WPKT to the ODApp bridge, but failed to receive your PKT within 2 hours, use this process to reclaim your PKT. Enter the Transaction ID you received when you sent your WPKT to the ODApp bridge, as well as your PKT recipient address.</StyledTextDark>
                       </Box>
                       <Box background="#fff" justify="center" alignSelf="center" pad="50px 0 0">
                           <Box background="#f9f9f9" pad={{ top: "40px", bottom: "50px", horizontal: "20px" }} round="23px" justify="center" alignSelf="center" style={formWrapStyleMob}>
@@ -181,7 +179,7 @@ function GetPKT() {
                           <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="18px" margin={{ bottom: "35px", top: "0" }}  textAlign="center">Enter Your WPKT Transaction and PKT Recipient Address</Heading>
                           <Box justify="center" alignSelf="center">
                               <FormField name="EthTxHash" required contentProps={{ border: false, margin: "0" }}>
-                                  <TextInput style={{background: 'white', color: '#222323', fontSize: "18px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="EthTxHash" placeholder={<Text weight="normal" size="18px" color="#707070">WPKT Transaction Hash</Text>} />
+                                  <TextInput style={{background: 'white', color: '#222323', fontSize: "18px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="EthTxHash" placeholder={<Text weight="normal" size="18px" color="#707070">WPKT Transaction ID</Text>} />
                               </FormField>
                               <FormField name="PKTAddr" required contentProps={{ border: false, margin: "20px 0 0" }}>
                                   <TextInput style={{background: 'white', color: '#222323', fontSize: "18px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="PKTAddr" placeholder={<Text weight="normal" size="18px" color="#707070">PKT Recipient Address</Text>} />
@@ -222,8 +220,8 @@ function GetPKT() {
                         background="#fff"
                         >
                         <Box gridArea="left" background="#fff" justify="center" alignSelf="start">
-                            <HeadingDark textAlign="start" margin={{ bottom: "50px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Reclaim PKT</HeadingDark>
-                            <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>If you sent your WPKT to the ODApp bridge, but failed to receive your PKT within 2 hours, use this process to reclaim your PKT. Enter the transaction hash you received when you sent your WPKT to the ODApp bridge, as well as your PKT recipient address.</StyledTextDark>
+                            <HeadingDark textAlign="start" margin={{ bottom: "50px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Recover PKT</HeadingDark>
+                            <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>If you sent your WPKT to the ODApp bridge, but failed to receive your PKT within 2 hours, use this process to reclaim your PKT. Enter the Transaction ID you received when you sent your WPKT to the ODApp bridge, as well as your PKT recipient address.</StyledTextDark>
                         </Box>
                         <Box gridArea="right" background="#fff" justify="center" alignSelf="center" pad="0">
                             <Box background="#f9f9f9" pad={{ vertical: "25px", horizontal: "25px" }} round="25px" justify="center" alignSelf="center" style={formWrapStyleMed}>
@@ -231,7 +229,7 @@ function GetPKT() {
                             <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="18px" margin={{ bottom: "35px", top: "0" }}  textAlign="center">Enter Your WPKT Transaction and PKT Recipient Address</Heading>
                             <Box justify="center" alignSelf="center">
                                 <FormField name="EthTxHash" required contentProps={{ border: false, margin: "0" }}>
-                                    <TextInput style={{background: 'white', color: '#222323', fontSize: "18px", fontWeight: "normal", borderRadius: "6px", height: "50px", wordBreak: "break-all" }} name="EthTxHash" placeholder={<Text weight="normal" size="18px" color="#707070">WPKT Transaction Hash</Text>} />
+                                    <TextInput style={{background: 'white', color: '#222323', fontSize: "18px", fontWeight: "normal", borderRadius: "6px", height: "50px", wordBreak: "break-all" }} name="EthTxHash" placeholder={<Text weight="normal" size="18px" color="#707070">WPKT Transaction ID</Text>} />
                                 </FormField>
                                 <FormField name="PKTAddr" required contentProps={{ border: false, margin: "15px 0 0" }}>
                                     <TextInput style={{background: 'white', color: '#222323', fontSize: "18px", fontWeight: "normal", borderRadius: "6px", height: "50px", wordBreak: "break-all" }} name="PKTAddr" placeholder={<Text weight="normal" size="18px" color="#707070">PKT Recipient Address</Text>} />
@@ -273,8 +271,8 @@ function GetPKT() {
                         background="#fff"
                         >
                         <Box gridArea="left" background="#fff" justify="center" alignSelf="start">
-                            <HeadingDark textAlign="start" margin={{ bottom: "50px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Reclaim PKT</HeadingDark>
-                            <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>If you sent your WPKT to the ODApp bridge, but failed to receive your PKT within 2 hours, use this process to reclaim your PKT. Enter the transaction hash you received when you sent your WPKT to the ODApp bridge, as well as your PKT recipient address.</StyledTextDark>
+                            <HeadingDark textAlign="start" margin={{ bottom: "50px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Recover PKT</HeadingDark>
+                            <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>If you sent your WPKT to the ODApp bridge, but failed to receive your PKT within 2 hours, use this process to reclaim your PKT. Enter the Transaction ID you received when you sent your WPKT to the ODApp bridge, as well as your PKT recipient address.</StyledTextDark>
                         </Box>
                         <Box gridArea="right" background="#fff" justify="center" alignSelf="center" pad="0">
                             <Box background="#f9f9f9" pad={{ vertical: "large", horizontal: "large" }} round="25px" justify="center" alignSelf="center" style={formWrapStyleMed}>
@@ -282,7 +280,7 @@ function GetPKT() {
                             <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="20px" margin={{ bottom: "35px", top: "0" }}  textAlign="center">Enter Your WPKT Transaction and PKT Recipient Address</Heading>
                             <Box justify="center" alignSelf="center">
                                 <FormField name="EthTxHash" required contentProps={{ border: false, margin: "0" }}>
-                                    <TextInput style={{background: 'white', color: '#222323', fontSize: "20px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="EthTxHash" placeholder={<Text weight="normal" size="20px" color="#707070">WPKT Transaction Hash</Text>} />
+                                    <TextInput style={{background: 'white', color: '#222323', fontSize: "20px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="EthTxHash" placeholder={<Text weight="normal" size="20px" color="#707070">WPKT Transaction ID</Text>} />
                                 </FormField>
                                 <FormField name="PKTAddr" required contentProps={{ border: false, margin: "20px 0 0" }}>
                                     <TextInput style={{background: 'white', color: '#222323', fontSize: "20px", fontWeight: "normal", borderRadius: "6px", height: "50px" }} name="PKTAddr" placeholder={<Text weight="normal" size="20px" color="#707070">PKT Recipient Address</Text>} />
@@ -324,16 +322,16 @@ function GetPKT() {
                         background="#fff"
                         >
                         <Box gridArea="left" background="#fff" height={{ min: "85vh" }} justify="center" alignSelf="start">
-                            <HeadingDark textAlign="start" margin={{ bottom: "50px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Reclaim PKT</HeadingDark>
-                            <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>If you sent your WPKT to the ODApp bridge, but failed to receive your PKT within 2 hours, use this process to reclaim your PKT. Enter the transaction hash you received when you sent your WPKT to the ODApp bridge, as well as your PKT recipient address.</StyledTextDark>
+                            <HeadingDark textAlign="start" margin={{ bottom: "50px", top: "0" }} size="4xl" weight="bold" color="#222323" level="2">Recover PKT</HeadingDark>
+                            <StyledTextDark textAlign="start" style={{ paddingRight: "6vw" }}>If you sent your WPKT to the ODApp bridge, but failed to receive your PKT within 2 hours, use this process to reclaim your PKT. Enter the Transaction ID you received when you sent your WPKT to the ODApp bridge, as well as your PKT recipient address.</StyledTextDark>
                         </Box>
-                        <Box gridArea="right" background="#fff" height="large" justify="center" alignSelf="center" pad="0">
+                        <Box gridArea="right" background="#fff" justify="center" alignSelf="center" pad="0">
                             <Box background="#f9f9f9" pad={{ vertical: "large", horizontal: "xlarge" }} round="25px" justify="center" alignSelf="center" style={formWrapStyle}>
                             <Form name="ReceivePKT" id="ReceivePKT" onSubmit={handleInput}>
                             <Heading style={{ fontWeight: "normal"}} color="#222323" level="3" size="24px" margin={{ bottom: "50px", top: "0" }}  textAlign="center">Enter Your WPKT Transaction and PKT Recipient Address</Heading>
                             <Box justify="center" alignSelf="center">
                                 <FormField name="EthTxHash" required contentProps={{ border: false, margin: "0" }}>
-                                    <TextInput style={{background: 'white', color: '#222323', fontSize: "24px", fontWeight: "normal", borderRadius: "6px", height: "60px" }} name="EthTxHash" placeholder={<Text weight="normal" size="24px" color="#707070">WPKT Transaction Hash</Text>} />
+                                    <TextInput style={{background: 'white', color: '#222323', fontSize: "24px", fontWeight: "normal", borderRadius: "6px", height: "60px" }} name="EthTxHash" placeholder={<Text weight="normal" size="24px" color="#707070">WPKT Transaction ID</Text>} />
                                 </FormField>
                                 <FormField name="PKTAddr" required contentProps={{ border: false, margin: "20px 0 0" }}>
                                     <TextInput style={{background: 'white', color: '#222323', fontSize: "24px", fontWeight: "normal", borderRadius: "6px", height: "60px" }} name="PKTAddr" placeholder={<Text weight="normal" size="24px" color="#707070">PKT Recipient Address</Text>} />
