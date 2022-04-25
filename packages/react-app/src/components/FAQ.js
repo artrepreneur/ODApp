@@ -1445,7 +1445,7 @@ function FAQ() {
           <Card width="full" round="none" background="#fff" pad="70px 10px" >
                 <Box>
                   <HeadingDark textAlign="center" margin="0 0 40px 0" level="2">Why Didn't I Receive the Balance I Expected?</HeadingDark>
-                  <Text textAlign="center" size="16px" color="#707070">The ODApp bridge network charges a 3.5% fee for all transactions. Therefore, your received amount WPKT or PKT is reduced by this fee expense. We use fees to subsidise transaction costs over Chainlink, operate infrastructure and expand this service.</Text>
+                  <Text textAlign="center" size="16px" color="#707070">The ODApp bridge network charges a .75% fee for all transactions. Therefore, your received amount WPKT or PKT is reduced by this fee expense. We use fees to subsidise transaction costs over Chainlink, operate infrastructure and expand this service.</Text>
               </Box>
               <Box><Image style={{maxWidth: "100%"}} height="350" alignSelf="center" src={expected_balance_illustration} fit="contain" /></Box>
           </Card>
@@ -1455,7 +1455,7 @@ function FAQ() {
           <Card width="full" round="none" background="#fff" pad="50px 20px" >
                 <Box justify="center" alignSelf="center" pad="0 14vw">
                   <HeadingDark textAlign="center" margin="0 0 35px 0" level="2">Why Didn't I Receive the Balance I Expected?</HeadingDark>
-                  <Text textAlign="center" size="18px" color="#707070">The ODApp bridge network charges a 3.5% fee for all transactions. Therefore, your received amount WPKT or PKT is reduced by this fee expense. We use fees to subsidise transaction costs over Chainlink, operate infrastructure and expand this service.</Text>
+                  <Text textAlign="center" size="18px" color="#707070">The ODApp bridge network charges a .75% fee for all transactions. Therefore, your received amount WPKT or PKT is reduced by this fee expense. We use fees to subsidise transaction costs over Chainlink, operate infrastructure and expand this service.</Text>
               </Box>
               <Box margin={{top: "35px"}}><Image width="350" style={{maxWidth: "100%"}} alignSelf="center" src={expected_balance_illustration} fit="contain" /></Box>
           </Card>
@@ -1480,7 +1480,7 @@ function FAQ() {
                       <Box gridArea="right" justify="start"><Image alignSelf="end" width="475" src={expected_balance_illustration} fit="contain" /></Box>
                       <Box gridArea="left" justify="center" alignSelf="center"><Slide left>
                         <HeadingDark textAlign="start" margin="0 0 35px 0" level="2">Why Didn't I Receive the Balance I Expected?</HeadingDark>
-                        <Text textAlign="start" size="20px" color="#707070" margin="0 5rem 0 0">The ODApp bridge network charges a 3.5% fee for all transactions. Therefore, your received amount WPKT or PKT is reduced by this fee expense. We use fees to subsidise transaction costs over Chainlink, operate infrastructure and expand this service.</Text>
+                        <Text textAlign="start" size="20px" color="#707070" margin="0 5rem 0 0">The ODApp bridge network charges a .75% fee for all transactions. Therefore, your received amount WPKT or PKT is reduced by this fee expense. We use fees to subsidise transaction costs over Chainlink, operate infrastructure and expand this service.</Text>
                       </Slide></Box>
                     </Grid>
                   </CardBody>
@@ -1506,7 +1506,7 @@ function FAQ() {
                       <Box gridArea="right" justify="start"><Image alignSelf="end" width="550" src={expected_balance_illustration} fit="contain" /></Box>
                       <Box gridArea="left" justify="center" alignSelf="center"><Slide left>
                         <HeadingDark textAlign="start" margin="0 0 50px 0" level="2">Why Didn't I Receive the Balance I Expected?</HeadingDark>
-                        <Text textAlign="start" size="22px" color="#707070" margin="0 5rem 0 0">The ODApp bridge network charges a 3.5% fee for all transactions. Therefore, your received amount WPKT or PKT is reduced by this fee expense. We use fees to subsidise transaction costs over Chainlink, operate infrastructure and expand this service.</Text>
+                        <Text textAlign="start" size="22px" color="#707070" margin="0 5rem 0 0">The ODApp bridge network charges a .75% fee for all transactions. Therefore, your received amount WPKT or PKT is reduced by this fee expense. We use fees to subsidise transaction costs over Chainlink, operate infrastructure and expand this service.</Text>
                       </Slide></Box>
                     </Grid>
                   </CardBody>
@@ -1532,7 +1532,7 @@ function FAQ() {
                       <Box gridArea="right" justify="start"><Image alignSelf="end" width="750" src={expected_balance_illustration} fit="contain" /></Box>
                       <Box gridArea="left" justify="center" alignSelf="center"><Slide left>
                         <HeadingDark textAlign="start" margin="0 0 50px 0" level="2">Why Didn't I Receive the Balance I Expected?</HeadingDark>
-                        <Text textAlign="start" size="26px" color="#707070" margin="0 10rem 0 0">The ODApp bridge network charges a 3.5% fee for all transactions. Therefore, your received amount WPKT or PKT is reduced by this fee expense. We use fees to subsidise transaction costs over Chainlink, operate infrastructure and expand this service.</Text>
+                        <Text textAlign="start" size="26px" color="#707070" margin="0 10rem 0 0">The ODApp bridge network charges a .75% fee for all transactions. Therefore, your received amount WPKT or PKT is reduced by this fee expense. We use fees to subsidise transaction costs over Chainlink, operate infrastructure and expand this service.</Text>
                       </Slide></Box>
                     </Grid>
                   </CardBody>
