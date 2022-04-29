@@ -58,19 +58,19 @@ my-eth-app
 
 Owing to this dependency on Yarn Workspaces, Create Eth App can't be used with npm.
 
-## Available Scripts
 
-In the project directory, you can run:
+### TO INSTALL
 
-### React App
-To install 
-
-#### `git clone https://github.com/artrepreneur/ODApp/`
-#### cd ./packages/react-app
-#### npm install
-#### cd -
-#### cd ./packages/react-app-dev
-#### npm install
+```
+git clone https://github.com/artrepreneur/ODApp/
+```
+```
+cd ./packages/react-app
+npm install
+cd -
+cd ./packages/react-app-dev
+npm install
+```
 
 Runs the React app in development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
