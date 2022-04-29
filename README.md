@@ -10,7 +10,7 @@ git clone https://github.com/artrepreneur/ODApp/
 Install dependencies.
 
 ```
-cd ./packages/react-app
+cd ./ODApp/packages/react-app
 npm install
 ```
 
