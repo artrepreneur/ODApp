@@ -63,8 +63,14 @@ Owing to this dependency on Yarn Workspaces, Create Eth App can't be used with n
 In the project directory, you can run:
 
 ### React App
+To install 
 
-#### `yarn react-app:start`
+#### `git clone https://github.com/artrepreneur/ODApp/`
+#### cd ./packages/react-app
+#### npm install
+#### cd -
+#### cd ./packages/react-app-dev
+#### npm install
 
 Runs the React app in development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
