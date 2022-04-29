@@ -1,14 +1,16 @@
 
 ### Quick Install
 
+Clone the project.
+
 ```
 git clone https://github.com/artrepreneur/ODApp/
 ```
+
+Install dependencies.
+
 ```
 cd ./packages/react-app
-npm install
-cd -
-cd ./packages/react-app-dev
 npm install
 ```
 
