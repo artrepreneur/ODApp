@@ -287,7 +287,7 @@ async function handleInput(e){
                         receipt.events.forEach(event => {
                             if (event.event === "BridgeMinted") {
                             let recip = event.address;
-                            let amt = Web3.utils.toBN(event.amt._hex).toString();
+                            let amt = Web3.utils.toBN(event.args.amt._hex).toString();
                             processTransaction(tx, amt, recip, dv, dv1, dv3);
                             }
                         });

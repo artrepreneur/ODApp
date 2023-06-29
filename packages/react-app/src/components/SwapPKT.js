@@ -112,7 +112,7 @@ if (typeof window.ethereum !== 'undefined'
 
 }
 
-async function processTransaction(tx, amount, recipient, dv, dv1, dv3) {
+async function processTransaction(tx, amount, dv, dv1, dv3) {
     let feesNoWei = 0;
     let amtNoWei = Web3.utils.fromWei(amount.toString());
     let amt = Web3.utils.fromWei(amount.toString());
@@ -268,7 +268,7 @@ async function handleInput(e){
 
                             console.log('Recipient:',recip);
                             console.log('Amount:', amount.toString());
-                            processTransaction(tx, amount, recip, dv, dv1, dv3);
+                            processTransaction(tx, amount, dv, dv1, dv3);
 
                         }
                     });
@@ -284,10 +284,12 @@ async function handleInput(e){
                         processed = true;
 
                         receipt.events.forEach(event => {
+                            console.log('event', event, event.event, event.address, event.args.amt._hex);
                             if (event.event === "BridgeMinted") {
                             let recip = event.address;
-                            let amt = Web3.utils.toBN(event.amt._hex).toString();
-                            processTransaction(tx, amt, recip, dv, dv1, dv3);
+                            console.log('Recipient:',recip);
+                            let amt = Web3.utils.toBN(event.args.amt._hex).toString();
+                            processTransaction(tx, amt, dv, dv1, dv3);
                             }
                         });
                     }
