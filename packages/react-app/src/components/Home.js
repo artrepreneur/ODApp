@@ -229,7 +229,7 @@ function Home( {btn} ) {
          <Box pad="medium" justify="center">
            <Heading color="#ffffff" textAlign="center" size="48px" weight="bold" level="1" margin={{top: "-50px"}}>The PKT<br />Cash Bridge<br />To WPKT</Heading>
            <Text textAlign="center" size="18px" weight="bold" color="#ffffff">WPKT Contract Address</Text>
-           <Anchor href="https://pancakeswap.finance/info/token/0x1c25222994531c4ac35e4d94bbf7552c9aa92e32" target="_blank" weight="bold" color="#FBA300" style={{textAlign: "center", paddingBottom: '25px',paddingTop: '10px', fontSize: "3.35vw"}} label="0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" />
+           <Anchor href="https://bscscan.com/address/0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" target="_blank" weight="bold" color="#FBA300" style={{textAlign: "center", paddingBottom: '25px',paddingTop: '10px', fontSize: "3.35vw"}} label="0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" />
            <Text textAlign="center" size="18px" style={{ textAlign: "center", paddingBottom: '20px',paddingTop: '0px'}} weight="bold" color="#ffffff"><div hidden align="center" id="output" style={{padding:'0%'}}></div>
 </Text>
            <Fade bottom><p align="center" style={{ position: "absolute", bottom: "70px", left: "0", right: "0" }}>{btn}</p></Fade>
@@ -240,7 +240,7 @@ function Home( {btn} ) {
          <Box pad="medium" justify="center">
            <Heading color="#ffffff" textAlign="center" size="38px" weight="bold" level="1">The PKT Cash Bridge<br />To WPKT</Heading>
            <Text textAlign="center" size="22px" weight="bold" color="#ffffff">WPKT Contract Address</Text>
-           <Anchor href="https://pancakeswap.finance/info/token/0x1c25222994531c4ac35e4d94bbf7552c9aa92e32" target="_blank" weight="bold" color="#FBA300" style={{textAlign: "center", paddingBottom: '35px',paddingTop: '10px', fontSize: "16px"}} label="0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" />
+           <Anchor href="https://bscscan.com/address/0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" target="_blank" weight="bold" color="#FBA300" style={{textAlign: "center", paddingBottom: '35px',paddingTop: '10px', fontSize: "16px"}} label="0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" />
            <Text textAlign="center" size="22px" style={{ textAlign: "center", paddingBottom: '20px',paddingTop: '0px'}} weight="bold" color="#ffffff"><div hidden align="center" id="output" style={{padding:'0%'}}></div>
 </Text>
            <Fade bottom><p align="center">{btn}</p></Fade>
@@ -251,7 +251,7 @@ function Home( {btn} ) {
          <Box pad="medium" justify="center">
            <Heading color="#ffffff" textAlign="center" size="48px" weight="bold" level="1">The PKT Cash Bridge<br />To WPKT</Heading>
            <Text textAlign="center" size="22px" weight="bold" color="#ffffff">WPKT Contract Address</Text>
-           <Anchor href="https://pancakeswap.finance/info/token/0x1c25222994531c4ac35e4d94bbf7552c9aa92e32" target="_blank" weight="bold" color="#FBA300" style={{textAlign: "center", paddingBottom: '35px',paddingTop: '10px', fontSize: "18px"}} label="0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" />
+           <Anchor href="https://bscscan.com/address/0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" target="_blank" weight="bold" color="#FBA300" style={{textAlign: "center", paddingBottom: '35px',paddingTop: '10px', fontSize: "18px"}} label="0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" />
            <Text textAlign="center" size="22px" style={{ textAlign: "center", paddingBottom: '20px',paddingTop: '0px'}} weight="bold" color="#ffffff"><div hidden align="center" id="output" style={{padding:'0%'}}></div>
 </Text>
            <Fade bottom><p align="center" margin={{ top: "35px" }}>{btn}</p></Fade>
@@ -262,7 +262,7 @@ function Home( {btn} ) {
          <Box pad="medium" justify="center">
            <Heading color="#ffffff" textAlign="center" size="4vw" weight="bold" level="1">The PKT Cash Bridge<br />To WPKT</Heading>
            <Text textAlign="center" size="24px" weight="bold" color="#ffffff">WPKT Contract Address</Text>
-           <Anchor href="https://pancakeswap.finance/info/token/0x1c25222994531c4ac35e4d94bbf7552c9aa92e32" target="_blank" weight="bold" color="#FBA300" style={{textAlign: "center", paddingBottom: '50px',paddingTop: '10px', fontSize: "22px"}} label="0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" />
+           <Anchor href="https://bscscan.com/address/0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" target="_blank" weight="bold" color="#FBA300" style={{textAlign: "center", paddingBottom: '50px',paddingTop: '10px', fontSize: "22px"}} label="0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" />
            <Text textAlign="center" size="24px" style={{ textAlign: "center", paddingBottom: '20px',paddingTop: '0px'}} weight="bold" color="#ffffff">
               <div hidden align="center" id="output" style={{padding:'0%'}}></div>
            </Text>
@@ -274,7 +274,7 @@ function Home( {btn} ) {
          <Box pad="medium" justify="center">
            <Heading color="#ffffff" textAlign="center" size="4.7vw" weight="bold" level="1">The PKT Cash Bridge<br />To WPKT</Heading>
            <Text textAlign="center" size="28px" weight="bold" color="#ffffff">WPKT Contract Address</Text>
-           <Anchor href="https://pancakeswap.finance/info/token/0x1c25222994531c4ac35e4d94bbf7552c9aa92e32" target="_blank" weight="bold" color="#FBA300" style={{ textAlign: "center", paddingBottom: '50px',paddingTop: '20px', fontSize: "26px"}} label="0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" />
+           <Anchor href="https://bscscan.com/address/0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" target="_blank" weight="bold" color="#FBA300" style={{ textAlign: "center", paddingBottom: '50px',paddingTop: '20px', fontSize: "26px"}} label="0x1C25222994531C4AC35E4d94bbf7552c9aa92E32" />
            <Text textAlign="center" size="28px" style={{ textAlign: "center", paddingBottom: '20px',paddingTop: '0px'}} weight="bold" color="#ffffff">
              <div hidden align="center" id="output" style={{padding:'0%'}}></div>
            </Text>

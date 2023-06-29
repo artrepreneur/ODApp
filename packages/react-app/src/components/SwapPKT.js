@@ -112,6 +112,37 @@ if (typeof window.ethereum !== 'undefined'
 
 }
 
+async function processTransaction(tx, amount, recipient, dv, dv1, dv3) {
+    let feesNoWei = 0;
+    let amtNoWei = Web3.utils.fromWei(amount.toString());
+    let amt = Web3.utils.fromWei(amount.toString());
+
+    console.log('amtNoWei', amtNoWei, amt);
+    if (Number(amtNoWei) > 0){
+        let fees = Number(amt) - (Number(amtNoWei));
+        feesNoWei = fees.toFixed(4);
+    }
+
+    console.log("Amount:", amtNoWei, 'Fees:', feesNoWei);
+
+    if (Number(amtNoWei) > 0) {
+        if (tx.hash !== undefined) {
+            dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Pending Transaction Complete.</h4><h4 style={{backgroundColor: '#2B2F36'}}><b>Your transaction hash is " + tx.hash + "</h4>";
+        }
+        dv.innerHTML += "<h4 style={{backgroundColor: '#2B2F36'}}>You received "+amtNoWei+" WPKT tokens.</h4>";
+        dv.innerHTML += "<h4 style={{backgroundColor: '#2B2F36'}}>Your fees were "+feesNoWei+" WPKT.</h4>";
+        dv.innerHTML += "<h4 style={{backgroundColor: '#2B2F36'}}>If the WPKT token hasn't already been added to your wallet yet, use the button below to add it. </h4>";
+        dv3.style.display= 'block';
+        dv1.style.display= 'none';
+        return;
+    }
+    else {
+        dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Transaction Failed.</h4>";
+        dv.innerHTML += "<h4 style={{backgroundColor: '#2B2F36'}}>Bad transaction. Check your sender / recipient address pair or transaction hash. </h4>";
+        dv1.style.display= 'none';
+        return;
+    }
+}
 
 
 async function handleInput(e){
@@ -226,56 +257,49 @@ async function handleInput(e){
 
                     dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Pending Transaction ID:</h4><Text margin='small' >" + tx.hash + "</Text><h4 style={{backgroundColor: '#2B2F36'}}>Please wait for on-chain confirmation...</h4>";
 
-                    Obeah.on("BridgeMinted", (recip, amount, chainId) => {
-                        //payoutPromiseDone = true;
-                        var feesNoWei = 0;
-                        console.log('Recipient:',recip);
-                        console.log('Amount:', amount.toString());
-                        var amtNoWei = Web3.utils.fromWei(amount.toString());
-                        amt = Web3.utils.fromWei(amt.toString());
-                        console.log('amtNoWei', amtNoWei, amt);
-                        if (Number(amtNoWei) > 0){
-                          var fees = Number(amt) - (Number(amtNoWei));
-                          feesNoWei = fees.toFixed(4);
-                        }
+                    // This variable tracks whether we've already processed the BridgeMinted event.
+                    let processed = false;
 
-                        console.log("Amount:", amtNoWei, 'Fees:', feesNoWei);
+                    // This is your event listener. When the BridgeMinted event is fired, this code will run.
+                    Obeah.on("BridgeMinted", async (recip, amount, chainId) => {
+                        if (!processed) {
+                            // Mark that we're processing the event so we don't do it again when the receipt is manually processed.
+                            processed = true;
 
-                        if (Number(amtNoWei) > 0) {
-                            if (tx.hash !== undefined) {
-                                dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Pending Transaction Complete.</h4><h4 style={{backgroundColor: '#2B2F36'}}><b>Your transaction hash is " + tx.hash + "</h4>";
-                            }
-                            dv.innerHTML += "<h4 style={{backgroundColor: '#2B2F36'}}>You received "+amtNoWei+" WPKT tokens.</h4>";
-                            dv.innerHTML += "<h4 style={{backgroundColor: '#2B2F36'}}>Your fees were "+feesNoWei+" WPKT.</h4>";
-                            dv.innerHTML += "<h4 style={{backgroundColor: '#2B2F36'}}>If the WPKT token hasn't already been added to your wallet yet, use the button below to add it. </h4>";
-                            dv3.style.display= 'block';
-                            dv1.style.display= 'none';
-                            return;
-                        }
-                        else {
-                            dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Transaction Failed.</h4>";
-                            dv.innerHTML += "<h4 style={{backgroundColor: '#2B2F36'}}>Bad transaction. Check your sender / recipient address pair or transaction hash. </h4>";
-                            dv1.style.display= 'none';
-                            return;
+                            console.log('Recipient:',recip);
+                            console.log('Amount:', amount.toString());
+                            processTransaction(tx, amount, recip, dv, dv1, dv3);
+
                         }
                     });
 
-
+                    // This is your manual receipt processing. If the BridgeMinted event isn't fired, this code will run.
                     var receipt = await tx.wait();
                     console.log('Receipt:', receipt, (receipt.status === 1));
 
+                    if (!processed && receipt.status === 1) {
+                        console.log('Receipt received');
 
-                    if (receipt.status !== 1) {
+                        // Mark that we're processing the event so we don't do it again when the BridgeMinted event is fired.
+                        processed = true;
+
+                        receipt.events.forEach(event => {
+                            if (event.event === "BridgeMinted") {
+                            let recip = event.address;
+                            let amt = Web3.utils.toBN(event.amt._hex).toString();
+                            processTransaction(tx, amt, recip, dv, dv1, dv3);
+                            }
+                        });
+                    }
+
+                    else if (receipt.status !== 1) {
                         console.log('Transaction Failure.');
                         dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Your transaction failed.</h4>";
                         dv.innerHTML += "<h4 style={{backgroundColor: '#2B2F36'}}>It's possible you have already claimed this transaction.</h4>";
                         dv1.style.display= 'none';
                         return;
                     }
-                    else {
-                        console.log('Receipt received');
-                    }
-
+                  
                 }
                 catch (err) {
                     console.log('Error:', err);
