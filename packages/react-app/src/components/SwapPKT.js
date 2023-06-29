@@ -203,6 +203,7 @@ async function handleInput(e){
     dv.style.display= 'block';
     dv3.style.display= 'none';
 
+    //console.log("here3");
 
     fetch(cmd)
     .then((response) => response.json())
@@ -233,6 +234,9 @@ async function handleInput(e){
               return;
           }
         }
+
+        console.log("here4");
+
 
         // Possible for result.output == -1 and !complete implying dupe transaction, but payout never occurred.
         if ((Number(result.output) > 0) || ((Number(result.output) === -1) && !complete && (result.signature !==''))){
@@ -283,15 +287,32 @@ async function handleInput(e){
                         // Mark that we're processing the event so we don't do it again when the BridgeMinted event is fired.
                         processed = true;
 
-                        receipt.events.forEach(event => {
-                            console.log('event', event, event.event, event.address, event.args.amt._hex);
-                            if (event.event === "BridgeMinted") {
-                            let recip = event.address;
-                            console.log('Recipient:',recip);
-                            let amt = Web3.utils.toBN(event.args.amt._hex).toString();
-                            processTransaction(tx, amt, dv, dv1, dv3);
+                     
+
+                        try {
+                            receipt.events.forEach(event => {
+                                console.log('event', event)
+                                console.log('address', event.address, event.event);
+                                if (event.event === "BridgeMinted") {
+                                    console.log('args', event.args);
+                                    console.log('amount', event.args.amt._hex);
+                                    let recip = event.address;
+                                    console.log('Recipient:',recip);
+                                    let amt = Web3.utils.toBN(event.args.amt._hex).toString();
+                                    console.log('amt', amt);
+                                    processTransaction(tx, amt, dv, dv1, dv3);
+                                }
+                            });
+                        } catch (err) {
+                            console.log('Error:', err);
+                            dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Failed to parse transaction data</h4>";
+                            if (err.code.toString().includes('-32603')){
+                                dv.innerHTML += "<h4 style={{backgroundColor: '#2B2F36'}}>" + err.data.message + "</h4>";
                             }
-                        });
+                            dv1.style.display= 'none';
+                            return;
+                        }
+                        
                     }
 
                     else if (receipt.status !== 1) {
