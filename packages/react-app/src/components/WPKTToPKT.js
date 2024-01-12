@@ -68,12 +68,13 @@ async function handleInput(e){
 
   PKTAddr = e.value.PKTAddr.trim().toString();
   console.log('WPKT Amount to Convert:', WPKTAmount, 'PKT Recipient Address:', PKTAddr);
-  if (PKTAddr.charAt(0) == '0'){
-    console.log("Bad Address");
-    dv.style.display= 'block';
-    dv2.style.display= 'block';
-    dv1.style.display= 'none';
-    dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Bad PKT Recipient Address.</h4>";
+  // Check if the first four characters are not 'pkt1'
+  if (PKTAddr.substring(0, 4) !== 'pkt1'){
+    console.log("Bad PKT Recipient Address. Must start with 'pkt1'");
+    dv.style.display = 'block';
+    dv2.style.display = 'block';
+    dv1.style.display = 'none';
+    dv.innerHTML = "<h4 style={{backgroundColor: '#2B2F36'}}>Bad PKT Recipient Address. Must start with 'pkt1'</h4>";
     return;
   }
 
