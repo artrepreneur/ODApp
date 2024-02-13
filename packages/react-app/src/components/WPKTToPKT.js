@@ -257,6 +257,9 @@ function getPKT(){
         //dv5.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Your fees were "+feesNoWei+" WPKT.</h6>";
         dv3.style.display= 'none';
       }
+      else if (result.data.toString().includes('Transaction is being processed too soon. Please wait.')){
+        dv5.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>Your transaction is being processed. Please wait.</h6>";
+      }
       else if (result.data.toString().includes('already been paid out')){
         dv5.innerHTML += "<h6 style={{backgroundColor: '#2B2F36'}}>This transaction has already been paid out.</h6>";
         if (!result.err2) {
@@ -367,7 +370,7 @@ function WPKTToPKT() {
                       <Box id="box1" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white',  padding:'0%'}}>
                           <div hidden align="center" id="output1" style={{padding:'2%', wordBreak: "break-word"}}></div>
                           <div hidden align="center" id="recPKT" style={{padding:'2%', wordBreak: "break-word"}}>
-                              <ButtonForm size='large' color='#F0B90C' label='Recover PKT' onClick={() => getPKT()}/>
+                              <ButtonForm size='large' color='#F0B90C' label='Get PKT' onClick={() => getPKT()}/>
                           </div>
                           <div id="spin" align="center" pad="medium" style={{padding:'2%'}}><Spinner size="large" /></div>
                       </Box>
@@ -408,7 +411,7 @@ function WPKTToPKT() {
                       <Box id="box1" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white',  padding:'0%'}}>
                           <div hidden align="center" id="output1" style={{padding:'2%', wordBreak: "break-word"}}></div>
                           <div hidden align="center" id="recPKT" style={{padding:'2%', wordBreak: "break-word"}}>
-                              <ButtonForm size='large' color='#F0B90C' label='Recover PKT' onClick={() => getPKT()}/>
+                              <ButtonForm size='large' color='#F0B90C' label='Get PKT' onClick={() => getPKT()}/>
                           </div>
                           <div id="spin" align="center" pad="medium" style={{padding:'2%'}}><Spinner size="large" /></div>
                       </Box>
@@ -449,7 +452,7 @@ function WPKTToPKT() {
                       <Box id="box1" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white',  padding:'0%'}}>
                           <div hidden align="center" id="output1" style={{padding:'2%', wordBreak: "break-word"}}></div>
                           <div hidden align="center" id="recPKT" style={{padding:'2%', wordBreak: "break-word"}}>
-                              <ButtonForm size='large' color='#F0B90C' label='Recover PKT' onClick={() => getPKT()}/>
+                              <ButtonForm size='large' color='#F0B90C' label='Get PKT' onClick={() => getPKT()}/>
                           </div>
                           <div id="spin" align="center" pad="medium" style={{padding:'2%'}}><Spinner size="large" /></div>
                       </Box>
@@ -503,7 +506,7 @@ function WPKTToPKT() {
                       <Box id="box1" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white',  padding:'0%'}}>
                           <div hidden align="center" id="output1" style={{padding:'2%', wordBreak: "break-word"}}></div>
                           <div hidden align="center" id="recPKT" style={{padding:'2%', wordBreak: "break-word"}}>
-                              <ButtonForm size='large' color='#F0B90C' label='Recover PKT' onClick={() => getPKT()}/>
+                              <ButtonForm size='large' color='#F0B90C' label='Get PKT' onClick={() => getPKT()}/>
                           </div>
                           <div id="spin" align="center" pad="medium" style={{padding:'2%'}}><Spinner size="large" /></div>
                       </Box>
@@ -558,7 +561,7 @@ function WPKTToPKT() {
                       <Box id="box1" width="100%" responsive round="small" style={{backgroundColor:'#2B2F36', color:'white',  padding:'0%'}}>
                           <div hidden align="center" id="output1" style={{padding:'2%', wordBreak: "break-word"}}></div>
                           <div hidden align="center" id="recPKT" style={{padding:'2%', wordBreak: "break-word"}}>
-                              <ButtonForm size='large' color='#F0B90C' label='Recover PKT' onClick={() => getPKT()}/>
+                              <ButtonForm size='large' color='#F0B90C' label='Get PKT' onClick={() => getPKT()}/>
                           </div>
                           <div id="spin" align="center" pad="medium" style={{padding:'2%'}}><Spinner size="large" /></div>
                       </Box>
